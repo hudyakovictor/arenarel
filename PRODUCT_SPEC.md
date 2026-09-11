@@ -73,11 +73,17 @@ Forbidden:
 ### Milestone 1 — Current playable vertical slice
 
 - Phaser 4 + TypeScript + Vite + rexUI.
-- Five bosses.
+- First-run onboarding with Скрепка.
+- Five-battle daily raid selected from a 15-scenario content pool.
+- Raid map and scenario districts.
 - Six protocols.
+- Two-step encounter flow: find the poison, then choose the protocol.
+- Signal Laboratory mini-mode.
 - Result journal.
+- Pending-error review flow.
+- Cosmetic archive economy.
 - Daily deterministic deck.
-- Local progression.
+- Local progression with protocol mastery, proof ID, badges and cosmetic dust.
 
 ### Milestone 2 — Retention systems
 
@@ -98,6 +104,7 @@ Forbidden:
 ## Quality bar checklist
 
 - [x] 9:16 layout.
+- [x] First-run onboarding.
 - [x] Phaser 4.
 - [x] TypeScript.
 - [x] Vite.
@@ -107,4 +114,10 @@ Forbidden:
 - [x] No buy/sell terminal loop.
 - [x] Three choices per encounter.
 - [x] Journal and future reveal.
+- [x] Raid map.
+- [x] Signal Laboratory.
+- [x] Pending-error closure.
 - [x] Local progression and proof ID.
+- [x] Settings for sound, haptics and reduced motion.
+- [x] PWA manifest and service worker shell.
+- [x] Local telemetry buffer for balancing without external tracking.

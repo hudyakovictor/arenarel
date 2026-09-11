@@ -1,4 +1,4 @@
-import skrebkaUrl from '../../another_character.png?url';
+import skrebkaUrl from '../assets/skrebka.jpg?url';
 import fomoUrl from '../../enemy.fomo_wraith.jpg?url';
 import headlineUrl from '../../enemy.headline_titan.jpg?url';
 import hubrisUrl from '../../enemy.hubris_dragon.jpg?url';

@@ -1,0 +1,11 @@
+{
+  "name": "Signal Arena",
+  "short_name": "Signal Arena",
+  "description": "Vertical decision trainer against market distortions.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#01030a",
+  "theme_color": "#04070f",
+  "icons": []
+}

@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import './styles.css';
+import { validateContent } from './game/contentValidator';
 import { SignalArenaScene } from './game/SignalArenaScene';
 
 const GAME_W = 1080;
@@ -9,6 +10,8 @@ const GAME_H = 1920;
 
 const rexModule = await import('phaser3-rex-plugins/dist/rexuiplugin.min.js');
 const RexUIPlugin = rexModule.default ?? (globalThis as any).rexuiplugin;
+
+validateContent();
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.WEBGL,
@@ -44,3 +47,9 @@ const config: Phaser.Types.Core.GameConfig = {
 };
 
 new Phaser.Game(config);
+
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    void navigator.serviceWorker.register('/sw.js');
+  });
+}

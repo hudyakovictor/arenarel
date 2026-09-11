@@ -30,14 +30,17 @@ The owl/Duolingo mentor concept is not used in the playable product.
 
 ## Current game features
 
+- First-run interactive onboarding with Скрепка.
 - 9:16 vertical mobile canvas.
 - Minimal HUD: clarity, pressure, composure.
-- Five boss encounters:
+- Daily raid map with 5 encounters selected from a 15-scenario pool.
+- Boss distortions include:
   - Фантом FOMO
   - Титан Заголовков
   - Гоблин Плеча
   - Призрак Мести
   - Дракон Самоуверенности
+  - and additional liquidity, macro, averaging, whale, influencer and regime-confusion cases
 - Six protocol cards:
   - Доказательства
   - Карантин шума
@@ -47,8 +50,17 @@ The owl/Duolingo mentor concept is not used in the playable product.
   - Вне рынка
 - Forward-after-answer replay.
 - Journal of mistakes and lessons.
-- Daily deterministic encounter order.
-- Local profile persistence: XP, streak, best clarity, proof ID, cosmetic dust, badges.
+- Daily deterministic encounter deck.
+- Raid map before battle.
+- Two-step battle: first identify the signal poison, then choose the protocol.
+- Signal Laboratory mini-mode for non-terminal evidence reading.
+- Archive Review mode: pending mistakes must be actively closed.
+- Local profile persistence: XP, streak, best clarity, proof ID, exportable proof card, cosmetic dust, badges, protocol mastery, pending reviews.
+- Cosmetic Archive: cosmetic-only frame economy with no pay-to-win hooks.
+- Settings screen: sound, haptics, reduced motion, local reset.
+- PWA manifest and production service worker for offline shell/runtime asset cache.
+- Local privacy-safe telemetry buffer for UX/balance analysis.
+- Startup content validator: exactly 3 choices, correct option included, normalized traces, valid protocol IDs.
 - Codex screen for protocols and product rules.
 - Keyboard support on desktop: `1`, `2`, `3` choose cards.
 - Mobile haptic vibration where supported.
