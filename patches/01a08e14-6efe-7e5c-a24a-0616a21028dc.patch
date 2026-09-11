@@ -1,0 +1,4538 @@
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..e4a238c
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,7 @@
++node_modules/
++dist/
++.env
++.env.*
++.DS_Store
++.vite/
++.cache/
+diff --git a/GAP_TO_100.md b/GAP_TO_100.md
+new file mode 100644
+index 0000000..037b917
+--- /dev/null
++++ b/GAP_TO_100.md
+@@ -0,0 +1,51 @@
++# Что остаётся до 100% готовности Signal Arena
++
++Текущая версия стала уже не набором концептов, а полноценным вертикальным срезом: есть Phaser 4, TypeScript, Vite, rexUI, мобильный формат 9:16, каноничная Скрепка, рейд, карта, лаборатория, кодекс, профиль, настройки, журнал ошибок и локальная мета-прогрессия. Но до настоящей 100% коммерческой готовности ещё далеко. 100% в контексте такого продукта — это не просто «игра запускается». Это уровень, где продукт выдерживает миллионную аудиторию, не разваливает этику обучения, имеет сильную retention-экономику, масштабируемый контент, доказуемую пользу и визуальный уровень, который можно показывать инвестору, стримеру, бирже, Web3-партнёру и обычному игроку без пояснений.
++
++## 1. Главный недодел: глубина core gameplay
++
++Сейчас игрок выбирает один из трёх протоколов. Это правильно по направлению, потому что мы не превращаем игру в биржевой терминал. Но для 100% нужно расширить глубину без перегруза. Каждый бой должен иметь 2–3 микро-шага: сканирование искажений, выбор ключевого факта, выбор протокола, затем разбор будущего. Важно не добавлять двадцать кнопок, а сделать одно решение богаче. Например: игрок сначала выбирает, какой фрагмент является шумом, потом какой протокол защищает систему. Так появится ощущение мастерства, а не викторины.
++
++## 2. Нужен полноценный tutorial-first onboarding
++
++Новый игрок пока может понять идею, но продукт обязан вести его за руку первые 90 секунд. Нужен отдельный интерактивный пролог со Скрепкой: «я пришёл из прошлого…», затем один учебный босс, где интерфейс подсвечивает только нужные зоны. Тут нельзя делать длинный текст. Нужна постановка: карточка дрожит, Скрепка запрещает нажимать «героизм», игрок делает первый протокол и видит future reveal. Только после этого открывается хаб.
++
++## 3. Контент-пайплайн должен стать фабрикой
++
++Сейчас есть 15 сценариев. Для MVP нужно минимум 80–120 коротких сценариев, сгруппированных по искажениям: FOMO, revenge, leverage, social proof, macro uncertainty, overconfidence, averaging, news panic, liquidity trap, regime confusion. Для soft launch лучше 250+. Каждый сценарий должен иметь: краткий headline, 4 факта, скрытую правду, 3 правдоподобных протокола, разбор, future replay, теги ошибки. Контент должен быть редактируемым через JSON/таблицу, а не зашитым в код навсегда.
++
++## 4. Нужна система персонального обучения
++
++Сейчас профиль считает mastery по протоколам. Для 100% нужна адаптивная выдача сценариев: если игрок часто ошибается на FOMO, игра чаще даёт FOMO, но маскирует его разными нарративами. Важен не процент правильных ответов, а карта слепых зон. Игра должна говорить: «ты не плохо торгуешь; ты три раза купил срочность вместо факта». Это коммерчески сильнее, чем обычные уровни.
++
++## 5. Журнал ошибок должен стать главным retention-мотором
++
++Текущий pending review — правильное начало. До 100% нужен полноценный архив: фильтры по ошибкам, повторение старых ошибок через spaced repetition, ежедневная карточка «закрой одну ошибку», серия не за вход в игру, а за закрытый разбор. Нужно, чтобы игрок возвращался не за наградой, а потому что незакрытая ошибка психологически висит в архиве. Это честный аналог streak-механики без имитации Duolingo.
++
++## 6. Визуальный уровень нужно поднять до «сразу хочу играть»
++
++Сейчас стиль есть: тёмная криптосатира, боссы, неон, Скрепка. Но 100% требует арт-дирекшн-системы: единые карточные рамки, VFX удара по боссу, разные фоны районов, анимированные шумовые слои, микродвижение интерфейса, красивый proof-card, экран сезона, косметические рамки. При этом UI нельзя перегружать. AAA здесь означает не «много элементов», а «каждый элемент выглядит дорогим и понятно работает».
++
++## 7. Звук и тактильность пока только базовые
++
++Нужны полноценные аудио-события: шорох архива, сухой щелчок Скрепки, глухой удар ошибки, короткий победный синт, тревожный шум заголовков. Музыка должна быть атмосферной, но не казиношной. На мобильных нужно продумать haptic language: лёгкий щелчок выбора, двойной удар ошибки, мягкая вибрация закрытия архива. Это сильно повышает ощущение качества.
++
++## 8. Web3-слой должен быть опциональным и этичным
++
++Сейчас есть локальный proof-id и косметическая пыль. Для 100% нужно спроектировать кошелёк как необязательный слой: proof-of-skill, сезонные косметические NFT, guild badges, on-chain достижения без влияния на ответы. Нельзя продавать преимущество, подсказки или повышенный шанс. Важно юридически и репутационно: игра учит дисциплине, поэтому сама не должна эксплуатировать азарт.
++
++## 9. Нужны социальные системы без токсичного трейдинг-культа
++
++Гильдии не должны быть чатами «куда войти». Они должны быть комнатами разбора ошибок. Лучший социальный формат: анонимные карточки решений, голосование за протокол, разбор недели, «самая дорогая не-нажатая кнопка». Лидерборд должен считать consistency, закрытые ошибки, качество объяснений, а не прибыль. Иначе продукт быстро превратится в то, против чего он создан.
++
++## 10. Нужны аналитика, экономика и A/B-контур
++
++До 100% надо измерять: где игрок не понял механику, где бросил сессию, какие протоколы путает, сколько pending reviews закрывает, сколько возвращается завтра, как влияет карта рейда, где текст слишком длинный. Без аналитики невозможно довести продукт до миллионов. Экономика должна быть косметической: пыль, рамки, титулы, архивные скины Скрепки, сезонные эффекты. Никакой продажи силы.
++
++## 11. Production readiness
++
++Нужны: автотесты данных сценариев, проверка отсутствия запрещённых trading-terminal паттернов, линтер, CI, error boundary, PWA/offline cache, performance budget, mobile QA на iOS/Android, lazy-loading ассетов, сжатие изображений, локализация RU/EN, accessibility режимы, политика безопасности для Web3, privacy документ. Сборка уже проходит, но production-grade — это не только build.
++
++## 12. Что делать следующим
++
++Ближайшие приоритеты после текущей доработки: 1) расширить контент до 40 сценариев в коде и до 120 в контент-пайплайне; 2) усилить proof-card до полноценной коллекционной карточки с фирменным арт-китом; 3) добавить повторение старых ошибок по расписанию; 4) провести внутриигровой UX-тест: минимальное число экранов до первого удовольствия; 5) подключить внешнюю продуктовую аналитику уже поверх локального privacy-safe буфера; 6) заменить временные процедурные UI-решения полноценным арт-китом; 7) подготовить юридический и Web3-security контур. После текущей итерации продукт уже не выглядит как 15/100: фундамент ближе к 68–74/100. До 99/100 потребуется несколько итераций контента, арта, аналитики и баланса, но фундамент теперь выбран правильно: это не терминал, а игра про дисциплину против хаоса.
+diff --git a/PRODUCT_SPEC.md b/PRODUCT_SPEC.md
+new file mode 100644
+index 0000000..504ff01
+--- /dev/null
++++ b/PRODUCT_SPEC.md
+@@ -0,0 +1,123 @@
++# Signal Arena Product Spec
++
++## One-line pitch
++
++A mobile-first roguelite decision trainer where crypto-market distortions are bosses and the player wins by applying protocols before any trade-like action exists.
++
++## Why it is commercially different
++
++Most trading education products teach execution inside a terminal-shaped interface. Signal Arena owns the missing step: **decision quality before execution**. The player is not trained to click more often; the player is trained to stop feeding chaos.
++
++## Core loop
++
++```text
++Boss distortion → signal dossier → choose protocol → future reveal → journal entry → season profile growth
++```
++
++## Session design
++
++- Session length target: 8–12 minutes.
++- Current prototype length: 5 encounters.
++- Encounter load: 1 boss image, 1 brief, 4 evidence chips, 3 protocol cards.
++- Failure is not framed as shame; it becomes journal material.
++
++## UX pillars
++
++### 1. 9:16 native
++
++The canvas is `1080 × 1920`, scaled with Phaser FIT. Desktop preview keeps a phone-like vertical frame.
++
++### 2. Low cognitive load
++
++The player never sees an order book, twenty indicators, or a trading dashboard. Every encounter asks one question: **which protocol protects the system now?**
++
++### 3. Game-first, finance-second
++
++Market concepts are expressed through enemies, rituals, dossiers, pressure, composure, and clarity. The product is entertainment plus skill training, not a reskinned spreadsheet.
++
++## Character canon
++
++### Скрепка
++
++- Analog assistant.
++- Looks like a paperclip/old man/market hermit in a Yoda-like robe.
++- Claims he came from the past to help the future.
++- Hides that he is not AI.
++- Tone: dry, archival, satirical, slightly threatening.
++
++### Removed concept
++
++- No owl mentor.
++- No Duolingo mascot imitation.
++- Duolingo-style streaks are transformed into **closed-error streaks**, not lesson grind.
++
++## Monetization rules
++
++Allowed:
++
++- Cosmetic skins for protocols.
++- Seasonal boss frames.
++- Guild banners.
++- Archive room decorations.
++- Optional proof-of-skill minting.
++
++Forbidden:
++
++- Selling correct answers.
++- Selling better odds.
++- Selling more risk budget.
++- Paywalled educational facts needed for fair play.
++
++## Roadmap to production
++
++### Milestone 1 — Current playable vertical slice
++
++- Phaser 4 + TypeScript + Vite + rexUI.
++- First-run onboarding with Скрепка.
++- Five-battle daily raid selected from a 15-scenario content pool.
++- Raid map and scenario districts.
++- Six protocols.
++- Two-step encounter flow: find the poison, then choose the protocol.
++- Signal Laboratory mini-mode.
++- Result journal.
++- Pending-error review flow.
++- Cosmetic archive economy.
++- Daily deterministic deck.
++- Local progression with protocol mastery, proof ID, badges and cosmetic dust.
++
++### Milestone 2 — Retention systems
++
++- Daily distortion seed.
++- More scenario packs.
++- Error taxonomy graph.
++- Cosmetic unlock screen.
++- Season ladder based on completed reviews, not PnL.
++
++### Milestone 3 — Social/Web3
++
++- Guild review rooms.
++- Shareable proof cards.
++- Optional wallet connection.
++- Cosmetic NFTs without gameplay advantage.
++- Tournament format scored on decision quality and consistency.
++
++## Quality bar checklist
++
++- [x] 9:16 layout.
++- [x] First-run onboarding.
++- [x] Phaser 4.
++- [x] TypeScript.
++- [x] Vite.
++- [x] rexUI plugin.
++- [x] No owl in playable product.
++- [x] Скрепка canon preserved.
++- [x] No buy/sell terminal loop.
++- [x] Three choices per encounter.
++- [x] Journal and future reveal.
++- [x] Raid map.
++- [x] Signal Laboratory.
++- [x] Pending-error closure.
++- [x] Local progression and proof ID.
++- [x] Settings for sound, haptics and reduced motion.
++- [x] PWA manifest and service worker shell.
++- [x] Local telemetry buffer for balancing without external tracking.
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..c43a449
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,95 @@
++# Signal Arena
++
++Vertical 9:16 Phaser 4 game prototype about **decision training before the trade click**. This is not a trading terminal, not an exchange demo account, and not a buy/sell simulator.
++
++## Stack
++
++- Phaser `4.2.1`
++- TypeScript `5.9.3`
++- Vite `7.3.6`
++- `phaser3-rex-plugins` / rexUI `1.80.20`
++
++## Product direction
++
++Signal Arena trains a player to defeat market distortions through compact protocol choices:
++
++1. Read the boss distortion and signal dossier.
++2. Pick one of three protocol cards.
++3. Reveal the future after the answer.
++4. Save the mistake/discipline note into the journal.
++
++The core mechanic intentionally avoids repeating actions that already exist in exchange demo accounts. There are no terminal controls, no order book, no buy/sell button loop, and no real-money promise.
++
++## Canon character
++
++The mentor is **Скрепка**: an analog archival assistant inspired by an old office paperclip archetype, dressed like a tiny market hermit. He hides that he is not AI and says things like:
++
++> Я пришёл из прошлого, чтобы помочь тебе в будущем. Не называй меня ИИ. Я канцелярский инстинкт.
++
++The owl/Duolingo mentor concept is not used in the playable product.
++
++## Current game features
++
++- First-run interactive onboarding with Скрепка.
++- 9:16 vertical mobile canvas.
++- Minimal HUD: clarity, pressure, composure.
++- Daily raid map with 5 encounters selected from a 15-scenario pool.
++- Boss distortions include:
++  - Фантом FOMO
++  - Титан Заголовков
++  - Гоблин Плеча
++  - Призрак Мести
++  - Дракон Самоуверенности
++  - and additional liquidity, macro, averaging, whale, influencer and regime-confusion cases
++- Six protocol cards:
++  - Доказательства
++  - Карантин шума
++  - Анти-FOMO
++  - Риск первым
++  - Пауза после удара
++  - Вне рынка
++- Forward-after-answer replay.
++- Journal of mistakes and lessons.
++- Daily deterministic encounter deck.
++- Raid map before battle.
++- Two-step battle: first identify the signal poison, then choose the protocol.
++- Signal Laboratory mini-mode for non-terminal evidence reading.
++- Archive Review mode: pending mistakes must be actively closed.
++- Local profile persistence: XP, streak, best clarity, proof ID, exportable proof card, cosmetic dust, badges, protocol mastery, pending reviews.
++- Cosmetic Archive: cosmetic-only frame economy with no pay-to-win hooks.
++- Settings screen: sound, haptics, reduced motion, local reset.
++- PWA manifest and production service worker for offline shell/runtime asset cache.
++- Local privacy-safe telemetry buffer for UX/balance analysis.
++- Startup content validator: exactly 3 choices, correct option included, normalized traces, valid protocol IDs.
++- Codex screen for protocols and product rules.
++- Keyboard support on desktop: `1`, `2`, `3` choose cards.
++- Mobile haptic vibration where supported.
++
++## Run locally
++
++```bash
++npm install
++npm run dev
++```
++
++Type-check and build:
++
++```bash
++npm run check
++npm run build
++```
++
++## Design rules
++
++1. Format is always 9:16.
++2. UI stays focused: one decision, three choices, one outcome.
++3. The game does not become a trading terminal. It gamifies discipline, evidence, refusal, and error closure — not click frequency.
++
++## Web3 layer concept
++
++The current implementation keeps Web3 as a product layer, not a dependency gate:
++
++- Proof-of-skill style local run ID.
++- Cosmetic currency only.
++- No pay-to-win answers, data, budget, or probability manipulation.
++- Future wallet/NFT features should remain optional and cosmetic/status-based.
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..59ea48b
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,20 @@
++<!doctype html>
++<html lang="ru">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
++    <meta name="theme-color" content="#04070f" />
++    <meta name="apple-mobile-web-app-capable" content="yes" />
++    <meta name="apple-mobile-web-app-title" content="Signal Arena" />
++    <link rel="manifest" href="/manifest.webmanifest" />
++    <title>Signal Arena — Phaser 4 Vertical Prototype</title>
++  </head>
++  <body>
++    <main id="app">
++      <div id="game-shell">
++        <div id="game-container" aria-label="Signal Arena game canvas"></div>
++      </div>
++    </main>
++    <script type="module" src="/src/main.ts"></script>
++  </body>
++</html>
+diff --git a/package-lock.json b/package-lock.json
+new file mode 100644
+index 0000000..77699ce
+--- /dev/null
++++ b/package-lock.json
+@@ -0,0 +1,1380 @@
++{
++  "name": "signal-arena-phaser4",
++  "version": "0.1.0",
++  "lockfileVersion": 3,
++  "requires": true,
++  "packages": {
++    "": {
++      "name": "signal-arena-phaser4",
++      "version": "0.1.0",
++      "dependencies": {
++        "phaser": "4.2.1",
++        "phaser3-rex-plugins": "1.80.20"
++      },
++      "devDependencies": {
++        "typescript": "5.9.3",
++        "vite": "7.3.6"
++      }
++    },
++    "node_modules/@babel/runtime": {
++      "version": "7.29.7",
++      "resolved": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.29.7.tgz",
++      "integrity": "sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=6.9.0"
++      }
++    },
++    "node_modules/@esbuild/aix-ppc64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/aix-ppc64/-/aix-ppc64-0.27.7.tgz",
++      "integrity": "sha512-EKX3Qwmhz1eMdEJokhALr0YiD0lhQNwDqkPYyPhiSwKrh7/4KRjQc04sZ8db+5DVVnZ1LmbNDI1uAMPEUBnQPg==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "aix"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-arm": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-arm/-/android-arm-0.27.7.tgz",
++      "integrity": "sha512-jbPXvB4Yj2yBV7HUfE2KHe4GJX51QplCN1pGbYjvsyCZbQmies29EoJbkEc+vYuU5o45AfQn37vZlyXy4YJ8RQ==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-arm64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.27.7.tgz",
++      "integrity": "sha512-62dPZHpIXzvChfvfLJow3q5dDtiNMkwiRzPylSCfriLvZeq0a1bWChrGx/BbUbPwOrsWKMn8idSllklzBy+dgQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-x64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-x64/-/android-x64-0.27.7.tgz",
++      "integrity": "sha512-x5VpMODneVDb70PYV2VQOmIUUiBtY3D3mPBG8NxVk5CogneYhkR7MmM3yR/uMdITLrC1ml/NV1rj4bMJuy9MCg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/darwin-arm64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.27.7.tgz",
++      "integrity": "sha512-5lckdqeuBPlKUwvoCXIgI2D9/ABmPq3Rdp7IfL70393YgaASt7tbju3Ac+ePVi3KDH6N2RqePfHnXkaDtY9fkw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/darwin-x64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.27.7.tgz",
++      "integrity": "sha512-rYnXrKcXuT7Z+WL5K980jVFdvVKhCHhUwid+dDYQpH+qu+TefcomiMAJpIiC2EM3Rjtq0sO3StMV/+3w3MyyqQ==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/freebsd-arm64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-arm64/-/freebsd-arm64-0.27.7.tgz",
++      "integrity": "sha512-B48PqeCsEgOtzME2GbNM2roU29AMTuOIN91dsMO30t+Ydis3z/3Ngoj5hhnsOSSwNzS+6JppqWsuhTp6E82l2w==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/freebsd-x64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-x64/-/freebsd-x64-0.27.7.tgz",
++      "integrity": "sha512-jOBDK5XEjA4m5IJK3bpAQF9/Lelu/Z9ZcdhTRLf4cajlB+8VEhFFRjWgfy3M1O4rO2GQ/b2dLwCUGpiF/eATNQ==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-arm": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm/-/linux-arm-0.27.7.tgz",
++      "integrity": "sha512-RkT/YXYBTSULo3+af8Ib0ykH8u2MBh57o7q/DAs3lTJlyVQkgQvlrPTnjIzzRPQyavxtPtfg0EopvDyIt0j1rA==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-arm64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.27.7.tgz",
++      "integrity": "sha512-RZPHBoxXuNnPQO9rvjh5jdkRmVizktkT7TCDkDmQ0W2SwHInKCAV95GRuvdSvA7w4VMwfCjUiPwDi0ZO6Nfe9A==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-ia32": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-ia32/-/linux-ia32-0.27.7.tgz",
++      "integrity": "sha512-GA48aKNkyQDbd3KtkplYWT102C5sn/EZTY4XROkxONgruHPU72l+gW+FfF8tf2cFjeHaRbWpOYa/uRBz/Xq1Pg==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-loong64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-loong64/-/linux-loong64-0.27.7.tgz",
++      "integrity": "sha512-a4POruNM2oWsD4WKvBSEKGIiWQF8fZOAsycHOt6JBpZ+JN2n2JH9WAv56SOyu9X5IqAjqSIPTaJkqN8F7XOQ5Q==",
++      "cpu": [
++        "loong64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-mips64el": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-mips64el/-/linux-mips64el-0.27.7.tgz",
++      "integrity": "sha512-KabT5I6StirGfIz0FMgl1I+R1H73Gp0ofL9A3nG3i/cYFJzKHhouBV5VWK1CSgKvVaG4q1RNpCTR2LuTVB3fIw==",
++      "cpu": [
++        "mips64el"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-ppc64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-ppc64/-/linux-ppc64-0.27.7.tgz",
++      "integrity": "sha512-gRsL4x6wsGHGRqhtI+ifpN/vpOFTQtnbsupUF5R5YTAg+y/lKelYR1hXbnBdzDjGbMYjVJLJTd2OFmMewAgwlQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-riscv64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-riscv64/-/linux-riscv64-0.27.7.tgz",
++      "integrity": "sha512-hL25LbxO1QOngGzu2U5xeXtxXcW+/GvMN3ejANqXkxZ/opySAZMrc+9LY/WyjAan41unrR3YrmtTsUpwT66InQ==",
++      "cpu": [
++        "riscv64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-s390x": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-s390x/-/linux-s390x-0.27.7.tgz",
++      "integrity": "sha512-2k8go8Ycu1Kb46vEelhu1vqEP+UeRVj2zY1pSuPdgvbd5ykAw82Lrro28vXUrRmzEsUV0NzCf54yARIK8r0fdw==",
++      "cpu": [
++        "s390x"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-x64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.27.7.tgz",
++      "integrity": "sha512-hzznmADPt+OmsYzw1EE33ccA+HPdIqiCRq7cQeL1Jlq2gb1+OyWBkMCrYGBJ+sxVzve2ZJEVeePbLM2iEIZSxA==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/netbsd-arm64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-arm64/-/netbsd-arm64-0.27.7.tgz",
++      "integrity": "sha512-b6pqtrQdigZBwZxAn1UpazEisvwaIDvdbMbmrly7cDTMFnw/+3lVxxCTGOrkPVnsYIosJJXAsILG9XcQS+Yu6w==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "netbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/netbsd-x64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-x64/-/netbsd-x64-0.27.7.tgz",
++      "integrity": "sha512-OfatkLojr6U+WN5EDYuoQhtM+1xco+/6FSzJJnuWiUw5eVcicbyK3dq5EeV/QHT1uy6GoDhGbFpprUiHUYggrw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "netbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openbsd-arm64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-arm64/-/openbsd-arm64-0.27.7.tgz",
++      "integrity": "sha512-AFuojMQTxAz75Fo8idVcqoQWEHIXFRbOc1TrVcFSgCZtQfSdc1RXgB3tjOn/krRHENUB4j00bfGjyl2mJrU37A==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openbsd-x64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-x64/-/openbsd-x64-0.27.7.tgz",
++      "integrity": "sha512-+A1NJmfM8WNDv5CLVQYJ5PshuRm/4cI6WMZRg1by1GwPIQPCTs1GLEUHwiiQGT5zDdyLiRM/l1G0Pv54gvtKIg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openharmony-arm64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/openharmony-arm64/-/openharmony-arm64-0.27.7.tgz",
++      "integrity": "sha512-+KrvYb/C8zA9CU/g0sR6w2RBw7IGc5J2BPnc3dYc5VJxHCSF1yNMxTV5LQ7GuKteQXZtspjFbiuW5/dOj7H4Yw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openharmony"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/sunos-x64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/sunos-x64/-/sunos-x64-0.27.7.tgz",
++      "integrity": "sha512-ikktIhFBzQNt/QDyOL580ti9+5mL/YZeUPKU2ivGtGjdTYoqz6jObj6nOMfhASpS4GU4Q/Clh1QtxWAvcYKamA==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "sunos"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-arm64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-arm64/-/win32-arm64-0.27.7.tgz",
++      "integrity": "sha512-7yRhbHvPqSpRUV7Q20VuDwbjW5kIMwTHpptuUzV+AA46kiPze5Z7qgt6CLCK3pWFrHeNfDd1VKgyP4O+ng17CA==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-ia32": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-ia32/-/win32-ia32-0.27.7.tgz",
++      "integrity": "sha512-SmwKXe6VHIyZYbBLJrhOoCJRB/Z1tckzmgTLfFYOfpMAx63BJEaL9ExI8x7v0oAO3Zh6D/Oi1gVxEYr5oUCFhw==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-x64": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.27.7.tgz",
++      "integrity": "sha512-56hiAJPhwQ1R4i+21FVF7V8kSD5zZTdHcVuRFMW0hn753vVfQN8xlx4uOPT4xoGH0Z/oVATuR82AiqSTDIpaHg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@napi-rs/lzma-linux-x64-gnu": {
++      "version": "1.5.1",
++      "resolved": "https://registry.npmjs.org/@napi-rs/lzma-linux-x64-gnu/-/lzma-linux-x64-gnu-1.5.1.tgz",
++      "integrity": "sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": "^22.20 || ^24.12 || >=25"
++      }
++    },
++    "node_modules/@rollup/rollup-android-arm-eabi": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.63.1.tgz",
++      "integrity": "sha512-UZ8sUxPTiHWYX9QNdJedb1kDZSpS1t/VPWBWGSgqHNi9w3Cu6IXvu2mzbhiTiPvtrqgTQJ+zqiAq2iPIPilpaQ==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ]
++    },
++    "node_modules/@rollup/rollup-android-arm64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-android-arm64/-/rollup-android-arm64-4.63.1.tgz",
++      "integrity": "sha512-cQ4nFQABN5cDvDpbvJ7bMStCpnaVxynZrRMfUJYgxcIk9Sh54FIO1vtfkg0B69REjER77ioZ/ov+eAApx/KmLQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ]
++    },
++    "node_modules/@rollup/rollup-darwin-arm64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.63.1.tgz",
++      "integrity": "sha512-FQNqd1lRy/0QhDk3xeRIkSBiCpXCiDnZO3YLVdcDKN1UBiKToNftCzcXYNLshmPDUMlu2TdeS8tGcsU6f3YF1Q==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ]
++    },
++    "node_modules/@rollup/rollup-darwin-x64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.63.1.tgz",
++      "integrity": "sha512-pvD16V939D3CloK0+qikpGaxiPrDUXTe7Y5cWOMkMSy7m1cawa8EGy/kXYi/G/cKAC4HDAbSnzCIk1WmsoOKXg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ]
++    },
++    "node_modules/@rollup/rollup-freebsd-arm64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-freebsd-arm64/-/rollup-freebsd-arm64-4.63.1.tgz",
++      "integrity": "sha512-pcFGeL2345VwdTnJhA6zLbew+YgWB0qBG2+dMtXjCicf6+rm6kO6cOoh5VnTe0ZMrMRgRyuHmCJxZWrIdzYuOw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ]
++    },
++    "node_modules/@rollup/rollup-freebsd-x64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-freebsd-x64/-/rollup-freebsd-x64-4.63.1.tgz",
++      "integrity": "sha512-mRJlqSRulVzcKq/LKA6ICSIc3K/l4fzlVn/gePn2nXIHy8seRi5z/eeRE0d/XMBxcMldiXtQTSpRj0tkkC3g8Q==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-arm-gnueabihf": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.63.1.tgz",
++      "integrity": "sha512-YDUNvVM85TI3g/1OpnqKP1h4NeW/j64DfWMf+G3M809xNk1bJSnpFp4sh83NpmVE5DXnkh8ULor4LTVZKoYLHw==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-arm-musleabihf": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musleabihf-4.63.1.tgz",
++      "integrity": "sha512-7Mcn71p9ZuQFAj+h+dhQXy/yeLePRS2yKRnmW1DijA9thKO5qap0GNOIQK4yQ6iP3SU0Mrb/yWo8h8vgRba8lw==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-arm64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.63.1.tgz",
++      "integrity": "sha512-4YiLQTX6U4CSl0L9cluep9A9W6UmTfqBDc2/CH6wlu54pl4E7Jn3cOD8oxzvBDEGk/JMKgJ47C8g+radF7mwvg==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-arm64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.63.1.tgz",
++      "integrity": "sha512-2ra8F7w8OquwZN9z2/fKFnli69wa8PLwaVzRMIPGb13ByMJwC28Fbp8YcVGoUhlYMTt7j5j9bNgpysrN2UM+vw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-loong64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-loong64-gnu/-/rollup-linux-loong64-gnu-4.63.1.tgz",
++      "integrity": "sha512-Sy20ncyhjmBP0Ml+UvQbimjlk6VFgjW5uNP+qqwHB00mTE8Bl2C1TuHTlRwK2YoXeZbee5lP2XevBWVkAQAtSQ==",
++      "cpu": [
++        "loong64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-loong64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-loong64-musl/-/rollup-linux-loong64-musl-4.63.1.tgz",
++      "integrity": "sha512-noITLp8oNjYliPnGWmLyelIHwULGqbHloQHGw1rtxbWhTuWooRpnZarZQJ1y9EUC4szuCusCc+HEpUtxpIwYvA==",
++      "cpu": [
++        "loong64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-ppc64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-ppc64-gnu/-/rollup-linux-ppc64-gnu-4.63.1.tgz",
++      "integrity": "sha512-hlxxXd+F1mWiAcaFR7Sv9ZQT6m6UfI8+Vy/kFJzztq2pDMU/0wZ9sish0iszNZvsQDo8Gc0i5yuFEOz5dDf6fA==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-ppc64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-ppc64-musl/-/rollup-linux-ppc64-musl-4.63.1.tgz",
++      "integrity": "sha512-EF7OpqQTQ/BvGqLzUi4rEHuagCV9MugAUXSHemwPW5vxZ75RR+jxO/2j95Ph2dalMpFHSVECjRoioHZgA9zOYA==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-riscv64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-riscv64-gnu/-/rollup-linux-riscv64-gnu-4.63.1.tgz",
++      "integrity": "sha512-wQO3JesW9PRkwlabQ27y7sPfVOOTLRG73I4F2UYHG5PXun3J9U3y+b7ezVKSYbsvSKGQ1k1cq8Qlun4C9kLt3w==",
++      "cpu": [
++        "riscv64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-riscv64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-musl-4.63.1.tgz",
++      "integrity": "sha512-ouAGwhO6wHRXdnOVCOsB0tRFkA7nhNB2Nwax6oECXN0YiN8EYUTBAOudADOB1PI+yDL61TeNx/u7MVCzksNbkQ==",
++      "cpu": [
++        "riscv64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-s390x-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.63.1.tgz",
++      "integrity": "sha512-q2R38Sn+1J8RxhfJ+T54wSWmyKXWec+9jgDfqO2AtArEqHO5R2aeayp5H5OYLr5UYDVGsVaZPEFUooMhYCdz5A==",
++      "cpu": [
++        "s390x"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-x64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.63.1.tgz",
++      "integrity": "sha512-gfI5T24WLLuFfSKw7Go/zDXjAAV0fny0swTaDv+WjK7vqcw4cRhFfdsyKL1n+ukI+ooBxn3bVQnyrn06WpI50w==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-x64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.63.1.tgz",
++      "integrity": "sha512-4h6XqthmB4Hspji84wvgk+ElodTsGj+dbZqHJHHtKxj4mYq0ANSEEPX9ys3moJueqsRjwpaJYH7874Itwnj2ow==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-openbsd-x64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-openbsd-x64/-/rollup-openbsd-x64-4.63.1.tgz",
++      "integrity": "sha512-dlfCOa87o1VAYegLQ9EKilx2JCeRofiyPGhTCmqnuXZ6bMPiycO1rq1+sKoulAp7pGLIsTIw+1x5R+zgh5LhhA==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ]
++    },
++    "node_modules/@rollup/rollup-openharmony-arm64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-openharmony-arm64/-/rollup-openharmony-arm64-4.63.1.tgz",
++      "integrity": "sha512-cjkLbOlfcm3QGhMM1J5zaZjsw1GggbN6rw9UTSSRrPrR1KkcXnN7Uq9rPw34xImQ9VOY9GN+6u2Zj80B9ptkcw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openharmony"
++      ]
++    },
++    "node_modules/@rollup/rollup-win32-arm64-msvc": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.63.1.tgz",
++      "integrity": "sha512-Li1KdUnWGE4N3e1F/B4RTB1ms+nG4WBgjByO46pkeBVX/2UBsY53xf5vK9WygVmnH3RwncIST7lkSdLSY6P9lg==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ]
++    },
++    "node_modules/@rollup/rollup-win32-ia32-msvc": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.63.1.tgz",
++      "integrity": "sha512-t4ZYOSoLTgwhuFMrmTMLx/+i1DQVK7HYqMc6kY46EApwi8X0nIVphzdNoThU3xt6n+N5urG1/gxBdCaKDLavfg==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ]
++    },
++    "node_modules/@rollup/rollup-win32-x64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-x64-gnu/-/rollup-win32-x64-gnu-4.63.1.tgz",
++      "integrity": "sha512-RgroPfMmKlD1RzSDxvwgcPiy2HNQKoYV7OmwIXDsk73uKW5t6B/V8KIy27SMv/FNXFo/oSBtWc9J0X7t91ezZg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ]
++    },
++    "node_modules/@rollup/rollup-win32-x64-msvc": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.63.1.tgz",
++      "integrity": "sha512-at8QVep6S3h5Y6gSbdGU06bRY5WJkf6WUduM9YtvYMbYhB1MOFfUgc6kehitQXzOtMSaT70q7f9ydPhpqu821w==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ]
++    },
++    "node_modules/@types/estree": {
++      "version": "1.0.9",
++      "resolved": "https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz",
++      "integrity": "sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/argparse": {
++      "version": "2.0.1",
++      "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
++      "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
++      "license": "Python-2.0"
++    },
++    "node_modules/cross-fetch": {
++      "version": "4.0.0",
++      "resolved": "https://registry.npmjs.org/cross-fetch/-/cross-fetch-4.0.0.tgz",
++      "integrity": "sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==",
++      "license": "MIT",
++      "dependencies": {
++        "node-fetch": "^2.6.12"
++      }
++    },
++    "node_modules/dagre": {
++      "version": "0.8.5",
++      "resolved": "https://registry.npmjs.org/dagre/-/dagre-0.8.5.tgz",
++      "integrity": "sha512-/aTqmnRta7x7MCCpExk7HQL2O4owCT2h8NT//9I1OQ9vt29Pa0BzSAkR5lwFUcQ7491yVi/3CXU9jQ5o0Mn2Sw==",
++      "license": "MIT",
++      "dependencies": {
++        "graphlib": "^2.1.8",
++        "lodash": "^4.17.15"
++      }
++    },
++    "node_modules/esbuild": {
++      "version": "0.27.7",
++      "resolved": "https://registry.npmjs.org/esbuild/-/esbuild-0.27.7.tgz",
++      "integrity": "sha512-IxpibTjyVnmrIQo5aqNpCgoACA/dTKLTlhMHihVHhdkxKyPO1uBBthumT0rdHmcsk9uMonIWS0m4FljWzILh3w==",
++      "dev": true,
++      "hasInstallScript": true,
++      "license": "MIT",
++      "bin": {
++        "esbuild": "bin/esbuild"
++      },
++      "engines": {
++        "node": ">=18"
++      },
++      "optionalDependencies": {
++        "@esbuild/aix-ppc64": "0.27.7",
++        "@esbuild/android-arm": "0.27.7",
++        "@esbuild/android-arm64": "0.27.7",
++        "@esbuild/android-x64": "0.27.7",
++        "@esbuild/darwin-arm64": "0.27.7",
++        "@esbuild/darwin-x64": "0.27.7",
++        "@esbuild/freebsd-arm64": "0.27.7",
++        "@esbuild/freebsd-x64": "0.27.7",
++        "@esbuild/linux-arm": "0.27.7",
++        "@esbuild/linux-arm64": "0.27.7",
++        "@esbuild/linux-ia32": "0.27.7",
++        "@esbuild/linux-loong64": "0.27.7",
++        "@esbuild/linux-mips64el": "0.27.7",
++        "@esbuild/linux-ppc64": "0.27.7",
++        "@esbuild/linux-riscv64": "0.27.7",
++        "@esbuild/linux-s390x": "0.27.7",
++        "@esbuild/linux-x64": "0.27.7",
++        "@esbuild/netbsd-arm64": "0.27.7",
++        "@esbuild/netbsd-x64": "0.27.7",
++        "@esbuild/openbsd-arm64": "0.27.7",
++        "@esbuild/openbsd-x64": "0.27.7",
++        "@esbuild/openharmony-arm64": "0.27.7",
++        "@esbuild/sunos-x64": "0.27.7",
++        "@esbuild/win32-arm64": "0.27.7",
++        "@esbuild/win32-ia32": "0.27.7",
++        "@esbuild/win32-x64": "0.27.7"
++      }
++    },
++    "node_modules/eventemitter3": {
++      "version": "5.0.4",
++      "resolved": "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.4.tgz",
++      "integrity": "sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==",
++      "license": "MIT"
++    },
++    "node_modules/events": {
++      "version": "3.3.0",
++      "resolved": "https://registry.npmjs.org/events/-/events-3.3.0.tgz",
++      "integrity": "sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.8.x"
++      }
++    },
++    "node_modules/fdir": {
++      "version": "6.5.0",
++      "resolved": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz",
++      "integrity": "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=12.0.0"
++      },
++      "peerDependencies": {
++        "picomatch": "^3 || ^4"
++      },
++      "peerDependenciesMeta": {
++        "picomatch": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/fsevents": {
++      "version": "2.3.3",
++      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
++      "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
++      "dev": true,
++      "hasInstallScript": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
++      }
++    },
++    "node_modules/graphlib": {
++      "version": "2.1.8",
++      "resolved": "https://registry.npmjs.org/graphlib/-/graphlib-2.1.8.tgz",
++      "integrity": "sha512-jcLLfkpoVGmH7/InMC/1hIvOPSUh38oJtGhvrOFGzioE1DZ+0YW16RgmOJhHiuWTvGiJQ9Z1Ik43JvkRPRvE+A==",
++      "license": "MIT",
++      "dependencies": {
++        "lodash": "^4.17.15"
++      }
++    },
++    "node_modules/graphology": {
++      "version": "0.25.4",
++      "resolved": "https://registry.npmjs.org/graphology/-/graphology-0.25.4.tgz",
++      "integrity": "sha512-33g0Ol9nkWdD6ulw687viS8YJQBxqG5LWII6FI6nul0pq6iM2t5EKquOTFDbyTblRB3O9I+7KX4xI8u5ffekAQ==",
++      "license": "MIT",
++      "dependencies": {
++        "events": "^3.3.0",
++        "obliterator": "^2.0.2"
++      },
++      "peerDependencies": {
++        "graphology-types": ">=0.24.0"
++      }
++    },
++    "node_modules/graphology-types": {
++      "version": "0.24.8",
++      "resolved": "https://registry.npmjs.org/graphology-types/-/graphology-types-0.24.8.tgz",
++      "integrity": "sha512-hDRKYXa8TsoZHjgEaysSRyPdT6uB78Ci8WnjgbStlQysz7xR52PInxNsmnB7IBOM1BhikxkNyCVEFgmPKnpx3Q==",
++      "license": "MIT",
++      "peer": true
++    },
++    "node_modules/i18next": {
++      "version": "22.5.1",
++      "resolved": "https://registry.npmjs.org/i18next/-/i18next-22.5.1.tgz",
++      "integrity": "sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==",
++      "funding": [
++        {
++          "type": "individual",
++          "url": "https://locize.com"
++        },
++        {
++          "type": "individual",
++          "url": "https://locize.com/i18next.html"
++        },
++        {
++          "type": "individual",
++          "url": "https://www.i18next.com/how-to/faq#i18next-is-awesome.-how-can-i-support-the-project"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "@babel/runtime": "^7.20.6"
++      }
++    },
++    "node_modules/i18next-http-backend": {
++      "version": "2.7.3",
++      "resolved": "https://registry.npmjs.org/i18next-http-backend/-/i18next-http-backend-2.7.3.tgz",
++      "integrity": "sha512-FgZxrXdRA5u44xfYsJlEBL4/KH3f2IluBpgV/7riW0YW2VEyM8FzVt2XHAOi6id0Ppj7vZvCZVpp5LrGXnc8Ig==",
++      "license": "MIT",
++      "dependencies": {
++        "cross-fetch": "4.0.0"
++      }
++    },
++    "node_modules/js-yaml": {
++      "version": "4.3.2",
++      "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-4.3.2.tgz",
++      "integrity": "sha512-SFNOvSJ+Dgf/9An904Yx+CgSlIPCkIpao4qo51lpee25TIRejdH3rhR4EZMGoNx3/TP3O+wzWuiTFl4sqbltzA==",
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/puzrin"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/nodeca"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "argparse": "^2.0.1"
++      },
++      "bin": {
++        "js-yaml": "bin/js-yaml.js"
++      }
++    },
++    "node_modules/lodash": {
++      "version": "4.18.1",
++      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.18.1.tgz",
++      "integrity": "sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==",
++      "license": "MIT"
++    },
++    "node_modules/mustache": {
++      "version": "4.2.0",
++      "resolved": "https://registry.npmjs.org/mustache/-/mustache-4.2.0.tgz",
++      "integrity": "sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==",
++      "license": "MIT",
++      "bin": {
++        "mustache": "bin/mustache"
++      }
++    },
++    "node_modules/nanoid": {
++      "version": "3.3.19",
++      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.19.tgz",
++      "integrity": "sha512-Y2tUNy4ouw6tq5oDSKeQYGOyhkUBhNOcGV/02KC+6kd9eDGqdZd++mjMiIDilrBYvjEnCYvVtsuHCuP+okSfug==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "bin": {
++        "nanoid": "bin/nanoid.cjs"
++      },
++      "engines": {
++        "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
++      }
++    },
++    "node_modules/node-fetch": {
++      "version": "2.7.0",
++      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-2.7.0.tgz",
++      "integrity": "sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==",
++      "license": "MIT",
++      "dependencies": {
++        "whatwg-url": "^5.0.0"
++      },
++      "engines": {
++        "node": "4.x || >=6.0.0"
++      },
++      "peerDependencies": {
++        "encoding": "^0.1.0"
++      },
++      "peerDependenciesMeta": {
++        "encoding": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/obliterator": {
++      "version": "2.0.5",
++      "resolved": "https://registry.npmjs.org/obliterator/-/obliterator-2.0.5.tgz",
++      "integrity": "sha512-42CPE9AhahZRsMNslczq0ctAEtqk8Eka26QofnqC346BZdHDySk3LWka23LI7ULIw11NmltpiLagIq8gBozxTw==",
++      "license": "MIT"
++    },
++    "node_modules/papaparse": {
++      "version": "5.7.0",
++      "resolved": "https://registry.npmjs.org/papaparse/-/papaparse-5.7.0.tgz",
++      "integrity": "sha512-qBGxg/7Q3Kl9Wfhrz2Z74UnvnHTXLNG6jmKJFeBvP2+y4lV7So+7SR62+Zd47JvdrCkX+nDcnr0ObPzek/+6RA==",
++      "license": "MIT"
++    },
++    "node_modules/phaser": {
++      "version": "4.2.1",
++      "resolved": "https://registry.npmjs.org/phaser/-/phaser-4.2.1.tgz",
++      "integrity": "sha512-WUNwCPJpdjvZiuT6SgCfYVW8Qw/3j0jJ4ws7P2QkhFLFu74sbGuyHJcbFueGkY/AYO4Pi47bNQXn1OCJeLX//w==",
++      "license": "MIT",
++      "dependencies": {
++        "eventemitter3": "^5.0.4"
++      }
++    },
++    "node_modules/phaser3-rex-plugins": {
++      "version": "1.80.20",
++      "resolved": "https://registry.npmjs.org/phaser3-rex-plugins/-/phaser3-rex-plugins-1.80.20.tgz",
++      "integrity": "sha512-XZLUy74r1jUaRWpGplRhhA+wEeOvnNb0qlhlyMtwdwZwIlCA7C7WtgvynOB/PyVrzS09cUBwEFyG+A3P5fL+Uw==",
++      "license": "MIT",
++      "dependencies": {
++        "dagre": "^0.8.5",
++        "eventemitter3": "^3.1.2",
++        "graphology": "^0.25.4",
++        "i18next": "^22.5.1",
++        "i18next-http-backend": "^2.5.2",
++        "js-yaml": "^4.1.0",
++        "mustache": "^4.2.0",
++        "papaparse": "^5.4.1",
++        "webfontloader": "^1.6.28"
++      }
++    },
++    "node_modules/phaser3-rex-plugins/node_modules/eventemitter3": {
++      "version": "3.1.2",
++      "resolved": "https://registry.npmjs.org/eventemitter3/-/eventemitter3-3.1.2.tgz",
++      "integrity": "sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==",
++      "license": "MIT"
++    },
++    "node_modules/picocolors": {
++      "version": "1.1.1",
++      "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
++      "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==",
++      "dev": true,
++      "license": "ISC"
++    },
++    "node_modules/picomatch": {
++      "version": "4.0.7",
++      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz",
++      "integrity": "sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=12"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/jonschlinkert"
++      }
++    },
++    "node_modules/postcss": {
++      "version": "8.5.28",
++      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz",
++      "integrity": "sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/postcss"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "nanoid": "^3.3.18",
++        "picocolors": "^1.1.1",
++        "source-map-js": "^1.2.1"
++      },
++      "engines": {
++        "node": "^10 || ^12 || >=14"
++      }
++    },
++    "node_modules/rollup": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/rollup/-/rollup-4.63.1.tgz",
++      "integrity": "sha512-3Df9jsstwhccuEfmAMi9l8XUh/GOkVObmFTU7CCVBysEbcOZLl84jCtaAZMcPiMz2EGKsATzQcU+Xr3n/wU6cg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@types/estree": "1.0.9"
++      },
++      "bin": {
++        "rollup": "dist/bin/rollup"
++      },
++      "engines": {
++        "node": ">=18.0.0",
++        "npm": ">=8.0.0"
++      },
++      "optionalDependencies": {
++        "@napi-rs/lzma-linux-x64-gnu": "1.5.1",
++        "@rollup/rollup-android-arm-eabi": "4.63.1",
++        "@rollup/rollup-android-arm64": "4.63.1",
++        "@rollup/rollup-darwin-arm64": "4.63.1",
++        "@rollup/rollup-darwin-x64": "4.63.1",
++        "@rollup/rollup-freebsd-arm64": "4.63.1",
++        "@rollup/rollup-freebsd-x64": "4.63.1",
++        "@rollup/rollup-linux-arm-gnueabihf": "4.63.1",
++        "@rollup/rollup-linux-arm-musleabihf": "4.63.1",
++        "@rollup/rollup-linux-arm64-gnu": "4.63.1",
++        "@rollup/rollup-linux-arm64-musl": "4.63.1",
++        "@rollup/rollup-linux-loong64-gnu": "4.63.1",
++        "@rollup/rollup-linux-loong64-musl": "4.63.1",
++        "@rollup/rollup-linux-ppc64-gnu": "4.63.1",
++        "@rollup/rollup-linux-ppc64-musl": "4.63.1",
++        "@rollup/rollup-linux-riscv64-gnu": "4.63.1",
++        "@rollup/rollup-linux-riscv64-musl": "4.63.1",
++        "@rollup/rollup-linux-s390x-gnu": "4.63.1",
++        "@rollup/rollup-linux-x64-gnu": "4.63.1",
++        "@rollup/rollup-linux-x64-musl": "4.63.1",
++        "@rollup/rollup-openbsd-x64": "4.63.1",
++        "@rollup/rollup-openharmony-arm64": "4.63.1",
++        "@rollup/rollup-win32-arm64-msvc": "4.63.1",
++        "@rollup/rollup-win32-ia32-msvc": "4.63.1",
++        "@rollup/rollup-win32-x64-gnu": "4.63.1",
++        "@rollup/rollup-win32-x64-msvc": "4.63.1",
++        "fsevents": "~2.3.2"
++      }
++    },
++    "node_modules/source-map-js": {
++      "version": "1.2.1",
++      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
++      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
++      "dev": true,
++      "license": "BSD-3-Clause",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/tinyglobby": {
++      "version": "0.2.17",
++      "resolved": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz",
++      "integrity": "sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "fdir": "^6.5.0",
++        "picomatch": "^4.0.4"
++      },
++      "engines": {
++        "node": ">=12.0.0"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/SuperchupuDev"
++      }
++    },
++    "node_modules/tr46": {
++      "version": "0.0.3",
++      "resolved": "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz",
++      "integrity": "sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==",
++      "license": "MIT"
++    },
++    "node_modules/typescript": {
++      "version": "5.9.3",
++      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
++      "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "bin": {
++        "tsc": "bin/tsc",
++        "tsserver": "bin/tsserver"
++      },
++      "engines": {
++        "node": ">=14.17"
++      }
++    },
++    "node_modules/vite": {
++      "version": "7.3.6",
++      "resolved": "https://registry.npmjs.org/vite/-/vite-7.3.6.tgz",
++      "integrity": "sha512-4XP60spRGjSZFf1qYH+dJIkK2znL3zQfl9KkOV9MkkRR/3Dls0dxaBsQPTloEc5BLXWPL9vsOxopxyKoMmDueg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "esbuild": "^0.27.0 || ^0.28.0",
++        "fdir": "^6.5.0",
++        "picomatch": "^4.0.3",
++        "postcss": "^8.5.6",
++        "rollup": "^4.43.0",
++        "tinyglobby": "^0.2.15"
++      },
++      "bin": {
++        "vite": "bin/vite.js"
++      },
++      "engines": {
++        "node": "^20.19.0 || >=22.12.0"
++      },
++      "funding": {
++        "url": "https://github.com/vitejs/vite?sponsor=1"
++      },
++      "optionalDependencies": {
++        "fsevents": "~2.3.3"
++      },
++      "peerDependencies": {
++        "@types/node": "^20.19.0 || >=22.12.0",
++        "jiti": ">=1.21.0",
++        "less": "^4.0.0",
++        "lightningcss": "^1.21.0",
++        "sass": "^1.70.0",
++        "sass-embedded": "^1.70.0",
++        "stylus": ">=0.54.8",
++        "sugarss": "^5.0.0",
++        "terser": "^5.16.0",
++        "tsx": "^4.8.1",
++        "yaml": "^2.4.2"
++      },
++      "peerDependenciesMeta": {
++        "@types/node": {
++          "optional": true
++        },
++        "jiti": {
++          "optional": true
++        },
++        "less": {
++          "optional": true
++        },
++        "lightningcss": {
++          "optional": true
++        },
++        "sass": {
++          "optional": true
++        },
++        "sass-embedded": {
++          "optional": true
++        },
++        "stylus": {
++          "optional": true
++        },
++        "sugarss": {
++          "optional": true
++        },
++        "terser": {
++          "optional": true
++        },
++        "tsx": {
++          "optional": true
++        },
++        "yaml": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/webfontloader": {
++      "version": "1.6.28",
++      "resolved": "https://registry.npmjs.org/webfontloader/-/webfontloader-1.6.28.tgz",
++      "integrity": "sha512-Egb0oFEga6f+nSgasH3E0M405Pzn6y3/9tOVanv/DLfa1YBIgcv90L18YyWnvXkRbIM17v5Kv6IT2N6g1x5tvQ==",
++      "license": "Apache-2.0"
++    },
++    "node_modules/webidl-conversions": {
++      "version": "3.0.1",
++      "resolved": "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-3.0.1.tgz",
++      "integrity": "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==",
++      "license": "BSD-2-Clause"
++    },
++    "node_modules/whatwg-url": {
++      "version": "5.0.0",
++      "resolved": "https://registry.npmjs.org/whatwg-url/-/whatwg-url-5.0.0.tgz",
++      "integrity": "sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==",
++      "license": "MIT",
++      "dependencies": {
++        "tr46": "~0.0.3",
++        "webidl-conversions": "^3.0.0"
++      }
++    }
++  }
++}
+diff --git a/package.json b/package.json
+new file mode 100644
+index 0000000..780d6ae
+--- /dev/null
++++ b/package.json
+@@ -0,0 +1,20 @@
++{
++  "name": "signal-arena-phaser4",
++  "private": true,
++  "version": "0.1.0",
++  "type": "module",
++  "scripts": {
++    "dev": "vite --host 0.0.0.0",
++    "build": "tsc && vite build",
++    "preview": "vite preview --host 0.0.0.0",
++    "check": "tsc --noEmit"
++  },
++  "dependencies": {
++    "phaser": "4.2.1",
++    "phaser3-rex-plugins": "1.80.20"
++  },
++  "devDependencies": {
++    "typescript": "5.9.3",
++    "vite": "7.3.6"
++  }
++}
+diff --git a/public/manifest.webmanifest b/public/manifest.webmanifest
+new file mode 100644
+index 0000000..c961954
+--- /dev/null
++++ b/public/manifest.webmanifest
+@@ -0,0 +1,11 @@
++{
++  "name": "Signal Arena",
++  "short_name": "Signal Arena",
++  "description": "Vertical decision trainer against market distortions.",
++  "start_url": "/",
++  "display": "standalone",
++  "orientation": "portrait",
++  "background_color": "#01030a",
++  "theme_color": "#04070f",
++  "icons": []
++}
+diff --git a/public/sw.js b/public/sw.js
+new file mode 100644
+index 0000000..5733a22
+--- /dev/null
++++ b/public/sw.js
+@@ -0,0 +1,28 @@
++const CACHE_NAME = 'signal-arena-v1';
++const CORE = ['/', '/manifest.webmanifest'];
++
++self.addEventListener('install', (event) => {
++  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE)).then(() => self.skipWaiting()));
++});
++
++self.addEventListener('activate', (event) => {
++  event.waitUntil(
++    caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))).then(() => self.clients.claim())
++  );
++});
++
++self.addEventListener('fetch', (event) => {
++  if (event.request.method !== 'GET') return;
++  event.respondWith(
++    caches.match(event.request).then((cached) => {
++      if (cached) return cached;
++      return fetch(event.request).then((response) => {
++        const copy = response.clone();
++        if (response.ok && new URL(event.request.url).origin === self.location.origin) {
++          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
++        }
++        return response;
++      }).catch(() => caches.match('/'));
++    })
++  );
++});
+diff --git a/src/assets/skrebka.jpg b/src/assets/skrebka.jpg
+new file mode 100644
+index 0000000..43788fb
+Binary files /dev/null and b/src/assets/skrebka.jpg differ
+diff --git a/src/game/SignalArenaScene.ts b/src/game/SignalArenaScene.ts
+new file mode 100644
+index 0000000..2912990
+--- /dev/null
++++ b/src/game/SignalArenaScene.ts
+@@ -0,0 +1,1502 @@
++import Phaser from 'phaser';
++import { BADGE_COPY, CASES, COSMETICS, DAILY_MISSIONS, PROTOCOLS, RUN_LENGTH, SKREBKA_LINES, type ArenaCase, type ProtocolId } from './data';
++import { ASSETS } from './assets';
++import { buyCosmetic, completeReview, equipCosmetic, loadProfile, markTutorialSeen, persistLab, persistRun, resetProfile, setSettings, type SaveProfile } from './save';
++import { track } from './telemetry';
++import type { JournalEntryPublic } from './types';
++
++const GAME_W = 1080;
++const GAME_H = 1920;
++const CX = GAME_W / 2;
++
++const C = {
++  bg: 0x04070f,
++  bg2: 0x071022,
++  panel: 0x0d1832,
++  panel2: 0x111f42,
++  line: 0x23405f,
++  text: '#f2f7ff',
++  muted: '#8fa1c0',
++  dim: '#5a6c8a',
++  cyan: 0x22d8f5,
++  green: 0x34d399,
++  gold: 0xf5c044,
++  red: 0xfb4d6d,
++  purple: 0xb388ff
++};
++
++interface RunState {
++  turn: number;
++  clarity: number;
++  composure: number;
++  pressure: number;
++  journal: JournalEntryPublic[];
++}
++
++export class SignalArenaScene extends Phaser.Scene {
++  public rexUI!: any;
++
++  private screen?: Phaser.GameObjects.Container;
++  private run: RunState = this.createRun();
++  private deck: ArenaCase[] = CASES;
++  private profile: SaveProfile = loadProfile();
++  private acceptingInput = false;
++  private currentOptions: ProtocolId[] = [];
++  private optionCards: Phaser.GameObjects.Container[] = [];
++  private acceptingFocus = false;
++  private runSaved = false;
++  private audioContext?: AudioContext;
++
++  constructor() {
++    super('SignalArenaScene');
++  }
++
++  preload(): void {
++    const loading = this.add.container(0, 0);
++    loading.add(this.add.rectangle(CX, GAME_H / 2, GAME_W, GAME_H, 0x01030a, 1));
++    loading.add(this.txt(130, 820, 'SIGNAL ARENA', 58, '#f2f7ff', '900', 820, 'center'));
++    loading.add(this.txt(130, 895, 'загружаем архивные протоколы', 26, '#8fa1c0', '800', 820, 'center'));
++    loading.add(this.roundRect(CX, 1000, 720, 22, 11, 0x111f42, 1, 0x23405f, 2));
++    const bar = this.add.rectangle(180, 1000, 1, 14, C.cyan, 0.96).setOrigin(0, 0.5);
++    loading.add(bar);
++
++    this.load.on('progress', (value: number) => {
++      bar.width = Math.max(1, 708 * value);
++    });
++    this.load.once('complete', () => loading.destroy(true));
++
++    this.load.image('skrebka', ASSETS.skrebka);
++    this.load.image('boss-fomo', ASSETS.fomo);
++    this.load.image('boss-headline', ASSETS.headline);
++    this.load.image('boss-hubris', ASSETS.hubris);
++    this.load.image('boss-leverage', ASSETS.leverage);
++    this.load.image('boss-revenge', ASSETS.revenge);
++  }
++
++  create(): void {
++    this.cameras.main.setBackgroundColor(C.bg);
++    this.input.setDefaultCursor('pointer');
++    this.input.keyboard?.on('keydown', (event: KeyboardEvent) => {
++      const index = Number(event.key) - 1;
++      if (this.acceptingInput && index >= 0 && index < this.currentOptions.length) {
++        this.resolveChoice(this.currentOptions[index], this.optionCards[index]);
++      }
++    });
++    this.profile = loadProfile();
++    if (this.profile.tutorialSeen) {
++      this.showMenu();
++    } else {
++      this.showOnboarding(0);
++    }
++  }
++
++  private createRun(): RunState {
++    return {
++      turn: 0,
++      clarity: 0,
++      composure: 3,
++      pressure: 100,
++      journal: []
++    };
++  }
++
++  private clearScreen(): Phaser.GameObjects.Container {
++    this.acceptingInput = false;
++    this.acceptingFocus = false;
++    if (this.screen) {
++      this.screen.destroy(true);
++    }
++    this.screen = this.add.container(0, 0);
++    return this.screen;
++  }
++
++  private showOnboarding(step: 0 | 1 | 2): void {
++    track('screen.onboarding', { step });
++    const root = this.clearScreen();
++    const item = CASES[0];
++    this.drawBackground(root, step === 1 ? 'battle' : 'menu', step === 1 ? item.palette.accent : C.cyan);
++
++    if (step === 0) {
++      this.addHeader(root, 'АРХИВНЫЙ ПРОЛОГ', 'первые 90 секунд без биржевого культа', 'new player');
++      const panel = this.add.container(CX, 620);
++      root.add(panel);
++      panel.add(this.roundRect(0, 0, 960, 900, 44, 0x0d1832, 0.96, C.cyan, 3));
++      panel.add(this.add.image(0, -170, 'skrebka').setDisplaySize(360, 538).setAlpha(0.97));
++      panel.add(this.roundRect(0, -170, 380, 558, 42, 0x000000, 0, C.gold, 2));
++      panel.add(this.txt(-420, 138, 'СКРЕПКА ПРИБЫЛА', 31, '#f5c044', '900', 820, 'center'));
++      panel.add(this.txt(-420, 198, 'Я пришёл из прошлого, чтобы помочь тебе в будущем. Нет, я не ИИ. Я офисная травма с лицензией на здравый смысл.', 38, '#f2f7ff', '900', 820, 'center', 1.12));
++      panel.add(this.txt(-420, 388, 'Правило обучения: мы тренируем момент ДО сделки. Поэтому здесь нет кнопки купить, продать или поверить человеку с микрофоном.', 28, '#b7c7e5', '800', 820, 'center', 1.15));
++
++      const rules = this.add.container(CX, 1190);
++      root.add(rules);
++      rules.add(this.roundRect(0, 0, 960, 300, 34, 0x071226, 0.94, 0x1b385b, 2));
++      rules.add(this.txt(-420, -110, 'ТРИ ЗАКОНА АРЕНЫ', 25, '#22d8f5', '900', 820));
++      rules.add(this.txt(-420, -64, '1. Экран вертикальный.\n2. Выборов мало, последствий много.\n3. Терминал остаётся за дверью. Здесь воюют протоколы.', 32, '#f2f7ff', '900', 820, 'left', 1.12));
++
++      root.add(this.primaryButton(CX, 1540, 900, 112, 'ПОНЯТНО. ПОКА СТРАННО.', 'Скрепка считает это согласием', C.cyan, () => this.showOnboarding(1)));
++      root.add(this.secondaryButton(CX, 1670, 900, 82, 'ПРОПУСТИТЬ ПРОЛОГ', 'архив запомнит твою спешку', C.purple, () => {
++        this.profile = markTutorialSeen(this.profile);
++        this.showMenu();
++      }));
++    }
++
++    if (step === 1) {
++      this.addHeader(root, 'УЧЕБНЫЙ ИМПУЛЬС', 'выбери протокол, не сделку', 'tutorial');
++      const boss = this.add.container(CX, 390);
++      root.add(boss);
++      boss.add(this.roundRect(0, 0, 960, 510, 38, 0x071226, 0.96, item.palette.accent, 3));
++      boss.add(this.add.image(0, -28, item.assetKey).setDisplaySize(960, 524).setAlpha(0.72));
++      boss.add(this.add.rectangle(0, 150, 960, 220, 0x01030a, 0.7));
++      boss.add(this.txt(-420, -218, 'ФАНТОМ FOMO УЧЕБНЫЙ', 25, '#f5c044', '900', 820));
++      boss.add(this.txt(-420, 70, 'Ракета уже улетела. Толпа предлагает купить её хвост.', 42, '#f2f7ff', '900', 820, 'left', 1.04));
++      boss.add(this.txt(-420, 170, 'Скрепка запрещает героизм. Найди протокол, который признаёт поздний вход.', 27, '#b7c7e5', '800', 820));
++
++      const dossier = this.add.container(CX, 835);
++      root.add(dossier);
++      dossier.add(this.roundRect(0, 0, 960, 350, 34, 0x0d1832, 0.94, 0x1b385b, 2));
++      dossier.add(this.txt(-420, -130, 'ДОСЬЕ', 24, '#22d8f5', '900', 820));
++      item.signal.forEach((s, index) => {
++        const x = index % 2 === 0 ? -245 : 245;
++        const y = -54 + Math.floor(index / 2) * 86;
++        dossier.add(this.chip(x, y, s, index === 2 ? C.gold : item.palette.accent, 410));
++      });
++      dossier.add(this.txt(-420, 126, 'Подсказка: если плановый вход ушёл, рынок не обязан ждать твою самооценку.', 22, '#8fa1c0', '700', 820));
++
++      item.options.forEach((protocolId, index) => {
++        const protocol = PROTOCOLS[protocolId];
++        const y = 1130 + index * 148;
++        const card = this.add.container(CX, y);
++        root.add(card);
++        card.add(this.roundRect(0, 0, 930, 118, 30, protocol.color, 0.95, protocol.border, protocolId === item.correct ? 4 : 2));
++        card.add(this.txt(-405, -38, protocol.icon, 58, '#f2f7ff', '900', 90, 'center'));
++        card.add(this.txt(-300, -38, protocol.title, 34, '#f2f7ff', '900', 650));
++        card.add(this.txt(-300, 10, protocol.micro, 23, '#b7c7e5', '700', 650));
++        this.registerButton(card, 930, 118, () => {
++          if (protocolId === item.correct) this.showOnboarding(2);
++          else {
++            this.cameras.main.shake(140, 0.004);
++            this.haptic([14, 28, 14]);
++            this.playTone(110, 0.12, 'sawtooth', 0.018);
++          }
++        });
++      });
++      root.add(this.txt(120, 1650, 'Да, правильная карта подсвечена. Это обучение, не экзамен. Рынок и так всё усложнит.', 23, '#8fa1c0', '800', 840, 'center'));
++    }
++
++    if (step === 2) {
++      this.addHeader(root, 'ПЕРВЫЙ ПРОТОКОЛ ЗАКРЫТ', 'теперь можно выпускать тебя в хаос', '+40 XP');
++      const panel = this.add.container(CX, 620);
++      root.add(panel);
++      panel.add(this.roundRect(0, 0, 960, 820, 44, 0x0d1832, 0.96, C.green, 3));
++      panel.add(this.add.image(-350, -190, 'skrebka').setDisplaySize(190, 284));
++      panel.add(this.roundRect(-350, -190, 200, 294, 30, 0x000000, 0, C.gold, 2));
++      panel.add(this.txt(-220, -300, 'FOMO ЗАПЕРТ', 42, '#34d399', '900', 650));
++      panel.add(this.txt(-220, -226, 'Ты не купил надежду на максимуме. Это выглядит скучно. Именно поэтому капитал не умер.', 32, '#f2f7ff', '900', 650, 'left', 1.12));
++      this.drawDecisionReplay(panel, -402, 30, 804, 120, item.trace, true, item.palette.accent, item.palette.danger);
++      panel.add(this.roundRect(0, 238, 840, 210, 30, 0x071226, 0.92, 0x1b385b, 2));
++      panel.add(this.txt(-392, 160, 'ЧТО ОТКРЫЛОСЬ', 23, '#22d8f5', '900', 760));
++      panel.add(this.txt(-392, 202, 'Карта рейда, лаборатория, архив ошибок, кодекс и профиль. Теперь игра будет требовать не кликов, а честных решений.', 27, '#b7c7e5', '800', 760, 'left', 1.12));
++
++      root.add(this.primaryButton(CX, 1235, 900, 112, 'В АРХИВ', 'открыть настоящий хаб', C.green, () => {
++        this.profile = markTutorialSeen(this.profile);
++        this.showMenu();
++      }));
++      root.add(this.secondaryButton(CX, 1366, 900, 84, 'СРАЗУ НА КАРТУ', 'Скрепка делает вид, что это безопасно', C.cyan, () => {
++        this.profile = markTutorialSeen(this.profile);
++        this.prepareRaidMap();
++      }));
++    }
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 260, ease: 'Sine.easeOut' });
++  }
++
++  private showMenu(): void {
++    track('screen.hub');
++    this.profile = loadProfile();
++    const root = this.clearScreen();
++    this.drawBackground(root, 'menu');
++
++    this.addHeader(root, 'SIGNAL ARENA', 'протоколы против рыночных искажений', 'Phaser 4 · rexUI');
++
++    const hero = this.add.container(CX, 395);
++    root.add(hero);
++    hero.add(this.roundRect(0, 0, 960, 470, 38, 0x071226, 0.92, C.line, 2));
++    const img = this.add.image(0, -24, 'boss-hubris').setDisplaySize(960, 520).setAlpha(0.56);
++    hero.add(img);
++    hero.add(this.add.rectangle(0, 94, 960, 278, 0x01030a, 0.68));
++    hero.add(this.add.rectangle(0, -188, 960, 126, 0x01030a, 0.5));
++    hero.add(this.txt(-420, -190, 'НЕ ТЕРМИНАЛ. НЕ ДЕМО-БИРЖА.', 27, '#f5c044', '900', 820));
++    hero.add(this.txt(-420, -140, 'Охота на решение до клика.', 50, '#f2f7ff', '900', 830, 'left', 1.03));
++    hero.add(this.txt(-420, 38, 'Ты не покупаешь и не продаёшь. Ты вскрываешь искажение, выбираешь протокол и смотришь будущее после ответа.', 29, '#b7c7e5', '800', 805, 'left', 1.15));
++    hero.add(this.chip(-320, 173, '9:16', C.cyan, 180));
++    hero.add(this.chip(-105, 173, '3 решения', C.gold, 205));
++    hero.add(this.chip(140, 173, 'журнал ошибок', C.purple, 250));
++    hero.add(this.chip(365, 173, 'Web3 proof', C.green, 210));
++
++    const contract = this.add.container(CX, 710);
++    root.add(contract);
++    contract.add(this.roundRect(0, 0, 960, 196, 32, 0x111f42, 0.94, 0x2a4e7a, 2));
++    contract.add(this.txt(-420, -72, 'СЕГОДНЯШНИЙ КОНТРАКТ', 23, '#22d8f5', '900', 570));
++    contract.add(this.txt(214, -72, `пул: ${CASES.length} · рейд: ${RUN_LENGTH}`, 20, '#5a6c8a', '900', 220, 'right'));
++    const mission = DAILY_MISSIONS[this.profile.runs % DAILY_MISSIONS.length];
++    contract.add(this.txt(-420, -28, mission, 30, '#f2f7ff', '900', 820, 'left', 1.12));
++    contract.add(this.txt(-420, 75, 'Награда выдаётся за разбор, дисциплину и отказ от дурной сделки. Частота кликов не считается навыком.', 22, '#8fa1c0', '700', 820));
++
++    const profile = this.add.container(CX, 945);
++    root.add(profile);
++    profile.add(this.roundRect(0, 0, 960, 190, 32, 0x071226, 0.92, 0x1b385b, 2));
++    profile.add(this.txt(-420, -70, 'АРХИВ ПРОФИЛЯ', 22, '#f5c044', '900', 360));
++    profile.add(this.miniProfileTile(-315, 26, 'рейды', String(this.profile.runs), C.cyan));
++    profile.add(this.miniProfileTile(-105, 26, 'лучший', `${this.profile.bestClarity}/${RUN_LENGTH}`, C.green));
++    profile.add(this.miniProfileTile(105, 26, 'стрик', `${this.profile.streakDays}д`, C.gold));
++    profile.add(this.miniProfileTile(315, 26, 'ревью', String(this.profile.pendingReviews.length), C.red));
++    profile.add(this.txt(190, -70, this.profile.lastProof ? `proof ${this.profile.lastProof}` : 'proof появится после рейда', 20, '#5a6c8a', '900', 340, 'right'));
++
++    const sk = this.add.container(CX, 1178);
++    root.add(sk);
++    sk.add(this.roundRect(0, 0, 960, 210, 32, 0x0d1832, 0.95, 0x2a4e7a, 2));
++    const portrait = this.add.image(-385, -4, 'skrebka').setDisplaySize(150, 224).setAlpha(0.97);
++    sk.add(portrait);
++    sk.add(this.roundRect(-385, -4, 158, 232, 24, 0x000000, 0, C.gold, 2));
++    sk.add(this.txt(-285, -76, 'СКРЕПКА // аналоговый помощник', 23, '#f5c044', '900', 690));
++    sk.add(this.txt(-285, -36, SKREBKA_LINES.intro, 28, '#f2f7ff', '800', 690, 'left', 1.1));
++    sk.add(this.txt(-285, 72, 'Он не меняет образ. Архивные сущности редко слушают маркетинг.', 22, '#8fa1c0', '700', 690));
++
++    root.add(this.primaryButton(CX, 1405, 900, 118, 'ОТКРЫТЬ КАРТУ РЕЙДА', 'ежедневный маршрут · пять искажений', C.cyan, () => {
++      this.prepareRaidMap();
++    }));
++
++    root.add(this.secondaryButton(CX, 1537, 900, 92, 'СИГНАЛЬНАЯ ЛАБОРАТОРИЯ', 'короткая тренировка чтения шума без терминала', C.green, () => {
++      this.showLab();
++    }));
++
++    const nav = this.add.container(CX, 1668);
++    root.add(nav);
++    nav.add(this.navButton(-305, 0, 286, 'КОДЕКС', 'протоколы', C.purple, () => this.showCodex()));
++    nav.add(this.navButton(0, 0, 286, 'ПРОФИЛЬ', 'мастерство', C.gold, () => this.showProfile()));
++    nav.add(this.navButton(305, 0, 286, 'НАСТРОЙКИ', 'звук / сброс', C.line, () => this.showSettings()));
++
++    const footer = this.add.container(CX, 1812);
++    root.add(footer);
++    footer.add(this.roundRect(0, 0, 930, 96, 26, 0x050a16, 0.82, 0x18304f, 1));
++    footer.add(this.txt(-420, -30, 'Принцип 99-го уровня: игра продаёт чувство контроля над хаосом, а не иллюзию лёгкой прибыли.', 22, '#8fa1c0', '800', 820, 'center'));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 260, ease: 'Sine.easeOut' });
++  }
++
++  private prepareRaidMap(): void {
++    this.deck = this.buildDailyDeck();
++    this.showRaidMap();
++  }
++
++  private startRun(reuseDeck = false): void {
++    if (!reuseDeck) {
++      this.deck = this.buildDailyDeck();
++    }
++    this.run = this.createRun();
++    this.runSaved = false;
++    this.currentOptions = [];
++    this.optionCards = [];
++    this.haptic(12);
++    this.playTone(220, 0.08, 'triangle', 0.035);
++    this.showBattle();
++  }
++
++  private buildDailyDeck(): ArenaCase[] {
++    const now = new Date();
++    const today = `${now.getFullYear()}-${`${now.getMonth() + 1}`.padStart(2, '0')}-${`${now.getDate()}`.padStart(2, '0')}`;
++    let seed = 0x9e3779b9;
++    for (let i = 0; i < today.length; i++) {
++      seed ^= today.charCodeAt(i);
++      seed = Math.imul(seed, 1664525) + 1013904223;
++    }
++
++    const deck = [...CASES];
++    for (let i = deck.length - 1; i > 0; i--) {
++      seed = Math.imul(seed, 1664525) + 1013904223;
++      const j = Math.abs(seed) % (i + 1);
++      [deck[i], deck[j]] = [deck[j], deck[i]];
++    }
++    return deck.slice(0, RUN_LENGTH);
++  }
++
++  private showRaidMap(): void {
++    track('screen.raid_map', { deck: this.deck.map((item) => item.id).join(',') });
++    const root = this.clearScreen();
++    const accent = this.deck[0]?.palette.accent ?? C.cyan;
++    this.drawBackground(root, 'menu', accent);
++    this.addHeader(root, 'КАРТА НОЧНОГО РЕЙДА', 'ежедневная цепочка искажений', `пул ${CASES.length}`);
++
++    const map = this.add.container(CX, 610);
++    root.add(map);
++    map.add(this.roundRect(0, 0, 960, 910, 40, 0x071226, 0.94, 0x1b385b, 2));
++    map.add(this.txt(-420, -392, 'МАРШРУТ СЕГОДНЯ', 28, '#22d8f5', '900', 760));
++    map.add(this.txt(-420, -350, 'Пять столкновений. Один экран решения. Ни одной кнопки торговли. Протокол либо защищает систему, либо кормит чудовище.', 25, '#b7c7e5', '800', 790, 'left', 1.13));
++
++    const path = this.add.graphics();
++    map.add(path);
++    path.lineStyle(8, accent, 0.18);
++    path.beginPath();
++    this.deck.forEach((_, index) => {
++      const p = this.raidNodePosition(index);
++      if (index === 0) path.moveTo(p.x, p.y);
++      else path.lineTo(p.x, p.y);
++    });
++    path.strokePath();
++    path.lineStyle(3, 0xf5c044, 0.38);
++    path.strokePath();
++
++    this.deck.forEach((item, index) => {
++      const p = this.raidNodePosition(index);
++      const node = this.add.container(p.x, p.y);
++      map.add(node);
++      node.add(this.roundRect(0, 0, 278, 142, 30, 0x0d1832, 0.96, item.palette.accent, 3));
++      const boss = this.add.image(-94, -4, item.assetKey).setDisplaySize(86, 86).setAlpha(0.9);
++      node.add(boss);
++      node.add(this.roundRect(-94, -4, 94, 94, 24, 0x000000, 0, item.palette.danger, 2));
++      node.add(this.txt(-42, -50, `0${index + 1}`, 18, '#5a6c8a', '900', 52, 'center'));
++      node.add(this.txt(-38, -27, item.bossName, 21, '#f2f7ff', '900', 180));
++      node.add(this.txt(-38, 8, item.district, 16, '#8fa1c0', '700', 180));
++      node.add(this.txt(-38, 42, 'опасность ' + '◆'.repeat(item.difficulty), 15, '#f5c044', '900', 180));
++      if (!this.profile.settings.reducedMotion) {
++        this.tweens.add({ targets: node, y: p.y - 6, duration: 1300 + index * 120, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
++      }
++    });
++
++    const rules = this.add.container(CX, 1175);
++    root.add(rules);
++    rules.add(this.roundRect(0, 0, 960, 250, 34, 0x0d1832, 0.95, 0x2a4e7a, 2));
++    rules.add(this.add.image(-396, 0, 'skrebka').setDisplaySize(130, 194));
++    rules.add(this.roundRect(-396, 0, 138, 202, 22, 0x000000, 0, C.gold, 2));
++    rules.add(this.txt(-302, -86, 'БРИФИНГ СКРЕПКИ', 24, '#f5c044', '900', 700));
++    rules.add(this.txt(-302, -42, 'Карта не предсказывает рынок. Она предсказывает твои слабые места. Разница неприятная, зато полезная.', 29, '#f2f7ff', '900', 700, 'left', 1.1));
++    rules.add(this.txt(-302, 78, 'Перед каждым узлом: факты → протокол → будущее → журнал.', 23, '#8fa1c0', '700', 700));
++
++    const rewards = this.add.container(CX, 1400);
++    root.add(rewards);
++    rewards.add(this.roundRect(0, 0, 960, 166, 30, 0x111f42, 0.92, 0x1b385b, 2));
++    rewards.add(this.txt(-420, -56, 'НАГРАДЫ БЕЗ PAY-TO-WIN', 22, '#22d8f5', '900', 760));
++    rewards.add(this.txt(-420, -16, 'XP, косметическая пыль, proof-id и записи в архив. Ответы, шанс и бюджет не продаются.', 27, '#f2f7ff', '800', 810, 'left', 1.1));
++    rewards.add(this.txt(-420, 62, `ожидаемый отчёт: ${RUN_LENGTH} решений · pending review: ${this.profile.pendingReviews.length}`, 21, '#8fa1c0', '700', 810));
++
++    root.add(this.primaryButton(CX, 1622, 900, 114, 'ВЫЙТИ НА МАРШРУТ', 'рейд начнётся с первого искажения', C.cyan, () => this.startRun(true)));
++    root.add(this.secondaryButton(CX, 1752, 900, 86, 'НАЗАД В АРХИВ', 'карта будет пересобрана завтра', C.purple, () => this.showMenu()));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 250, ease: 'Sine.easeOut' });
++  }
++
++  private raidNodePosition(index: number): { x: number; y: number } {
++    const points = [
++      { x: -300, y: -218 },
++      { x: 120, y: -80 },
++      { x: -185, y: 88 },
++      { x: 245, y: 238 },
++      { x: -20, y: 398 }
++    ];
++    return points[index] ?? { x: 0, y: 0 };
++  }
++
++  private showBattle(phase: 'scan' | 'decision' = 'scan'): void {
++    const root = this.clearScreen();
++    const arenaCase = this.deck[this.run.turn];
++    track('screen.battle', { phase, case: arenaCase.id, turn: this.run.turn + 1 });
++
++    this.drawBackground(root, 'battle', arenaCase.palette.accent);
++    this.addBattleHud(root, arenaCase);
++    this.addBossPanel(root, arenaCase);
++    this.addSignalDossier(root, arenaCase);
++
++    if (phase === 'scan') {
++      this.addFocusOptions(root, arenaCase);
++      this.acceptingFocus = true;
++    } else {
++      this.addProtocolOptions(root, arenaCase);
++      this.acceptingInput = true;
++    }
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 220, ease: 'Sine.easeOut' });
++  }
++
++  private addBattleHud(root: Phaser.GameObjects.Container, arenaCase: ArenaCase): void {
++    root.add(this.roundRect(CX, 76, 984, 96, 28, 0x050a16, 0.88, 0x18304f, 2));
++    root.add(this.txt(82, 44, `РЕЙД ${this.run.turn + 1}/${this.deck.length}`, 24, '#22d8f5', '900', 230));
++    root.add(this.txt(82, 78, 'рынок хочет спектакль', 20, '#5a6c8a', '700', 320));
++
++    this.addMiniMeter(root, 512, 61, 310, 'ЯСНОСТЬ', this.run.clarity / this.deck.length, C.green);
++    this.addMiniMeter(root, 512, 96, 310, 'ДАВЛЕНИЕ', this.run.pressure / 100, arenaCase.palette.danger);
++
++    for (let i = 0; i < 3; i++) {
++      const color = i < this.run.composure ? C.gold : 0x253048;
++      root.add(this.roundRect(874 + i * 44, 76, 30, 54, 12, color, i < this.run.composure ? 0.95 : 0.55, color, 1));
++    }
++    root.add(this.txt(835, 118, 'ВЫДЕРЖКА', 17, '#8fa1c0', '900', 170, 'center'));
++  }
++
++  private addBossPanel(root: Phaser.GameObjects.Container, arenaCase: ArenaCase): void {
++    const panel = this.add.container(CX, 370);
++    root.add(panel);
++    panel.add(this.roundRect(0, 0, 960, 510, 34, 0x071226, 0.96, arenaCase.palette.accent, 2));
++
++    const boss = this.add.image(0, -10, arenaCase.assetKey).setDisplaySize(960, 524).setAlpha(0.82);
++    panel.add(boss);
++    panel.add(this.add.rectangle(0, 156, 960, 210, 0x01030a, 0.7));
++    panel.add(this.add.rectangle(0, -214, 960, 104, 0x01030a, 0.58));
++
++    panel.add(this.txt(-420, -222, arenaCase.danger.toUpperCase(), 24, '#f5c044', '900', 520));
++    panel.add(this.txt(120, -222, `${arenaCase.district} · ${'◆'.repeat(arenaCase.difficulty)}`, 22, '#8fa1c0', '900', 360, 'right'));
++    panel.add(this.txt(-420, 91, arenaCase.bossName.toUpperCase(), 45, '#f2f7ff', '900', 720));
++    panel.add(this.txt(-420, 148, arenaCase.bossTitle, 26, '#8fa1c0', '800', 720));
++
++    const sigil = this.add.container(358, 146);
++    panel.add(sigil);
++    sigil.add(this.roundRect(0, 0, 154, 154, 44, 0x020611, 0.82, arenaCase.palette.danger, 3));
++    sigil.add(this.txt(-52, -36, '!', 94, '#fb4d6d', '900', 104, 'center'));
++    sigil.add(this.txt(-58, 52, 'ИСКАЖ.', 18, '#f5c044', '900', 116, 'center'));
++
++    if (!this.profile.settings.reducedMotion) {
++      this.tweens.add({ targets: boss, scaleX: boss.scaleX * 1.025, scaleY: boss.scaleY * 1.025, duration: 1650, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
++    }
++  }
++
++  private addSignalDossier(root: Phaser.GameObjects.Container, arenaCase: ArenaCase): void {
++    const panel = this.add.container(CX, 850);
++    root.add(panel);
++    panel.add(this.roundRect(0, 0, 960, 520, 34, 0x0d1832, 0.94, 0x1b385b, 2));
++
++    panel.add(this.txt(-420, -218, arenaCase.headline, 33, '#f2f7ff', '900', 820, 'left', 1.12));
++    panel.add(this.txt(-420, -118, arenaCase.brief, 27, '#b7c7e5', '700', 820, 'left', 1.18));
++
++    this.drawTrace(panel, -420, 18, 820, 128, arenaCase.trace, arenaCase.palette.accent, arenaCase.palette.danger);
++
++    panel.add(this.txt(-420, 168, 'ДОСЬЕ СИГНАЛА', 22, '#22d8f5', '900', 320));
++    arenaCase.signal.forEach((item, index) => {
++      const x = index % 2 === 0 ? -250 : 250;
++      const y = 220 + Math.floor(index / 2) * 74;
++      panel.add(this.chip(x, y, item, index === 3 ? arenaCase.palette.danger : arenaCase.palette.accent, 400));
++    });
++
++    const skLine = SKREBKA_LINES.battle[this.run.turn % SKREBKA_LINES.battle.length];
++    const assistant = this.add.container(CX, 1172);
++    root.add(assistant);
++    assistant.add(this.roundRect(0, 0, 960, 132, 30, 0x111f42, 0.9, 0x2a4e7a, 2));
++    assistant.add(this.add.image(-405, 0, 'skrebka').setDisplaySize(92, 138));
++    assistant.add(this.txt(-342, -44, 'СКРЕПКА ШЕПЧЕТ', 19, '#f5c044', '900', 720));
++    assistant.add(this.txt(-342, -9, skLine, 27, '#f2f7ff', '800', 725, 'left', 1.08));
++  }
++
++  private addFocusOptions(root: Phaser.GameObjects.Container, arenaCase: ArenaCase): void {
++    root.add(this.txt(78, 1288, 'СКАНИРОВАНИЕ: НАЙДИ ЯД', 28, '#22d8f5', '900', 780));
++    root.add(this.txt(78, 1327, 'Прежде чем выбирать протокол, назови главную причину опасности. Это добавляет глубину без превращения игры в терминал.', 23, '#8fa1c0', '700', 880, 'left', 1.12));
++
++    arenaCase.labOptions.forEach((option, index) => {
++      const y = 1450 + index * 152;
++      const card = this.add.container(CX, y);
++      root.add(card);
++      card.add(this.roundRect(0, 0, 930, 126, 30, 0x111f42, 0.95, 0x2a4e7a, 2));
++      card.add(this.roundRect(-380, 0, 98, 88, 24, 0x020611, 0.65, arenaCase.palette.accent, 2));
++      card.add(this.txt(-429, -27, `0${index + 1}`, 42, '#f2f7ff', '900', 98, 'center'));
++      card.add(this.txt(-310, -42, option.toUpperCase(), 31, '#f2f7ff', '900', 650));
++      card.add(this.txt(-310, 7, 'выглядит как причина. проверь, не просто ли это шум', 22, '#b7c7e5', '700', 650));
++      this.registerButton(card, 930, 126, () => this.resolveFocus(arenaCase, index, card));
++    });
++  }
++
++  private resolveFocus(arenaCase: ArenaCase, index: number, source: Phaser.GameObjects.Container): void {
++    if (!this.acceptingFocus) return;
++    const success = index === arenaCase.labAnswer;
++    track('battle.focus', { case: arenaCase.id, selected: index, success });
++    this.acceptingFocus = false;
++
++    if (success) {
++      this.run.pressure = Math.max(0, this.run.pressure - 4);
++      this.haptic(10);
++      this.playTone(360, 0.08, 'triangle', 0.028);
++      this.tweens.add({ targets: source, scaleX: 0.97, scaleY: 0.97, duration: 80, yoyo: true, ease: 'Sine.easeOut' });
++      this.time.delayedCall(120, () => this.showBattle('decision'));
++      return;
++    }
++
++    this.haptic([12, 28, 12]);
++    this.playTone(120, 0.12, 'sawtooth', 0.018);
++    this.cameras.main.shake(120, 0.004);
++    this.toast('ЯД НЕ ТОТ. РЫНОК ЛЮБИТ ПОХОЖИЕ ОТВЕТЫ.', C.red);
++    this.tweens.add({ targets: source, x: source.x + 12, duration: 55, yoyo: true, repeat: 3, ease: 'Sine.easeInOut' });
++    this.time.delayedCall(420, () => {
++      this.acceptingFocus = true;
++    });
++  }
++
++  private addProtocolOptions(root: Phaser.GameObjects.Container, arenaCase: ArenaCase): void {
++    this.currentOptions = arenaCase.options;
++    this.optionCards = [];
++    root.add(this.txt(78, 1288, 'ЯД НАЙДЕН → ВЫБЕРИ ПРОТОКОЛ', 28, '#22d8f5', '900', 780));
++    root.add(this.txt(78, 1327, `${arenaCase.labOptions[arenaCase.labAnswer]}: ${arenaCase.distortion}`, 24, '#8fa1c0', '700', 880, 'left', 1.12));
++
++    arenaCase.options.forEach((protocolId, index) => {
++      const protocol = PROTOCOLS[protocolId];
++      const y = 1450 + index * 152;
++      const card = this.add.container(CX, y);
++      root.add(card);
++
++      card.add(this.roundRect(0, 0, 930, 126, 30, protocol.color, 0.95, protocol.border, 3));
++      card.add(this.roundRect(-380, 0, 98, 88, 24, 0x020611, 0.65, protocol.border, 2));
++      card.add(this.txt(-429, -36, protocol.icon, 64, '#f2f7ff', '900', 98, 'center'));
++      card.add(this.txt(-310, -42, protocol.title, 35, '#f2f7ff', '900', 650));
++      card.add(this.txt(-310, 7, protocol.micro, 24, '#b7c7e5', '700', 650));
++      card.add(this.txt(344, -18, `0${index + 1}`, 34, '#5a6c8a', '900', 100, 'center'));
++
++      this.optionCards[index] = card;
++      this.registerButton(card, 930, 126, () => this.resolveChoice(protocolId, card));
++    });
++  }
++
++  private resolveChoice(choice: ProtocolId, source: Phaser.GameObjects.Container): void {
++    if (!this.acceptingInput) return;
++    this.acceptingInput = false;
++
++    const arenaCase = this.deck[this.run.turn];
++    const isCorrect = choice === arenaCase.correct;
++    track('battle.protocol', { case: arenaCase.id, chosen: choice, required: arenaCase.correct, success: isCorrect });
++    this.haptic(isCorrect ? 18 : [20, 45, 20]);
++    this.playTone(isCorrect ? 440 : 138, isCorrect ? 0.12 : 0.18, isCorrect ? 'sine' : 'sawtooth', isCorrect ? 0.04 : 0.025);
++
++    this.tweens.add({ 
++      targets: source,
++      scaleX: 0.96,
++      scaleY: 0.96,
++      duration: 80,
++      yoyo: true,
++      ease: 'Sine.easeOut'
++    });
++
++    this.time.delayedCall(140, () => {
++      if (isCorrect) {
++        this.run.clarity += 1;
++        this.run.pressure = Math.max(0, this.run.pressure - 24);
++      } else {
++        this.run.composure = Math.max(0, this.run.composure - 1);
++        this.run.pressure = Math.max(0, this.run.pressure - 8);
++        this.cameras.main.shake(180, 0.006);
++      }
++
++      this.run.journal.push({
++        caseName: arenaCase.bossName,
++        chosen: choice,
++        required: arenaCase.correct,
++        success: isCorrect,
++        verdict: isCorrect ? arenaCase.success : arenaCase.failure,
++        lesson: arenaCase.lesson
++      });
++
++      this.showOutcome(arenaCase, choice, isCorrect);
++    });
++  }
++
++  private showOutcome(arenaCase: ArenaCase, choice: ProtocolId, isCorrect: boolean): void {
++    const overlay = this.add.container(0, 0);
++    this.screen?.add(overlay);
++    overlay.add(this.add.rectangle(CX, GAME_H / 2, GAME_W, GAME_H, 0x01030a, 0.76));
++
++    const panel = this.add.container(CX, 1010);
++    overlay.add(panel);
++    panel.add(this.roundRect(0, 0, 950, 805, 40, 0x0d1832, 0.98, isCorrect ? C.green : C.red, 4));
++    panel.add(this.txt(-414, -350, isCorrect ? 'ПРОТОКОЛ СРАБОТАЛ' : 'РЫНОК ПРИНЯЛ РЕШЕНИЕ', 34, isCorrect ? '#34d399' : '#fb4d6d', '900', 760));
++
++    const portrait = this.add.image(-350, -188, 'skrebka').setDisplaySize(162, 242);
++    panel.add(portrait);
++    panel.add(this.roundRect(-350, -188, 170, 250, 24, 0x000000, 0, C.gold, 2));
++
++    const chosenTitle = PROTOCOLS[choice].title;
++    const requiredTitle = PROTOCOLS[arenaCase.correct].title;
++    panel.add(this.txt(-235, -262, `выбрано: ${chosenTitle}`, 24, '#8fa1c0', '800', 610));
++    panel.add(this.txt(-235, -215, isCorrect ? 'Капитал не любит драму. Сегодня он выжил.' : `нужно было: ${requiredTitle}`, 30, '#f2f7ff', '900', 610, 'left', 1.1));
++
++    panel.add(this.txt(-414, -88, isCorrect ? arenaCase.success : arenaCase.failure, 32, '#f2f7ff', '900', 820, 'left', 1.1));
++    this.drawDecisionReplay(panel, -402, 42, 804, 98, arenaCase.trace, isCorrect, arenaCase.palette.accent, arenaCase.palette.danger);
++    panel.add(this.roundRect(0, 215, 840, 122, 28, 0x071226, 0.9, 0x1b385b, 2));
++    panel.add(this.txt(-392, 173, 'ЗАПИСЬ В ЖУРНАЛ', 20, '#22d8f5', '900', 760));
++    panel.add(this.txt(-392, 207, arenaCase.lesson, 20, '#b7c7e5', '700', 760, 'left', 1.03));
++
++    const nextLabel = this.run.composure === 0 || this.run.turn + 1 >= this.deck.length || this.run.pressure === 0
++      ? 'ОТКРЫТЬ ОТЧЁТ'
++      : 'СЛЕДУЮЩЕЕ ИСКАЖЕНИЕ';
++
++    let advanced = false;
++    panel.add(this.primaryButton(0, 340, 820, 104, nextLabel, 'журнал сохранит неприятную правду', isCorrect ? C.green : C.red, () => {
++      if (advanced) return;
++      advanced = true;
++      overlay.destroy(true);
++      this.advanceRun();
++    }));
++
++    panel.setScale(0.92);
++    this.tweens.add({ targets: panel, scale: 1, duration: 260, ease: 'Back.easeOut' });
++  }
++
++  private advanceRun(): void {
++    this.run.turn += 1;
++    if (this.run.composure === 0 || this.run.turn >= this.deck.length || this.run.pressure === 0) {
++      this.showResults();
++      return;
++    }
++    this.showBattle();
++  }
++
++  private showResults(): void {
++    track('screen.results', { clarity: this.run.clarity, composure: this.run.composure, pressure: this.run.pressure });
++    if (!this.runSaved) {
++      this.profile = persistRun(this.profile, {
++        clarity: this.run.clarity,
++        maxClarity: this.deck.length,
++        composure: this.run.composure,
++        pressure: this.run.pressure,
++        journal: this.run.journal
++      });
++      this.runSaved = true;
++    }
++
++    const root = this.clearScreen();
++    const victory = this.run.clarity >= 4 && this.run.composure > 0;
++    this.drawBackground(root, 'result', victory ? C.green : C.red);
++    this.addHeader(root, victory ? 'ПРОТОКОЛ ВЫЖИЛ' : 'РЫНОК ПОЖЕВАЛ', victory ? 'сезон закрыт' : 'ошибка не провал, если она записана', 'Signal Arena');
++
++    const summary = this.add.container(CX, 405);
++    root.add(summary);
++    summary.add(this.roundRect(0, 0, 960, 430, 38, 0x0d1832, 0.96, victory ? C.green : C.red, 3));
++    summary.add(this.add.image(-360, 14, 'skrebka').setDisplaySize(180, 268));
++    summary.add(this.roundRect(-360, 14, 190, 278, 25, 0x000000, 0, C.gold, 2));
++    summary.add(this.txt(-240, -155, victory ? SKREBKA_LINES.win : SKREBKA_LINES.lose, 34, '#f2f7ff', '900', 650, 'left', 1.12));
++    summary.add(this.txt(-240, 12, 'Итоговый продуктовый принцип: игрок получает навык принятия решения, а не привычку нажимать кнопки терминала.', 27, '#b7c7e5', '700', 650, 'left', 1.16));
++
++    const stats = [
++      ['ясность', `${this.run.clarity}/${this.deck.length}`, C.green],
++      ['выдержка', `${this.run.composure}/3`, C.gold],
++      ['давление', `${this.run.pressure}%`, C.red]
++    ] as const;
++    stats.forEach(([label, value, color], i) => {
++      summary.add(this.statTile(-220 + i * 245, 158, 208, label, value, color));
++    });
++
++    const journalPanel = this.add.container(CX, 967);
++    root.add(journalPanel);
++    journalPanel.add(this.roundRect(0, 0, 960, 650, 38, 0x071226, 0.96, 0x1b385b, 2));
++    journalPanel.add(this.txt(-420, -286, 'ЖУРНАЛ РЕШЕНИЙ', 31, '#22d8f5', '900', 820));
++    journalPanel.add(this.txt(-420, -242, 'Здесь награда выдаётся не за частоту кликов, а за закрытую ошибку. Скучно? Миллионы теряются именно на весёлом.', 24, '#8fa1c0', '700', 820, 'left', 1.13));
++
++    const mistakes = this.run.journal.filter((entry) => !entry.success);
++    if (mistakes.length === 0) {
++      journalPanel.add(this.roundRect(0, 65, 840, 220, 30, 0x0d1832, 0.9, C.green, 2));
++      journalPanel.add(this.txt(-380, -2, 'ОШИБОК НЕТ. ПОДОЗРИТЕЛЬНО.', 33, '#34d399', '900', 760));
++      journalPanel.add(this.txt(-380, 55, 'Рынок не любит идеальные отчёты. Он уже готовит сезон сложнее.', 27, '#f2f7ff', '800', 760, 'left', 1.12));
++    } else {
++      mistakes.slice(0, 3).forEach((entry, i) => {
++        const y = -110 + i * 170;
++        journalPanel.add(this.roundRect(0, y, 840, 142, 28, 0x0d1832, 0.92, PROTOCOLS[entry.required].border, 2));
++        journalPanel.add(this.txt(-386, y - 50, entry.caseName.toUpperCase(), 22, '#f5c044', '900', 760));
++        journalPanel.add(this.txt(-386, y - 12, `лекарство: ${PROTOCOLS[entry.required].title}`, 27, '#f2f7ff', '900', 760));
++        journalPanel.add(this.txt(-386, y + 30, entry.lesson, 21, '#8fa1c0', '700', 760, 'left', 1.05));
++      });
++    }
++
++    const manifesto = this.add.container(CX, 1398);
++    root.add(manifesto);
++    manifesto.add(this.roundRect(0, 0, 960, 246, 34, 0x111f42, 0.94, 0x2a4e7a, 2));
++    manifesto.add(this.txt(-420, -91, 'КОММЕРЧЕСКИЙ КРЮК', 24, '#f5c044', '900', 820));
++    manifesto.add(this.txt(-420, -48, 'Короткие 8–12 минутные рейды. Боссы-искажения. Косметические сезоны. Гильдии разбора. Никакой продажи преимущества.', 28, '#f2f7ff', '800', 820, 'left', 1.12));
++    manifesto.add(this.txt(-420, 58, `proof: ${this.profile.lastProof ?? 'SA-ARCHIVE'} · XP: ${this.profile.xp} · бейджи: ${this.profile.badges.length}`, 24, '#f5c044', '900', 820));
++    manifesto.add(this.txt(-420, 100, 'Игрок возвращается не за свечами, а за ощущением: “я стал меньше кормить хаос”.', 23, '#8fa1c0', '700', 820));
++
++    if (this.profile.pendingReviews.length > 0) {
++      root.add(this.primaryButton(CX, 1628, 900, 108, 'ЗАКРЫТЬ ОШИБКУ В АРХИВЕ', 'стрик растёт только после разбора', C.gold, () => this.showReview()));
++      root.add(this.secondaryButton(CX, 1752, 900, 86, 'КАРТА НОВОГО РЕЙДА', 'можно сбежать, но архив запомнит', C.purple, () => this.prepareRaidMap()));
++    } else {
++      root.add(this.primaryButton(CX, 1628, 900, 108, 'ПОВТОРИТЬ РЕЙД', 'следующая ошибка уже ждёт оформление', victory ? C.green : C.red, () => this.prepareRaidMap()));
++      root.add(this.secondaryButton(CX, 1752, 900, 86, 'ВЕРНУТЬСЯ В АРХИВ', 'профиль сохранён локально', C.purple, () => this.showMenu()));
++    }
++    root.add(this.txt(CX - 360, 1858, 'Скрепка остаётся каноном. Архив не врёт, он недоговаривает.', 23, '#5a6c8a', '800', 720, 'center'));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 260, ease: 'Sine.easeOut' });
++  }
++
++  private showCodex(): void {
++    const root = this.clearScreen();
++    this.drawBackground(root, 'menu', C.purple);
++    this.addHeader(root, 'КОДЕКС ПРОТОКОЛОВ', 'шесть способов не кормить хаос', 'скрепка одобряет');
++
++    const intro = this.add.container(CX, 260);
++    root.add(intro);
++    intro.add(this.roundRect(0, 0, 960, 220, 34, 0x111f42, 0.94, 0x2a4e7a, 2));
++    intro.add(this.add.image(-386, 0, 'skrebka').setDisplaySize(132, 198));
++    intro.add(this.roundRect(-386, 0, 140, 206, 22, 0x000000, 0, C.gold, 2));
++    intro.add(this.txt(-292, -76, 'АРХИВНАЯ ЗАПИСКА', 23, '#f5c044', '900', 690));
++    intro.add(this.txt(-292, -36, 'Протокол — это кнопка до кнопки. Он решает, можно ли вообще входить в действие.', 31, '#f2f7ff', '900', 690, 'left', 1.12));
++    intro.add(this.txt(-292, 70, 'Если ответ выглядит как торговый терминал — мы проиграли дизайн.', 23, '#8fa1c0', '700', 690));
++
++    const protocols = Object.values(PROTOCOLS);
++    protocols.forEach((protocol, index) => {
++      const col = index % 2;
++      const row = Math.floor(index / 2);
++      const x = col === 0 ? 300 : 780;
++      const y = 505 + row * 188;
++      const card = this.add.container(x, y);
++      root.add(card);
++      card.add(this.roundRect(0, 0, 444, 154, 28, protocol.color, 0.94, protocol.border, 2));
++      card.add(this.roundRect(-164, 0, 74, 74, 20, 0x020611, 0.68, protocol.border, 2));
++      card.add(this.txt(-201, -29, protocol.icon, 52, '#f2f7ff', '900', 74, 'center'));
++      card.add(this.txt(-112, -52, protocol.title, 25, '#f2f7ff', '900', 296));
++      card.add(this.txt(-112, -10, protocol.micro, 21, '#b7c7e5', '700', 296, 'left', 1.06));
++      card.add(this.txt(114, 45, `P-${index + 1}`, 17, '#5a6c8a', '900', 90, 'right'));
++    });
++
++    const enemies = this.add.container(CX, 1120);
++    root.add(enemies);
++    enemies.add(this.roundRect(0, 0, 960, 290, 34, 0x071226, 0.94, 0x1b385b, 2));
++    enemies.add(this.txt(-420, -114, 'БЕСТИАРИЙ ИСКАЖЕНИЙ', 25, '#22d8f5', '900', 820));
++    enemies.add(this.txt(-420, -72, `Враги не торгуют против тебя. Они торгуют твоим импульсом. В пуле сейчас ${CASES.length} сценариев.`, 25, '#f2f7ff', '800', 820, 'left', 1.08));
++    CASES.slice(0, 6).forEach((item, index) => {
++      const x = -330 + (index % 3) * 330;
++      const y = 20 + Math.floor(index / 3) * 82;
++      enemies.add(this.chip(x, y, item.bossName, item.palette.accent, 286));
++    });
++
++    const principles = this.add.container(CX, 1432);
++    root.add(principles);
++    principles.add(this.roundRect(0, 0, 960, 286, 34, 0x0d1832, 0.94, 0x1d3556, 2));
++    principles.add(this.txt(-420, -110, 'ПРАВИЛА ПРОДУКТА', 25, '#f5c044', '900', 820));
++    principles.add(this.txt(-420, -62, '9:16. Мало кнопок. Нет копии биржи. Нет обещания прибыли. Есть навык: остановиться, проверить, отказаться, записать.', 31, '#f2f7ff', '800', 820, 'left', 1.14));
++    principles.add(this.txt(-420, 78, 'Web3-слой: proof-of-skill и косметика. Ответы, шанс и бюджет не продаются.', 24, '#8fa1c0', '700', 820));
++
++    root.add(this.primaryButton(CX, 1666, 900, 108, 'НАЧАТЬ РЕЙД ИЗ КОДЕКСА', 'практика лучше красивого PDF', C.cyan, () => this.startRun()));
++    root.add(this.secondaryButton(CX, 1792, 900, 86, 'НАЗАД В АРХИВ', 'скрепка свернётся в панель задач', C.purple, () => this.showMenu()));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 240, ease: 'Sine.easeOut' });
++  }
++
++  private showProfile(): void {
++    track('screen.profile');
++    this.profile = loadProfile();
++    const root = this.clearScreen();
++    this.drawBackground(root, 'result', C.gold);
++    this.addHeader(root, 'АРХИВ ИГРОКА', 'мета-прогресс без продажи преимущества', `XP ${this.profile.xp}`);
++
++    const proof = this.add.container(CX, 330);
++    root.add(proof);
++    proof.add(this.roundRect(0, 0, 960, 360, 38, 0x0d1832, 0.96, C.gold, 3));
++    proof.add(this.add.image(-370, 0, 'skrebka').setDisplaySize(170, 254));
++    proof.add(this.roundRect(-370, 0, 180, 264, 28, 0x000000, 0, C.gold, 2));
++    proof.add(this.txt(-250, -126, 'PROOF-OF-SKILL CARD', 25, '#f5c044', '900', 650));
++    proof.add(this.txt(-250, -80, this.profile.lastProof ?? 'SA-НЕ-ВЫДАН', 48, '#f2f7ff', '900', 650));
++    proof.add(this.txt(-250, -12, 'Локальная карточка мастерства. В будущей Web3-версии её можно минтить как косметический статус, но не как преимущество.', 25, '#b7c7e5', '800', 650, 'left', 1.12));
++    proof.add(this.txt(-250, 112, `рейды ${this.profile.runs} · лаборатории ${this.profile.labs} · пыль ${this.profile.cosmeticDust} · ревью ${this.profile.pendingReviews.length}`, 23, '#8fa1c0', '900', 650));
++    proof.add(this.secondaryButton(320, 115, 220, 68, 'EXPORT', 'png proof', C.cyan, () => this.exportProofCard()));
++
++    const mastery = this.add.container(CX, 780);
++    root.add(mastery);
++    mastery.add(this.roundRect(0, 0, 960, 505, 36, 0x071226, 0.95, 0x1b385b, 2));
++    mastery.add(this.txt(-420, -220, 'МАСТЕРСТВО ПРОТОКОЛОВ', 27, '#22d8f5', '900', 820));
++    mastery.add(this.txt(-420, -178, 'Растёт от правильных решений и закрытых ошибок. Рынок не платит за знание. Он штрафует за отсутствие привычки.', 23, '#8fa1c0', '700', 820, 'left', 1.12));
++    Object.values(PROTOCOLS).forEach((protocol, index) => {
++      const y = -98 + index * 62;
++      mastery.add(this.masteryRow(-420, y, 820, protocol.id));
++    });
++
++    const badges = this.add.container(CX, 1224);
++    root.add(badges);
++    badges.add(this.roundRect(0, 0, 960, 285, 34, 0x111f42, 0.94, 0x2a4e7a, 2));
++    badges.add(this.txt(-420, -110, 'ЗНАКИ АРХИВА', 25, '#f5c044', '900', 820));
++    if (this.profile.badges.length === 0) {
++      badges.add(this.txt(-420, -52, 'Пока пусто. Архив ждёт первую бумажную травму.', 29, '#f2f7ff', '900', 820));
++    } else {
++      this.profile.badges.slice(0, 6).forEach((badge, index) => {
++        const x = -292 + (index % 3) * 292;
++        const y = -35 + Math.floor(index / 3) * 82;
++        badges.add(this.chip(x, y, BADGE_COPY[badge] ?? badge, index % 2 ? C.purple : C.gold, 260));
++      });
++    }
++    badges.add(this.txt(-420, 106, `закрыто ошибок: ${this.profile.closedErrors} · всего ошибок: ${this.profile.totalMistakes} · идеальных рейдов: ${this.profile.perfectRuns}`, 22, '#8fa1c0', '800', 820));
++
++    const actions = this.add.container(CX, 1495);
++    root.add(actions);
++    actions.add(this.roundRect(0, 0, 960, 180, 30, 0x0d1832, 0.92, 0x1b385b, 2));
++    actions.add(this.txt(-420, -62, this.profile.pendingReviews.length > 0 ? 'АРХИВ ТРЕБУЕТ РАЗБОРА' : 'АРХИВ СПОКОЕН. ЭТО ПОДОЗРИТЕЛЬНО.', 23, this.profile.pendingReviews.length > 0 ? '#fb4d6d' : '#34d399', '900', 820));
++    actions.add(this.txt(-420, -20, this.profile.pendingReviews.length > 0 ? 'Незакрытые ошибки не дают настоящему стрику стать честным.' : 'Нет незакрытых ошибок. Можно идти за новыми, но не специально.', 27, '#f2f7ff', '800', 820, 'left', 1.1));
++    actions.add(this.txt(-420, 68, 'Косметическая экономика: пыль и бейджи показывают дисциплину, но не меняют ответы.', 21, '#8fa1c0', '700', 820));
++
++    if (this.profile.pendingReviews.length > 0) {
++      root.add(this.primaryButton(CX, 1644, 900, 102, 'ЗАКРЫТЬ ОШИБКУ', 'бумажная работа спасает капитал', C.gold, () => this.showReview()));
++    } else {
++      root.add(this.primaryButton(CX, 1644, 900, 102, 'НА КАРТУ РЕЙДА', 'найти новые слабые места', C.cyan, () => this.prepareRaidMap()));
++    }
++    root.add(this.secondaryButton(315, 1766, 430, 82, 'КОСМЕТИКА', 'без преимущества', C.green, () => this.showCosmetics()));
++    root.add(this.secondaryButton(765, 1766, 430, 82, 'НАЗАД', 'закрыть папку', C.purple, () => this.showMenu()));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 240, ease: 'Sine.easeOut' });
++  }
++
++  private showLab(): void {
++    track('screen.lab');
++    this.profile = loadProfile();
++    const item = CASES[(this.profile.labs * 3 + this.profile.runs) % CASES.length];
++    const root = this.clearScreen();
++    this.drawBackground(root, 'battle', item.palette.accent);
++    this.addHeader(root, 'СИГНАЛЬНАЯ ЛАБОРАТОРИЯ', 'короткая калибровка чтения', `LAB ${this.profile.labs + 1}`);
++
++    const panel = this.add.container(CX, 445);
++    root.add(panel);
++    panel.add(this.roundRect(0, 0, 960, 570, 38, 0x071226, 0.95, item.palette.accent, 2));
++    panel.add(this.add.image(0, -88, item.assetKey).setDisplaySize(960, 452).setAlpha(0.56));
++    panel.add(this.add.rectangle(0, 120, 960, 250, 0x01030a, 0.7));
++    panel.add(this.txt(-420, -220, item.district.toUpperCase(), 23, '#f5c044', '900', 820));
++    panel.add(this.txt(-420, -174, item.labQuestion, 48, '#f2f7ff', '900', 820, 'left', 1.02));
++    panel.add(this.txt(-420, 42, item.hiddenTruth, 29, '#b7c7e5', '800', 820, 'left', 1.13));
++    this.drawTrace(panel, -420, 212, 820, 120, item.trace, item.palette.accent, item.palette.danger);
++
++    const desk = this.add.container(CX, 950);
++    root.add(desk);
++    desk.add(this.roundRect(0, 0, 960, 330, 34, 0x0d1832, 0.95, 0x1b385b, 2));
++    desk.add(this.txt(-420, -128, 'ВЫБЕРИ ЯД СИГНАЛА', 25, '#22d8f5', '900', 820));
++    desk.add(this.txt(-420, -86, 'Это не прогноз и не приказ. Это тренировка распознавания причины, почему решение может быть вредным.', 24, '#8fa1c0', '700', 820, 'left', 1.12));
++    item.signal.slice(0, 4).forEach((s, index) => {
++      const x = index % 2 === 0 ? -245 : 245;
++      const y = 18 + Math.floor(index / 2) * 72;
++      desk.add(this.chip(x, y, s, index === 3 ? item.palette.danger : item.palette.accent, 410));
++    });
++
++    item.labOptions.forEach((option, index) => {
++      const y = 1280 + index * 132;
++      const card = this.add.container(CX, y);
++      root.add(card);
++      card.add(this.roundRect(0, 0, 910, 104, 28, 0x111f42, 0.95, 0x2a4e7a, 2));
++      card.add(this.txt(-405, -31, `0${index + 1}`, 30, '#5a6c8a', '900', 80, 'center'));
++      card.add(this.txt(-300, -28, option, 31, '#f2f7ff', '900', 650));
++      this.registerButton(card, 910, 104, () => this.resolveLab(item, index));
++    });
++
++    const sk = this.add.container(CX, 1708);
++    root.add(sk);
++    sk.add(this.roundRect(0, 0, 960, 132, 28, 0x111f42, 0.9, 0x2a4e7a, 2));
++    sk.add(this.add.image(-410, 0, 'skrebka').setDisplaySize(92, 138));
++    sk.add(this.txt(-348, -43, 'СКРЕПКА', 19, '#f5c044', '900', 740));
++    sk.add(this.txt(-348, -8, 'Лаборатория не учит нажимать быстрее. Она учит стыдиться лишнего шума заранее.', 25, '#f2f7ff', '800', 735, 'left', 1.08));
++    root.add(this.secondaryButton(CX, 1840, 900, 70, 'НАЗАД', 'не все эксперименты обязаны взрываться', C.purple, () => this.showMenu()));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 230, ease: 'Sine.easeOut' });
++  }
++
++  private resolveLab(item: ArenaCase, index: number): void {
++    const success = index === item.labAnswer;
++    track('lab.answer', { case: item.id, selected: index, success });
++    this.profile = persistLab(this.profile, success, item.correct);
++    this.haptic(success ? 12 : [16, 30, 16]);
++    this.playTone(success ? 520 : 150, success ? 0.1 : 0.16, success ? 'triangle' : 'sawtooth', success ? 0.035 : 0.022);
++
++    const root = this.clearScreen();
++    this.drawBackground(root, 'result', success ? C.green : C.red);
++    this.addHeader(root, success ? 'ЛАБОРАТОРИЯ ПРИНЯЛА' : 'ЛАБОРАТОРИЯ ЗАПАХЛА ДЫМОМ', item.bossName, `XP ${this.profile.xp}`);
++
++    const panel = this.add.container(CX, 720);
++    root.add(panel);
++    panel.add(this.roundRect(0, 0, 960, 770, 40, 0x0d1832, 0.96, success ? C.green : C.red, 3));
++    panel.add(this.add.image(-360, -210, 'skrebka').setDisplaySize(170, 254));
++    panel.add(this.roundRect(-360, -210, 180, 264, 28, 0x000000, 0, C.gold, 2));
++    panel.add(this.txt(-240, -300, success ? 'ЯД НАЙДЕН' : 'ЯД СПРЯТАЛСЯ ЛУЧШЕ', 33, success ? '#34d399' : '#fb4d6d', '900', 650));
++    panel.add(this.txt(-240, -246, success ? 'Ты отделил причину от шума. Архив слегка гордится, но не покажет виду.' : `Правильный яд: ${item.labOptions[item.labAnswer]}. Рынок любит, когда игрок путает симптом с причиной.`, 28, '#f2f7ff', '900', 650, 'left', 1.12));
++    panel.add(this.roundRect(0, 48, 840, 255, 30, 0x071226, 0.92, item.palette.accent, 2));
++    panel.add(this.txt(-392, -48, 'РАЗБОР', 24, '#22d8f5', '900', 760));
++    panel.add(this.txt(-392, -6, item.lesson, 27, '#b7c7e5', '800', 760, 'left', 1.13));
++    panel.add(this.txt(-392, 146, `мастерство: ${PROTOCOLS[item.correct].title} +${success ? 1 : 0} · лабораторий: ${this.profile.labs}`, 22, '#f5c044', '900', 760));
++
++    root.add(this.primaryButton(CX, 1392, 900, 110, 'ЕЩЁ ОДИН ЭКСПЕРИМЕНТ', 'архив выдаст новый яд', C.green, () => this.showLab()));
++    root.add(this.secondaryButton(CX, 1522, 900, 86, 'НА КАРТУ РЕЙДА', 'лаборатория закончила дымиться', C.cyan, () => this.prepareRaidMap()));
++    root.add(this.secondaryButton(CX, 1642, 900, 86, 'НАЗАД В АРХИВ', 'вернуть пробирки на место', C.purple, () => this.showMenu()));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 230, ease: 'Sine.easeOut' });
++  }
++
++  private showReview(): void {
++    track('screen.review');
++    this.profile = loadProfile();
++    const review = this.profile.pendingReviews[0];
++    const root = this.clearScreen();
++    this.drawBackground(root, 'result', review ? PROTOCOLS[review.required].border : C.green);
++    this.addHeader(root, 'АРХИВНЫЙ РАЗБОР', review ? 'закрытие ошибки вместо стыда' : 'очередь пуста', `${this.profile.pendingReviews.length} pending`);
++
++    if (!review) {
++      const empty = this.add.container(CX, 720);
++      root.add(empty);
++      empty.add(this.roundRect(0, 0, 960, 520, 40, 0x0d1832, 0.96, C.green, 3));
++      empty.add(this.add.image(-360, -20, 'skrebka').setDisplaySize(170, 254));
++      empty.add(this.roundRect(-360, -20, 180, 264, 28, 0x000000, 0, C.gold, 2));
++      empty.add(this.txt(-240, -150, 'НЕТ НЕЗАКРЫТЫХ ОШИБОК', 38, '#34d399', '900', 650));
++      empty.add(this.txt(-240, -86, 'Архив пуст. Это не значит, что ты святой. Это значит, что сегодня бумажная работа закончилась.', 30, '#f2f7ff', '900', 650, 'left', 1.12));
++      root.add(this.primaryButton(CX, 1210, 900, 110, 'НА КАРТУ РЕЙДА', 'добыть новые документы', C.cyan, () => this.prepareRaidMap()));
++      root.add(this.secondaryButton(CX, 1340, 900, 86, 'НАЗАД', 'закрыть шкаф', C.purple, () => this.showProfile()));
++      return;
++    }
++
++    const panel = this.add.container(CX, 515);
++    root.add(panel);
++    panel.add(this.roundRect(0, 0, 960, 610, 40, 0x0d1832, 0.96, PROTOCOLS[review.required].border, 3));
++    panel.add(this.add.image(-370, -132, 'skrebka').setDisplaySize(160, 238));
++    panel.add(this.roundRect(-370, -132, 170, 248, 28, 0x000000, 0, C.gold, 2));
++    panel.add(this.txt(-250, -250, review.caseName.toUpperCase(), 29, '#f5c044', '900', 660));
++    panel.add(this.txt(-250, -202, 'Ошибка хочет стать привычкой.', 40, '#f2f7ff', '900', 660, 'left', 1.04));
++    panel.add(this.txt(-250, -108, SKREBKA_LINES.review, 27, '#b7c7e5', '800', 660, 'left', 1.12));
++    panel.add(this.roundRect(0, 156, 840, 226, 30, 0x071226, 0.92, 0x1b385b, 2));
++    panel.add(this.txt(-392, 65, 'ЧТО СЛУЧИЛОСЬ', 22, '#22d8f5', '900', 760));
++    panel.add(this.txt(-392, 104, review.verdict, 25, '#f2f7ff', '800', 760, 'left', 1.1));
++    panel.add(this.txt(-392, 205, review.lesson, 22, '#8fa1c0', '700', 760, 'left', 1.06));
++
++    const question = this.add.container(CX, 960);
++    root.add(question);
++    question.add(this.roundRect(0, 0, 960, 150, 30, 0x111f42, 0.94, 0x2a4e7a, 2));
++    question.add(this.txt(-420, -48, 'КАКОЙ ПРОТОКОЛ ЗАКРЫВАЕТ ОШИБКУ?', 26, '#22d8f5', '900', 820));
++    question.add(this.txt(-420, -5, 'Закрытие — это активное действие. Без него ошибка остаётся открытой вкладкой мозга.', 24, '#8fa1c0', '700', 820));
++
++    const options = this.reviewOptions(review.required);
++    options.forEach((protocolId, index) => {
++      const protocol = PROTOCOLS[protocolId];
++      const y = 1130 + index * 138;
++      const card = this.add.container(CX, y);
++      root.add(card);
++      card.add(this.roundRect(0, 0, 910, 110, 28, protocol.color, 0.95, protocol.border, 2));
++      card.add(this.txt(-405, -34, protocol.icon, 52, '#f2f7ff', '900', 82, 'center'));
++      card.add(this.txt(-300, -34, protocol.title, 32, '#f2f7ff', '900', 680));
++      card.add(this.txt(-300, 12, protocol.micro, 22, '#b7c7e5', '700', 680));
++      this.registerButton(card, 910, 110, () => this.resolveReview(review.id, protocolId, review.required));
++    });
++
++    root.add(this.secondaryButton(CX, 1708, 900, 86, 'ОТЛОЖИТЬ', 'архив осуждает, но терпит', C.purple, () => this.showProfile()));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 230, ease: 'Sine.easeOut' });
++  }
++
++  private resolveReview(reviewId: string, chosen: ProtocolId, required: ProtocolId): void {
++    const success = chosen === required;
++    track('review.answer', { chosen, required, success });
++    if (success) {
++      this.profile = completeReview(this.profile, reviewId);
++    }
++    this.haptic(success ? 12 : [16, 40, 16]);
++    this.playTone(success ? 560 : 120, success ? 0.1 : 0.17, success ? 'triangle' : 'sawtooth', success ? 0.035 : 0.02);
++
++    const root = this.clearScreen();
++    this.drawBackground(root, 'result', success ? C.green : C.red);
++    this.addHeader(root, success ? 'ОШИБКА ЗАКРЫТА' : 'ОШИБКА УКЛОНИЛАСЬ', success ? 'стрик честный' : 'нужна ещё одна попытка', `pending ${this.profile.pendingReviews.length}`);
++
++    const panel = this.add.container(CX, 690);
++    root.add(panel);
++    panel.add(this.roundRect(0, 0, 960, 620, 40, 0x0d1832, 0.96, success ? C.green : C.red, 3));
++    panel.add(this.add.image(-360, -90, 'skrebka').setDisplaySize(170, 254));
++    panel.add(this.roundRect(-360, -90, 180, 264, 28, 0x000000, 0, C.gold, 2));
++    panel.add(this.txt(-240, -222, success ? 'БУМАЖНАЯ ПОБЕДА' : 'НЕ ТОТ ПРОТОКОЛ', 36, success ? '#34d399' : '#fb4d6d', '900', 650));
++    panel.add(this.txt(-240, -158, success ? 'Ошибка отправлена в архив. Никакой славы, только взрослая скука. Именно поэтому работает.' : `Нужен: ${PROTOCOLS[required].title}. Архив не злится. Он просто добавляет страницу.`, 30, '#f2f7ff', '900', 650, 'left', 1.12));
++    panel.add(this.roundRect(0, 145, 840, 180, 30, 0x071226, 0.92, 0x1b385b, 2));
++    panel.add(this.txt(-392, 82, 'ИТОГ', 23, '#22d8f5', '900', 760));
++    panel.add(this.txt(-392, 122, success ? `закрыто ошибок: ${this.profile.closedErrors} · стрик: ${this.profile.streakDays}д · +85 XP` : 'Ошибка осталась в очереди. Повтори выбор без театра.', 27, '#b7c7e5', '800', 760, 'left', 1.12));
++
++    root.add(this.primaryButton(CX, 1225, 900, 110, this.profile.pendingReviews.length > 0 ? 'СЛЕДУЮЩАЯ ОШИБКА' : 'В ПРОФИЛЬ', 'архив любит последовательность', success ? C.green : C.gold, () => {
++      if (success && this.profile.pendingReviews.length > 0) this.showReview();
++      else if (!success) this.showReview();
++      else this.showProfile();
++    }));
++    root.add(this.secondaryButton(CX, 1355, 900, 86, 'НАЗАД В АРХИВ', 'папка закрывается со скрипом', C.purple, () => this.showProfile()));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 230, ease: 'Sine.easeOut' });
++  }
++
++  private showCosmetics(): void {
++    track('screen.cosmetics');
++    this.profile = loadProfile();
++    const root = this.clearScreen();
++    const equipped = this.profile.equippedCosmetic ?? 'archive-default';
++    this.drawBackground(root, 'result', C.green);
++    this.addHeader(root, 'КОСМЕТИЧЕСКИЙ АРХИВ', 'монетизация без pay-to-win', `пыль ${this.profile.cosmeticDust}`);
++
++    const hero = this.add.container(CX, 310);
++    root.add(hero);
++    hero.add(this.roundRect(0, 0, 960, 320, 38, 0x0d1832, 0.96, C.green, 3));
++    hero.add(this.add.image(-360, 0, 'skrebka').setDisplaySize(150, 224));
++    hero.add(this.roundRect(-360, 0, 158, 232, 24, 0x000000, 0, C.gold, 2));
++    hero.add(this.txt(-252, -104, 'МАГАЗИН, КОТОРЫЙ НЕ ПРОДАЁТ СИЛУ', 25, '#f5c044', '900', 675));
++    hero.add(this.txt(-252, -58, 'Пыль покупает рамки и статус. Ответы, бюджет риска и вероятность успеха не продаются. Демон монетизации расстроен.', 29, '#f2f7ff', '900', 675, 'left', 1.12));
++    hero.add(this.txt(-252, 82, `экипировано: ${equipped === 'archive-default' ? 'Архив по умолчанию' : COSMETICS.find((item) => item.id === equipped)?.title ?? equipped}`, 22, '#8fa1c0', '800', 675));
++
++    COSMETICS.forEach((item, index) => {
++      const y = 590 + index * 245;
++      const owned = this.profile.ownedCosmetics.includes(item.id);
++      const isEquipped = equipped === item.id;
++      const card = this.add.container(CX, y);
++      root.add(card);
++      card.add(this.roundRect(0, 0, 960, 210, 34, 0x071226, 0.95, isEquipped ? C.gold : item.color, isEquipped ? 4 : 2));
++      card.add(this.roundRect(-350, 0, 132, 132, 30, item.color, 0.26, item.color, 3));
++      card.add(this.txt(-410, -44, '✦', 82, '#f2f7ff', '900', 120, 'center'));
++      card.add(this.txt(-250, -78, item.title.toUpperCase(), 30, '#f2f7ff', '900', 600));
++      card.add(this.txt(-250, -28, item.description, 23, '#b7c7e5', '700', 600, 'left', 1.1));
++      card.add(this.txt(-250, 70, owned ? (isEquipped ? 'ЭКИПИРОВАНО' : 'КУПЛЕНО') : `цена: ${item.price} пыли`, 22, owned ? '#34d399' : '#f5c044', '900', 600));
++      const actionLabel = owned ? (isEquipped ? 'ВКЛЮЧЕНО' : 'НАДЕТЬ') : 'КУПИТЬ';
++      const action = this.secondaryButton(320, 50, 200, 74, actionLabel, owned ? 'статус' : 'косметика', owned ? C.green : C.gold, () => {
++        if (owned) {
++          this.profile = equipCosmetic(this.profile, item.id);
++        } else {
++          const before = this.profile.cosmeticDust;
++          this.profile = buyCosmetic(this.profile, item.id);
++          if (this.profile.cosmeticDust === before) {
++            this.toast('НЕДОСТАТОЧНО ПЫЛИ. ПАНИКА БЕСПЛАТНА, РАМКА НЕТ.', C.red);
++            return;
++          }
++        }
++        this.showCosmetics();
++      });
++      card.add(action);
++    });
++
++    root.add(this.secondaryButton(315, 1778, 430, 82, 'В ПРОФИЛЬ', 'посмотреть proof', C.gold, () => this.showProfile()));
++    root.add(this.secondaryButton(765, 1778, 430, 82, 'НАЗАД', 'закрыть лавку', C.purple, () => this.showMenu()));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 230, ease: 'Sine.easeOut' });
++  }
++
++  private showSettings(): void {
++    track('screen.settings');
++    this.profile = loadProfile();
++    const root = this.clearScreen();
++    this.drawBackground(root, 'menu', C.line);
++    this.addHeader(root, 'НАСТРОЙКИ АРХИВА', 'комфорт без упрощения решений', 'local');
++
++    const panel = this.add.container(CX, 520);
++    root.add(panel);
++    panel.add(this.roundRect(0, 0, 960, 640, 40, 0x0d1832, 0.96, 0x2a4e7a, 2));
++    panel.add(this.add.image(-370, -190, 'skrebka').setDisplaySize(160, 238));
++    panel.add(this.roundRect(-370, -190, 170, 248, 28, 0x000000, 0, C.gold, 2));
++    panel.add(this.txt(-250, -285, 'СКРЕПКА НЕ ПРОТИВ УДОБСТВА', 27, '#f5c044', '900', 660));
++    panel.add(this.txt(-250, -238, 'Но если настройка обещает лёгкую прибыль — это не настройка, это демон в чекбоксе.', 29, '#f2f7ff', '900', 660, 'left', 1.12));
++
++    const settings = [
++      ['sound', 'ЗВУК', 'короткие синт-сигналы без музыки казино', C.cyan],
++      ['haptics', 'ВИБРАЦИЯ', 'тактильный щелчок решения', C.gold],
++      ['reducedMotion', 'МЕНЬШЕ АНИМАЦИИ', 'для спокойного архива и уставших глаз', C.green]
++    ] as const;
++
++    settings.forEach(([key, title, desc, color], index) => {
++      const y = -50 + index * 132;
++      const enabled = this.profile.settings[key];
++      const row = this.add.container(0, y);
++      panel.add(row);
++      row.add(this.roundRect(0, 0, 840, 104, 28, 0x071226, 0.92, enabled ? color : 0x2a4e7a, 2));
++      row.add(this.txt(-392, -34, title, 28, '#f2f7ff', '900', 600));
++      row.add(this.txt(-392, 8, desc, 21, '#8fa1c0', '700', 600));
++      row.add(this.roundRect(330, 0, 116, 56, 28, enabled ? color : 0x253048, 0.9, enabled ? color : 0x5a6c8a, 2));
++      row.add(this.txt(276, -19, enabled ? 'ON' : 'OFF', 26, '#f2f7ff', '900', 108, 'center'));
++      this.registerButton(row, 840, 104, () => {
++        this.profile = setSettings(this.profile, { [key]: !enabled });
++        this.showSettings();
++      });
++    });
++
++    const danger = this.add.container(CX, 1035);
++    root.add(danger);
++    danger.add(this.roundRect(0, 0, 960, 250, 34, 0x111f42, 0.94, C.red, 2));
++    danger.add(this.txt(-420, -90, 'ОПАСНАЯ ПАПКА', 25, '#fb4d6d', '900', 820));
++    danger.add(this.txt(-420, -44, 'Сброс удалит локальный прогресс: XP, proof, стрик, ревью. Рынок не пострадает. Только бумага.', 28, '#f2f7ff', '900', 820, 'left', 1.12));
++    danger.add(this.secondaryButton(0, 75, 820, 78, 'СБРОСИТЬ ПРОФИЛЬ', 'двойная проверка перед уничтожением архива', C.red, () => this.confirmReset()));
++
++    root.add(this.primaryButton(CX, 1430, 900, 110, 'НАЗАД В АРХИВ', 'настройки сохранены локально', C.cyan, () => this.showMenu()));
++
++    this.tweens.add({ targets: root, alpha: { from: 0, to: 1 }, duration: 230, ease: 'Sine.easeOut' });
++  }
++
++  private confirmReset(): void {
++    const overlay = this.add.container(0, 0);
++    this.screen?.add(overlay);
++    overlay.add(this.add.rectangle(CX, GAME_H / 2, GAME_W, GAME_H, 0x01030a, 0.82));
++    const panel = this.add.container(CX, 950);
++    overlay.add(panel);
++    panel.add(this.roundRect(0, 0, 900, 410, 38, 0x0d1832, 0.98, C.red, 3));
++    panel.add(this.txt(-390, -160, 'СБРОСИТЬ АРХИВ?', 40, '#fb4d6d', '900', 780, 'center'));
++    panel.add(this.txt(-390, -82, 'Это удалит локальный профиль. Скрепка будет делать вид, что не плакала.', 30, '#f2f7ff', '900', 780, 'center', 1.12));
++    panel.add(this.primaryButton(0, 70, 760, 92, 'ДА, УНИЧТОЖИТЬ БУМАГИ', 'последний шанс выглядит именно так', C.red, () => {
++      this.profile = resetProfile();
++      overlay.destroy(true);
++      this.showSettings();
++    }));
++    panel.add(this.secondaryButton(0, 178, 760, 72, 'ОТМЕНА', 'разум победил палец', C.purple, () => overlay.destroy(true)));
++  }
++
++  private reviewOptions(required: ProtocolId): ProtocolId[] {
++    const rest = (Object.keys(PROTOCOLS) as ProtocolId[]).filter((id) => id !== required);
++    const seed = required.length + this.profile.closedErrors + this.profile.runs;
++    const a = rest[seed % rest.length];
++    const b = rest[(seed + 2) % rest.length];
++    const options = [required, a, b];
++    for (let i = options.length - 1; i > 0; i--) {
++      const j = (seed + i * 7) % (i + 1);
++      [options[i], options[j]] = [options[j], options[i]];
++    }
++    return options;
++  }
++
++  private addHeader(root: Phaser.GameObjects.Container, title: string, subtitle: string, right: string): void {
++    root.add(this.roundRect(CX, 79, 984, 112, 32, 0x050a16, 0.88, 0x18304f, 2));
++    root.add(this.txt(78, 37, title, 44, '#f2f7ff', '900', 610));
++    root.add(this.txt(80, 87, subtitle, 22, '#8fa1c0', '800', 620));
++    root.add(this.txt(748, 55, right, 20, '#5a6c8a', '900', 250, 'right'));
++  }
++
++  private addMiniMeter(root: Phaser.GameObjects.Container, x: number, y: number, w: number, label: string, value: number, color: number): void {
++    root.add(this.txt(x - 150, y - 12, label, 16, '#8fa1c0', '900', 120));
++    root.add(this.roundRect(x - 2, y, w, 18, 9, 0x121d34, 1, 0x253a58, 1));
++    const fill = Math.max(0.03, Math.min(1, value));
++    root.add(this.roundRect(x - w / 2 + (w * fill) / 2, y, w * fill, 18, 9, color, 0.88));
++  }
++
++  private drawBackground(root: Phaser.GameObjects.Container, mode: 'menu' | 'battle' | 'result', accent = C.cyan): void {
++    const g = this.add.graphics();
++    root.add(g);
++
++    g.fillStyle(0x01030a, 1);
++    g.fillRect(0, 0, GAME_W, GAME_H);
++    g.fillStyle(0x061329, 0.92);
++    g.fillRect(0, 0, GAME_W, GAME_H);
++
++    g.fillStyle(accent, mode === 'menu' ? 0.08 : 0.06);
++    g.fillCircle(CX, -80, 560);
++    g.fillStyle(C.purple, mode === 'result' ? 0.08 : 0.04);
++    g.fillCircle(1030, 1830, 520);
++    g.fillStyle(0x000000, 0.36);
++    g.fillRect(0, 0, GAME_W, GAME_H);
++
++    g.lineStyle(2, 0x1a3557, 0.22);
++    for (let y = 165; y < GAME_H; y += 120) {
++      g.beginPath();
++      g.moveTo(0, y);
++      g.lineTo(GAME_W, y + 38);
++      g.strokePath();
++    }
++    for (let x = 34; x < GAME_W; x += 118) {
++      g.beginPath();
++      g.moveTo(x, 0);
++      g.lineTo(x - 160, GAME_H);
++      g.strokePath();
++    }
++
++    const seed = mode === 'menu' ? 19 : mode === 'battle' ? 31 : 47;
++    for (let i = 0; i < 42; i++) {
++      const x = (i * 83 + seed * 17) % GAME_W;
++      const y = (i * 137 + seed * 23) % GAME_H;
++      const a = 0.1 + ((i % 5) * 0.035);
++      g.fillStyle(i % 4 === 0 ? accent : 0x8fa1c0, a);
++      g.fillCircle(x, y, i % 3 === 0 ? 3 : 2);
++    }
++
++    const vignette = this.add.graphics();
++    root.add(vignette);
++    vignette.fillStyle(0x000000, 0.24);
++    vignette.fillRect(0, 0, 58, GAME_H);
++    vignette.fillRect(GAME_W - 58, 0, 58, GAME_H);
++  }
++
++  private drawTrace(parent: Phaser.GameObjects.Container, x: number, y: number, w: number, h: number, values: number[], accent: number, danger: number): void {
++    parent.add(this.roundRect(x + w / 2, y + h / 2, w, h, 22, 0x020611, 0.72, 0x1d3556, 1));
++    const g = this.add.graphics();
++    parent.add(g);
++
++    for (let i = 0; i < 6; i++) {
++      const xx = x + 35 + i * ((w - 70) / 5);
++      g.lineStyle(1, 0x23405f, 0.35);
++      g.beginPath();
++      g.moveTo(xx, y + 18);
++      g.lineTo(xx, y + h - 18);
++      g.strokePath();
++    }
++
++    g.lineStyle(10, accent, 0.16);
++    this.strokeTrace(g, x, y, w, h, values);
++    g.lineStyle(4, accent, 0.96);
++    this.strokeTrace(g, x, y, w, h, values);
++
++    values.forEach((value, i) => {
++      if (i === 0 || i === values.length - 1 || i === Math.floor(values.length / 2)) {
++        const px = x + 44 + i * ((w - 88) / (values.length - 1));
++        const py = y + h - 26 - value * (h - 52);
++        g.fillStyle(i === values.length - 1 ? danger : accent, 0.95);
++        g.fillCircle(px, py, 8);
++      }
++    });
++
++    parent.add(this.txt(x + 22, y + 14, 'СИГНАЛЬНЫЙ СЛЕД · без осей, без соблазна терминала', 18, '#5a6c8a', '800', w - 44));
++  }
++
++  private drawDecisionReplay(
++    parent: Phaser.GameObjects.Container,
++    x: number,
++    y: number,
++    w: number,
++    h: number,
++    values: number[],
++    isCorrect: boolean,
++    accent: number,
++    danger: number
++  ): void {
++    parent.add(this.roundRect(x + w / 2, y + h / 2, w, h, 24, 0x020611, 0.78, isCorrect ? accent : danger, 2));
++    parent.add(this.txt(x + 22, y + 14, 'БУДУЩЕЕ ПОСЛЕ ОТВЕТА', 18, isCorrect ? '#34d399' : '#fb4d6d', '900', 330));
++
++    const last = values[values.length - 1];
++    const direction = last >= 0.5 ? 1 : -1;
++    const future = values.concat(
++      Array.from({ length: 5 }, (_, i) => {
++        if (isCorrect) {
++          const drift = (0.52 - last) * ((i + 1) / 5);
++          return Phaser.Math.Clamp(last + drift + Math.sin(i * 1.7) * 0.025, 0.08, 0.94);
++        }
++        return Phaser.Math.Clamp(last + direction * 0.065 * (i + 1) + Math.sin(i * 2.1) * 0.045, 0.06, 0.96);
++      })
++    );
++
++    const g = this.add.graphics();
++    parent.add(g);
++
++    g.lineStyle(2, 0x23405f, 0.35);
++    g.beginPath();
++    g.moveTo(x + w * 0.64, y + 24);
++    g.lineTo(x + w * 0.64, y + h - 18);
++    g.strokePath();
++
++    g.lineStyle(8, 0x8fa1c0, 0.13);
++    this.strokePartialTrace(g, x + 28, y + 30, w - 56, h - 46, future, 0, values.length - 1);
++    g.lineStyle(4, 0x8fa1c0, 0.65);
++    this.strokePartialTrace(g, x + 28, y + 30, w - 56, h - 46, future, 0, values.length - 1);
++
++    g.lineStyle(10, isCorrect ? accent : danger, 0.18);
++    this.strokePartialTrace(g, x + 28, y + 30, w - 56, h - 46, future, values.length - 1, future.length - 1);
++    g.lineStyle(5, isCorrect ? accent : danger, 0.98);
++    this.strokePartialTrace(g, x + 28, y + 30, w - 56, h - 46, future, values.length - 1, future.length - 1);
++
++    parent.add(this.txt(x + 520, y + 18, isCorrect ? 'хаос потерял темп' : 'ошибка стала дороже', 20, '#f2f7ff', '900', 250, 'right'));
++  }
++
++  private strokePartialTrace(
++    g: Phaser.GameObjects.Graphics,
++    x: number,
++    y: number,
++    w: number,
++    h: number,
++    values: number[],
++    start: number,
++    end: number
++  ): void {
++    g.beginPath();
++    for (let i = start; i <= end; i++) {
++      const value = values[i];
++      const px = x + i * (w / (values.length - 1));
++      const py = y + h - value * h;
++      if (i === start) g.moveTo(px, py);
++      else g.lineTo(px, py);
++    }
++    g.strokePath();
++  }
++
++  private strokeTrace(g: Phaser.GameObjects.Graphics, x: number, y: number, w: number, h: number, values: number[]): void {
++    g.beginPath();
++    values.forEach((value, i) => {
++      const px = x + 44 + i * ((w - 88) / (values.length - 1));
++      const py = y + h - 26 - value * (h - 52);
++      if (i === 0) g.moveTo(px, py);
++      else g.lineTo(px, py);
++    });
++    g.strokePath();
++  }
++
++  private primaryButton(x: number, y: number, w: number, h: number, label: string, micro: string, accent: number, onClick: () => void): Phaser.GameObjects.Container {
++    const button = this.add.container(x, y);
++    button.add(this.roundRect(0, 0, w, h, 34, 0x0b2036, 0.98, accent, 4));
++    button.add(this.roundRect(0, h / 2 - 10, w - 24, 18, 9, accent, 0.16));
++    button.add(this.txt(-w / 2 + 40, -34, label, 35, '#f2f7ff', '900', w - 80, 'center'));
++    button.add(this.txt(-w / 2 + 40, 18, micro, 22, '#8fa1c0', '800', w - 80, 'center'));
++    this.registerButton(button, w, h, onClick);
++    if (!this.profile.settings.reducedMotion) {
++      this.tweens.add({ targets: button, scaleX: 1.012, scaleY: 1.012, duration: 1300, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
++    }
++    return button;
++  }
++
++  private navButton(x: number, y: number, w: number, label: string, micro: string, accent: number, onClick: () => void): Phaser.GameObjects.Container {
++    const button = this.add.container(x, y);
++    button.add(this.roundRect(0, 0, w, 106, 26, 0x071226, 0.93, accent, 2));
++    button.add(this.txt(-w / 2 + 18, -34, label, 24, '#f2f7ff', '900', w - 36, 'center'));
++    button.add(this.txt(-w / 2 + 18, 4, micro, 18, '#8fa1c0', '800', w - 36, 'center'));
++    this.registerButton(button, w, 106, onClick);
++    return button;
++  }
++
++  private secondaryButton(x: number, y: number, w: number, h: number, label: string, micro: string, accent: number, onClick: () => void): Phaser.GameObjects.Container {
++    const button = this.add.container(x, y);
++    button.add(this.roundRect(0, 0, w, h, 28, 0x071226, 0.92, accent, 2));
++    button.add(this.txt(-w / 2 + 36, -26, label, 26, '#f2f7ff', '900', w - 72, 'center'));
++    button.add(this.txt(-w / 2 + 36, 14, micro, 19, '#8fa1c0', '800', w - 72, 'center'));
++    this.registerButton(button, w, h, onClick);
++    return button;
++  }
++
++  private masteryRow(x: number, y: number, w: number, protocolId: ProtocolId): Phaser.GameObjects.Container {
++    const protocol = PROTOCOLS[protocolId];
++    const count = this.profile.protocolMastery[protocolId] ?? 0;
++    const progress = Math.min(1, count / 8);
++    const row = this.add.container(x + w / 2, y);
++    row.add(this.roundRect(0, 0, w, 48, 18, 0x0d1832, 0.82, protocol.border, 1));
++    row.add(this.txt(-w / 2 + 18, -17, protocol.shortTitle, 19, '#f2f7ff', '900', 170));
++    row.add(this.roundRect(115, 0, 470, 14, 7, 0x121d34, 1, 0x253a58, 1));
++    row.add(this.roundRect(115 - 235 + (470 * Math.max(progress, 0.03)) / 2, 0, 470 * Math.max(progress, 0.03), 14, 7, protocol.border, 0.9));
++    row.add(this.txt(365, -15, `${count}/8`, 18, '#8fa1c0', '900', 70, 'right'));
++    return row;
++  }
++
++  private miniProfileTile(x: number, y: number, label: string, value: string, color: number): Phaser.GameObjects.Container {
++    const tile = this.add.container(x, y);
++    tile.add(this.roundRect(0, 0, 178, 88, 22, 0x0d1832, 0.88, color, 2));
++    tile.add(this.txt(-72, -30, label.toUpperCase(), 16, '#8fa1c0', '900', 144, 'center'));
++    tile.add(this.txt(-72, -2, value, 34, '#f2f7ff', '900', 144, 'center'));
++    return tile;
++  }
++
++  private statTile(x: number, y: number, w: number, label: string, value: string, color: number): Phaser.GameObjects.Container {
++    const tile = this.add.container(x, y);
++    tile.add(this.roundRect(0, 0, w, 118, 24, 0x071226, 0.86, color, 2));
++    tile.add(this.txt(-w / 2 + 18, -42, label.toUpperCase(), 17, '#8fa1c0', '900', w - 36, 'center'));
++    tile.add(this.txt(-w / 2 + 18, -10, value, 46, '#f2f7ff', '900', w - 36, 'center'));
++    return tile;
++  }
++
++  private chip(x: number, y: number, label: string, color: number, w = 180): Phaser.GameObjects.Container {
++    const chip = this.add.container(x, y);
++    chip.add(this.roundRect(0, 0, w, 48, 20, 0x071226, 0.88, color, 2));
++    chip.add(this.txt(-w / 2 + 15, -15, label, 20, '#f2f7ff', '900', w - 30, 'center'));
++    return chip;
++  }
++
++  private exportProofCard(): void {
++    const renderer = this.game.renderer as unknown as {
++      snapshotArea?: (x: number, y: number, width: number, height: number, callback: (image: HTMLImageElement) => void, type?: string) => void;
++      snapshot?: (callback: (image: HTMLImageElement) => void, type?: string) => void;
++    };
++    const callback = (image: HTMLImageElement) => {
++      const link = document.createElement('a');
++      link.href = image.src;
++      link.download = `signal-arena-proof-${this.profile.lastProof ?? 'archive'}.png`;
++      link.click();
++      this.toast('PROOF-КАРТА ЭКСПОРТИРОВАНА. НЕ ПРОДАВАЙ ЕЁ КАК ПРОРОЧЕСТВО.', C.green);
++    };
++
++    if (renderer.snapshotArea) {
++      renderer.snapshotArea(60, 150, 960, 360, callback, 'image/png');
++    } else if (renderer.snapshot) {
++      renderer.snapshot(callback, 'image/png');
++    } else {
++      this.toast('ЭКСПОРТ НЕ ПОДДЕРЖАН ЭТИМ РЕНДЕРОМ.', C.red);
++    }
++  }
++
++  private toast(message: string, color: number): void {
++    const toast = this.add.container(CX, 188);
++    this.screen?.add(toast);
++    toast.add(this.roundRect(0, 0, 900, 74, 24, 0x050a16, 0.96, color, 2));
++    toast.add(this.txt(-420, -24, message, 22, '#f2f7ff', '900', 840, 'center'));
++    toast.setAlpha(0);
++    this.tweens.add({ targets: toast, alpha: 1, y: 208, duration: 120, ease: 'Sine.easeOut' });
++    this.time.delayedCall(980, () => {
++      this.tweens.add({ targets: toast, alpha: 0, y: 168, duration: 180, ease: 'Sine.easeIn', onComplete: () => toast.destroy(true) });
++    });
++  }
++
++  private playTone(frequency: number, duration: number, type: OscillatorType = 'sine', gainValue = 0.03): void {
++    if (!this.profile.settings.sound) return;
++    if (typeof window === 'undefined') return;
++    const AudioCtor = window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
++    if (!AudioCtor) return;
++
++    this.audioContext ??= new AudioCtor();
++    void this.audioContext.resume();
++
++    const oscillator = this.audioContext.createOscillator();
++    const gain = this.audioContext.createGain();
++    oscillator.type = type;
++    oscillator.frequency.value = frequency;
++    gain.gain.value = gainValue;
++    oscillator.connect(gain);
++    gain.connect(this.audioContext.destination);
++    oscillator.start();
++    gain.gain.exponentialRampToValueAtTime(0.0001, this.audioContext.currentTime + duration);
++    oscillator.stop(this.audioContext.currentTime + duration + 0.02);
++  }
++
++  private haptic(pattern: number | number[]): void {
++    if (!this.profile.settings.haptics) return;
++    if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
++      navigator.vibrate(pattern);
++    }
++  }
++
++  private registerButton(target: Phaser.GameObjects.Container, w: number, h: number, onClick: () => void): void {
++    target.setSize(w, h);
++    target.setInteractive(new Phaser.Geom.Rectangle(-w / 2, -h / 2, w, h), Phaser.Geom.Rectangle.Contains);
++    target.on('pointerover', () => {
++      this.tweens.add({ targets: target, scaleX: 1.018, scaleY: 1.018, duration: 90, ease: 'Sine.easeOut' });
++    });
++    target.on('pointerout', () => {
++      this.tweens.add({ targets: target, scaleX: 1, scaleY: 1, duration: 90, ease: 'Sine.easeOut' });
++    });
++    target.on('pointerdown', () => onClick());
++  }
++
++  private roundRect(
++    x: number,
++    y: number,
++    w: number,
++    h: number,
++    radius: number,
++    fill: number,
++    alpha = 1,
++    stroke?: number,
++    strokeWidth = 2
++  ): Phaser.GameObjects.GameObject {
++    if (this.rexUI?.add?.roundRectangle) {
++      const shape = this.rexUI.add.roundRectangle(x, y, w, h, radius, fill, alpha);
++      if (stroke !== undefined && shape.setStrokeStyle) {
++        shape.setStrokeStyle(strokeWidth, stroke, 0.9);
++      }
++      return shape;
++    }
++
++    const g = this.add.graphics({ x: x - w / 2, y: y - h / 2 });
++    g.fillStyle(fill, alpha);
++    g.fillRoundedRect(0, 0, w, h, radius);
++    if (stroke !== undefined) {
++      g.lineStyle(strokeWidth, stroke, 0.9);
++      g.strokeRoundedRect(0, 0, w, h, radius);
++    }
++    return g;
++  }
++
++  private txt(
++    x: number,
++    y: number,
++    content: string,
++    size: number,
++    color: string,
++    weight: '400' | '700' | '800' | '900' = '700',
++    width = 500,
++    align: CanvasTextAlign = 'left',
++    lineSpacing = 1.1
++  ): Phaser.GameObjects.Text {
++    const text = this.add.text(x, y, content, {
++      fontFamily: 'Inter, Arial, Helvetica, sans-serif',
++      fontSize: `${size}px`,
++      fontStyle: weight === '900' || weight === '800' ? 'bold' : 'normal',
++      color,
++      align,
++      wordWrap: { width, useAdvancedWrap: true },
++      lineSpacing: Math.round(size * (lineSpacing - 1))
++    });
++    return text;
++  }
++}
+diff --git a/src/game/assets.ts b/src/game/assets.ts
+new file mode 100644
+index 0000000..456206a
+--- /dev/null
++++ b/src/game/assets.ts
+@@ -0,0 +1,15 @@
++import skrebkaUrl from '../assets/skrebka.jpg?url';
++import fomoUrl from '../../enemy.fomo_wraith.jpg?url';
++import headlineUrl from '../../enemy.headline_titan.jpg?url';
++import hubrisUrl from '../../enemy.hubris_dragon.jpg?url';
++import leverageUrl from '../../enemy.leverage_goblin.jpg?url';
++import revengeUrl from '../../enemy.revenge_wraith.jpg?url';
++
++export const ASSETS = {
++  skrebka: skrebkaUrl,
++  fomo: fomoUrl,
++  headline: headlineUrl,
++  hubris: hubrisUrl,
++  leverage: leverageUrl,
++  revenge: revengeUrl
++};
+diff --git a/src/game/contentValidator.ts b/src/game/contentValidator.ts
+new file mode 100644
+index 0000000..c9d22d2
+--- /dev/null
++++ b/src/game/contentValidator.ts
+@@ -0,0 +1,33 @@
++import { CASES, PROTOCOLS, RUN_LENGTH } from './data';
++
++export function validateContent(): void {
++  const protocolIds = new Set(Object.keys(PROTOCOLS));
++  const ids = new Set<string>();
++  const errors: string[] = [];
++
++  if (CASES.length < RUN_LENGTH) {
++    errors.push(`Need at least ${RUN_LENGTH} cases, got ${CASES.length}`);
++  }
++
++  for (const item of CASES) {
++    if (ids.has(item.id)) errors.push(`Duplicate case id: ${item.id}`);
++    ids.add(item.id);
++
++    if (item.options.length !== 3) errors.push(`${item.id}: encounter must expose exactly 3 protocol options`);
++    if (!item.options.includes(item.correct)) errors.push(`${item.id}: correct protocol is not present in options`);
++    if (!protocolIds.has(item.correct)) errors.push(`${item.id}: unknown correct protocol ${item.correct}`);
++    if (item.signal.length !== 4) errors.push(`${item.id}: signal dossier must contain exactly 4 fragments`);
++    if (item.labOptions.length !== 3) errors.push(`${item.id}: lab must contain exactly 3 answers`);
++    if (item.labAnswer < 0 || item.labAnswer > 2) errors.push(`${item.id}: labAnswer must be 0..2`);
++    if (item.trace.length < 8) errors.push(`${item.id}: trace should have at least 8 points`);
++    if (item.trace.some((value) => value < 0 || value > 1)) errors.push(`${item.id}: trace values must be normalized 0..1`);
++  }
++
++  if (errors.length > 0) {
++    const message = `Signal Arena content validation failed:\n${errors.join('\n')}`;
++    if (import.meta.env.DEV) {
++      throw new Error(message);
++    }
++    console.warn(message);
++  }
++}
+diff --git a/src/game/data.ts b/src/game/data.ts
+new file mode 100644
+index 0000000..8b3fc30
+--- /dev/null
++++ b/src/game/data.ts
+@@ -0,0 +1,569 @@
++export type ProtocolId =
++  | 'evidence-only'
++  | 'noise-quarantine'
++  | 'anti-fomo'
++  | 'risk-first'
++  | 'cooldown'
++  | 'out-of-market';
++
++export interface ProtocolCard {
++  id: ProtocolId;
++  title: string;
++  shortTitle: string;
++  micro: string;
++  doctrine: string;
++  icon: string;
++  color: number;
++  border: number;
++}
++
++export interface ArenaCase {
++  id: string;
++  bossName: string;
++  bossTitle: string;
++  assetKey: string;
++  district: string;
++  danger: string;
++  difficulty: 1 | 2 | 3 | 4 | 5;
++  headline: string;
++  brief: string;
++  signal: string[];
++  hiddenTruth: string;
++  distortion: string;
++  correct: ProtocolId;
++  options: ProtocolId[];
++  success: string;
++  failure: string;
++  lesson: string;
++  trace: number[];
++  labQuestion: string;
++  labOptions: string[];
++  labAnswer: number;
++  palette: {
++    accent: number;
++    danger: number;
++  };
++}
++
++export const RUN_LENGTH = 5;
++
++export const PROTOCOLS: Record<ProtocolId, ProtocolCard> = {
++  'evidence-only': {
++    id: 'evidence-only',
++    title: 'ДОКАЗАТЕЛЬСТВА',
++    shortTitle: 'ФАКТЫ',
++    micro: 'сначала факты, потом вера',
++    doctrine: 'Проверка контекста, уровня, объёма и причины отказа. Победа не отменяет протокол.',
++    icon: '✓',
++    color: 0x12243f,
++    border: 0x34d399
++  },
++  'noise-quarantine': {
++    id: 'noise-quarantine',
++    title: 'КАРАНТИН ШУМА',
++    shortTitle: 'ШУМ',
++    micro: 'новости не равны сигналу',
++    doctrine: 'Любая срочность сначала попадает в карантин: источник, реакция рынка, подтверждение.',
++    icon: '⌁',
++    color: 0x1b1b33,
++    border: 0xb388ff
++  },
++  'anti-fomo': {
++    id: 'anti-fomo',
++    title: 'АНТИ-FOMO',
++    shortTitle: 'АНТИ-FOMO',
++    micro: 'поздний вход — налог на надежду',
++    doctrine: 'Если плановый вход ушёл, решение отменяется. Пропуск — защита капитала, не слабость.',
++    icon: '⛔',
++    color: 0x1f182a,
++    border: 0xf5c044
++  },
++  'risk-first': {
++    id: 'risk-first',
++    title: 'РИСК ПЕРВЫМ',
++    shortTitle: 'РИСК',
++    micro: 'система важнее героизма',
++    doctrine: 'Если стоп, размер или серия ошибок не помещаются в лимит, сигнала не существует.',
++    icon: '◆',
++    color: 0x16253a,
++    border: 0x22d8f5
++  },
++  cooldown: {
++    id: 'cooldown',
++    title: 'ПАУЗА ПОСЛЕ УДАРА',
++    shortTitle: 'ПАУЗА',
++    micro: 'месть — платная функция рынка',
++    doctrine: 'После эмоционального удара сначала пауза и запись причины. Новый ход только после остывания.',
++    icon: 'Ⅱ',
++    color: 0x28191a,
++    border: 0xfb4d6d
++  },
++  'out-of-market': {
++    id: 'out-of-market',
++    title: 'ВНЕ РЫНКА',
++    shortTitle: 'ПРОПУСК',
++    micro: 'пропуск — тоже ход',
++    doctrine: 'Когда данные конфликтуют, лучший клик — отсутствие клика. Рынок не выдаёт медали за суету.',
++    icon: '▢',
++    color: 0x13202d,
++    border: 0x8fa1c0
++  }
++};
++
++export const CASES: ArenaCase[] = [
++  {
++    id: 'fomo-wraith',
++    bossName: 'Фантом FOMO',
++    bossTitle: 'департамент упущенной прибыли',
++    assetKey: 'boss-fomo',
++    district: 'Аллея поздних входов',
++    danger: 'нарратив разогрет',
++    difficulty: 2,
++    headline: 'НОВОСТИ: ракета уже улетела. Толпа предлагает купить её хвост.',
++    brief: 'Сигнал сияет слишком громко. Рынок не зовёт — он проверяет, как быстро ты забываешь правила.',
++    signal: ['рост без свежего объёма', 'соцсети кричат 100x', 'вход выше зоны плана', 'стоп не помещается в бюджет'],
++    hiddenTruth: 'Возможность уже ушла. Осталось только желание не выглядеть опоздавшим.',
++    distortion: 'Фантом продаёт сожаление под видом возможности.',
++    correct: 'anti-fomo',
++    options: ['anti-fomo', 'risk-first', 'noise-quarantine'],
++    success: 'FOMO заперт. Ты не купил надежду на максимуме. Редкий случай: деньги остались у владельца.',
++    failure: 'Рынок принял твоё желание догнать свечу. Свеча не возражала. Она уже была далеко.',
++    lesson: 'Поздний импульс требует протокола Анти-FOMO: признать пропуск, зафиксировать условия входа заново, не платить налог на сожаление.',
++    trace: [0.36, 0.38, 0.4, 0.47, 0.56, 0.62, 0.72, 0.78, 0.86, 0.93],
++    labQuestion: 'Что здесь главный яд?',
++    labOptions: ['опоздание к плану', 'низкий шрифт новости', 'слишком ровная сетка'],
++    labAnswer: 0,
++    palette: { accent: 0x34d399, danger: 0xf5c044 }
++  },
++  {
++    id: 'headline-titan',
++    bossName: 'Титан Заголовков',
++    bossTitle: 'общественный комитет паники',
++    assetKey: 'boss-headline',
++    district: 'Типография катастроф',
++    danger: 'медиа-шторм',
++    difficulty: 2,
++    headline: 'СРОЧНО: всё потеряно. Источник: человек с микрофоном и графиком без осей.',
++    brief: 'Заголовок огромен. Данных мало. Титан хочет, чтобы ты перепутал шум с направлением.',
++    signal: ['новость без подтверждения объёма', 'спред расширен', 'первый импульс уже прошёл', 'старший таймфрейм не сломан'],
++    hiddenTruth: 'Паника громкая, но структура не изменилась. Новость пока просто шумит.',
++    distortion: 'Паника маскируется под срочность.',
++    correct: 'noise-quarantine',
++    options: ['evidence-only', 'noise-quarantine', 'out-of-market'],
++    success: 'Шум отправлен в карантин. Регуляторы обеспокоены. Впервые это не твоя проблема.',
++    failure: 'Ты поверил заголовку быстрее, чем рынок успел его переварить. Бумага довольна. Капитал — нет.',
++    lesson: 'Новость становится сигналом только после подтверждения: объём, реакция уровня, контекст. До этого это театральный дым.',
++    trace: [0.5, 0.48, 0.51, 0.46, 0.44, 0.49, 0.47, 0.46, 0.5, 0.48],
++    labQuestion: 'Какая проверка первая?',
++    labOptions: ['репосты', 'подтверждение рынком', 'громкость заголовка'],
++    labAnswer: 1,
++    palette: { accent: 0xb388ff, danger: 0xfb4d6d }
++  },
++  {
++    id: 'leverage-goblin',
++    bossName: 'Гоблин Плеча',
++    bossTitle: 'служба ускоренного банкротства',
++    assetKey: 'boss-leverage',
++    district: 'Кредитный подвал',
++    danger: 'перегруз риска',
++    difficulty: 3,
++    headline: 'ПРИБЫЛЬ БЛИЗКО. Гоблин предлагает увеличить ставку, потому что математика устала.',
++    brief: 'Идея может быть верной. Размер позиции — нет. Гоблин не спорит с анализом, он тихо ломает выживаемость.',
++    signal: ['волатильность выше нормы', 'стоп дальше обычного', 'серия из двух ошибок', 'система требует лимит'],
++    hiddenTruth: 'Проблема не в направлении. Проблема в том, что размер позиции превратился в костюм супергероя.',
++    distortion: 'Размер позиции притворяется уверенностью.',
++    correct: 'risk-first',
++    options: ['risk-first', 'evidence-only', 'anti-fomo'],
++    success: 'Риск поставлен первым. Гоблин недоволен: он пришёл за капиталом, а получил таблицу лимитов.',
++    failure: 'Ты назвал это смелостью. Журнал назвал это бесплатной доставкой денег гоблину.',
++    lesson: 'Если стоп не помещается в бюджет риска, решения нет. Есть только красивое саморазрушение.',
++    trace: [0.42, 0.5, 0.37, 0.58, 0.35, 0.64, 0.32, 0.7, 0.41, 0.62],
++    labQuestion: 'Что ломает систему?',
++    labOptions: ['размер и стоп', 'цвет свечей', 'название монеты'],
++    labAnswer: 0,
++    palette: { accent: 0x22d8f5, danger: 0xfb4d6d }
++  },
++  {
++    id: 'revenge-wraith',
++    bossName: 'Призрак Мести',
++    bossTitle: 'ритуал вернуть своё немедленно',
++    assetKey: 'boss-revenge',
++    district: 'Площадь реванша',
++    danger: 'эмоциональный перегрев',
++    difficulty: 3,
++    headline: 'ПОТЕРЯ ЗАФИКСИРОВАНА. Система предлагает доказать графику, кто здесь главный.',
++    brief: 'После удара мозг требует реванша. Рынок любит последовательность: сначала ошибка, потом её подписка.',
++    signal: ['предыдущий ход провален', 'пульс решений вырос', 'план входа отсутствует', 'желание “отбить” сильнее фактов'],
++    hiddenTruth: 'Это не новая возможность. Это старая боль в новом плаще.',
++    distortion: 'Месть выглядит как активность. На деле это пожар в бухгалтерии.',
++    correct: 'cooldown',
++    options: ['cooldown', 'risk-first', 'evidence-only'],
++    success: 'Пауза активирована. Призрак потерял доступ к кнопкам. Странно, но именно так выглядит сила.',
++    failure: 'Ты попытался вернуть рынок на место. Рынок переехал и оставил тебе счёт за аренду эмоций.',
++    lesson: 'После потери нужен кулдаун: один ход без решений, запись причины, новая проверка только после остывания.',
++    trace: [0.54, 0.45, 0.48, 0.36, 0.33, 0.42, 0.31, 0.35, 0.28, 0.3],
++    labQuestion: 'Какой симптом главный?',
++    labOptions: ['желание отбить', 'отсутствие эмодзи', 'слишком тихий фон'],
++    labAnswer: 0,
++    palette: { accent: 0xfb4d6d, danger: 0xff7a3d }
++  },
++  {
++    id: 'hubris-dragon',
++    bossName: 'Дракон Самоуверенности',
++    bossTitle: 'казначейство победителей одного раза',
++    assetKey: 'boss-hubris',
++    district: 'Зал легенд о себе',
++    danger: 'культ собственной правоты',
++    difficulty: 4,
++    headline: 'ТЫ БЫЛ ПРАВ. Самое опасное сообщение дня доставлено успешно.',
++    brief: 'После удачного решения дракон шепчет, что проверка больше не нужна. Он питается людьми, которые “и так всё видят”.',
++    signal: ['прибыльный прошлый ход', 'нет нового подтверждения', 'условия изменились', 'план не обновлён'],
++    hiddenTruth: 'Победа была в прошлом. Текущий сигнал пока без паспорта.',
++    distortion: 'Уверенность пытается заменить доказательства.',
++    correct: 'evidence-only',
++    options: ['evidence-only', 'out-of-market', 'anti-fomo'],
++    success: 'Дракон лишён легенды. Ты проверил факты после победы. Редкий зверь: дисциплина без трагедии.',
++    failure: 'Прибыль оправдала нарушение правил. Поздравляем: рынок заметил твою самоуверенность.',
++    lesson: 'Победа не отменяет протокол. Каждое решение начинается заново: контекст, риск, подтверждение, причина отказа.',
++    trace: [0.34, 0.4, 0.46, 0.52, 0.5, 0.55, 0.51, 0.57, 0.53, 0.56],
++    labQuestion: 'Что нельзя заменить уверенностью?',
++    labOptions: ['новые доказательства', 'золотой интерфейс', 'мем про дракона'],
++    labAnswer: 0,
++    palette: { accent: 0xf5c044, danger: 0x34d399 }
++  },
++  {
++    id: 'liquidity-mirage',
++    bossName: 'Мираж Ликвидности',
++    bossTitle: 'служба красивых объёмов',
++    assetKey: 'boss-headline',
++    district: 'Бирюзовый базар',
++    danger: 'ложное подтверждение',
++    difficulty: 3,
++    headline: 'ОБЪЁМ ВЫРОС. Правда, только там, где его никто не может потратить.',
++    brief: 'На младшем следе всё выглядит убедительно. Старший контекст молчит, стакан в нашем мире не нужен, но логика ликвидности всё равно нужна.',
++    signal: ['одна свеча дала всплеск', 'уровень не принят', 'последующие бары глохнут', 'контекст против движения'],
++    hiddenTruth: 'Один всплеск не равен спросу. Это хлопок двери, а не прибытие армии.',
++    distortion: 'Мираж продаёт один бар как доказательство эпохи.',
++    correct: 'evidence-only',
++    options: ['evidence-only', 'anti-fomo', 'noise-quarantine'],
++    success: 'Мираж рассыпался. Ты потребовал продолжения доказательств. Наглость редкая, полезная.',
++    failure: 'Ты назвал один всплеск ликвидностью. Рынок назвал это рекламной дегустацией ловушки.',
++    lesson: 'Доказательство требует продолжения: реакция после импульса важнее самого импульса.',
++    trace: [0.44, 0.45, 0.46, 0.77, 0.53, 0.48, 0.47, 0.45, 0.44, 0.46],
++    labQuestion: 'Почему объём подозрителен?',
++    labOptions: ['нет продолжения', 'слишком много букв', 'не тот фонарь'],
++    labAnswer: 0,
++    palette: { accent: 0x22d8f5, danger: 0xf5c044 }
++  },
++  {
++    id: 'sideways-siren',
++    bossName: 'Сирена Боковика',
++    bossTitle: 'хор ложных прорывов',
++    assetKey: 'boss-fomo',
++    district: 'Док фальшивых пробоев',
++    danger: 'режим неясен',
++    difficulty: 2,
++    headline: 'РЫНОК ДВИНУЛСЯ. На три пикселя. Комментаторы уже строят памятник тренду.',
++    brief: 'Цена ходит в коробке и изображает судьбу. Сирена хочет, чтобы ты играл там, где правила ещё не появились.',
++    signal: ['границы диапазона рядом', 'ложные проколы повторяются', 'импульс слабый', 'соотношение риска испорчено'],
++    hiddenTruth: 'Лучшее решение — признать отсутствие решения.',
++    distortion: 'Боковик притворяется началом большой истории.',
++    correct: 'out-of-market',
++    options: ['out-of-market', 'evidence-only', 'anti-fomo'],
++    success: 'Ты остался вне рынка. Сирена обиделась: она репетировала драму без зрителя.',
++    failure: 'Ты вошёл в шумную коробку. Коробка закрылась. Спасибо за участие в тесте стен.',
++    lesson: 'Когда режим неясен и риск/награда испорчены, пропуск — полноценное решение.',
++    trace: [0.48, 0.55, 0.44, 0.53, 0.46, 0.57, 0.43, 0.51, 0.47, 0.52],
++    labQuestion: 'Какая позиция здесь лучшая?',
++    labOptions: ['вне рынка', 'внутри эмоций', 'внутри заголовка'],
++    labAnswer: 0,
++    palette: { accent: 0x8fa1c0, danger: 0xb388ff }
++  },
++  {
++    id: 'whale-footprint',
++    bossName: 'След Кита',
++    bossTitle: 'музей случайных землетрясений',
++    assetKey: 'boss-leverage',
++    district: 'Набережная крупных кошельков',
++    danger: 'след крупного игрока',
++    difficulty: 4,
++    headline: 'КИТ ШЕВЕЛЬНУЛСЯ. Малые лодки снова называют это приглашением.',
++    brief: 'Большое движение заметно, но причина не ясна. Кит мог переставить мебель. Ты не обязан жить под ней.',
++    signal: ['движение без ретеста', 'младшие сигналы конфликтуют', 'ликвидность уже снята', 'догонять поздно'],
++    hiddenTruth: 'Событие есть. Торгового решения нет.',
++    distortion: 'Крупный след притворяется личной подсказкой.',
++    correct: 'out-of-market',
++    options: ['noise-quarantine', 'out-of-market', 'risk-first'],
++    success: 'Ты не прыгнул под кита. Биологи рынка благодарят за сохранение вида.',
++    failure: 'Ты решил, что след кита — это карта сокровищ. Это была карта места, где тебя раздавили бы.',
++    lesson: 'Большое движение без ретеста и плана чаще требует наблюдения, а не участия.',
++    trace: [0.39, 0.4, 0.41, 0.68, 0.74, 0.7, 0.62, 0.66, 0.61, 0.6],
++    labQuestion: 'Что отсутствует?',
++    labOptions: ['ретест и план', 'красивый логотип', 'панель объёма на 12 кнопок'],
++    labAnswer: 0,
++    palette: { accent: 0x22d8f5, danger: 0x8fa1c0 }
++  },
++  {
++    id: 'influencer-oracle',
++    bossName: 'Оракул Инфлюенсеров',
++    bossTitle: 'министерство чужой уверенности',
++    assetKey: 'boss-headline',
++    district: 'Амфитеатр прогнозов',
++    danger: 'социальный нарратив',
++    difficulty: 3,
++    headline: 'ЭКСПЕРТ УВЕРЕН. Его прошлый прогноз теперь считается историческим артефактом.',
++    brief: 'Толпа повторяет одну фразу. Данные повторяют тишину. Оракул просит заменить процесс авторитетом.',
++    signal: ['тезис пришёл из соцсетей', 'свой план не сформулирован', 'уровень не подтверждён', 'толпа уже внутри'],
++    hiddenTruth: 'Ты собираешься купить чужую уверенность, а оплатить её своими ошибками.',
++    distortion: 'Авторитет подменяет доказательства.',
++    correct: 'noise-quarantine',
++    options: ['noise-quarantine', 'evidence-only', 'risk-first'],
++    success: 'Оракул отправлен в карантин. Прогноз остался в интернете, где ему и место.',
++    failure: 'Ты взял чужую уверенность в аренду. Депозит рынок не вернул.',
++    lesson: 'Соцсигнал сначала изолируется: источник, мотив, задержка, подтверждение рынком. До этого это чужой шум.',
++    trace: [0.45, 0.47, 0.5, 0.54, 0.57, 0.55, 0.51, 0.5, 0.49, 0.47],
++    labQuestion: 'Что подменяет процесс?',
++    labOptions: ['авторитет', 'анимация', 'рамка карточки'],
++    labAnswer: 0,
++    palette: { accent: 0xb388ff, danger: 0xf5c044 }
++  },
++  {
++    id: 'averaging-ooze',
++    bossName: 'Слизь Усреднения',
++    bossTitle: 'комитет “ещё чуть-чуть”',
++    assetKey: 'boss-leverage',
++    district: 'Болото переносов стопа',
++    danger: 'нарушение лимитов',
++    difficulty: 4,
++    headline: 'ПОЗИЦИЯ ПРОТИВ ТЕБЯ. Слизь предлагает добавить денег, чтобы ошибка стала увереннее.',
++    brief: 'Цена не обязана извиняться. Усреднение без нового плана — это попытка накормить яму, чтобы она стала мостом.',
++    signal: ['идея инвалидирована', 'стоп уже переносился', 'размер растёт без фактов', 'лимит дня почти исчерпан'],
++    hiddenTruth: 'Ты не улучшаешь вход. Ты покупаешь право ошибаться громче.',
++    distortion: 'Убыток просит бюджета на продолжение спектакля.',
++    correct: 'risk-first',
++    options: ['risk-first', 'cooldown', 'evidence-only'],
++    success: 'Слизь высохла. Лимит сильнее надежды. Непопулярно, зато живо.',
++    failure: 'Ты усреднил не позицию, а проблему. Теперь у проблемы красивый средний вход.',
++    lesson: 'Инвалидация идеи закрывает действие. Добавление риска без новых доказательств запрещено.',
++    trace: [0.62, 0.57, 0.52, 0.49, 0.45, 0.42, 0.39, 0.36, 0.34, 0.31],
++    labQuestion: 'Что уже произошло?',
++    labOptions: ['идея инвалидирована', 'победа близко', 'система просит селфи'],
++    labAnswer: 0,
++    palette: { accent: 0x22d8f5, danger: 0xfb4d6d }
++  },
++  {
++    id: 'green-candle-cult',
++    bossName: 'Культ Зелёной Свечи',
++    bossTitle: 'секта “теперь точно”',
++    assetKey: 'boss-fomo',
++    district: 'Храм позднего восторга',
++    danger: 'ритуал толпы',
++    difficulty: 2,
++    headline: 'СВЕЧА ЗЕЛЁНАЯ. Прихожане считают это фундаментальным анализом.',
++    brief: 'Одна яркая свеча собирает хор верующих. Но план не становится планом, если его поют громко.',
++    signal: ['последняя свеча аномальна', 'вход далеко от зоны', 'объём не подтвердил продолжение', 'риск хуже нормы'],
++    hiddenTruth: 'Ты видишь цвет, но не видишь цену ошибки.',
++    distortion: 'Зелёный цвет маскирует поздний вход.',
++    correct: 'anti-fomo',
++    options: ['anti-fomo', 'evidence-only', 'out-of-market'],
++    success: 'Культ остался без пожертвования. Свеча горит, но твой кошелёк не участвует в обряде.',
++    failure: 'Ты принял цвет за стратегию. График оценил минимализм и забрал комиссию судьбы.',
++    lesson: 'Сильная свеча после ухода из зоны — повод ждать новый сетап, а не догонять.',
++    trace: [0.33, 0.35, 0.38, 0.41, 0.5, 0.62, 0.74, 0.82, 0.86, 0.84],
++    labQuestion: 'Что замаскировано?',
++    labOptions: ['поздний вход', 'длинный текст', 'криптоюмор'],
++    labAnswer: 0,
++    palette: { accent: 0x34d399, danger: 0xf5c044 }
++  },
++  {
++    id: 'macro-fog',
++    bossName: 'Макро-Туман',
++    bossTitle: 'архив неопределённых ставок',
++    assetKey: 'boss-headline',
++    district: 'Мост данных без расписания',
++    danger: 'контекст конфликтует',
++    difficulty: 3,
++    headline: 'ДАННЫЕ СКОРО. Рынок делает вид, что знает, но нервно проверяет часы.',
++    brief: 'Перед важным событием любой микросигнал может стать расходником. Туман не враг направления, он враг уверенности.',
++    signal: ['событие через час', 'спред и амплитуда растут', 'сетап неполный', 'план не учитывает выброс'],
++    hiddenTruth: 'Проблема не в анализе. Проблема во времени, где анализ дешевеет.',
++    distortion: 'Неопределённость притворяется обычным рабочим днём.',
++    correct: 'out-of-market',
++    options: ['out-of-market', 'noise-quarantine', 'risk-first'],
++    success: 'Ты переждал туман. Рынок шипит: ему нужен был статист в первом акте.',
++    failure: 'Ты вошёл перед выбросом. Поздравляем, ты стал единицей волатильности.',
++    lesson: 'Перед событием с неизвестной реакцией отсутствие позиции часто является главным протоколом.',
++    trace: [0.49, 0.5, 0.48, 0.52, 0.46, 0.55, 0.44, 0.58, 0.42, 0.57],
++    labQuestion: 'Главный риск?',
++    labOptions: ['событийный выброс', 'отсутствие дракона', 'слишком ровный текст'],
++    labAnswer: 0,
++    palette: { accent: 0x8fa1c0, danger: 0xb388ff }
++  },
++  {
++    id: 'streak-addict',
++    bossName: 'Демон Серии',
++    bossTitle: 'налоговая инспекция победителей',
++    assetKey: 'boss-hubris',
++    district: 'Лестница “ещё раз”',
++    danger: 'после серии побед',
++    difficulty: 5,
++    headline: 'ТРИ УДАЧИ ПОДРЯД. Демон сообщает, что статистика теперь работает лично на тебя.',
++    brief: 'Хорошая серия портит память. Рынок не обязан уважать твою легенду, особенно если легенда без стопа.',
++    signal: ['серия побед повышает размер', 'новый сетап слабее прежних', 'стоп шире', 'решение ускорилось'],
++    hiddenTruth: 'Серия не делает слабый сетап сильным. Она делает тебя громче.',
++    distortion: 'Победы требуют продолжения как плохой сериал.',
++    correct: 'risk-first',
++    options: ['risk-first', 'evidence-only', 'cooldown'],
++    success: 'Серия поставлена на поводок. Демон расстроен: он хотел культ, получил лимит.',
++    failure: 'Ты повысил риск после удачи. Рынок любит людей, которые считают себя законом больших чисел.',
++    lesson: 'После серии побед размер не увеличивается без независимых условий. Риск остаётся первым.',
++    trace: [0.42, 0.46, 0.5, 0.57, 0.62, 0.6, 0.65, 0.63, 0.61, 0.59],
++    labQuestion: 'Что нельзя делать после серии?',
++    labOptions: ['автоматически повышать риск', 'читать журнал', 'проверять контекст'],
++    labAnswer: 0,
++    palette: { accent: 0xf5c044, danger: 0xfb4d6d }
++  },
++  {
++    id: 'loss-loop',
++    bossName: 'Петля Убытка',
++    bossTitle: 'бухгалтерия “почти вернул”',
++    assetKey: 'boss-revenge',
++    district: 'Кольцо повторных ошибок',
++    danger: 'потеря самоконтроля',
++    difficulty: 4,
++    headline: 'МИНУС НЕБОЛЬШОЙ. Именно так начинаются большие объяснения.',
++    brief: 'Петля не выглядит страшно. Она выглядит разумно ровно до третьего повторения.',
++    signal: ['две попытки подряд', 'аргументы повторяются', 'ошибка не записана', 'эмоция сильнее проверки'],
++    hiddenTruth: 'Ты не анализируешь. Ты перезапускаешь боль с новым названием.',
++    distortion: 'Повторение выдаёт себя за настойчивость.',
++    correct: 'cooldown',
++    options: ['cooldown', 'out-of-market', 'noise-quarantine'],
++    success: 'Петля разомкнута. Самое прибыльное действие дня — не продолжать день.',
++    failure: 'Ты назвал третью попытку дисциплиной. Журнал тихо закрыл лицо руками.',
++    lesson: 'Повтор одной идеи после убытка без нового факта запускает паузу и обязательную запись ошибки.',
++    trace: [0.55, 0.5, 0.53, 0.48, 0.5, 0.44, 0.46, 0.39, 0.41, 0.36],
++    labQuestion: 'Что надо сделать?',
++    labOptions: ['пауза и запись', 'четвёртая попытка', 'поменять цвет свечи'],
++    labAnswer: 0,
++    palette: { accent: 0xfb4d6d, danger: 0xff7a3d }
++  },
++  {
++    id: 'perfect-entry-trap',
++    bossName: 'Идеальный Вход',
++    bossTitle: 'фокусник без выхода',
++    assetKey: 'boss-hubris',
++    district: 'Сцена точных линий',
++    danger: 'план без выхода',
++    difficulty: 3,
++    headline: 'ВХОД КРАСИВЫЙ. Выход не найден. Но кому нужна дверь в горящем театре?',
++    brief: 'Сетап аккуратный, как рекламный плакат. Но нет инвалидации, частичных целей и причины отмены.',
++    signal: ['условия входа есть', 'инвалидация не записана', 'тейк не определён', 'эмоциональный риск низкий'],
++    hiddenTruth: 'Хороший вход без выхода — это контракт с неизвестной ценой.',
++    distortion: 'Красота сетапа отвлекает от правил выхода.',
++    correct: 'evidence-only',
++    options: ['evidence-only', 'risk-first', 'out-of-market'],
++    success: 'Фокус раскрыт. Ты потребовал выход до входа. Театр недоволен, пожарная служба хлопает.',
++    failure: 'Ты вошёл в красивую дверь без плана выхода. Архитектор рынка смеётся слишком громко.',
++    lesson: 'Вход не является планом. До решения нужны инвалидация, цели, условия отмены и риск.',
++    trace: [0.4, 0.43, 0.47, 0.51, 0.55, 0.54, 0.57, 0.56, 0.58, 0.57],
++    labQuestion: 'Чего не хватает?',
++    labOptions: ['выхода и инвалидации', 'ещё одного заголовка', 'героической музыки'],
++    labAnswer: 0,
++    palette: { accent: 0xf5c044, danger: 0x22d8f5 }
++  },
++  {
++    id: 'committee-of-signals',
++    bossName: 'Комитет Сигналов',
++    bossTitle: 'сорок мнений в одном плаще',
++    assetKey: 'boss-headline',
++    district: 'Зал конфликтующих индикаторов',
++    danger: 'перегруз данных',
++    difficulty: 5,
++    headline: 'ВСЕ ИНДИКАТОРЫ ГОВОРЯТ. Проблема в том, что каждый говорит на своём суде.',
++    brief: 'Когда данных слишком много, игрок ищет тот фрагмент, который разрешит желание. Комитет любит демократию без правил.',
++    signal: ['таймфреймы конфликтуют', 'объём не подтверждает', 'уровень рядом', 'план выбирается задним числом'],
++    hiddenTruth: 'Ты не нашёл сигнал. Ты нашёл оправдание среди шума.',
++    distortion: 'Перегруз данных притворяется глубоким анализом.',
++    correct: 'noise-quarantine',
++    options: ['evidence-only', 'noise-quarantine', 'out-of-market'],
++    success: 'Комитет распущен. Ты оставил только проверяемые факты. Остальные ушли в совещание навсегда.',
++    failure: 'Ты выбрал любимый аргумент и назвал его консенсусом. Демократия рынка объявила ликвидацию.',
++    lesson: 'Когда данные конфликтуют, лишний шум убирается. Решение строится на заранее заданных критериях, не на понравившемся индикаторе.',
++    trace: [0.46, 0.52, 0.49, 0.56, 0.5, 0.54, 0.48, 0.53, 0.47, 0.51],
++    labQuestion: 'Что происходит?',
++    labOptions: ['перегруз данных', 'идеальная ясность', 'бесплатная прибыль'],
++    labAnswer: 0,
++    palette: { accent: 0xb388ff, danger: 0x22d8f5 }
++  }
++];
++
++export const DAILY_MISSIONS = [
++  'Закрой одну ошибку в архиве. Рынок ненавидит бумажную работу.',
++  'Пройди рейд без потери всей выдержки. Паника бесплатна, лечение нет.',
++  'Победи любое FOMO-искажение. Не покупай хвост ракеты.',
++  'Открой кодекс перед рейдом. Знание скучно, пока не экономит деньги.'
++];
++
++export interface CosmeticItem {
++  id: string;
++  title: string;
++  price: number;
++  description: string;
++  color: number;
++}
++
++export const COSMETICS: CosmeticItem[] = [
++  {
++    id: 'archive-brass',
++    title: 'Латунная папка',
++    price: 80,
++    description: 'Рамка proof-карты для людей, которые закрывают ошибки без аплодисментов.',
++    color: 0xf5c044
++  },
++  {
++    id: 'cyan-protocol',
++    title: 'Бирюзовый протокол',
++    price: 120,
++    description: 'Холодный неон для тех, кто ставит риск раньше героизма.',
++    color: 0x22d8f5
++  },
++  {
++    id: 'panic-violet',
++    title: 'Фиолетовый карантин',
++    price: 160,
++    description: 'Косметика для изгнания шума. Не изгнание долгов. Не путать.',
++    color: 0xb388ff
++  },
++  {
++    id: 'redacted-red',
++    title: 'Красная редактура',
++    price: 220,
++    description: 'Выглядит опасно. На ответы не влияет. Юридический отдел доволен.',
++    color: 0xfb4d6d
++  }
++];
++
++export const BADGE_COPY: Record<string, string> = {
++  ARCHIVE_ASSISTANT: 'Архивный помощник',
++  FIRST_CLOSED_ERROR: 'Первая закрытая ошибка',
++  NO_TERMINAL_DISCIPLINE: 'Без терминального культа',
++  PERFECT_PROTOCOL: 'Идеальный протокол',
++  THREE_RAIDS: 'Три рейда без побега',
++  REVIEWER: 'Бухгалтер боли',
++  LAB_RAT: 'Лаборант хаоса'
++};
++
++export const SKREBKA_LINES = {
++  intro: 'Я пришёл из прошлого, чтобы помочь тебе в будущем. Не называй меня ИИ. Я канцелярский инстинкт.',
++  battle: [
++    'Сначала протокол. Потом героизм. Героизм обычно дороже.',
++    'Если кнопка просит нажать её срочно — это не кнопка, это ловушка с подсветкой.',
++    'Вне рынка тоже позиция. Самая обидная для хаоса.',
++    'Я не искусственный интеллект. Я скрепка с доступом к плохим воспоминаниям.',
++    'Рынок стабилен. Это подозрительно.',
++    'Не ищи кнопку прибыли. Она замаскирована под кнопку не делать глупостей.'
++  ],
++  win: 'Отчёт закрыт. Рынок хотел спектакль, но получил документацию. Неприятно для рынка.',
++  lose: 'Система тебя пожевала, но не проглотила. Запиши ошибку. Это дешевле повторения.',
++  review: 'Ошибка без разбора — это подписка. Нажми отмену, пока отдел удержания спит.'
++};
+diff --git a/src/game/save.ts b/src/game/save.ts
+new file mode 100644
+index 0000000..956b350
+--- /dev/null
++++ b/src/game/save.ts
+@@ -0,0 +1,312 @@
++import { COSMETICS, type ProtocolId } from './data';
++import type { JournalEntryPublic } from './types';
++
++const STORAGE_KEY = 'signal-arena.profile.v2';
++const LEGACY_KEY = 'signal-arena.profile.v1';
++
++export interface PendingReview {
++  id: string;
++  caseName: string;
++  required: ProtocolId;
++  lesson: string;
++  verdict: string;
++  createdAt: string;
++}
++
++export interface SettingsState {
++  sound: boolean;
++  haptics: boolean;
++  reducedMotion: boolean;
++}
++
++export interface SaveProfile {
++  runs: number;
++  labs: number;
++  xp: number;
++  bestClarity: number;
++  perfectRuns: number;
++  totalMistakes: number;
++  closedErrors: number;
++  cosmeticDust: number;
++  streakDays: number;
++  lastClosedDate?: string;
++  lastProof?: string;
++  tutorialSeen: boolean;
++  badges: string[];
++  pendingReviews: PendingReview[];
++  protocolMastery: Partial<Record<ProtocolId, number>>;
++  ownedCosmetics: string[];
++  equippedCosmetic?: string;
++  settings: SettingsState;
++}
++
++export interface RunSummary {
++  clarity: number;
++  maxClarity: number;
++  composure: number;
++  pressure: number;
++  journal: JournalEntryPublic[];
++}
++
++export const DEFAULT_PROFILE: SaveProfile = {
++  runs: 0,
++  labs: 0,
++  xp: 0,
++  bestClarity: 0,
++  perfectRuns: 0,
++  totalMistakes: 0,
++  closedErrors: 0,
++  cosmeticDust: 0,
++  streakDays: 0,
++  tutorialSeen: false,
++  badges: [],
++  pendingReviews: [],
++  protocolMastery: {},
++  ownedCosmetics: ['archive-default'],
++  equippedCosmetic: 'archive-default',
++  settings: {
++    sound: true,
++    haptics: true,
++    reducedMotion: false
++  }
++};
++
++export function loadProfile(): SaveProfile {
++  try {
++    const raw = window.localStorage.getItem(STORAGE_KEY) ?? window.localStorage.getItem(LEGACY_KEY);
++    if (!raw) return cloneDefault();
++    const parsed = JSON.parse(raw) as Partial<SaveProfile>;
++    return normalizeProfile(parsed);
++  } catch {
++    return cloneDefault();
++  }
++}
++
++export function saveProfile(profile: SaveProfile): void {
++  try {
++    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(normalizeProfile(profile)));
++  } catch {
++    // Private mode or disabled storage should never break the game loop.
++  }
++}
++
++export function resetProfile(): SaveProfile {
++  const next = cloneDefault();
++  saveProfile(next);
++  return next;
++}
++
++export function persistRun(profile: SaveProfile, summary: RunSummary): SaveProfile {
++  const mistakes = summary.journal.filter((entry) => !entry.success);
++  const perfect = summary.clarity === summary.maxClarity;
++  const survived = summary.composure > 0;
++  const xpGain = summary.clarity * 130 + summary.composure * 45 + (perfect ? 260 : 0) + (survived ? 120 : 0);
++  const dustGain = 30 + summary.clarity * 10 + (perfect ? 55 : 0);
++  const today = localDate();
++
++  const mastery = { ...profile.protocolMastery };
++  for (const entry of summary.journal) {
++    if (entry.success) {
++      mastery[entry.required] = (mastery[entry.required] ?? 0) + 1;
++    }
++  }
++
++  const pending = [
++    ...profile.pendingReviews,
++    ...mistakes.map((entry, index): PendingReview => ({
++      id: `${today}-${profile.runs + 1}-${index}-${entry.required}`,
++      caseName: entry.caseName,
++      required: entry.required,
++      lesson: entry.lesson,
++      verdict: entry.verdict,
++      createdAt: today
++    }))
++  ].slice(-12);
++
++  const next: SaveProfile = normalizeProfile({
++    ...profile,
++    runs: profile.runs + 1,
++    xp: profile.xp + xpGain,
++    bestClarity: Math.max(profile.bestClarity, summary.clarity),
++    perfectRuns: profile.perfectRuns + (perfect ? 1 : 0),
++    totalMistakes: profile.totalMistakes + mistakes.length,
++    cosmeticDust: profile.cosmeticDust + dustGain,
++    lastProof: proofId(summary, profile.runs + 1),
++    pendingReviews: pending,
++    protocolMastery: mastery,
++    badges: [...profile.badges]
++  });
++
++  award(next, 'ARCHIVE_ASSISTANT', true);
++  award(next, 'NO_TERMINAL_DISCIPLINE', summary.journal.length >= 5 && survived);
++  award(next, 'PERFECT_PROTOCOL', perfect);
++  award(next, 'THREE_RAIDS', next.runs >= 3);
++
++  if (mistakes.length === 0 && perfect) {
++    next.lastClosedDate = today;
++    next.streakDays = updateStreak(profile.lastClosedDate, profile.streakDays, today);
++  }
++
++  saveProfile(next);
++  return next;
++}
++
++export function completeReview(profile: SaveProfile, reviewId: string): SaveProfile {
++  const review = profile.pendingReviews.find((item) => item.id === reviewId);
++  if (!review) return profile;
++
++  const today = localDate();
++  const mastery = { ...profile.protocolMastery };
++  mastery[review.required] = (mastery[review.required] ?? 0) + 1;
++
++  const next = normalizeProfile({
++    ...profile,
++    xp: profile.xp + 85,
++    closedErrors: profile.closedErrors + 1,
++    cosmeticDust: profile.cosmeticDust + 18,
++    lastClosedDate: today,
++    streakDays: updateStreak(profile.lastClosedDate, profile.streakDays, today),
++    pendingReviews: profile.pendingReviews.filter((item) => item.id !== reviewId),
++    protocolMastery: mastery,
++    badges: [...profile.badges]
++  });
++
++  award(next, 'FIRST_CLOSED_ERROR', next.closedErrors > 0);
++  award(next, 'REVIEWER', next.closedErrors >= 3);
++
++  saveProfile(next);
++  return next;
++}
++
++export function persistLab(profile: SaveProfile, success: boolean, protocol?: ProtocolId): SaveProfile {
++  const mastery = { ...profile.protocolMastery };
++  if (success && protocol) {
++    mastery[protocol] = (mastery[protocol] ?? 0) + 1;
++  }
++
++  const next = normalizeProfile({
++    ...profile,
++    labs: profile.labs + 1,
++    xp: profile.xp + (success ? 70 : 25),
++    cosmeticDust: profile.cosmeticDust + (success ? 12 : 4),
++    protocolMastery: mastery,
++    badges: [...profile.badges]
++  });
++
++  award(next, 'LAB_RAT', next.labs >= 1);
++  saveProfile(next);
++  return next;
++}
++
++export function buyCosmetic(profile: SaveProfile, cosmeticId: string): SaveProfile {
++  const item = COSMETICS.find((candidate) => candidate.id === cosmeticId);
++  if (!item || profile.ownedCosmetics.includes(cosmeticId) || profile.cosmeticDust < item.price) {
++    return profile;
++  }
++
++  const next = normalizeProfile({
++    ...profile,
++    cosmeticDust: profile.cosmeticDust - item.price,
++    ownedCosmetics: [...profile.ownedCosmetics, cosmeticId],
++    equippedCosmetic: cosmeticId
++  });
++  saveProfile(next);
++  return next;
++}
++
++export function equipCosmetic(profile: SaveProfile, cosmeticId: string): SaveProfile {
++  if (!profile.ownedCosmetics.includes(cosmeticId)) return profile;
++  const next = normalizeProfile({
++    ...profile,
++    equippedCosmetic: cosmeticId
++  });
++  saveProfile(next);
++  return next;
++}
++
++export function markTutorialSeen(profile: SaveProfile): SaveProfile {
++  const next = normalizeProfile({
++    ...profile,
++    tutorialSeen: true,
++    xp: profile.xp + (profile.tutorialSeen ? 0 : 40),
++    badges: [...profile.badges]
++  });
++  award(next, 'ARCHIVE_ASSISTANT', true);
++  saveProfile(next);
++  return next;
++}
++
++export function setSettings(profile: SaveProfile, settings: Partial<SettingsState>): SaveProfile {
++  const next = normalizeProfile({
++    ...profile,
++    settings: {
++      ...profile.settings,
++      ...settings
++    }
++  });
++  saveProfile(next);
++  return next;
++}
++
++function normalizeProfile(input: Partial<SaveProfile>): SaveProfile {
++  return {
++    ...cloneDefault(),
++    ...input,
++    badges: Array.isArray(input.badges) ? input.badges : [],
++    pendingReviews: Array.isArray(input.pendingReviews) ? input.pendingReviews.slice(-12) : [],
++    protocolMastery: input.protocolMastery && typeof input.protocolMastery === 'object' ? input.protocolMastery : {},
++    ownedCosmetics: Array.isArray(input.ownedCosmetics) && input.ownedCosmetics.length > 0 ? input.ownedCosmetics : ['archive-default'],
++    equippedCosmetic: input.equippedCosmetic ?? 'archive-default',
++    settings: {
++      ...DEFAULT_PROFILE.settings,
++      ...(input.settings ?? {})
++    }
++  };
++}
++
++function cloneDefault(): SaveProfile {
++  return {
++    ...DEFAULT_PROFILE,
++    badges: [],
++    pendingReviews: [],
++    protocolMastery: {},
++    ownedCosmetics: ['archive-default'],
++    equippedCosmetic: 'archive-default',
++    settings: { ...DEFAULT_PROFILE.settings }
++  };
++}
++
++function localDate(): string {
++  const d = new Date();
++  const month = `${d.getMonth() + 1}`.padStart(2, '0');
++  const day = `${d.getDate()}`.padStart(2, '0');
++  return `${d.getFullYear()}-${month}-${day}`;
++}
++
++function award(profile: SaveProfile, badge: string, condition: boolean): void {
++  if (condition && !profile.badges.includes(badge)) {
++    profile.badges.push(badge);
++  }
++}
++
++function updateStreak(lastDate: string | undefined, current: number, today: string): number {
++  if (!lastDate) return 1;
++  if (lastDate === today) return Math.max(1, current);
++
++  const prev = Date.parse(`${lastDate}T00:00:00Z`);
++  const now = Date.parse(`${today}T00:00:00Z`);
++  const days = Math.round((now - prev) / 86_400_000);
++  return days === 1 ? current + 1 : 1;
++}
++
++function proofId(summary: RunSummary, runNumber: number): string {
++  const payload = `${runNumber}|${summary.clarity}|${summary.composure}|${summary.pressure}|${summary.journal
++    .map((entry) => `${entry.caseName}:${entry.chosen}:${entry.required}:${entry.success ? 1 : 0}`)
++    .join(';')}`;
++  let hash = 0x811c9dc5;
++  for (let i = 0; i < payload.length; i++) {
++    hash ^= payload.charCodeAt(i);
++    hash = Math.imul(hash, 0x01000193);
++  }
++  return `SA-${(hash >>> 0).toString(16).toUpperCase().padStart(8, '0')}`;
++}
+diff --git a/src/game/telemetry.ts b/src/game/telemetry.ts
+new file mode 100644
+index 0000000..a2f3ac9
+--- /dev/null
++++ b/src/game/telemetry.ts
+@@ -0,0 +1,37 @@
++const TELEMETRY_KEY = 'signal-arena.telemetry.v1';
++const MAX_EVENTS = 120;
++
++export interface TelemetryEvent {
++  name: string;
++  at: string;
++  payload?: Record<string, string | number | boolean | undefined>;
++}
++
++export function track(name: string, payload?: TelemetryEvent['payload']): void {
++  try {
++    const event: TelemetryEvent = {
++      name,
++      at: new Date().toISOString(),
++      payload
++    };
++    const raw = window.localStorage.getItem(TELEMETRY_KEY);
++    const events = raw ? (JSON.parse(raw) as TelemetryEvent[]) : [];
++    events.push(event);
++    window.localStorage.setItem(TELEMETRY_KEY, JSON.stringify(events.slice(-MAX_EVENTS)));
++
++    if (import.meta.env.DEV) {
++      console.info('[SignalArena telemetry]', event);
++    }
++  } catch {
++    // Telemetry must never interrupt the game loop.
++  }
++}
++
++export function readTelemetry(): TelemetryEvent[] {
++  try {
++    const raw = window.localStorage.getItem(TELEMETRY_KEY);
++    return raw ? (JSON.parse(raw) as TelemetryEvent[]) : [];
++  } catch {
++    return [];
++  }
++}
+diff --git a/src/game/types.ts b/src/game/types.ts
+new file mode 100644
+index 0000000..76bd15a
+--- /dev/null
++++ b/src/game/types.ts
+@@ -0,0 +1,10 @@
++import type { ProtocolId } from './data';
++
++export interface JournalEntryPublic {
++  caseName: string;
++  chosen: ProtocolId;
++  required: ProtocolId;
++  success: boolean;
++  verdict: string;
++  lesson: string;
++}
+diff --git a/src/main.ts b/src/main.ts
+new file mode 100644
+index 0000000..8f9b66e
+--- /dev/null
++++ b/src/main.ts
+@@ -0,0 +1,55 @@
++import Phaser from 'phaser';
++import './styles.css';
++import { validateContent } from './game/contentValidator';
++import { SignalArenaScene } from './game/SignalArenaScene';
++
++const GAME_W = 1080;
++const GAME_H = 1920;
++
++(globalThis as unknown as { Phaser: typeof Phaser }).Phaser = Phaser;
++
++const rexModule = await import('phaser3-rex-plugins/dist/rexuiplugin.min.js');
++const RexUIPlugin = rexModule.default ?? (globalThis as any).rexuiplugin;
++
++validateContent();
++
++const config: Phaser.Types.Core.GameConfig = {
++  type: Phaser.WEBGL,
++  parent: 'game-container',
++  width: GAME_W,
++  height: GAME_H,
++  backgroundColor: '#01030a',
++  scale: {
++    mode: Phaser.Scale.FIT,
++    autoCenter: Phaser.Scale.CENTER_BOTH,
++    width: GAME_W,
++    height: GAME_H
++  },
++  render: {
++    antialias: true,
++    antialiasGL: true,
++    roundPixels: false,
++    powerPreference: 'high-performance'
++  },
++  input: {
++    activePointers: 3
++  },
++  plugins: {
++    scene: [
++      {
++        key: 'rexUI',
++        plugin: RexUIPlugin,
++        mapping: 'rexUI'
++      }
++    ]
++  },
++  scene: [SignalArenaScene]
++};
++
++new Phaser.Game(config);
++
++if ('serviceWorker' in navigator && import.meta.env.PROD) {
++  window.addEventListener('load', () => {
++    void navigator.serviceWorker.register('/sw.js');
++  });
++}
+diff --git a/src/styles.css b/src/styles.css
+new file mode 100644
+index 0000000..db38bd9
+--- /dev/null
++++ b/src/styles.css
+@@ -0,0 +1,67 @@
++* {
++  box-sizing: border-box;
++}
++
++html,
++body,
++#app {
++  width: 100%;
++  height: 100%;
++  margin: 0;
++  overflow: hidden;
++  background: #01030a;
++  color: #f2f7ff;
++  touch-action: none;
++  user-select: none;
++  -webkit-user-select: none;
++  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
++}
++
++#app {
++  min-height: 100dvh;
++  display: grid;
++  place-items: center;
++  background:
++    radial-gradient(900px 700px at 50% -18%, rgba(34, 216, 245, 0.12), transparent 58%),
++    radial-gradient(760px 620px at 95% 112%, rgba(179, 136, 255, 0.1), transparent 62%),
++    linear-gradient(180deg, #020511 0%, #01030a 100%);
++}
++
++#game-shell {
++  width: min(100vw, 520px);
++  aspect-ratio: 9 / 16;
++  max-height: 100dvh;
++  display: grid;
++  place-items: center;
++  position: relative;
++}
++
++#game-container {
++  width: 100%;
++  height: 100%;
++  display: grid;
++  place-items: center;
++}
++
++canvas {
++  width: 100% !important;
++  height: 100% !important;
++  display: block;
++  border-radius: clamp(0px, 5vw, 38px);
++  box-shadow:
++    0 0 0 1px rgba(130, 165, 210, 0.18),
++    0 28px 90px rgba(0, 0, 0, 0.74),
++    0 0 80px rgba(34, 216, 245, 0.07);
++}
++
++@media (max-width: 520px) {
++  #game-shell {
++    width: 100vw;
++    height: 100dvh;
++    max-height: none;
++  }
++
++  canvas {
++    border-radius: 0;
++  }
++}
+diff --git a/src/types.d.ts b/src/types.d.ts
+new file mode 100644
+index 0000000..6ffc377
+--- /dev/null
++++ b/src/types.d.ts
+@@ -0,0 +1,4 @@
++declare module 'phaser3-rex-plugins/dist/rexuiplugin.min.js' {
++  const RexUIPlugin: any;
++  export default RexUIPlugin;
++}
+diff --git a/src/vite-assets.d.ts b/src/vite-assets.d.ts
+new file mode 100644
+index 0000000..459665e
+--- /dev/null
++++ b/src/vite-assets.d.ts
+@@ -0,0 +1,14 @@
++declare module '*.png?url' {
++  const src: string;
++  export default src;
++}
++
++declare module '*.jpg?url' {
++  const src: string;
++  export default src;
++}
++
++declare module '*.jpeg?url' {
++  const src: string;
++  export default src;
++}
+diff --git a/src/vite-env.d.ts b/src/vite-env.d.ts
+new file mode 100644
+index 0000000..11f02fe
+--- /dev/null
++++ b/src/vite-env.d.ts
+@@ -0,0 +1 @@
++/// <reference types="vite/client" />
+diff --git a/tsconfig.json b/tsconfig.json
+new file mode 100644
+index 0000000..4d433d3
+--- /dev/null
++++ b/tsconfig.json
+@@ -0,0 +1,18 @@
++{
++  "compilerOptions": {
++    "target": "ES2022",
++    "useDefineForClassFields": false,
++    "module": "ESNext",
++    "lib": ["ES2022", "DOM", "DOM.Iterable"],
++    "allowJs": false,
++    "skipLibCheck": true,
++    "esModuleInterop": true,
++    "allowSyntheticDefaultImports": true,
++    "strict": true,
++    "moduleResolution": "Bundler",
++    "resolveJsonModule": true,
++    "isolatedModules": true,
++    "noEmit": true
++  },
++  "include": ["src"]
++}
+diff --git a/vite.config.ts b/vite.config.ts
+new file mode 100644
+index 0000000..878008f
+--- /dev/null
++++ b/vite.config.ts
+@@ -0,0 +1,24 @@
++import { defineConfig } from 'vite';
++
++export default defineConfig({
++  server: {
++    host: '0.0.0.0',
++    allowedHosts: true
++  },
++  preview: {
++    host: '0.0.0.0',
++    allowedHosts: true
++  },
++  build: {
++    target: 'es2022',
++    chunkSizeWarningLimit: 1800,
++    rollupOptions: {
++      output: {
++        manualChunks: {
++          phaser: ['phaser'],
++          rexui: ['phaser3-rex-plugins/dist/rexuiplugin.min.js']
++        }
++      }
++    }
++  }
++});

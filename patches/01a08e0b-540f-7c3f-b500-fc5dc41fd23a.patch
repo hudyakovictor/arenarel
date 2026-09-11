@@ -1,0 +1,4340 @@
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..cbed440
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,7 @@
++node_modules/
++dist/
++.cache/
++.DS_Store
++*.log
++.env
++.env.*
+diff --git a/PRODUCT_99_PLAN.md b/PRODUCT_99_PLAN.md
+new file mode 100644
+index 0000000..282314f
+--- /dev/null
++++ b/PRODUCT_99_PLAN.md
+@@ -0,0 +1,47 @@
++# Signal Arena — что осталось до 100% готовности
++
++Текущая версия уже соблюдает критическое ТЗ по стеку и формату: Phaser 4, TypeScript, Vite, rexUI, 9:16, mobile-first. Но до настоящих 99/100 это всё ещё не финальный продукт, а сильный playable slice. Полная готовность означает не «ещё больше экранов», а доказанный продуктовый цикл: игрок за 20 секунд понимает ценность, за 2 минуты получает первый инсайт, за 8–12 минут закрывает сессию с желанием вернуться завтра, а монетизация не ломает доверие.
++
++## 1. UX-полировка до коммерческого уровня
++
++Нужно довести каждый экран до состояния, где нет сомнения, что это мобильная игра, а не прототип. Проверить реальные высоты iPhone/Android, safe areas, большие пальцы, зоны тапа, читаемость RU/EN текста, отсутствие переполнений. Сейчас интерфейс уже не перегружен по структуре, но требуется pixel-pass: единая вертикальная сетка, более дорогие переходы между фазами, явный визуальный фокус на одном действии, улучшенный first-run onboarding. Важно сохранить принцип: один экран — одно решение. Нельзя скатиться в «дашборд трейдера».
++
++## 2. Геймдизайн глубже одного правильного ответа
++
++Текущий core loop работает: улики → принцип → решение → будущее → журнал. Для 99/100 нужна большая глубина без терминальности. Решения должны иметь типы последствий: пропуск сохраняет ресурс, ожидание улучшает качество входа, малый риск допускается только при доказательствах, импульсивный вход кормит врага. Нужно добавить enemy intent, фазовые мутации, контр-карты, редкие сценарии, где «не входить» не всегда лучший ответ. Но это не должно превращаться в биржевой симулятор: мы не тренируем исполнение ордера, мы тренируем причину решения.
++
++## 3. Контентная база
++
++Пять миссий — это срез. Для релиза нужна первая глава минимум 25–30 миссий: FOMO, leverage, revenge, headline, hubris, overtrading, sunk cost, influencer cult, false breakout, liquidity trap, correlation herd, fatigue, greed after win, fear after loss. Каждая миссия должна иметь короткий бриф, 4–5 улик, 3 карты принципа, 4 решения, deterministic future и journal line. Контент нужно писать в едином стиле панк-таблоидной криптосатиры: шутка объясняет механику, а не просто украшает текст.
++
++## 4. Прогрессия и удержание
++
++Добавлен Daily Protocol и Decision DNA, но это база. Нужно развить недельные контракты, mastery paths, серии против конкретного врага, сезонные косметические награды, milestone rewards за 3/7/14 дней. Важно: retention должен поощрять закрытые ошибки, а не частоту боёв. Никакой механики «сделай 50 сделок». Только «открой все улики», «сохрани риск», «не корми врага», «закрой журнал».
++
++## 5. Монетизация без потери доверия
++
++Style Vault уже задаёт направление: косметика не меняет данные, правильные ответы и риск. До 100% нужна полноценная cosmetic economy: сезонные печати, рамки журнала, VFX победы, портретные баннеры, титулы, коллекционные dossiers врагов. Нельзя продавать подсказки, правильные решения, облегчение скоринга или доступ к «лучшим данным». Коммерческий потенциал строится на статусе, коллекции и proof-of-skill, а не на pay-to-win.
++
++## 6. Web3-слой только после доверия
++
++Web3 нельзя добавлять как казино. Нужен optional wallet layer: proof-of-skill badges, soulbound achievements, season identity, guild credentials. Никаких обязательных токенов в первом опыте. Сначала игрок должен поверить, что продукт учит и честно судит. Потом можно давать on-chain бейджи за skill milestones: 90+ на серии миссий, 7-дневный journal streak, победы над архетипами ошибок.
++
++## 7. Аналитика и баланс
++
++Для коммерческого продукта нужны события: first open, intro complete, mission selected, clues opened, skill selected, bad decision selected, reveal watched, result reached, retry, next mission, vault open, cosmetic bought. Дальше строится баланс: где игроки отваливаются, где текст непонятен, где слишком много поражений, где слишком легко получить 90+. Нужно удержать KPI corridor: первая сессия 8–12 минут, 2–4 боя, D1 выше рынка за счёт ясной ценности.
++
++## 8. QA, тесты, стабильность
++
++Сейчас есть product audit и build check. До 100% нужны e2e smoke tests, visual regression на 9:16, проверка localStorage migration, проверка отсутствия console errors, тесты scoring engine, тесты daily reset в локальной дате, Lighthouse/PWA, mobile Safari/Chrome. Также нужно проверить degraded mode: если WebAudio или vibration недоступны, игра не должна ломаться.
++
++## 9. Accessibility и локализация
++
++RU-first — правильно, но архитектура должна готовиться к EN. Нужно вынести строки в словари, сделать короткие варианты для маленьких экранов, добавить цветовые альтернативы кроме red/green, крупный текст, reduced motion, mute, contrast mode. Это не «приятная мелочь», а фактор конверсии на мобильном рынке.
++
++## 10. Backend и сохранения
++
++Для прототипа localStorage нормально. Для продакшена нужен backend: аккаунт, cloud save, season inventory, anti-cheat для proof-of-skill, deterministic mission seeds, remote config, analytics. Но backend не должен диктовать UX. Сначала игра, потом инфраструктура.
++
++## Что сделано в текущем цикле
++
++Добавлен cinematic intro, mission rail, adversarial whisper перед решением, индекс управляемой паники, Daily Protocol, Decision DNA, автонаграды ежедневных контрактов, расширенный save state, product audit. Следующим циклом выполнено: scoring engine вынесен в отдельный чистый модуль `src/game/scoring.ts`, добавлены smoke-тесты скоринга, первая глава расширена до 10 миссий, Codex адаптирован под 10 дел, mission rail масштабируется под главу. Build проходит, audit проходит, npm audit чистый. Следующий приоритет: полноценный интерактивный first-run tutorial с подсветкой конкретных действий, затем локализация строк и события аналитики.
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..dffe062
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,52 @@
++# Signal Arena — Decision Hunt
++
++Вертикальная 9:16 Web3-игра-тренажёр решений: игрок не повторяет торговый терминал и не кликает «купить/продать», а охотится на искажения рынка, вскрывает улики, выбирает принцип дисциплины и только потом получает честный `forward-after-answer` приговор.
++
++## Стек ТЗ
++
++- Phaser `^4.2.1`
++- TypeScript
++- Vite
++- rexUI через `phaser3-rex-plugins/templates/ui/ui-plugin.js`
++- Формат сцены: `540×960`, Scale FIT, портрет 9:16
++- PWA metadata: manifest, icon, mobile standalone mode
++
++## Core loop
++
++1. **Брифинг босса** — рынок представлен как сущность/искажение, а не как терминал.
++2. **Улики** — игрок открывает 2–3 доказательства: структура, толпа, риск, нарратив.
++3. **Принцип** — одна карта дисциплины на бой. Косметика не влияет на ответ.
++4. **Решение** — игрок ставит печать причины: ждать, уменьшить риск, выйти, отказаться.
++5. **Forward-after-answer** — будущее показывается только после выбора.
++6. **Журнал ошибки** — стрик начисляется за закрытую ошибку, а не за частоту торговых кликов.
++7. **Adversarial Director** — босс шепчет плохую идею, а игрок учится не путать давление с сигналом.
++8. **Daily Protocol + Decision DNA** — ежедневные контракты и профиль навыка по уликам, принципу, риску и контролю.
++9. **Style Vault** — косметические печати покупаются за кредиты и не дают силы.
++
++## Почему это не демо-биржа
++
++- Нет стакана, ордербука, терминального интерфейса и повторения действий биржи.
++- Геймплей построен вокруг диагностики ловушки и самоконтроля.
++- Сигнальная карта абстрактна: она показывает давление нарратива, а не имитирует TradingView.
++- Монетизация задумана cosmetic-first: кредиты не меняют данные, правильные ответы или риск-бюджет.
++
++## Производственная готовность среза
++
++- Все игровые данные локальные и детерминированные.
++- Первая глава расширена до 10 миссий с разными когнитивными врагами.
++- Scoring engine вынесен в `src/game/scoring.ts` и проверяется `npm run test:scoring`.
++- Ассеты оптимизированы в `src/assets` для мобильной загрузки.
++- Сохранение прогресса: XP, кредиты, streak, best scores, codex, cosmetic seals, Daily Protocol, Decision DNA.
++- Local analytics spine пишет ключевые события в localStorage: mission_started, clue_opened, skill_selected, result_reached, cosmetic_bought.
++- First-run tutorial hints проводят первый бой без перегруза интерфейса.
++- Settings/accessibility: звук, движение, высокий контраст; degraded mode не ломает core loop.
++- Встроенный `npm run audit:product` проверяет критичные требования: Phaser 4, rexUI, 9:16, mobile viewport, контракты контента миссий, отсутствие терминальной механики, оптимизированные ассеты, PWA.
++- Проверено: `npm run build` и `npm audit --omit=dev`. 
++
++## Команды
++
++```bash
++npm install
++npm run dev
++npm run build
++```
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..7ea14d3
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,20 @@
++<!doctype html>
++<html lang="ru">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
++    <meta name="theme-color" content="#04070f" />
++    <meta name="apple-mobile-web-app-capable" content="yes" />
++    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
++    <meta name="description" content="Signal Arena — вертикальная игра-тренажёр решений: улики, дисциплина и честный приговор до клика." />
++    <link rel="manifest" href="/manifest.webmanifest" />
++    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
++    <title>Signal Arena — Decision Hunt</title>
++  </head>
++  <body>
++    <div id="shell">
++      <div id="game"></div>
++    </div>
++    <script type="module" src="/src/main.ts"></script>
++  </body>
++</html>
+diff --git a/package-lock.json b/package-lock.json
+new file mode 100644
+index 0000000..384d452
+--- /dev/null
++++ b/package-lock.json
+@@ -0,0 +1,1400 @@
++{
++  "name": "signal-arena-decision-hunt",
++  "version": "0.1.0",
++  "lockfileVersion": 3,
++  "requires": true,
++  "packages": {
++    "": {
++      "name": "signal-arena-decision-hunt",
++      "version": "0.1.0",
++      "dependencies": {
++        "phaser": "^4.2.1",
++        "phaser3-rex-plugins": "^1.80.20"
++      },
++      "devDependencies": {
++        "tsx": "^4.23.13",
++        "typescript": "^5.9.2",
++        "vite": "^7.1.5"
++      }
++    },
++    "node_modules/@babel/runtime": {
++      "version": "7.29.7",
++      "resolved": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.29.7.tgz",
++      "integrity": "sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=6.9.0"
++      }
++    },
++    "node_modules/@esbuild/aix-ppc64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/aix-ppc64/-/aix-ppc64-0.28.2.tgz",
++      "integrity": "sha512-XExcO+dvLKvVtNTibSTBej1NCAbaGhWn9Ww1ZPx80qsahhPFe/8jgWP0IchNe0F3HwkU7n8ejhH8bjonqht8mQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "aix"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-arm": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-arm/-/android-arm-0.28.2.tgz",
++      "integrity": "sha512-kXXoiPVVGQcnIYGOeaovwOURpniDBpSq4A03qkQ+BMQqtGG6HYap3xne9C1O1yo4TR3qxlCX5IqqmX6fFo2Lqg==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.28.2.tgz",
++      "integrity": "sha512-5YfKeeI8qWfBZIX+u2xZC3Zlb3Os/gLS2sbEKM+I4ZOcsWmHS2WLysCcQZDAFRslDUU5Oiq44gf6PYN1vGwG5A==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-x64/-/android-x64-0.28.2.tgz",
++      "integrity": "sha512-O387ite7SzUyCcy3JQX4P4bLtEA7bLLkx+esve5JHnyYfNTxcVpXZo9jhdB0lTKN44gztELTdU7nS8Nr16Fs1Q==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/darwin-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.28.2.tgz",
++      "integrity": "sha512-n4KqkOQrraxHJcgjM1RvwbigfQKIKJVpM7xp+KsxiyUSrRdIXnt73VhrPAx0fV44hgfmIVKjxMN9J1t5jySVkw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/darwin-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.28.2.tgz",
++      "integrity": "sha512-uq6suIWYP37qzGddBKPw5QEQPi6HiLGsO7UmkpfyaYNQ3D+rN6w6WfwH+nuqcGXWvawGwxOEroO4YGnFh95azw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/freebsd-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-arm64/-/freebsd-arm64-0.28.2.tgz",
++      "integrity": "sha512-n+I0BTSRIoy+d6RPKnEVwql5UwBJolytvY4mAOIEJorKlqgPII8ix6slVVrfZ5Tnj7glIZvloylbB/EJPMWEXw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/freebsd-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-x64/-/freebsd-x64-0.28.2.tgz",
++      "integrity": "sha512-78XJTJkvPs0kz2w61301PJjXl4g7q3JqiYMZ/M/yVI73EHBrCRTgkhu9oqG7vPqq+a/yadEW8aD+agKlk5xrmg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-arm": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm/-/linux-arm-0.28.2.tgz",
++      "integrity": "sha512-XlDnu2q5yoqems+xay6wSAcg9DDD7K9RLKZEBOMZm3ckNpJBvOX20tSfby8KfrrhINDyv9V2YVZKY/SpoGJI8w==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.28.2.tgz",
++      "integrity": "sha512-pW4AC0P3it8c7do9MVM4p51FzHzdM/TZrerurgRcHJ2WTa1VQ1CIq18xncfpBJw4ojkiZZrKW2yIBWBP92j6Ug==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-ia32": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-ia32/-/linux-ia32-0.28.2.tgz",
++      "integrity": "sha512-CYbnj78HsIeA+DhgUKgFCfvNsTHFhMMrinUrMZpDXJXKN8T3XViTZ/+wtHeVxEWY8ewSzTFN+nRmSwO2tZaLUQ==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-loong64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-loong64/-/linux-loong64-0.28.2.tgz",
++      "integrity": "sha512-buwkd8nsph4R+ajRvw0qM5Hja/TXQow3ptzWO2EbG/cqcIkHloRrdlBtQlshyYGTNFvfkfJ5tpPLVkY4DtsPfQ==",
++      "cpu": [
++        "loong64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-mips64el": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-mips64el/-/linux-mips64el-0.28.2.tgz",
++      "integrity": "sha512-ZVykbDyk7519VwiNb9Lcj9m8XM6v5V9uKPvrEMkkEedVewf+0itkhahp4HDpgERXhwLRpWFypsGbG/J8s0QjJA==",
++      "cpu": [
++        "mips64el"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-ppc64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-ppc64/-/linux-ppc64-0.28.2.tgz",
++      "integrity": "sha512-CAXl+Dtd9UUuJd8pKKdwh6MLm3MUMiqMPmhZ3tTSXPqfyQ3vDl6R5hZdZ/kYojK4ofXtdfSv1tFq8XzWx3heNQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-riscv64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-riscv64/-/linux-riscv64-0.28.2.tgz",
++      "integrity": "sha512-GeXCej4IQtU1B+QlDV8W/RRvbzI3O/Stss+/bCXv4lZls5WGRtu2a+3JkA3i4qIUlMXpcHebWpF8AkJhATowuA==",
++      "cpu": [
++        "riscv64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-s390x": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-s390x/-/linux-s390x-0.28.2.tgz",
++      "integrity": "sha512-3H1weTYZPxt/WOhByszQZybS9w5lKzUn1FDMsgEChbHWQwHYQQRfBxgCcZvPhjHfKyJjIievvMmEUawJrdY9Dg==",
++      "cpu": [
++        "s390x"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.28.2.tgz",
++      "integrity": "sha512-4xTZr1FUmSoQW4XIWmit3tzQrUTZM+N3P0XV8xROKYF50XfI7xeO90+1bZvNwxIufQ9hDQVRJH5YhgPVF8A/HQ==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/netbsd-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-arm64/-/netbsd-arm64-0.28.2.tgz",
++      "integrity": "sha512-sSATRjPeDBg3pdgHoQfoYBob11Kk1FGa9lui5RIHZCoCkJa9QKlvl3/vKz2usCmYYjs7ymJR/2Nnsqe+Hjt5nw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "netbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/netbsd-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-x64/-/netbsd-x64-0.28.2.tgz",
++      "integrity": "sha512-lqnzCV+mM0gIADaKihiCg6ifgfU2L3h5E33rNQBN1Y4MaVGnzryzmvvf7UHxprpQdE8hpqLolJ9Rl+SkIRDpyw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "netbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openbsd-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-arm64/-/openbsd-arm64-0.28.2.tgz",
++      "integrity": "sha512-AL2qJILH7lNjrDmCQDvdxMfAUIv8KMNZOvrwAQ8i8//ntL9FflhOyMJ8OZSMBb8/AWXe3/5v5S20y3zCoZWKoQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openbsd-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-x64/-/openbsd-x64-0.28.2.tgz",
++      "integrity": "sha512-QtiuPytchRyC4rwUKhexJdQKvDuZ6hWloi3igqPQNUJCS1/v9EiO3UTOXR6A3FoMo4fnAKbWJdqaIwhOzh8qEw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openharmony-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/openharmony-arm64/-/openharmony-arm64-0.28.2.tgz",
++      "integrity": "sha512-WkhYDmpTjLvGlScA1rwjRUmhl4k8oXR3cIbtqWmELgU/dFeHHlEllxDvdWcNJV9rbzCexB5vz8gtNewWLgCT7Q==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openharmony"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/sunos-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/sunos-x64/-/sunos-x64-0.28.2.tgz",
++      "integrity": "sha512-GPMSkTOtMnv2U2F8gxe4Io6qmVs+YKyp832Etqqxr0hFngmXQ3rzwytelm3GIn7T4VviRUlf3sOgBOiTdvaf7g==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "sunos"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-arm64/-/win32-arm64-0.28.2.tgz",
++      "integrity": "sha512-PIhhEkE9uPBleRBrQEJpUn7MBnibZzbGzYWPmY3x+YoVg/95zbjB4CxPPOQ8l5tYYM4mMaCthF8/1DIfBQQyWQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-ia32": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-ia32/-/win32-ia32-0.28.2.tgz",
++      "integrity": "sha512-YmJbfTlvU7Sdn9BB+4PRES4oB6pxgS37MAONj+hBr/cpXS1aBPKXxNnDbu+QCWPj0o9dgyxeq79g6c5P8KeuYA==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.28.2.tgz",
++      "integrity": "sha512-5ebpxr3nWMzrL/rnUI755Jkuee0bHL/Gq0WTF9lvcpv73wAp5eu8MfBUgWK9bhWvZjj7yX8etf/8tI8Ney695g==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@napi-rs/lzma-linux-x64-gnu": {
++      "version": "1.5.1",
++      "resolved": "https://registry.npmjs.org/@napi-rs/lzma-linux-x64-gnu/-/lzma-linux-x64-gnu-1.5.1.tgz",
++      "integrity": "sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": "^22.20 || ^24.12 || >=25"
++      }
++    },
++    "node_modules/@rollup/rollup-android-arm-eabi": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.63.1.tgz",
++      "integrity": "sha512-UZ8sUxPTiHWYX9QNdJedb1kDZSpS1t/VPWBWGSgqHNi9w3Cu6IXvu2mzbhiTiPvtrqgTQJ+zqiAq2iPIPilpaQ==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ]
++    },
++    "node_modules/@rollup/rollup-android-arm64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-android-arm64/-/rollup-android-arm64-4.63.1.tgz",
++      "integrity": "sha512-cQ4nFQABN5cDvDpbvJ7bMStCpnaVxynZrRMfUJYgxcIk9Sh54FIO1vtfkg0B69REjER77ioZ/ov+eAApx/KmLQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ]
++    },
++    "node_modules/@rollup/rollup-darwin-arm64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.63.1.tgz",
++      "integrity": "sha512-FQNqd1lRy/0QhDk3xeRIkSBiCpXCiDnZO3YLVdcDKN1UBiKToNftCzcXYNLshmPDUMlu2TdeS8tGcsU6f3YF1Q==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ]
++    },
++    "node_modules/@rollup/rollup-darwin-x64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.63.1.tgz",
++      "integrity": "sha512-pvD16V939D3CloK0+qikpGaxiPrDUXTe7Y5cWOMkMSy7m1cawa8EGy/kXYi/G/cKAC4HDAbSnzCIk1WmsoOKXg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ]
++    },
++    "node_modules/@rollup/rollup-freebsd-arm64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-freebsd-arm64/-/rollup-freebsd-arm64-4.63.1.tgz",
++      "integrity": "sha512-pcFGeL2345VwdTnJhA6zLbew+YgWB0qBG2+dMtXjCicf6+rm6kO6cOoh5VnTe0ZMrMRgRyuHmCJxZWrIdzYuOw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ]
++    },
++    "node_modules/@rollup/rollup-freebsd-x64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-freebsd-x64/-/rollup-freebsd-x64-4.63.1.tgz",
++      "integrity": "sha512-mRJlqSRulVzcKq/LKA6ICSIc3K/l4fzlVn/gePn2nXIHy8seRi5z/eeRE0d/XMBxcMldiXtQTSpRj0tkkC3g8Q==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-arm-gnueabihf": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.63.1.tgz",
++      "integrity": "sha512-YDUNvVM85TI3g/1OpnqKP1h4NeW/j64DfWMf+G3M809xNk1bJSnpFp4sh83NpmVE5DXnkh8ULor4LTVZKoYLHw==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-arm-musleabihf": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musleabihf-4.63.1.tgz",
++      "integrity": "sha512-7Mcn71p9ZuQFAj+h+dhQXy/yeLePRS2yKRnmW1DijA9thKO5qap0GNOIQK4yQ6iP3SU0Mrb/yWo8h8vgRba8lw==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-arm64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.63.1.tgz",
++      "integrity": "sha512-4YiLQTX6U4CSl0L9cluep9A9W6UmTfqBDc2/CH6wlu54pl4E7Jn3cOD8oxzvBDEGk/JMKgJ47C8g+radF7mwvg==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-arm64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.63.1.tgz",
++      "integrity": "sha512-2ra8F7w8OquwZN9z2/fKFnli69wa8PLwaVzRMIPGb13ByMJwC28Fbp8YcVGoUhlYMTt7j5j9bNgpysrN2UM+vw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-loong64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-loong64-gnu/-/rollup-linux-loong64-gnu-4.63.1.tgz",
++      "integrity": "sha512-Sy20ncyhjmBP0Ml+UvQbimjlk6VFgjW5uNP+qqwHB00mTE8Bl2C1TuHTlRwK2YoXeZbee5lP2XevBWVkAQAtSQ==",
++      "cpu": [
++        "loong64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-loong64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-loong64-musl/-/rollup-linux-loong64-musl-4.63.1.tgz",
++      "integrity": "sha512-noITLp8oNjYliPnGWmLyelIHwULGqbHloQHGw1rtxbWhTuWooRpnZarZQJ1y9EUC4szuCusCc+HEpUtxpIwYvA==",
++      "cpu": [
++        "loong64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-ppc64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-ppc64-gnu/-/rollup-linux-ppc64-gnu-4.63.1.tgz",
++      "integrity": "sha512-hlxxXd+F1mWiAcaFR7Sv9ZQT6m6UfI8+Vy/kFJzztq2pDMU/0wZ9sish0iszNZvsQDo8Gc0i5yuFEOz5dDf6fA==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-ppc64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-ppc64-musl/-/rollup-linux-ppc64-musl-4.63.1.tgz",
++      "integrity": "sha512-EF7OpqQTQ/BvGqLzUi4rEHuagCV9MugAUXSHemwPW5vxZ75RR+jxO/2j95Ph2dalMpFHSVECjRoioHZgA9zOYA==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-riscv64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-riscv64-gnu/-/rollup-linux-riscv64-gnu-4.63.1.tgz",
++      "integrity": "sha512-wQO3JesW9PRkwlabQ27y7sPfVOOTLRG73I4F2UYHG5PXun3J9U3y+b7ezVKSYbsvSKGQ1k1cq8Qlun4C9kLt3w==",
++      "cpu": [
++        "riscv64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-riscv64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-musl-4.63.1.tgz",
++      "integrity": "sha512-ouAGwhO6wHRXdnOVCOsB0tRFkA7nhNB2Nwax6oECXN0YiN8EYUTBAOudADOB1PI+yDL61TeNx/u7MVCzksNbkQ==",
++      "cpu": [
++        "riscv64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-s390x-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.63.1.tgz",
++      "integrity": "sha512-q2R38Sn+1J8RxhfJ+T54wSWmyKXWec+9jgDfqO2AtArEqHO5R2aeayp5H5OYLr5UYDVGsVaZPEFUooMhYCdz5A==",
++      "cpu": [
++        "s390x"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-x64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.63.1.tgz",
++      "integrity": "sha512-gfI5T24WLLuFfSKw7Go/zDXjAAV0fny0swTaDv+WjK7vqcw4cRhFfdsyKL1n+ukI+ooBxn3bVQnyrn06WpI50w==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-linux-x64-musl": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.63.1.tgz",
++      "integrity": "sha512-4h6XqthmB4Hspji84wvgk+ElodTsGj+dbZqHJHHtKxj4mYq0ANSEEPX9ys3moJueqsRjwpaJYH7874Itwnj2ow==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ]
++    },
++    "node_modules/@rollup/rollup-openbsd-x64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-openbsd-x64/-/rollup-openbsd-x64-4.63.1.tgz",
++      "integrity": "sha512-dlfCOa87o1VAYegLQ9EKilx2JCeRofiyPGhTCmqnuXZ6bMPiycO1rq1+sKoulAp7pGLIsTIw+1x5R+zgh5LhhA==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ]
++    },
++    "node_modules/@rollup/rollup-openharmony-arm64": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-openharmony-arm64/-/rollup-openharmony-arm64-4.63.1.tgz",
++      "integrity": "sha512-cjkLbOlfcm3QGhMM1J5zaZjsw1GggbN6rw9UTSSRrPrR1KkcXnN7Uq9rPw34xImQ9VOY9GN+6u2Zj80B9ptkcw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openharmony"
++      ]
++    },
++    "node_modules/@rollup/rollup-win32-arm64-msvc": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.63.1.tgz",
++      "integrity": "sha512-Li1KdUnWGE4N3e1F/B4RTB1ms+nG4WBgjByO46pkeBVX/2UBsY53xf5vK9WygVmnH3RwncIST7lkSdLSY6P9lg==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ]
++    },
++    "node_modules/@rollup/rollup-win32-ia32-msvc": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.63.1.tgz",
++      "integrity": "sha512-t4ZYOSoLTgwhuFMrmTMLx/+i1DQVK7HYqMc6kY46EApwi8X0nIVphzdNoThU3xt6n+N5urG1/gxBdCaKDLavfg==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ]
++    },
++    "node_modules/@rollup/rollup-win32-x64-gnu": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-x64-gnu/-/rollup-win32-x64-gnu-4.63.1.tgz",
++      "integrity": "sha512-RgroPfMmKlD1RzSDxvwgcPiy2HNQKoYV7OmwIXDsk73uKW5t6B/V8KIy27SMv/FNXFo/oSBtWc9J0X7t91ezZg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ]
++    },
++    "node_modules/@rollup/rollup-win32-x64-msvc": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.63.1.tgz",
++      "integrity": "sha512-at8QVep6S3h5Y6gSbdGU06bRY5WJkf6WUduM9YtvYMbYhB1MOFfUgc6kehitQXzOtMSaT70q7f9ydPhpqu821w==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ]
++    },
++    "node_modules/@types/estree": {
++      "version": "1.0.9",
++      "resolved": "https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz",
++      "integrity": "sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/argparse": {
++      "version": "2.0.1",
++      "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
++      "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
++      "license": "Python-2.0"
++    },
++    "node_modules/cross-fetch": {
++      "version": "4.1.0",
++      "resolved": "https://registry.npmjs.org/cross-fetch/-/cross-fetch-4.1.0.tgz",
++      "integrity": "sha512-uKm5PU+MHTootlWEY+mZ4vvXoCn4fLQxT9dSc1sXVMSFkINTJVN8cAQROpwcKm8bJ/c7rgZVIBWzH5T78sNZZw==",
++      "license": "MIT",
++      "dependencies": {
++        "node-fetch": "^2.7.0"
++      }
++    },
++    "node_modules/dagre": {
++      "version": "0.8.5",
++      "resolved": "https://registry.npmjs.org/dagre/-/dagre-0.8.5.tgz",
++      "integrity": "sha512-/aTqmnRta7x7MCCpExk7HQL2O4owCT2h8NT//9I1OQ9vt29Pa0BzSAkR5lwFUcQ7491yVi/3CXU9jQ5o0Mn2Sw==",
++      "license": "MIT",
++      "dependencies": {
++        "graphlib": "^2.1.8",
++        "lodash": "^4.17.15"
++      }
++    },
++    "node_modules/esbuild": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
++      "integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
++      "dev": true,
++      "hasInstallScript": true,
++      "license": "MIT",
++      "bin": {
++        "esbuild": "bin/esbuild"
++      },
++      "engines": {
++        "node": ">=18"
++      },
++      "optionalDependencies": {
++        "@esbuild/aix-ppc64": "0.28.2",
++        "@esbuild/android-arm": "0.28.2",
++        "@esbuild/android-arm64": "0.28.2",
++        "@esbuild/android-x64": "0.28.2",
++        "@esbuild/darwin-arm64": "0.28.2",
++        "@esbuild/darwin-x64": "0.28.2",
++        "@esbuild/freebsd-arm64": "0.28.2",
++        "@esbuild/freebsd-x64": "0.28.2",
++        "@esbuild/linux-arm": "0.28.2",
++        "@esbuild/linux-arm64": "0.28.2",
++        "@esbuild/linux-ia32": "0.28.2",
++        "@esbuild/linux-loong64": "0.28.2",
++        "@esbuild/linux-mips64el": "0.28.2",
++        "@esbuild/linux-ppc64": "0.28.2",
++        "@esbuild/linux-riscv64": "0.28.2",
++        "@esbuild/linux-s390x": "0.28.2",
++        "@esbuild/linux-x64": "0.28.2",
++        "@esbuild/netbsd-arm64": "0.28.2",
++        "@esbuild/netbsd-x64": "0.28.2",
++        "@esbuild/openbsd-arm64": "0.28.2",
++        "@esbuild/openbsd-x64": "0.28.2",
++        "@esbuild/openharmony-arm64": "0.28.2",
++        "@esbuild/sunos-x64": "0.28.2",
++        "@esbuild/win32-arm64": "0.28.2",
++        "@esbuild/win32-ia32": "0.28.2",
++        "@esbuild/win32-x64": "0.28.2"
++      }
++    },
++    "node_modules/eventemitter3": {
++      "version": "5.0.4",
++      "resolved": "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.4.tgz",
++      "integrity": "sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==",
++      "license": "MIT"
++    },
++    "node_modules/events": {
++      "version": "3.3.0",
++      "resolved": "https://registry.npmjs.org/events/-/events-3.3.0.tgz",
++      "integrity": "sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.8.x"
++      }
++    },
++    "node_modules/fdir": {
++      "version": "6.5.0",
++      "resolved": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz",
++      "integrity": "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=12.0.0"
++      },
++      "peerDependencies": {
++        "picomatch": "^3 || ^4"
++      },
++      "peerDependenciesMeta": {
++        "picomatch": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/fsevents": {
++      "version": "2.3.3",
++      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
++      "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
++      "dev": true,
++      "hasInstallScript": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
++      }
++    },
++    "node_modules/graphlib": {
++      "version": "2.1.8",
++      "resolved": "https://registry.npmjs.org/graphlib/-/graphlib-2.1.8.tgz",
++      "integrity": "sha512-jcLLfkpoVGmH7/InMC/1hIvOPSUh38oJtGhvrOFGzioE1DZ+0YW16RgmOJhHiuWTvGiJQ9Z1Ik43JvkRPRvE+A==",
++      "license": "MIT",
++      "dependencies": {
++        "lodash": "^4.17.15"
++      }
++    },
++    "node_modules/graphology": {
++      "version": "0.25.4",
++      "resolved": "https://registry.npmjs.org/graphology/-/graphology-0.25.4.tgz",
++      "integrity": "sha512-33g0Ol9nkWdD6ulw687viS8YJQBxqG5LWII6FI6nul0pq6iM2t5EKquOTFDbyTblRB3O9I+7KX4xI8u5ffekAQ==",
++      "license": "MIT",
++      "dependencies": {
++        "events": "^3.3.0",
++        "obliterator": "^2.0.2"
++      },
++      "peerDependencies": {
++        "graphology-types": ">=0.24.0"
++      }
++    },
++    "node_modules/graphology-types": {
++      "version": "0.24.8",
++      "resolved": "https://registry.npmjs.org/graphology-types/-/graphology-types-0.24.8.tgz",
++      "integrity": "sha512-hDRKYXa8TsoZHjgEaysSRyPdT6uB78Ci8WnjgbStlQysz7xR52PInxNsmnB7IBOM1BhikxkNyCVEFgmPKnpx3Q==",
++      "license": "MIT",
++      "peer": true
++    },
++    "node_modules/i18next": {
++      "version": "22.5.1",
++      "resolved": "https://registry.npmjs.org/i18next/-/i18next-22.5.1.tgz",
++      "integrity": "sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==",
++      "funding": [
++        {
++          "type": "individual",
++          "url": "https://locize.com"
++        },
++        {
++          "type": "individual",
++          "url": "https://locize.com/i18next.html"
++        },
++        {
++          "type": "individual",
++          "url": "https://www.i18next.com/how-to/faq#i18next-is-awesome.-how-can-i-support-the-project"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "@babel/runtime": "^7.20.6"
++      }
++    },
++    "node_modules/i18next-http-backend": {
++      "version": "3.0.6",
++      "resolved": "https://registry.npmjs.org/i18next-http-backend/-/i18next-http-backend-3.0.6.tgz",
++      "integrity": "sha512-mBOqy8993jtqAoj6XaI1XeC/8/9v6EPS+681ziegrPvTB0DoaCY7PpTS0SpY56qLMoS4OI1TZEM2Zf59zNh05w==",
++      "license": "MIT",
++      "dependencies": {
++        "cross-fetch": "4.1.0"
++      }
++    },
++    "node_modules/js-yaml": {
++      "version": "4.3.2",
++      "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-4.3.2.tgz",
++      "integrity": "sha512-SFNOvSJ+Dgf/9An904Yx+CgSlIPCkIpao4qo51lpee25TIRejdH3rhR4EZMGoNx3/TP3O+wzWuiTFl4sqbltzA==",
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/puzrin"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/nodeca"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "argparse": "^2.0.1"
++      },
++      "bin": {
++        "js-yaml": "bin/js-yaml.js"
++      }
++    },
++    "node_modules/lodash": {
++      "version": "4.18.1",
++      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.18.1.tgz",
++      "integrity": "sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==",
++      "license": "MIT"
++    },
++    "node_modules/mustache": {
++      "version": "4.2.0",
++      "resolved": "https://registry.npmjs.org/mustache/-/mustache-4.2.0.tgz",
++      "integrity": "sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==",
++      "license": "MIT",
++      "bin": {
++        "mustache": "bin/mustache"
++      }
++    },
++    "node_modules/nanoid": {
++      "version": "3.3.19",
++      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.19.tgz",
++      "integrity": "sha512-Y2tUNy4ouw6tq5oDSKeQYGOyhkUBhNOcGV/02KC+6kd9eDGqdZd++mjMiIDilrBYvjEnCYvVtsuHCuP+okSfug==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "bin": {
++        "nanoid": "bin/nanoid.cjs"
++      },
++      "engines": {
++        "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
++      }
++    },
++    "node_modules/node-fetch": {
++      "version": "2.7.0",
++      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-2.7.0.tgz",
++      "integrity": "sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==",
++      "license": "MIT",
++      "dependencies": {
++        "whatwg-url": "^5.0.0"
++      },
++      "engines": {
++        "node": "4.x || >=6.0.0"
++      },
++      "peerDependencies": {
++        "encoding": "^0.1.0"
++      },
++      "peerDependenciesMeta": {
++        "encoding": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/obliterator": {
++      "version": "2.0.5",
++      "resolved": "https://registry.npmjs.org/obliterator/-/obliterator-2.0.5.tgz",
++      "integrity": "sha512-42CPE9AhahZRsMNslczq0ctAEtqk8Eka26QofnqC346BZdHDySk3LWka23LI7ULIw11NmltpiLagIq8gBozxTw==",
++      "license": "MIT"
++    },
++    "node_modules/papaparse": {
++      "version": "5.7.0",
++      "resolved": "https://registry.npmjs.org/papaparse/-/papaparse-5.7.0.tgz",
++      "integrity": "sha512-qBGxg/7Q3Kl9Wfhrz2Z74UnvnHTXLNG6jmKJFeBvP2+y4lV7So+7SR62+Zd47JvdrCkX+nDcnr0ObPzek/+6RA==",
++      "license": "MIT"
++    },
++    "node_modules/phaser": {
++      "version": "4.2.1",
++      "resolved": "https://registry.npmjs.org/phaser/-/phaser-4.2.1.tgz",
++      "integrity": "sha512-WUNwCPJpdjvZiuT6SgCfYVW8Qw/3j0jJ4ws7P2QkhFLFu74sbGuyHJcbFueGkY/AYO4Pi47bNQXn1OCJeLX//w==",
++      "license": "MIT",
++      "dependencies": {
++        "eventemitter3": "^5.0.4"
++      }
++    },
++    "node_modules/phaser3-rex-plugins": {
++      "version": "1.80.20",
++      "resolved": "https://registry.npmjs.org/phaser3-rex-plugins/-/phaser3-rex-plugins-1.80.20.tgz",
++      "integrity": "sha512-XZLUy74r1jUaRWpGplRhhA+wEeOvnNb0qlhlyMtwdwZwIlCA7C7WtgvynOB/PyVrzS09cUBwEFyG+A3P5fL+Uw==",
++      "license": "MIT",
++      "dependencies": {
++        "dagre": "^0.8.5",
++        "eventemitter3": "^3.1.2",
++        "graphology": "^0.25.4",
++        "i18next": "^22.5.1",
++        "i18next-http-backend": "^2.5.2",
++        "js-yaml": "^4.1.0",
++        "mustache": "^4.2.0",
++        "papaparse": "^5.4.1",
++        "webfontloader": "^1.6.28"
++      }
++    },
++    "node_modules/phaser3-rex-plugins/node_modules/eventemitter3": {
++      "version": "3.1.2",
++      "resolved": "https://registry.npmjs.org/eventemitter3/-/eventemitter3-3.1.2.tgz",
++      "integrity": "sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==",
++      "license": "MIT"
++    },
++    "node_modules/picocolors": {
++      "version": "1.1.1",
++      "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
++      "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==",
++      "dev": true,
++      "license": "ISC"
++    },
++    "node_modules/picomatch": {
++      "version": "4.0.7",
++      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz",
++      "integrity": "sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=12"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/jonschlinkert"
++      }
++    },
++    "node_modules/postcss": {
++      "version": "8.5.28",
++      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz",
++      "integrity": "sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "opencollective",
++          "url": "https://opencollective.com/postcss/"
++        },
++        {
++          "type": "tidelift",
++          "url": "https://tidelift.com/funding/github/npm/postcss"
++        },
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/ai"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "nanoid": "^3.3.18",
++        "picocolors": "^1.1.1",
++        "source-map-js": "^1.2.1"
++      },
++      "engines": {
++        "node": "^10 || ^12 || >=14"
++      }
++    },
++    "node_modules/rollup": {
++      "version": "4.63.1",
++      "resolved": "https://registry.npmjs.org/rollup/-/rollup-4.63.1.tgz",
++      "integrity": "sha512-3Df9jsstwhccuEfmAMi9l8XUh/GOkVObmFTU7CCVBysEbcOZLl84jCtaAZMcPiMz2EGKsATzQcU+Xr3n/wU6cg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@types/estree": "1.0.9"
++      },
++      "bin": {
++        "rollup": "dist/bin/rollup"
++      },
++      "engines": {
++        "node": ">=18.0.0",
++        "npm": ">=8.0.0"
++      },
++      "optionalDependencies": {
++        "@napi-rs/lzma-linux-x64-gnu": "1.5.1",
++        "@rollup/rollup-android-arm-eabi": "4.63.1",
++        "@rollup/rollup-android-arm64": "4.63.1",
++        "@rollup/rollup-darwin-arm64": "4.63.1",
++        "@rollup/rollup-darwin-x64": "4.63.1",
++        "@rollup/rollup-freebsd-arm64": "4.63.1",
++        "@rollup/rollup-freebsd-x64": "4.63.1",
++        "@rollup/rollup-linux-arm-gnueabihf": "4.63.1",
++        "@rollup/rollup-linux-arm-musleabihf": "4.63.1",
++        "@rollup/rollup-linux-arm64-gnu": "4.63.1",
++        "@rollup/rollup-linux-arm64-musl": "4.63.1",
++        "@rollup/rollup-linux-loong64-gnu": "4.63.1",
++        "@rollup/rollup-linux-loong64-musl": "4.63.1",
++        "@rollup/rollup-linux-ppc64-gnu": "4.63.1",
++        "@rollup/rollup-linux-ppc64-musl": "4.63.1",
++        "@rollup/rollup-linux-riscv64-gnu": "4.63.1",
++        "@rollup/rollup-linux-riscv64-musl": "4.63.1",
++        "@rollup/rollup-linux-s390x-gnu": "4.63.1",
++        "@rollup/rollup-linux-x64-gnu": "4.63.1",
++        "@rollup/rollup-linux-x64-musl": "4.63.1",
++        "@rollup/rollup-openbsd-x64": "4.63.1",
++        "@rollup/rollup-openharmony-arm64": "4.63.1",
++        "@rollup/rollup-win32-arm64-msvc": "4.63.1",
++        "@rollup/rollup-win32-ia32-msvc": "4.63.1",
++        "@rollup/rollup-win32-x64-gnu": "4.63.1",
++        "@rollup/rollup-win32-x64-msvc": "4.63.1",
++        "fsevents": "~2.3.2"
++      }
++    },
++    "node_modules/source-map-js": {
++      "version": "1.2.1",
++      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
++      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
++      "dev": true,
++      "license": "BSD-3-Clause",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/tinyglobby": {
++      "version": "0.2.17",
++      "resolved": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz",
++      "integrity": "sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "fdir": "^6.5.0",
++        "picomatch": "^4.0.4"
++      },
++      "engines": {
++        "node": ">=12.0.0"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/SuperchupuDev"
++      }
++    },
++    "node_modules/tr46": {
++      "version": "0.0.3",
++      "resolved": "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz",
++      "integrity": "sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==",
++      "license": "MIT"
++    },
++    "node_modules/tsx": {
++      "version": "4.23.13",
++      "resolved": "https://registry.npmjs.org/tsx/-/tsx-4.23.13.tgz",
++      "integrity": "sha512-BL5MGkRln6aDYhb0xbQlEAGw743BaZYWdbWtdJOBriYJboKgUUYCadFp2/FpBBZquBC/ezNBn7wMMPx7FDZUDw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "esbuild": "~0.28.0"
++      },
++      "bin": {
++        "tsx": "dist/cli.mjs"
++      },
++      "engines": {
++        "node": ">=18.0.0"
++      },
++      "optionalDependencies": {
++        "fsevents": "~2.3.3"
++      }
++    },
++    "node_modules/typescript": {
++      "version": "5.9.3",
++      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
++      "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "bin": {
++        "tsc": "bin/tsc",
++        "tsserver": "bin/tsserver"
++      },
++      "engines": {
++        "node": ">=14.17"
++      }
++    },
++    "node_modules/vite": {
++      "version": "7.3.6",
++      "resolved": "https://registry.npmjs.org/vite/-/vite-7.3.6.tgz",
++      "integrity": "sha512-4XP60spRGjSZFf1qYH+dJIkK2znL3zQfl9KkOV9MkkRR/3Dls0dxaBsQPTloEc5BLXWPL9vsOxopxyKoMmDueg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "esbuild": "^0.27.0 || ^0.28.0",
++        "fdir": "^6.5.0",
++        "picomatch": "^4.0.3",
++        "postcss": "^8.5.6",
++        "rollup": "^4.43.0",
++        "tinyglobby": "^0.2.15"
++      },
++      "bin": {
++        "vite": "bin/vite.js"
++      },
++      "engines": {
++        "node": "^20.19.0 || >=22.12.0"
++      },
++      "funding": {
++        "url": "https://github.com/vitejs/vite?sponsor=1"
++      },
++      "optionalDependencies": {
++        "fsevents": "~2.3.3"
++      },
++      "peerDependencies": {
++        "@types/node": "^20.19.0 || >=22.12.0",
++        "jiti": ">=1.21.0",
++        "less": "^4.0.0",
++        "lightningcss": "^1.21.0",
++        "sass": "^1.70.0",
++        "sass-embedded": "^1.70.0",
++        "stylus": ">=0.54.8",
++        "sugarss": "^5.0.0",
++        "terser": "^5.16.0",
++        "tsx": "^4.8.1",
++        "yaml": "^2.4.2"
++      },
++      "peerDependenciesMeta": {
++        "@types/node": {
++          "optional": true
++        },
++        "jiti": {
++          "optional": true
++        },
++        "less": {
++          "optional": true
++        },
++        "lightningcss": {
++          "optional": true
++        },
++        "sass": {
++          "optional": true
++        },
++        "sass-embedded": {
++          "optional": true
++        },
++        "stylus": {
++          "optional": true
++        },
++        "sugarss": {
++          "optional": true
++        },
++        "terser": {
++          "optional": true
++        },
++        "tsx": {
++          "optional": true
++        },
++        "yaml": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/webfontloader": {
++      "version": "1.6.28",
++      "resolved": "https://registry.npmjs.org/webfontloader/-/webfontloader-1.6.28.tgz",
++      "integrity": "sha512-Egb0oFEga6f+nSgasH3E0M405Pzn6y3/9tOVanv/DLfa1YBIgcv90L18YyWnvXkRbIM17v5Kv6IT2N6g1x5tvQ==",
++      "license": "Apache-2.0"
++    },
++    "node_modules/webidl-conversions": {
++      "version": "3.0.1",
++      "resolved": "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-3.0.1.tgz",
++      "integrity": "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==",
++      "license": "BSD-2-Clause"
++    },
++    "node_modules/whatwg-url": {
++      "version": "5.0.0",
++      "resolved": "https://registry.npmjs.org/whatwg-url/-/whatwg-url-5.0.0.tgz",
++      "integrity": "sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==",
++      "license": "MIT",
++      "dependencies": {
++        "tr46": "~0.0.3",
++        "webidl-conversions": "^3.0.0"
++      }
++    }
++  }
++}
+diff --git a/package.json b/package.json
+new file mode 100644
+index 0000000..38267c9
+--- /dev/null
++++ b/package.json
+@@ -0,0 +1,25 @@
++{
++  "name": "signal-arena-decision-hunt",
++  "version": "0.1.0",
++  "private": true,
++  "type": "module",
++  "scripts": {
++    "dev": "vite --host 0.0.0.0",
++    "audit:product": "node scripts/product-audit.mjs",
++    "test:scoring": "tsx scripts/scoring-tests.ts",
++    "build": "tsc --noEmit && npm run audit:product && npm run test:scoring && vite build",
++    "preview": "vite preview --host 0.0.0.0"
++  },
++  "dependencies": {
++    "phaser": "^4.2.1",
++    "phaser3-rex-plugins": "^1.80.20"
++  },
++  "devDependencies": {
++    "tsx": "^4.23.13",
++    "typescript": "^5.9.2",
++    "vite": "^7.1.5"
++  },
++  "overrides": {
++    "i18next-http-backend": "^3.0.5"
++  }
++}
+diff --git a/public/icon.svg b/public/icon.svg
+new file mode 100644
+index 0000000..0de721b
+--- /dev/null
++++ b/public/icon.svg
+@@ -0,0 +1,18 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
++  <defs>
++    <radialGradient id="g" cx="50%" cy="20%" r="80%">
++      <stop offset="0%" stop-color="#22d8f5"/>
++      <stop offset="55%" stop-color="#111f42"/>
++      <stop offset="100%" stop-color="#01030a"/>
++    </radialGradient>
++    <linearGradient id="s" x1="0" x2="1">
++      <stop offset="0" stop-color="#22d8f5"/>
++      <stop offset="1" stop-color="#b388ff"/>
++    </linearGradient>
++  </defs>
++  <rect width="512" height="512" rx="112" fill="url(#g)"/>
++  <path d="M130 326c54-116 102-150 143-100 23 28 38 36 68-52" fill="none" stroke="url(#s)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
++  <path d="M118 380h276" stroke="#f5c044" stroke-width="22" stroke-linecap="round" opacity=".9"/>
++  <circle cx="273" cy="226" r="24" fill="#f2f7ff"/>
++  <path d="M380 92l20 46 50 7-36 35 9 50-43-24-44 24 9-50-36-35 50-7z" fill="#f5c044" opacity=".96"/>
++</svg>
+diff --git a/public/manifest.webmanifest b/public/manifest.webmanifest
+new file mode 100644
+index 0000000..91fe6cc
+--- /dev/null
++++ b/public/manifest.webmanifest
+@@ -0,0 +1,19 @@
++{
++  "name": "Signal Arena — Decision Hunt",
++  "short_name": "Signal Arena",
++  "description": "Vertical decision trainer: hunt market distortions before the click.",
++  "lang": "ru",
++  "start_url": "/",
++  "display": "standalone",
++  "orientation": "portrait",
++  "background_color": "#01030a",
++  "theme_color": "#04070f",
++  "icons": [
++    {
++      "src": "/icon.svg",
++      "sizes": "512x512",
++      "type": "image/svg+xml",
++      "purpose": "any maskable"
++    }
++  ]
++}
+diff --git a/scripts/product-audit.mjs b/scripts/product-audit.mjs
+new file mode 100644
+index 0000000..c138296
+--- /dev/null
++++ b/scripts/product-audit.mjs
+@@ -0,0 +1,66 @@
++import fs from 'node:fs';
++import path from 'node:path';
++
++const root = process.cwd();
++const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
++const exists = (p) => fs.existsSync(path.join(root, p));
++const fail = (msg) => {
++  console.error(`✕ ${msg}`);
++  process.exitCode = 1;
++};
++const pass = (msg) => console.log(`✓ ${msg}`);
++
++const pkg = JSON.parse(read('package.json'));
++const main = read('src/main.ts');
++const scene = read('src/game/ArenaScene.ts');
++const data = read('src/game/data.ts');
++const scoring = read('src/game/scoring.ts');
++const html = read('index.html');
++
++if (pkg.dependencies?.phaser?.includes('4.')) pass('Phaser 4 dependency locked'); else fail('Phaser 4 dependency missing');
++if (pkg.dependencies?.['phaser3-rex-plugins']) pass('rexUI dependency present'); else fail('rexUI dependency missing');
++if (/width:\s*540/.test(main) && /height:\s*960/.test(main)) pass('9:16 scene size 540×960'); else fail('9:16 scene config missing');
++if (/Phaser\.WEBGL/.test(main)) pass('WebGL renderer requested'); else fail('WebGL renderer not requested');
++if (/rexUI/.test(main) && /ui-plugin\.js/.test(main)) pass('rexUI scene plugin registered'); else fail('rexUI plugin not registered');
++if (/maximum-scale=1\.0/.test(html) && /viewport-fit=cover/.test(html)) pass('mobile viewport configured'); else fail('mobile viewport incomplete');
++
++const missionMatch = data.match(/export const missions: Mission\[\] = ([\s\S]*?);\n\nexport const riskLabels/);
++if (!missionMatch) fail('missions array not parseable');
++const missions = missionMatch ? Function(`const missions = ${missionMatch[1]}; return missions;`)() : [];
++const missionCount = missions.length;
++if (missionCount >= 10) pass(`${missionCount} deterministic missions`); else fail('not enough missions');
++const missionIds = new Set(missions.map((m) => m.id));
++if (missionIds.size === missionCount) pass('mission ids unique'); else fail('duplicate mission ids');
++const invalidMissions = missions.filter((m) => {
++  const clueIds = new Set(m.clues.map((c) => c.id));
++  const skillIds = new Set(m.skills.map((s) => s.id));
++  const decisionKeys = new Set(m.decisions.map((d) => d.key));
++  return m.clues.length < 4
++    || m.skills.length !== 3
++    || m.decisions.length !== 4
++    || !skillIds.has(m.correctSkill)
++    || !decisionKeys.has(m.correctDecision)
++    || m.requiredClues > m.clues.length
++    || !m.safeRisk.length
++    || m.future.length < 10
++    || m.pulse.length < 12
++    || m.skills.some((s) => s.counterTo.some((id) => !clueIds.has(id)));
++});
++if (invalidMissions.length === 0) pass('mission content contracts valid'); else fail(`invalid mission contracts: ${invalidMissions.map((m) => m.id).join(', ')}`);
++if (/forward-after-answer/.test(scene) && /Будущее/.test(scene)) pass('forward-after-answer loop present'); else fail('forward-after-answer loop missing');
++if (/Style Vault/.test(read('README.md')) && /cosmetic/i.test(scene)) pass('cosmetic-first monetization present'); else fail('cosmetic-first loop missing');
++if (/dailyContracts/.test(scene) && /decision dna/i.test(scene)) pass('daily retention and mastery profile present'); else fail('daily retention/profile loop missing');
++if (/export function computeScore/.test(scoring) && /perfectInput/.test(scoring) && /recklessInput/.test(scoring)) pass('pure scoring engine extracted'); else fail('scoring engine not extracted');
++if (/private track\(/.test(scene) && /mission_started/.test(scene) && /result_reached/.test(scene) && /cosmetic_bought/.test(scene)) pass('local analytics event spine present'); else fail('analytics event spine missing');
++if (/showSettings/.test(scene) && /UserSettings/.test(scene) && /Высокий контраст/.test(scene)) pass('accessibility settings present'); else fail('accessibility settings missing');
++if (/tutorialHint/.test(scene) && /tutorialDone/.test(scene) && /НАВИГАТОР НОВИЧКА/.test(scene)) pass('first-run tutorial hints present'); else fail('first-run tutorial hints missing');
++if (!/orderbook|стакан|paperMoney|demo account/i.test(scene)) pass('terminal mechanics not present in scene'); else fail('terminal mechanics leaked into scene');
++
++const assetDir = path.join(root, 'src/assets');
++const totalAssets = fs.readdirSync(assetDir).reduce((sum, f) => sum + fs.statSync(path.join(assetDir, f)).size, 0);
++if (totalAssets < 1.6 * 1024 * 1024) pass(`mobile assets optimized ${(totalAssets / 1024 / 1024).toFixed(2)} MB`); else fail(`assets too heavy ${(totalAssets / 1024 / 1024).toFixed(2)} MB`);
++
++if (exists('public/manifest.webmanifest') && exists('public/icon.svg')) pass('PWA manifest and icon present'); else fail('PWA assets missing');
++
++if (process.exitCode) process.exit(process.exitCode);
++console.log('Signal Arena product audit passed. Паника под контролем. План найден.');
+diff --git a/scripts/scoring-tests.ts b/scripts/scoring-tests.ts
+new file mode 100644
+index 0000000..1007731
+--- /dev/null
++++ b/scripts/scoring-tests.ts
+@@ -0,0 +1,65 @@
++import { computeScore, enemyHp, panicPressure, perfectInput, recklessInput } from '../src/game/scoring';
++import type { Mission } from '../src/game/data';
++
++const fixture: Mission = {
++  id: 'test-fomo',
++  act: 'Test',
++  title: 'Fixture',
++  subtitle: 'Fixture',
++  enemyKey: 'fixture',
++  enemyName: 'Fixture Wraith',
++  enemyRole: 'test',
++  enemyQuote: 'test',
++  objective: 'test',
++  pair: 'TEST',
++  timeframe: '1H',
++  difficulty: 'test',
++  bgKey: 'fixture',
++  accent: 0x22d8f5,
++  protocolId: 'fixture-protocol',
++  requiredClues: 2,
++  correctSkill: 'discipline',
++  correctDecision: 'D',
++  safeRisk: ['0', '05'],
++  baseScores: { A: 55, B: 45, C: 12, D: 78 },
++  pulse: [1, 2, 3],
++  future: [2, 1, 0],
++  clues: [
++    { id: 'evidence', icon: '◉', eyebrow: 'test', title: 'Evidence', body: 'body', punch: 'punch', damage: 18, evidence: 14 },
++    { id: 'feed', icon: '☷', eyebrow: 'test', title: 'Feed', body: 'body', punch: 'punch', damage: 8, evidence: 8, feeds: true },
++    { id: 'risk', icon: '⬣', eyebrow: 'test', title: 'Risk', body: 'body', punch: 'punch', damage: 15, evidence: 12 }
++  ],
++  skills: [
++    { id: 'discipline', type: 'defense', icon: '⬣', title: 'Discipline', mantra: 'mantra', body: 'body', counterTo: ['evidence', 'feed', 'risk'] },
++    { id: 'almost', type: 'read', icon: '◉', title: 'Almost', mantra: 'mantra', body: 'body', counterTo: ['evidence'] },
++    { id: 'wrong', type: 'decision', icon: '□', title: 'Wrong', mantra: 'mantra', body: 'body', counterTo: [] }
++  ],
++  decisions: [
++    { key: 'A', icon: 'A', title: 'A', body: 'A' },
++    { key: 'B', icon: 'B', title: 'B', body: 'B' },
++    { key: 'C', icon: 'C', title: 'C', body: 'C', bad: true },
++    { key: 'D', icon: 'D', title: 'D', body: 'D' }
++  ],
++  verdicts: { win: 'win', lose: 'lose', journal: 'journal' }
++};
++
++const perfect = computeScore(perfectInput(fixture));
++const reckless = computeScore(recklessInput(fixture));
++const partial = computeScore({ mission: fixture, opened: ['evidence', 'feed'], skillId: 'almost', decision: 'A', risk: '05' });
++
++assert(perfect.total >= 90, `perfect score too low: ${perfect.total}`);
++assert(perfect.stars === 3, `perfect stars expected 3, got ${perfect.stars}`);
++assert(perfect.victory, 'perfect input should be victory');
++assert(enemyHp(perfectInput(fixture)) < 35, 'perfect input should heavily damage enemy');
++assert(reckless.total <= 20, `reckless score too high: ${reckless.total}`);
++assert(!reckless.victory, 'reckless input should fail');
++assert(panicPressure(recklessInput(fixture)) > panicPressure(perfectInput(fixture)), 'reckless pressure should be higher than perfect pressure');
++assert(partial.total > reckless.total && partial.total < perfect.total, 'partial score should sit between reckless and perfect');
++
++console.log('Scoring tests passed. Ошибка теперь считается, а не гадает.');
++
++function assert(condition: unknown, message: string): asserts condition {
++  if (!condition) {
++    throw new Error(message);
++  }
++}
+diff --git a/src/assets/enemy.fomo_wraith.jpg b/src/assets/enemy.fomo_wraith.jpg
+new file mode 100644
+index 0000000..23510d0
+Binary files /dev/null and b/src/assets/enemy.fomo_wraith.jpg differ
+diff --git a/src/assets/enemy.headline_titan.jpg b/src/assets/enemy.headline_titan.jpg
+new file mode 100644
+index 0000000..ff21054
+Binary files /dev/null and b/src/assets/enemy.headline_titan.jpg differ
+diff --git a/src/assets/enemy.hubris_dragon.jpg b/src/assets/enemy.hubris_dragon.jpg
+new file mode 100644
+index 0000000..da4b6b1
+Binary files /dev/null and b/src/assets/enemy.hubris_dragon.jpg differ
+diff --git a/src/assets/enemy.leverage_goblin.jpg b/src/assets/enemy.leverage_goblin.jpg
+new file mode 100644
+index 0000000..c13dc70
+Binary files /dev/null and b/src/assets/enemy.leverage_goblin.jpg differ
+diff --git a/src/assets/enemy.revenge_wraith.jpg b/src/assets/enemy.revenge_wraith.jpg
+new file mode 100644
+index 0000000..ba9b80f
+Binary files /dev/null and b/src/assets/enemy.revenge_wraith.jpg differ
+diff --git a/src/assets/fomo-portrait.jpg b/src/assets/fomo-portrait.jpg
+new file mode 100644
+index 0000000..014d38d
+Binary files /dev/null and b/src/assets/fomo-portrait.jpg differ
+diff --git a/src/assets/generated-image-1789066991824.jpg b/src/assets/generated-image-1789066991824.jpg
+new file mode 100644
+index 0000000..ade50db
+Binary files /dev/null and b/src/assets/generated-image-1789066991824.jpg differ
+diff --git a/src/assets/generated-image-1789067298451.jpg b/src/assets/generated-image-1789067298451.jpg
+new file mode 100644
+index 0000000..7f89507
+Binary files /dev/null and b/src/assets/generated-image-1789067298451.jpg differ
+diff --git a/src/assets/generated-image-1789067300104.jpg b/src/assets/generated-image-1789067300104.jpg
+new file mode 100644
+index 0000000..9709d40
+Binary files /dev/null and b/src/assets/generated-image-1789067300104.jpg differ
+diff --git a/src/assets/generated-image-1789067301589.jpg b/src/assets/generated-image-1789067301589.jpg
+new file mode 100644
+index 0000000..efeb63d
+Binary files /dev/null and b/src/assets/generated-image-1789067301589.jpg differ
+diff --git a/src/game/ArenaScene.ts b/src/game/ArenaScene.ts
+new file mode 100644
+index 0000000..da1dbaf
+--- /dev/null
++++ b/src/game/ArenaScene.ts
+@@ -0,0 +1,1578 @@
++import Phaser from 'phaser';
++import {
++  ASSET_MANIFEST,
++  CosmeticSeal,
++  DecisionKey,
++  Mission,
++  RiskKey,
++  SceneMode,
++  SkillCard,
++  cosmetics,
++  menuMicrocopy,
++  missions,
++  riskLabels
++} from './data';
++import { ScoreBreakdown, computeScore as engineComputeScore, enemyHp as engineEnemyHp, panicPressure as enginePanicPressure } from './scoring';
++
++const W = 540;
++const H = 960;
++const STORAGE_KEY = 'signal-arena-phaser4-rexui-v1';
++
++const C = {
++  bg: 0x01030a,
++  panel: 0x0d1832,
++  panel2: 0x111f42,
++  panel3: 0x16294e,
++  line: 0x82a5d2,
++  cyan: 0x22d8f5,
++  teal: 0x0e7490,
++  green: 0x34d399,
++  gold: 0xf5c044,
++  red: 0xfb4d6d,
++  purple: 0xb388ff,
++  white: 0xf2f7ff,
++  muted: 0x8fa1c0,
++  dim: 0x5a6c8a,
++  black: 0x000000
++};
++
++interface PlayerStats {
++  runs: number;
++  wins: number;
++  perfects: number;
++  evidence: number;
++  principle: number;
++  risk: number;
++  control: number;
++}
++
++interface DailyState {
++  date: string;
++  completed: Record<string, boolean>;
++}
++
++interface DailyContract {
++  id: string;
++  title: string;
++  body: string;
++  rewardXp: number;
++  rewardCredits: number;
++  accent: number;
++}
++
++interface UserSettings {
++  sound: boolean;
++  motion: boolean;
++  contrast: boolean;
++}
++
++interface SaveData {
++  xp: number;
++  credits: number;
++  streak: number;
++  lastClosedDate: string;
++  best: Record<string, number>;
++  codex: Record<string, boolean>;
++  ownedCosmetics: string[];
++  equippedCosmetic: string;
++  stats: PlayerStats;
++  daily: DailyState;
++  settings: UserSettings;
++  tutorialDone: boolean;
++}
++
++interface RunState {
++  mission: Mission;
++  opened: Set<string>;
++  selectedClue?: string;
++  skillId?: string;
++  decision?: DecisionKey;
++  risk: RiskKey;
++  rewarded?: boolean;
++}
++
++interface ButtonOptions {
++  icon?: string;
++  subtitle?: string;
++  fill?: number;
++  stroke?: number;
++  textColor?: number;
++  radius?: number;
++  disabled?: boolean;
++  danger?: boolean;
++  gold?: boolean;
++  selected?: boolean;
++  small?: boolean;
++  align?: 'center' | 'left';
++}
++
++export default class ArenaScene extends Phaser.Scene {
++  public rexUI!: any;
++
++  private root!: Phaser.GameObjects.Container;
++  private mode: SceneMode = 'home';
++  private selectedMission = 0;
++  private run?: RunState;
++  private save: SaveData = this.defaultSave();
++  private timers: Phaser.Time.TimerEvent[] = [];
++  private audio?: AudioContext;
++
++  constructor() {
++    super('arena');
++  }
++
++  preload(): void {
++    this.cameras.main.setBackgroundColor(C.bg);
++    this.drawPreloader();
++
++    Object.entries(ASSET_MANIFEST).forEach(([key, url]) => {
++      this.load.image(key, url);
++    });
++  }
++
++  create(): void {
++    this.save = this.loadSave();
++    this.input.setTopOnly(true);
++    this.root = this.add.container(0, 0);
++    this.track('first_open');
++    this.showIntro();
++  }
++
++  private drawPreloader(): void {
++    const g = this.add.graphics();
++    g.fillStyle(C.bg, 1).fillRect(0, 0, W, H);
++    g.fillStyle(C.cyan, 0.08).fillCircle(W / 2, 180, 220);
++    g.lineStyle(2, C.line, 0.2);
++    for (let y = 80; y < H; y += 42) {
++      g.lineBetween(24, y, W - 24, y);
++    }
++
++    const title = this.add.text(W / 2, 384, 'SIGNAL ARENA', {
++      fontFamily: 'Inter, Arial, sans-serif',
++      fontSize: '34px',
++      color: this.hex(C.white),
++      fontStyle: 'bold',
++      letterSpacing: 2
++    }).setOrigin(0.5);
++
++    const sub = this.add.text(W / 2, 430, 'Phaser 4 · TypeScript · Vite · rexUI', {
++      fontFamily: 'Inter, Arial, sans-serif',
++      fontSize: '13px',
++      color: this.hex(C.muted),
++      fontStyle: 'bold'
++    }).setOrigin(0.5);
++
++    const barBg = this.add.rectangle(W / 2, 500, 320, 10, 0x0b1530, 1).setStrokeStyle(1, C.line, 0.35);
++    const bar = this.add.rectangle(110, 500, 0, 8, C.cyan, 1).setOrigin(0, 0.5);
++    const status = this.add.text(W / 2, 532, 'Загрузка протокола управляемой паники…', {
++      fontFamily: 'Inter, Arial, sans-serif',
++      fontSize: '12px',
++      color: this.hex(C.dim)
++    }).setOrigin(0.5);
++
++    this.load.on('progress', (p: number) => {
++      bar.width = 316 * p;
++      status.setText(`Загрузка ${(p * 100).toFixed(0)}% · рынок делает вид, что стабилен`);
++    });
++    this.load.once('complete', () => {
++      [g, title, sub, barBg, bar, status].forEach((obj) => obj.destroy());
++    });
++  }
++
++  private defaultSave(): SaveData {
++    return {
++      xp: 0,
++      credits: 40,
++      streak: 0,
++      lastClosedDate: '',
++      best: {},
++      codex: {},
++      ownedCosmetics: ['default'],
++      equippedCosmetic: 'default',
++      stats: {
++        runs: 0,
++        wins: 0,
++        perfects: 0,
++        evidence: 0,
++        principle: 0,
++        risk: 0,
++        control: 0
++      },
++      daily: {
++        date: '',
++        completed: {}
++      },
++      settings: {
++        sound: true,
++        motion: true,
++        contrast: false
++      },
++      tutorialDone: false
++    };
++  }
++
++  private loadSave(): SaveData {
++    try {
++      const raw = localStorage.getItem(STORAGE_KEY);
++      if (!raw) return this.defaultSave();
++      const parsed = JSON.parse(raw) as Partial<SaveData>;
++      const base = this.defaultSave();
++      const owned = Array.from(new Set([...(parsed.ownedCosmetics ?? []), 'default']));
++      const equipped = owned.includes(parsed.equippedCosmetic ?? '') ? parsed.equippedCosmetic! : 'default';
++      const daily = parsed.daily?.date === this.localDateKey()
++        ? { date: parsed.daily.date, completed: parsed.daily.completed ?? {} }
++        : { date: this.localDateKey(), completed: {} };
++      return {
++        ...base,
++        ...parsed,
++        best: parsed.best ?? {},
++        codex: parsed.codex ?? {},
++        ownedCosmetics: owned,
++        equippedCosmetic: equipped,
++        stats: { ...base.stats, ...(parsed.stats ?? {}) },
++        daily,
++        settings: { ...base.settings, ...(parsed.settings ?? {}) }
++      };
++    } catch {
++      return this.defaultSave();
++    }
++  }
++
++  private persist(): void {
++    try {
++      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.save));
++    } catch {
++      // Storage can be blocked in private mode. The game remains playable.
++    }
++  }
++
++  private track(event: string, payload: Record<string, unknown> = {}): void {
++    try {
++      const key = `${STORAGE_KEY}:events`;
++      const current = JSON.parse(localStorage.getItem(key) ?? '[]') as Array<Record<string, unknown>>;
++      current.push({ event, payload, mode: this.mode, ts: Date.now(), day: this.localDateKey() });
++      localStorage.setItem(key, JSON.stringify(current.slice(-200)));
++    } catch {
++      // Analytics must never break gameplay.
++    }
++  }
++
++  private clear(): void {
++    this.timers.forEach((t) => t.remove(false));
++    this.timers = [];
++    this.tweens.killAll();
++    if (this.root) this.root.destroy(true);
++    this.root = this.add.container(0, 0).setAlpha(this.save.settings.motion ? 0 : 1);
++    if (this.save.settings.motion) this.tweens.add({ targets: this.root, alpha: 1, duration: 220, ease: 'Quad.easeOut' });
++  }
++
++  private hex(color: number): string {
++    return `#${color.toString(16).padStart(6, '0')}`;
++  }
++
++  private localDateKey(date = new Date()): string {
++    const y = date.getFullYear();
++    const m = `${date.getMonth() + 1}`.padStart(2, '0');
++    const d = `${date.getDate()}`.padStart(2, '0');
++    return `${y}-${m}-${d}`;
++  }
++
++  private ensureDaily(): void {
++    const today = this.localDateKey();
++    if (this.save.daily.date !== today) {
++      this.save.daily = { date: today, completed: {} };
++      this.persist();
++    }
++  }
++
++  private isTutorialRun(): boolean {
++    return !this.save.tutorialDone && this.save.stats.runs === 0;
++  }
++
++  private dailyContracts(): DailyContract[] {
++    return [
++      {
++        id: 'close-error',
++        title: 'Закрой одну ошибку',
++        body: 'Пройти бой до журнала. Не обязательно красиво. Главное — назвать причину.',
++        rewardXp: 24,
++        rewardCredits: 8,
++        accent: C.cyan
++      },
++      {
++        id: 'safe-risk',
++        title: 'Не корми плечо',
++        body: 'Завершить бой с риском 0%, 0.5% или 1%. 2% считается публичным самосаботажем.',
++        rewardXp: 20,
++        rewardCredits: 6,
++        accent: C.gold
++      },
++      {
++        id: 'full-evidence',
++        title: 'Открой все улики',
++        body: 'Полный диагноз до решения. Рынок прячет нож в последней карточке.',
++        rewardXp: 32,
++        rewardCredits: 10,
++        accent: C.green
++      }
++    ];
++  }
++
++  private text(
++    x: number,
++    y: number,
++    value: string,
++    size: number,
++    color = C.white,
++    width?: number,
++    weight: 'normal' | 'bold' = 'bold',
++    align: 'left' | 'center' | 'right' = 'left'
++  ): Phaser.GameObjects.Text {
++    const t = this.add.text(x, y, value, {
++      fontFamily: 'Inter, Arial, sans-serif',
++      fontSize: `${size}px`,
++      color: this.hex(color),
++      fontStyle: weight,
++      align,
++      wordWrap: width ? { width, useAdvancedWrap: true } : undefined,
++      lineSpacing: 4
++    });
++    t.setResolution(Math.min(window.devicePixelRatio || 1, 2));
++    this.root.add(t);
++    return t;
++  }
++
++  private rexRoundRect(
++    x: number,
++    y: number,
++    w: number,
++    h: number,
++    radius = 18,
++    fill = C.panel,
++    alpha = 1,
++    stroke = C.line,
++    strokeAlpha = 0.22,
++    lineWidth = 1
++  ): any {
++    let rr: any;
++    if (this.rexUI?.add?.roundRectangle) {
++      rr = this.rexUI.add.roundRectangle(x, y, w, h, radius, fill, alpha);
++      rr.setStrokeStyle(lineWidth, stroke, strokeAlpha);
++    } else {
++      rr = this.add.rectangle(x, y, w, h, fill, alpha).setStrokeStyle(lineWidth, stroke, strokeAlpha);
++    }
++    return rr;
++  }
++
++  private panel(
++    x: number,
++    y: number,
++    w: number,
++    h: number,
++    fill = C.panel,
++    alpha = 0.94,
++    radius = 22,
++    stroke = C.line,
++    strokeAlpha = 0.22
++  ): any {
++    const rr = this.rexRoundRect(x, y, w, h, radius, fill, alpha, stroke, strokeAlpha, 1.3);
++    this.root.add(rr);
++    return rr;
++  }
++
++  private button(
++    x: number,
++    y: number,
++    w: number,
++    h: number,
++    title: string,
++    onClick: () => void,
++    opts: ButtonOptions = {}
++  ): any {
++    const fill = opts.fill ?? (opts.danger ? 0x8d1530 : opts.gold ? 0x8a5a06 : C.panel3);
++    const stroke = opts.stroke ?? (opts.danger ? C.red : opts.gold ? C.gold : opts.selected ? C.cyan : C.line);
++    const textColor = opts.textColor ?? (opts.gold ? 0x2a1a00 : C.white);
++    const container = this.add.container(x, y);
++    const bg = this.rexRoundRect(0, 0, w, h, opts.radius ?? 18, fill, opts.disabled ? 0.42 : 0.96, stroke, opts.selected ? 0.95 : 0.36, opts.selected ? 2.4 : 1.4);
++    container.add(bg);
++
++    if (opts.gold) {
++      bg.setFillStyle?.(0xe9a820, opts.disabled ? 0.45 : 1);
++    }
++
++    const left = opts.align === 'left' || opts.subtitle || opts.icon;
++    const iconOffset = opts.icon ? 44 : 0;
++    if (opts.icon) {
++      const icon = this.add.text(-w / 2 + 27, 0, opts.icon, {
++        fontFamily: 'Inter, Arial, sans-serif',
++        fontSize: opts.small ? '17px' : '24px',
++        color: this.hex(opts.gold ? 0x2a1a00 : opts.selected ? C.cyan : textColor),
++        fontStyle: 'bold'
++      }).setOrigin(0.5);
++      container.add(icon);
++    }
++
++    const tx = left ? -w / 2 + 18 + iconOffset : 0;
++    const titleText = this.add.text(tx, opts.subtitle ? -10 : 0, title, {
++      fontFamily: 'Inter, Arial, sans-serif',
++      fontSize: `${opts.small ? 12 : 15}px`,
++      color: this.hex(textColor),
++      fontStyle: 'bold',
++      align: left ? 'left' : 'center',
++      wordWrap: { width: w - 34 - iconOffset, useAdvancedWrap: true },
++      lineSpacing: 2
++    }).setOrigin(left ? 0 : 0.5, 0.5);
++    titleText.setResolution(Math.min(window.devicePixelRatio || 1, 2));
++    container.add(titleText);
++
++    if (opts.subtitle) {
++      const sub = this.add.text(tx, 15, opts.subtitle, {
++        fontFamily: 'Inter, Arial, sans-serif',
++        fontSize: `${opts.small ? 9 : 11}px`,
++        color: this.hex(opts.gold ? 0x4a3205 : C.muted),
++        fontStyle: 'bold',
++        wordWrap: { width: w - 34 - iconOffset, useAdvancedWrap: true },
++        lineSpacing: 1
++      }).setOrigin(0, 0.5);
++      sub.setResolution(Math.min(window.devicePixelRatio || 1, 2));
++      container.add(sub);
++    }
++
++    container.setSize(w, h);
++    container.setAlpha(opts.disabled ? 0.55 : 1);
++    container.setData('enabled', !opts.disabled);
++    container.setInteractive(new Phaser.Geom.Rectangle(-w / 2, -h / 2, w, h), Phaser.Geom.Rectangle.Contains);
++    container.on('pointerdown', () => {
++      if (!container.getData('enabled')) return;
++      this.sfx('tap');
++      this.haptic(10);
++      if (this.save.settings.motion) this.tweens.add({ targets: container, scale: 0.965, duration: 55, yoyo: true, ease: 'Quad.easeOut' });
++    });
++    container.on('pointerup', () => {
++      if (!container.getData('enabled')) return;
++      onClick();
++    });
++    container.on('pointerover', () => {
++      if (!container.getData('enabled')) return;
++      if (this.save.settings.motion) this.tweens.add({ targets: container, scale: 1.018, duration: 120, ease: 'Quad.easeOut' });
++    });
++    container.on('pointerout', () => {
++      if (this.save.settings.motion) this.tweens.add({ targets: container, scale: 1, duration: 120, ease: 'Quad.easeOut' });
++    });
++    container.setData('setEnabled', (enabled: boolean) => {
++      container.setData('enabled', enabled);
++      container.setAlpha(enabled ? 1 : 0.55);
++      bg.setAlpha?.(enabled ? 0.96 : 0.42);
++    });
++
++    this.root.add(container);
++    return container;
++  }
++
++  private setButtonEnabled(button: any, enabled: boolean): void {
++    const fn = button?.getData?.('setEnabled');
++    if (fn) fn(enabled);
++  }
++
++  private haptic(pattern: number | number[]): void {
++    try {
++      navigator.vibrate?.(pattern);
++    } catch {
++      // No haptics available.
++    }
++  }
++
++  private ensureAudio(): AudioContext | undefined {
++    if (!this.audio) {
++      const Ctx = window.AudioContext || (window as any).webkitAudioContext;
++      if (!Ctx) return undefined;
++      this.audio = new Ctx();
++    }
++    if (this.audio.state === 'suspended') void this.audio.resume();
++    return this.audio;
++  }
++
++  private tone(freq: number, delay: number, dur: number, type: OscillatorType = 'triangle', vol = 0.08): void {
++    if (!this.save.settings.sound) return;
++    const ctx = this.ensureAudio();
++    if (!ctx) return;
++    const osc = ctx.createOscillator();
++    const gain = ctx.createGain();
++    osc.type = type;
++    osc.frequency.value = freq;
++    gain.gain.setValueAtTime(0.0001, ctx.currentTime + delay);
++    gain.gain.exponentialRampToValueAtTime(vol, ctx.currentTime + delay + 0.018);
++    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + delay + dur);
++    osc.connect(gain).connect(ctx.destination);
++    osc.start(ctx.currentTime + delay);
++    osc.stop(ctx.currentTime + delay + dur + 0.04);
++  }
++
++  private sfx(kind: 'tap' | 'open' | 'counter' | 'bad' | 'win' | 'tick' | 'seal' | 'coin'): void {
++    if (kind === 'tap') { this.tone(620, 0, 0.06); this.tone(930, 0.035, 0.05, 'triangle', 0.05); }
++    if (kind === 'open') { this.tone(420, 0, 0.08); this.tone(840, 0.06, 0.14); }
++    if (kind === 'counter') { [523, 784, 1046].forEach((f, i) => this.tone(f, i * 0.055, 0.18)); }
++    if (kind === 'bad') { this.tone(120, 0, 0.34, 'sawtooth', 0.08); this.tone(80, 0.12, 0.38, 'sine', 0.10); }
++    if (kind === 'win') { [523, 659, 784, 1046, 1318].forEach((f, i) => this.tone(f, i * 0.08, 0.22)); }
++    if (kind === 'tick') this.tone(880, 0, 0.035, 'square', 0.035);
++    if (kind === 'seal') { this.tone(160, 0, 0.20, 'sawtooth', 0.06); this.tone(95, 0.08, 0.36, 'sine', 0.09); }
++    if (kind === 'coin') { this.tone(1200, 0, 0.07, 'square', 0.04); this.tone(1580, 0.055, 0.10, 'square', 0.035); }
++  }
++
++  private toast(message: string, color = C.white): void {
++    const c = this.add.container(W / 2, 822);
++    const bg = this.rexRoundRect(0, 0, 430, 44, 16, 0x06122a, 0.96, color, 0.36, 1.2);
++    const t = this.add.text(0, 0, message, {
++      fontFamily: 'Inter, Arial, sans-serif',
++      fontSize: '12px',
++      color: this.hex(color),
++      fontStyle: 'bold',
++      align: 'center',
++      wordWrap: { width: 394, useAdvancedWrap: true }
++    }).setOrigin(0.5);
++    t.setResolution(Math.min(window.devicePixelRatio || 1, 2));
++    c.add([bg, t]);
++    this.root.add(c);
++    this.tweens.add({ targets: c, y: 798, alpha: 0, delay: 1450, duration: 360, ease: 'Quad.easeIn', onComplete: () => c.destroy(true) });
++  }
++
++  private burst(x: number, y: number, color: number, amount = 22): void {
++    if (!this.save.settings.motion) return;
++    for (let i = 0; i < amount; i += 1) {
++      const a = (Math.PI * 2 * i) / amount + Phaser.Math.FloatBetween(-0.18, 0.18);
++      const dist = Phaser.Math.Between(38, 118);
++      const p = this.add.circle(x, y, Phaser.Math.Between(2, 5), i % 3 === 0 ? C.white : color, 0.95);
++      this.root.add(p);
++      this.tweens.add({
++        targets: p,
++        x: x + Math.cos(a) * dist,
++        y: y + Math.sin(a) * dist,
++        alpha: 0,
++        scale: 0.2,
++        duration: Phaser.Math.Between(520, 860),
++        ease: 'Cubic.easeOut',
++        onComplete: () => p.destroy()
++      });
++    }
++  }
++
++  private addBackground(imageKey: string, accent = C.cyan): void {
++    const img = this.add.image(W / 2, H / 2, imageKey);
++    const scale = Math.max(W / img.width, H / img.height);
++    img.setScale(scale).setAlpha(0.22).setTint(0x98c9ff);
++    this.root.add(img);
++
++    const g = this.add.graphics();
++    g.fillStyle(C.bg, this.save.settings.contrast ? 0.86 : 0.72).fillRect(0, 0, W, H);
++    g.fillStyle(accent, 0.10).fillCircle(W * 0.5, -30, 260);
++    g.fillStyle(C.purple, 0.07).fillCircle(W + 80, H + 20, 320);
++    g.lineStyle(1, C.line, 0.055);
++    for (let x = -140; x < W + 160; x += 42) g.lineBetween(x, 0, x + 260, H);
++    for (let y = 120; y < H; y += 48) g.lineBetween(22, y, W - 22, y + 8);
++    g.fillStyle(C.bg, 0.32).fillRect(0, 0, W, 116);
++    g.fillStyle(C.bg, 0.52).fillRect(0, H - 170, W, 170);
++    this.root.add(g);
++
++    if (this.save.settings.motion) {
++      for (let i = 0; i < 18; i += 1) {
++        const p = this.add.circle(Phaser.Math.Between(20, W - 20), Phaser.Math.Between(100, H - 120), Phaser.Math.FloatBetween(0.8, 2.2), i % 4 === 0 ? accent : C.line, Phaser.Math.FloatBetween(0.14, 0.34));
++        this.root.add(p);
++        this.tweens.add({
++          targets: p,
++          y: p.y - Phaser.Math.Between(18, 58),
++          alpha: Phaser.Math.FloatBetween(0.04, 0.22),
++          duration: Phaser.Math.Between(2200, 5200),
++          yoyo: true,
++          repeat: -1,
++          ease: 'Sine.easeInOut'
++        });
++      }
++    }
++  }
++
++  private addChrome(title = 'SIGNAL ARENA', step?: string): void {
++    const top = this.add.graphics();
++    top.fillStyle(0x04070f, 0.90).fillRect(0, 0, W, 86);
++    top.fillStyle(C.cyan, 0.08).fillRect(0, 84, W, 2);
++    this.root.add(top);
++
++    const level = Math.floor(this.save.xp / 300) + 1;
++    this.panel(26, 42, 44, 44, 0x14244a, 0.96, 14, C.cyan, 0.32);
++    this.text(26, 35, `${level}`, 17, C.cyan, undefined, 'bold', 'center').setOrigin(0.5, 0.5);
++    this.text(58, 25, title, 11, C.muted, 245).setOrigin(0, 0);
++    this.text(58, 45, `Trend Hunter · ${this.save.xp} XP`, 13, C.white, 240).setOrigin(0, 0);
++
++    const xpBg = this.add.rectangle(58, 68, 178, 8, 0x0a1330, 1).setOrigin(0, 0.5).setStrokeStyle(1, C.line, 0.18);
++    const xpVal = this.add.rectangle(59, 68, Math.max(4, (176 * (this.save.xp % 300)) / 300), 6, C.cyan, 1).setOrigin(0, 0.5);
++    this.root.add([xpBg, xpVal]);
++
++    this.pill(328, 42, 74, 36, `₵ ${this.save.credits}`, C.gold);
++    this.pill(412, 42, 74, 36, `🔥 ${this.save.streak}`, C.green);
++    this.button(502, 42, 38, 36, '⚙', () => this.showSettings(), { fill: 0x0b1530, stroke: C.line, radius: 13, small: true });
++    if (step) this.pill(W / 2, 104, 178, 30, step, C.purple, 0.18);
++  }
++
++  private pill(x: number, y: number, w: number, h: number, label: string, color = C.cyan, alpha = 0.12): void {
++    this.panel(x, y, w, h, 0x0b1530, 0.82, 14, color, 0.36);
++    this.text(x, y, label, 12, color, w - 8, 'bold', 'center').setOrigin(0.5, 0.5);
++  }
++
++  private tutorialHint(y: number, text: string, accent = C.cyan): void {
++    if (!this.isTutorialRun()) return;
++    this.panel(W / 2, y, 456, 46, 0x06122a, 0.9, 17, accent, 0.34);
++    this.text(58, y - 15, 'НАВИГАТОР НОВИЧКА', 9, accent, 160).setOrigin(0, 0);
++    this.text(204, y - 16, text, 11, C.white, 278).setOrigin(0, 0);
++  }
++
++  private addCoverImage(key: string, x: number, y: number, w: number, h: number, alpha = 1, tint?: number): Phaser.GameObjects.Image {
++    const img = this.add.image(x, y, key);
++    const scale = Math.max(w / img.width, h / img.height);
++    img.setScale(scale).setAlpha(alpha);
++    if (tint) img.setTint(tint);
++
++    const maskShape = this.add.graphics();
++    maskShape.fillStyle(0xffffff, 1).fillRect(x - w / 2, y - h / 2, w, h).setVisible(false);
++    const mask = maskShape.createGeometryMask();
++    img.setMask(mask);
++    this.root.add([img, maskShape]);
++    return img;
++  }
++
++  private showIntro(): void {
++    this.mode = 'intro';
++    this.clear();
++    this.addBackground('cityWide', C.cyan);
++
++    const rings = this.add.graphics();
++    this.root.add(rings);
++    rings.lineStyle(2, C.cyan, 0.25).strokeCircle(W / 2, 246, 112);
++    rings.lineStyle(3, C.purple, 0.22).strokeCircle(W / 2, 246, 82);
++    rings.fillStyle(C.cyan, 0.10).fillCircle(W / 2, 246, 62);
++    if (this.save.settings.motion) this.tweens.add({ targets: rings, alpha: 0.55, duration: 1600, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
++
++    this.text(W / 2, 86, 'SIGNAL ARENA', 38, C.white, 460, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 132, 'Decision Hunt · Web3 skill arena', 13, C.cyan, 430, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 196, 'НЕ ТЕРМИНАЛ. НЕ ДЕМО-БИРЖА.', 17, C.gold, 430, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 224, 'Это тренажёр причины до клика. Рынок всё равно попробует назвать твою эмоцию стратегией.', 14, C.white, 418, 'bold', 'center').setOrigin(0.5, 0);
++
++    menuMicrocopy.intro.forEach((line, i) => {
++      const y = 370 + i * 92;
++      this.panel(W / 2, y, 456, 72, 0x0b1530, 0.82, 20, i === 0 ? C.cyan : i === 1 ? C.purple : C.gold, 0.25);
++      this.text(58, y - 24, `0${i + 1}`, 10, C.dim, 40).setOrigin(0, 0);
++      this.text(96, y - 24, line, 14, C.white, 360).setOrigin(0, 0);
++    });
++
++    this.panel(W / 2, 682, 456, 112, 0x111f42, 0.82, 22, C.green, 0.22);
++    this.text(58, 632, 'ОСНОВНОЙ ОБЕЩАННЫЙ ПРОДУКТ', 10, C.green, 420).setOrigin(0, 0);
++    this.text(58, 656, 'Игрок получает не иллюзию торговли, а мышцу самоконтроля: увидел ловушку, назвал причину, закрыл ошибку.', 14, C.white, 420).setOrigin(0, 0);
++    this.text(58, 718, 'Если это можно делать на демо-аккаунте — мы это не геймифицируем.', 12, C.muted, 420).setOrigin(0, 0);
++
++    this.button(W / 2, 832, 450, 64, 'ВОЙТИ В АРЕНУ', () => { this.track('intro_complete'); this.showHome(); }, {
++      icon: '✦', subtitle: 'вертикальный режим · один выбор на экран', fill: C.cyan, stroke: 0x9befff, textColor: 0x03222e
++    });
++    this.button(W / 2, 908, 450, 44, 'сразу к кодексу продукта', () => this.showCodex(), {
++      icon: '✎', fill: 0x0b1530, stroke: C.line, small: true
++    });
++  }
++
++  private mission(): Mission {
++    return missions[this.selectedMission];
++  }
++
++  private equippedSeal(): CosmeticSeal {
++    return cosmetics.find((c) => c.id === this.save.equippedCosmetic) ?? cosmetics[0];
++  }
++
++  private drawMissionRail(y: number): void {
++    const start = 62;
++    const gap = missions.length > 1 ? 416 / (missions.length - 1) : 0;
++    const g = this.add.graphics();
++    g.lineStyle(2, C.line, 0.16).lineBetween(start, y, start + gap * (missions.length - 1), y);
++    this.root.add(g);
++    missions.forEach((m, i) => {
++      const x = start + i * gap;
++      const best = this.save.best[m.id] ?? 0;
++      const active = i === this.selectedMission;
++      const cleared = best >= 55;
++      const node = this.add.circle(x, y, active ? 16 : 12, active ? m.accent : cleared ? C.green : 0x0b1530, 1).setStrokeStyle(active ? 3 : 2, active ? C.white : cleared ? C.green : C.line, active ? 0.82 : 0.35);
++      node.setInteractive({ useHandCursor: true });
++      node.on('pointerup', () => {
++        this.selectedMission = i;
++        this.sfx('tap');
++        this.showHome();
++      });
++      this.root.add(node);
++      this.text(x, y + 22, `${i + 1}`, 10, active ? C.white : C.dim, 36, 'bold', 'center').setOrigin(0.5, 0);
++      if (cleared) this.text(x + 14, y - 24, '✓', 12, C.green, 20, 'bold', 'center').setOrigin(0.5, 0);
++    });
++  }
++
++  private showHome(): void {
++    this.mode = 'home';
++    this.clear();
++    this.ensureDaily();
++    const m = this.mission();
++    this.addBackground(m.bgKey, m.accent);
++    this.addChrome('ARENA OS · DECISION HUNT');
++
++    this.text(W / 2, 116, menuMicrocopy.headline, 34, C.white, 460, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 158, menuMicrocopy.subhead, 13, C.muted, 430, 'bold', 'center').setOrigin(0.5, 0);
++
++    this.panel(W / 2, 460, 474, 560, 0x0b1530, 0.88, 28, m.accent, 0.34);
++    this.addCoverImage(m.enemyKey, W / 2, 318, 414, 255, 0.93);
++    this.panel(W / 2, 198, 230, 30, 0x04070f, 0.74, 14, m.accent, 0.25);
++    this.text(W / 2, 190, m.act.toUpperCase(), 11, m.accent, 210, 'bold', 'center').setOrigin(0.5, 0);
++
++    this.text(54, 470, m.title, 25, C.white, 432, 'bold').setOrigin(0, 0);
++    this.text(54, 506, m.subtitle, 13, C.muted, 432).setOrigin(0, 0);
++    this.text(54, 562, `ЦЕЛЬ: ${m.objective}`, 13, C.white, 432).setOrigin(0, 0);
++
++    this.pill(98, 652, 112, 36, m.pair, C.cyan);
++    this.pill(230, 652, 98, 36, m.timeframe, C.purple);
++    this.pill(378, 652, 150, 36, m.difficulty, C.gold);
++
++    const best = this.save.best[m.id] ?? 0;
++    this.panel(W / 2, 718, 430, 64, 0x101c3a, 0.74, 18, C.line, 0.18);
++    this.text(72, 698, 'ЛУЧШИЙ РАЗБОР', 10, C.dim, 140).setOrigin(0, 0);
++    this.text(72, 716, best ? `${best}/100` : 'ещё нет', 18, best >= 80 ? C.gold : C.white, 120).setOrigin(0, 0);
++    this.text(222, 698, 'ПРАВИЛО ПРОДУКТА', 10, C.dim, 220).setOrigin(0, 0);
++    this.text(222, 716, 'Решение до клика. Будущее — после ответа.', 12, C.muted, 220).setOrigin(0, 0);
++
++    this.drawMissionRail(766);
++
++    this.button(55, 456, 44, 74, '‹', () => {
++      this.selectedMission = (this.selectedMission + missions.length - 1) % missions.length;
++      this.showHome();
++    }, { fill: 0x0b1530, stroke: C.line, radius: 16 });
++
++    this.button(W - 55, 456, 44, 74, '›', () => {
++      this.selectedMission = (this.selectedMission + 1) % missions.length;
++      this.showHome();
++    }, { fill: 0x0b1530, stroke: C.line, radius: 16 });
++
++    const seal = this.equippedSeal();
++    this.text(W / 2, 790, menuMicrocopy.season, 10, C.dim, 440, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 808, `${seal.icon} ${seal.title} · косметика, не сила`, 11, seal.accent, 440, 'bold', 'center').setOrigin(0.5, 0);
++    this.button(W / 2, 852, 450, 62, 'НАЧАТЬ ОХОТУ', () => this.startRun(), {
++      icon: '⚔', subtitle: 'не торговля · тренировка решения', fill: C.cyan, stroke: 0x9befff, textColor: 0x03222e, gold: false
++    });
++    const doneDaily = Object.values(this.save.daily.completed).filter(Boolean).length;
++    this.button(92, 922, 132, 42, `ДЕНЬ ${doneDaily}/3`, () => this.showContracts(), {
++      icon: '◆', subtitle: undefined, fill: 0x0b1530, stroke: doneDaily === 3 ? C.green : C.line, small: true
++    });
++    this.button(270, 922, 132, 42, 'КОДЕКС', () => this.showCodex(), {
++      icon: '✎', subtitle: undefined, fill: 0x0b1530, stroke: C.line, small: true
++    });
++    this.button(448, 922, 132, 42, 'VAULT', () => this.showVault(), {
++      icon: '◈', subtitle: undefined, fill: 0x0b1530, stroke: C.line, small: true
++    });
++  }
++
++  private startRun(): void {
++    const mission = this.mission();
++    this.track('mission_started', { mission: mission.id });
++    this.run = {
++      mission,
++      opened: new Set<string>(),
++      selectedClue: undefined,
++      risk: mission.correctDecision === 'D' ? '0' : '1'
++    };
++    this.showBrief();
++  }
++
++  private showBrief(): void {
++    if (!this.run) return;
++    this.mode = 'brief';
++    const m = this.run.mission;
++    this.clear();
++    this.addBackground(m.bgKey, m.accent);
++    this.addChrome(m.act, '① БРИФИНГ');
++
++    this.panel(W / 2, 286, 456, 340, 0x0b1530, 0.86, 26, m.accent, 0.34);
++    this.addCoverImage(m.enemyKey, W / 2, 250, 400, 250, 0.9);
++    this.panel(W / 2, 414, 398, 94, 0x04070f, 0.82, 20, m.accent, 0.24);
++    this.text(72, 384, m.enemyName.toUpperCase(), 20, m.accent, 390).setOrigin(0, 0);
++    this.text(72, 414, m.enemyRole, 12, C.muted, 390).setOrigin(0, 0);
++    this.text(72, 438, `«${m.enemyQuote}»`, 12, C.white, 390).setOrigin(0, 0);
++
++    this.panel(W / 2, 585, 456, 206, 0x111f42, 0.86, 24, C.line, 0.2);
++    this.text(58, 500, 'ДЕПАРТАМЕНТ УПРАВЛЯЕМОЙ ПАНИКИ СООБЩАЕТ', 10, C.dim, 420).setOrigin(0, 0);
++    this.text(58, 532, m.objective, 21, C.white, 420).setOrigin(0, 0);
++    this.text(58, 612, 'Ты не покупаешь и не продаёшь. Ты ставишь диагноз сценарию. Терминалы пусть тренируют клики. Здесь тренируется причина.', 13, C.muted, 420).setOrigin(0, 0);
++
++    this.panel(W / 2, 730, 456, 92, 0x0a1328, 0.76, 22, C.gold, 0.22);
++    this.text(58, 700, 'ПРАВИЛО ОХОТЫ', 10, C.gold, 420).setOrigin(0, 0);
++    this.text(58, 724, 'Будущее закрыто до ответа. Рынок не подсказывает. Он потом выставляет счёт.', 14, C.white, 420).setOrigin(0, 0);
++    this.tutorialHint(804, 'Сначала не выбирай действие. Сначала вскрой, чем рынок тебя соблазняет.', m.accent);
++
++    this.button(W / 2, 862, 450, 62, 'ОТКРЫТЬ УЛИКИ', () => this.showInvestigate(), {
++      icon: '◉', subtitle: `${m.requiredClues} улики минимум · остальное по жадности`, fill: C.cyan, stroke: 0x9befff, textColor: 0x03222e
++    });
++    this.button(W / 2, 926, 450, 36, 'назад в лобби', () => this.showHome(), { small: true, fill: 0x0b1530, stroke: C.line });
++  }
++
++  private showInvestigate(): void {
++    if (!this.run) return;
++    this.mode = 'investigate';
++    const m = this.run.mission;
++    this.clear();
++    this.addBackground(m.bgKey, m.accent);
++    this.addChrome(m.act, '② УЛИКИ');
++
++    this.drawEnemyMeter(118, m);
++    this.drawPulseMap(48, 148, 444, 184, m.pulse, [], 0, false, m.accent);
++    this.drawPanicMeter(58, 354, 424, 12, m);
++    this.text(58, 374, `Открой ${m.requiredClues} улики. Больше — чище диагноз.`, 13, C.muted, 420).setOrigin(0, 0);
++    this.tutorialHint(810, 'Тапни улики. Здесь ты тренируешь доказательства, а не угадываешь свечу.', m.accent);
++
++    const positions = [
++      [154, 430], [386, 430], [154, 555], [386, 555]
++    ];
++    m.clues.forEach((clue, i) => {
++      const opened = this.run!.opened.has(clue.id);
++      const selected = this.run!.selectedClue === clue.id;
++      const fill = opened ? 0x123050 : 0x0d1832;
++      const stroke = selected ? m.accent : opened ? C.green : C.line;
++      const [x, y] = positions[i];
++      this.button(x, y, 214, 104, opened ? clue.title : 'ЗАСЕКРЕЧЕНО', () => {
++        const wasOpened = this.run!.opened.has(clue.id);
++        this.run!.opened.add(clue.id);
++        this.run!.selectedClue = clue.id;
++        if (!wasOpened) {
++          this.sfx('open');
++          this.haptic([15, 20, 25]);
++          this.track('clue_opened', { mission: m.id, clue: clue.id, opened: this.run!.opened.size });
++        }
++        this.showInvestigate();
++      }, {
++        icon: opened ? clue.icon : '?',
++        subtitle: opened ? clue.eyebrow.toUpperCase() : 'тапни, чтобы вскрыть',
++        fill,
++        stroke,
++        selected,
++        small: true,
++        align: 'left'
++      });
++      if (opened) {
++        this.text(x + 72, y + 31, `-${clue.damage} HP`, 10, C.green, 62, 'bold', 'right').setOrigin(1, 0);
++      }
++    });
++
++    const selectedClue = m.clues.find((c) => c.id === this.run!.selectedClue) ?? m.clues.find((c) => this.run!.opened.has(c.id));
++    this.panel(W / 2, 696, 456, 138, 0x111f42, 0.92, 22, selectedClue ? m.accent : C.line, selectedClue ? 0.34 : 0.2);
++    if (selectedClue && this.run.opened.has(selectedClue.id)) {
++      this.text(58, 636, `${selectedClue.eyebrow.toUpperCase()} · ${selectedClue.title}`, 11, m.accent, 420).setOrigin(0, 0);
++      this.text(58, 662, selectedClue.body, 13, C.white, 420).setOrigin(0, 0);
++      this.text(58, 724, selectedClue.punch, 12, selectedClue.feeds ? C.gold : C.green, 420).setOrigin(0, 0);
++    } else {
++      this.text(58, 660, 'Улика ещё спит.', 18, C.white, 420).setOrigin(0, 0);
++      this.text(58, 696, 'Разбуди её. Рынок не объясняет ловушки добровольно.', 13, C.muted, 420).setOrigin(0, 0);
++    }
++
++    const openedCount = this.run.opened.size;
++    const ready = openedCount >= m.requiredClues;
++    this.progressDots(W / 2, 794, m.clues.length, openedCount, m.accent);
++    const cta = this.button(W / 2, 872, 450, 62, ready ? 'ВЫБРАТЬ ПРИНЦИП' : `НУЖНО ЕЩЁ ${m.requiredClues - openedCount}`, () => {
++      if (ready) this.showPrinciple();
++    }, {
++      icon: ready ? '⬣' : '🔒',
++      subtitle: ready ? 'карта дисциплины · один принцип на бой' : 'рынок не обязан быть понятным с первой улики',
++      fill: ready ? C.cyan : 0x0b1530,
++      stroke: ready ? 0x9befff : C.line,
++      textColor: ready ? 0x03222e : C.muted,
++      disabled: !ready
++    });
++    this.setButtonEnabled(cta, ready);
++  }
++
++  private drawEnemyMeter(y: number, m: Mission): void {
++    const hp = this.enemyHp();
++    this.panel(W / 2, y, 456, 58, 0x0b1530, 0.82, 18, m.accent, 0.26);
++    this.text(58, y - 20, m.enemyName, 14, C.white, 220).setOrigin(0, 0);
++    this.text(W - 58, y - 20, `${hp} HP`, 13, hp <= 30 ? C.green : hp <= 60 ? C.gold : C.red, 90, 'bold', 'right').setOrigin(1, 0);
++    const bg = this.add.rectangle(58, y + 14, 424, 12, 0x050815, 1).setOrigin(0, 0.5).setStrokeStyle(1, C.line, 0.18);
++    const val = this.add.rectangle(59, y + 14, Math.max(4, 422 * hp / 100), 9, hp <= 30 ? C.green : hp <= 60 ? C.gold : C.red, 1).setOrigin(0, 0.5);
++    this.root.add([bg, val]);
++  }
++
++  private scoreInput() {
++    if (!this.run) return undefined;
++    return {
++      mission: this.run.mission,
++      opened: [...this.run.opened],
++      skillId: this.run.skillId,
++      decision: this.run.decision,
++      risk: this.run.risk
++    };
++  }
++
++  private panicPressure(): number {
++    const input = this.scoreInput();
++    return input ? enginePanicPressure(input) : 0;
++  }
++
++  private drawPanicMeter(x: number, y: number, w: number, h: number, m: Mission): void {
++    const pressure = this.panicPressure();
++    const bg = this.add.rectangle(x, y, w, h, 0x050815, 1).setOrigin(0, 0.5).setStrokeStyle(1, C.line, 0.18);
++    const val = this.add.rectangle(x + 1, y, Math.max(5, (w - 2) * pressure / 100), h - 3, pressure > 70 ? C.red : pressure > 45 ? C.gold : C.green, 1).setOrigin(0, 0.5);
++    this.root.add([bg, val]);
++    this.text(x, y - 24, 'ИНДЕКС УПРАВЛЯЕМОЙ ПАНИКИ', 9, C.dim, 220).setOrigin(0, 0);
++    this.text(x + w, y - 24, `${pressure}%`, 10, pressure > 70 ? C.red : pressure > 45 ? C.gold : m.accent, 70, 'bold', 'right').setOrigin(1, 0);
++  }
++
++  private progressDots(x: number, y: number, total: number, done: number, accent: number): void {
++    const gap = 28;
++    const start = x - ((total - 1) * gap) / 2;
++    for (let i = 0; i < total; i += 1) {
++      const dot = this.add.circle(start + i * gap, y, 6, i < done ? accent : 0x0b1530, 1).setStrokeStyle(1, i < done ? accent : C.line, 0.7);
++      this.root.add(dot);
++    }
++  }
++
++  private showPrinciple(): void {
++    if (!this.run) return;
++    this.mode = 'principle';
++    const m = this.run.mission;
++    this.clear();
++    this.addBackground(m.bgKey, m.accent);
++    this.addChrome(m.act, '③ ПРИНЦИП');
++    this.drawEnemyMeter(118, m);
++
++    this.text(52, 158, 'Выбери одну карту дисциплины.', 22, C.white, 430).setOrigin(0, 0);
++    this.text(52, 194, 'Это не буст урона. Это причина, почему рука не нажмёт глупость.', 13, C.muted, 430).setOrigin(0, 0);
++
++    m.skills.forEach((skill, i) => this.skillCard(skill, 270, 298 + i * 144, m));
++
++    const selectedSkill = m.skills.find((s) => s.id === this.run!.skillId);
++    if (selectedSkill) {
++      const counter = selectedSkill.id === m.correctSkill || selectedSkill.counterTo.some((id) => this.run!.opened.has(id));
++      this.panel(W / 2, 742, 456, 74, 0x0a1328, 0.84, 20, counter ? C.gold : C.line, counter ? 0.36 : 0.18);
++      this.text(58, 718, counter ? 'КОНТР-ПРОТОКОЛ НАЙДЕН' : 'ПРИНЦИП ПРИНЯТ', 10, counter ? C.gold : C.dim, 420).setOrigin(0, 0);
++      this.text(58, 742, selectedSkill.mantra, 16, C.white, 420).setOrigin(0, 0);
++    }
++    this.tutorialHint(802, 'Карта не даёт силу. Она формулирует правило, которое удержит руку.', m.accent);
++
++    const ready = Boolean(this.run.skillId);
++    this.button(W / 2, 866, 450, 62, ready ? 'К РЕШЕНИЮ' : 'ВЫБЕРИ КАРТУ', () => {
++      if (ready) this.showDecision();
++    }, {
++      icon: ready ? '✔' : '⬣',
++      subtitle: ready ? 'будущее всё ещё закрыто' : 'один принцип · без магазина силы',
++      fill: ready ? C.cyan : 0x0b1530,
++      stroke: ready ? 0x9befff : C.line,
++      textColor: ready ? 0x03222e : C.muted,
++      disabled: !ready
++    });
++    this.button(W / 2, 930, 450, 34, 'назад к уликам', () => this.showInvestigate(), { small: true, fill: 0x0b1530, stroke: C.line });
++  }
++
++  private skillCard(skill: SkillCard, x: number, y: number, m: Mission): void {
++    const selected = this.run?.skillId === skill.id;
++    const openedCounters = skill.counterTo.filter((id) => this.run?.opened.has(id)).length;
++    const isCounter = skill.id === m.correctSkill || openedCounters > 0;
++    const typeColor = skill.type === 'read' ? C.cyan : skill.type === 'defense' ? C.gold : C.green;
++    const stroke = selected ? (isCounter ? C.gold : typeColor) : C.line;
++    this.button(x, y, 456, 124, skill.title, () => {
++      this.run!.skillId = skill.id;
++      this.track('skill_selected', { mission: m.id, skill: skill.id, counter: isCounter });
++      this.sfx(isCounter ? 'counter' : 'tap');
++      this.haptic(isCounter ? [20, 20, 35] : 12);
++      this.showPrinciple();
++      if (isCounter) {
++        this.burst(x, y, C.gold, 18);
++        this.toast('КОНТР-КАРТА. Система потеряла уверенность.', C.gold);
++      }
++    }, {
++      icon: skill.icon,
++      subtitle: `${skill.mantra}\n${skill.body}`,
++      fill: selected ? 0x172f55 : 0x111f42,
++      stroke,
++      selected,
++      align: 'left'
++    });
++    this.text(58, y - 51, skill.type === 'read' ? 'ЧТЕНИЕ' : skill.type === 'defense' ? 'ЗАЩИТА' : 'РЕШЕНИЕ', 9, typeColor, 90).setOrigin(0, 0);
++    if (selected && isCounter) this.text(440, y - 51, 'КОНТР', 9, C.gold, 60, 'bold', 'right').setOrigin(1, 0);
++  }
++
++  private enemyWhisper(m: Mission): string {
++    const lines: Record<string, string> = {
++      'm1-fomo-tax': '«Все уже вошли. Ты же не хочешь быть единственным взрослым в комнате?»',
++      'm2-leverage-circus': '«Плечо просто ускоряет правду. Правда, иногда прямо в стену.»',
++      'm3-headline-stampede': '«Заголовок громкий. Значит, причина надёжная. Подпись не требуется.»',
++      'm4-hubris-dragon': '«Ты победил три раза. Мозг можно выключить из уважения к серии.»',
++      'm5-revenge-wraith': '«Верни минус сейчас. Журнал подождёт. Катастрофа — нет.»',
++      'm6-overtrade-mincer': '«Ещё один клик. Комиссия маленькая. Пока их не стало сорок.»',
++      'm7-influencer-cult': '«Гуру уверен. Его ссылка тоже. Не задавай скучных вопросов.»',
++      'm8-false-breakout': '«Я над уровнем уже целых три секунды. Разве этого мало для судьбы?»',
++      'm9-correlation-herd': '«Это не один риск. Это портфель одинаковых паник в разных кепках.»',
++      'm10-fatigue-market': '«Ты почти спишь. Значит, сопротивление здравому смыслу снижено.»'
++    };
++    return lines[m.id] ?? '«Нажми быстрее. Мы потом назовём это стратегией.»';
++  }
++
++  private showDecision(): void {
++    if (!this.run) return;
++    this.mode = 'decision';
++    const m = this.run.mission;
++    this.clear();
++    this.addBackground(m.bgKey, m.accent);
++    this.addChrome(m.act, '④ РЕШЕНИЕ');
++    this.drawEnemyMeter(118, m);
++
++    this.text(52, 158, 'Выбери печать решения.', 22, C.white, 430).setOrigin(0, 0);
++    this.text(52, 194, 'Это не ордер. Это ответ на вопрос: почему действие сейчас оправдано?', 13, C.muted, 430).setOrigin(0, 0);
++    this.panel(W / 2, 250, 456, 54, 0x0a1328, 0.78, 18, C.red, 0.18);
++    this.text(58, 232, 'ВРАЖЕСКИЙ ШЁПОТ', 9, C.red, 140).setOrigin(0, 0);
++    this.text(174, 232, this.enemyWhisper(m), 12, C.muted, 300).setOrigin(0, 0);
++
++    const positions = [[154, 332], [386, 332], [154, 460], [386, 460]];
++    m.decisions.forEach((d, i) => {
++      const selected = this.run!.decision === d.key;
++      const [x, y] = positions[i];
++      this.button(x, y, 214, 112, `${d.key} · ${d.title}`, () => {
++        this.run!.decision = d.key;
++        this.track('decision_selected', { mission: m.id, decision: d.key, bad: Boolean(d.bad) });
++        if (d.bad) this.sfx('bad'); else this.sfx('tap');
++        this.haptic(d.bad ? [25, 35, 25] : 14);
++        if (d.key === 'D') this.run!.risk = '0';
++        this.showDecision();
++        if (d.bad) this.toast('РЫНОК ОДОБРИЛ. Это плохой знак.', C.red);
++      }, {
++        icon: d.icon,
++        subtitle: d.body,
++        fill: selected ? (d.bad ? 0x551425 : 0x17345d) : 0x111f42,
++        stroke: selected ? (d.bad ? C.red : m.accent) : C.line,
++        selected,
++        danger: d.bad && selected,
++        small: true,
++        align: 'left'
++      });
++    });
++
++    this.panel(W / 2, 626, 456, 122, 0x0a1328, 0.86, 22, C.line, 0.18);
++    this.text(58, 578, 'КЛЯТВА РИСКА', 10, C.dim, 420).setOrigin(0, 0);
++    this.text(58, 600, 'Выбери цену ошибки. Система любит, когда цена скрыта.', 12, C.muted, 420).setOrigin(0, 0);
++    const riskKeys: RiskKey[] = ['0', '05', '1', '2'];
++    riskKeys.forEach((rk, i) => {
++      const selected = this.run!.risk === rk;
++      const info = riskLabels[rk];
++      this.button(94 + i * 116, 670, 96, 50, info.label, () => {
++        this.run!.risk = rk;
++        this.track('risk_selected', { mission: m.id, risk: rk });
++        this.sfx(rk === '2' ? 'bad' : 'tap');
++        this.showDecision();
++        if (rk === '2') this.toast('2% — это не смелость. Это громкая ошибка.', C.red);
++      }, {
++        subtitle: info.body,
++        fill: selected ? (rk === '2' ? 0x68152a : 0x17345d) : 0x0d1832,
++        stroke: selected ? (rk === '2' ? C.red : C.cyan) : C.line,
++        selected,
++        danger: rk === '2' && selected,
++        small: true
++      });
++    });
++
++    this.panel(W / 2, 762, 456, 74, 0x111f42, 0.82, 20, m.accent, 0.24);
++    const skill = m.skills.find((s) => s.id === this.run!.skillId);
++    this.text(58, 734, 'АКТИВНЫЙ ПРИНЦИП', 10, C.dim, 420).setOrigin(0, 0);
++    this.text(58, 756, skill ? skill.mantra : 'Принцип не выбран. Рынок улыбается.', 14, skill ? C.white : C.red, 420).setOrigin(0, 0);
++    this.tutorialHint(818, 'Теперь ставь печать причины. Будущее включится только после ответа.', m.accent);
++
++    const ready = Boolean(this.run.decision);
++    this.button(W / 2, 866, 450, 62, ready ? 'ЗАПЕЧАТАТЬ И УВИДЕТЬ БУДУЩЕЕ' : 'ВЫБЕРИ РЕШЕНИЕ', () => {
++      if (ready) this.showReveal();
++    }, {
++      icon: ready ? '✦' : '🔒',
++      subtitle: ready ? 'forward-after-answer · честный приговор' : 'рынок не примет пустой документ',
++      fill: ready ? C.cyan : 0x0b1530,
++      stroke: ready ? 0x9befff : C.line,
++      textColor: ready ? 0x03222e : C.muted,
++      disabled: !ready
++    });
++    this.button(W / 2, 930, 450, 34, 'назад к принципу', () => this.showPrinciple(), { small: true, fill: 0x0b1530, stroke: C.line });
++  }
++
++  private showReveal(): void {
++    if (!this.run) return;
++    this.mode = 'reveal';
++    const m = this.run.mission;
++    this.track('reveal_started', { mission: m.id, decision: this.run.decision, risk: this.run.risk });
++    this.clear();
++    this.addBackground(m.bgKey, m.accent);
++    this.addChrome(m.act, '⑤ БУДУЩЕЕ');
++
++    this.panel(W / 2, 164, 456, 72, 0x111f42, 0.86, 20, C.gold, 0.26);
++    this.text(58, 136, 'ПЕЧАТЬ ПРИНЯТА', 10, C.gold, 420).setOrigin(0, 0);
++    this.text(58, 160, `${m.pair} · ${m.timeframe} · теперь график имеет право говорить`, 14, C.white, 420).setOrigin(0, 0);
++
++    this.panel(W / 2, 416, 456, 360, 0x0b1530, 0.9, 26, m.accent, 0.26);
++    const mapG = this.add.graphics();
++    this.root.add(mapG);
++    const status = this.text(W / 2, 640, 't₀ вскрыт · рынок пересматривает твои жизненные планы', 14, C.muted, 420, 'bold', 'center').setOrigin(0.5, 0);
++    const progress = this.add.rectangle(60, 680, 0, 8, m.accent, 1).setOrigin(0, 0.5);
++    const progressBg = this.add.rectangle(60, 680, 420, 10, 0x050815, 1).setOrigin(0, 0.5).setStrokeStyle(1, C.line, 0.2);
++    this.root.add([progressBg, progress]);
++
++    let n = 0;
++    const redraw = () => {
++      mapG.clear();
++      this.drawPulseMap(62, 252, 416, 330, m.pulse, m.future, n, true, m.accent, mapG);
++      progress.width = Math.max(6, (420 * n) / m.future.length);
++      status.setText(n < m.future.length ? `печатаем последствия: ${n}/${m.future.length}` : 'последствия напечатаны · благодарим за сотрудничество');
++    };
++    redraw();
++    this.sfx('seal');
++    this.haptic([30, 40, 30]);
++    const timer = this.time.addEvent({
++      delay: 155,
++      repeat: Math.max(0, m.future.length - 1),
++      callback: () => {
++        n += 1;
++        this.sfx('tick');
++        redraw();
++        if (n >= m.future.length) {
++          const done = this.time.delayedCall(620, () => this.showResult());
++          this.timers.push(done);
++        }
++      }
++    });
++    this.timers.push(timer);
++
++    this.button(W / 2, 812, 450, 54, 'ПРОПУСТИТЬ ПРОЯВКУ', () => this.showResult(), {
++      icon: '»', subtitle: 'если ты уже понял, что рынок не шутил', fill: 0x0b1530, stroke: C.line, small: true
++    });
++  }
++
++  private showResult(): void {
++    if (!this.run) return;
++    this.mode = 'result';
++    const m = this.run.mission;
++    const score = this.computeScore();
++    this.track('result_reached', { mission: m.id, score: score.total, stars: score.stars, victory: score.victory });
++    this.applyReward(score);
++
++    this.clear();
++    this.addBackground(m.bgKey, m.accent);
++    this.addChrome(m.act, '⑥ ЖУРНАЛ');
++
++    const seal = this.equippedSeal();
++    this.panel(W / 2, 205, 456, 214, 0x0b1530, 0.88, 26, score.victory ? C.green : C.red, 0.32);
++    this.drawScoreRing(W / 2, 188, 76, score.total, score.victory ? C.green : C.gold);
++    this.panel(418, 142, 124, 42, 0x04070f, 0.72, 15, seal.accent, 0.42);
++    this.text(418, 130, `${seal.icon} ${seal.title.split(' ')[0]}`, 10, seal.accent, 110, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 286, score.title, 18, score.victory ? C.green : C.gold, 420, 'bold', 'center').setOrigin(0.5, 0);
++
++    const verdict = score.victory ? m.verdicts.win : m.verdicts.lose;
++    this.panel(W / 2, 390, 456, 132, 0x111f42, 0.88, 22, m.accent, 0.22);
++    this.text(58, 338, score.hp <= 25 ? 'СУЩНОСТЬ РАЗВЕЯНА' : score.hp <= 60 ? 'СУЩНОСТЬ РАСПОЗНАНА' : 'СУЩНОСТЬ НАКОРМЛЕНА', 10, score.victory ? C.green : C.red, 420).setOrigin(0, 0);
++    this.text(58, 362, verdict, 14, C.white, 420).setOrigin(0, 0);
++
++    this.panel(W / 2, 552, 456, 160, 0x0a1328, 0.82, 22, C.line, 0.18);
++    this.text(58, 490, 'РАЗБОР ПО 4 ФАКТОРАМ', 10, C.dim, 420).setOrigin(0, 0);
++    const names = ['улики', 'принцип', 'риск', 'самоконтроль'];
++    score.criteria.forEach((v, i) => this.criteriaBar(58, 522 + i * 28, names[i], v, i === 1 ? m.accent : i === 2 ? C.gold : C.cyan));
++
++    this.panel(W / 2, 716, 456, 126, 0x111f42, 0.9, 22, C.gold, 0.25);
++    this.text(58, 664, 'ЗАПИСЬ В ЖУРНАЛ', 10, C.gold, 420).setOrigin(0, 0);
++    this.text(58, 690, m.verdicts.journal, 15, C.white, 420).setOrigin(0, 0);
++    this.text(58, 744, this.coachLine(score), 12, C.muted, 420).setOrigin(0, 0);
++
++    const reward = Math.round(score.total * 1.35) + score.stars * 12;
++    this.pill(94, 812, 116, 38, `+${reward} XP`, C.cyan);
++    this.pill(226, 812, 116, 38, `+${score.victory ? 25 : 8} ₵`, C.gold);
++    this.pill(380, 812, 160, 38, `${score.stars}★ кодекс`, C.green);
++
++    this.button(150, 884, 244, 58, 'СЛЕДУЮЩЕЕ ДЕЛО', () => {
++      this.selectedMission = (this.selectedMission + 1) % missions.length;
++      this.startRun();
++    }, { icon: '→', subtitle: 'рынок не закончился', fill: C.cyan, stroke: 0x9befff, textColor: 0x03222e, small: true });
++    this.button(400, 884, 204, 58, 'ПОВТОРИТЬ', () => this.startRun(), { icon: '↺', subtitle: 'закрыть лучше', fill: 0x0b1530, stroke: C.line, small: true });
++    this.button(W / 2, 940, 450, 32, 'в лобби', () => this.showHome(), { small: true, fill: 0x0b1530, stroke: C.line });
++
++    this.sfx(score.victory ? 'win' : 'bad');
++    this.burst(W / 2, 188, score.victory ? C.green : C.red, score.victory ? 34 : 16);
++  }
++
++  private coachLine(score: ScoreBreakdown): string {
++    if (!this.run) return 'Коуч не найден. План тоже. Подозрительно.';
++    const m = this.run.mission;
++    if (this.run.decision === 'C') return 'Коуч: ты торговал скорость. Скорость не доказательство. Это сирена с комиссией.';
++    if (this.run.risk === '2') return 'Коуч: 2% не добавили правоты. Они только сделали ошибку громче.';
++    if ((this.run.opened.size ?? 0) < m.clues.length) return 'Коуч: в следующий заход открой все улики. Рынок прячет нож в последней карточке.';
++    if (this.run.skillId !== m.correctSkill) return 'Коуч: принцип почти спас. Но контр-карта лежала ближе к причине ловушки.';
++    if (!score.victory) return 'Коуч: ошибка названа. Теперь она меньше похожа на судьбу и больше — на задачу.';
++    return 'Коуч: стрик засчитан за закрытую ошибку, не за частоту кликов. Редкая цивилизация.';
++  }
++
++  private completeDailyContract(id: string): void {
++    this.ensureDaily();
++    if (this.save.daily.completed[id]) return;
++    const contract = this.dailyContracts().find((c) => c.id === id);
++    if (!contract) return;
++    this.save.daily.completed[id] = true;
++    this.save.xp += contract.rewardXp;
++    this.save.credits += contract.rewardCredits;
++  }
++
++  private applyDailyContracts(score: ScoreBreakdown): void {
++    if (!this.run) return;
++    this.completeDailyContract('close-error');
++    if (this.run.risk !== '2') this.completeDailyContract('safe-risk');
++    if (this.run.opened.size >= this.run.mission.clues.length) this.completeDailyContract('full-evidence');
++    if (score.total >= 90) this.completeDailyContract('close-error');
++  }
++
++  private averageStat(key: keyof Pick<PlayerStats, 'evidence' | 'principle' | 'risk' | 'control'>): number {
++    const runs = Math.max(1, this.save.stats.runs);
++    return Math.round(this.save.stats[key] / runs);
++  }
++
++  private applyReward(score: ScoreBreakdown): void {
++    if (!this.run || this.run.rewarded) return;
++    this.run.rewarded = true;
++    const m = this.run.mission;
++    const oldBest = this.save.best[m.id] ?? 0;
++    this.save.best[m.id] = Math.max(oldBest, score.total);
++    const reward = Math.round(score.total * 1.35) + score.stars * 12;
++    const creditReward = score.victory ? 25 : 8;
++    this.save.xp += reward;
++    this.save.credits += creditReward;
++    this.save.stats.runs += 1;
++    this.save.stats.wins += score.victory ? 1 : 0;
++    this.save.stats.perfects += score.total >= 90 ? 1 : 0;
++    this.save.stats.evidence += score.criteria[0];
++    this.save.stats.principle += score.criteria[1];
++    this.save.stats.risk += score.criteria[2];
++    this.save.stats.control += score.criteria[3];
++    this.applyDailyContracts(score);
++    this.save.tutorialDone = true;
++    if (score.victory) {
++      this.save.codex[m.enemyKey] = true;
++      this.save.codex[m.protocolId] = true;
++      if (this.run.skillId) this.save.codex[this.run.skillId] = true;
++    }
++    const today = this.localDateKey();
++    if (this.save.lastClosedDate !== today) {
++      const yesterday = new Date();
++      yesterday.setDate(yesterday.getDate() - 1);
++      this.save.streak = this.save.lastClosedDate === this.localDateKey(yesterday) ? this.save.streak + 1 : 1;
++      this.save.lastClosedDate = today;
++    }
++    this.persist();
++  }
++
++  private drawScoreRing(x: number, y: number, r: number, score: number, color: number): void {
++    const g = this.add.graphics();
++    g.lineStyle(14, 0x14224a, 1).strokeCircle(x, y, r);
++    g.lineStyle(14, color, 1);
++    g.beginPath();
++    g.arc(x, y, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (score / 100), false);
++    g.strokePath();
++    g.fillStyle(color, 0.08).fillCircle(x, y, r - 16);
++    this.root.add(g);
++    this.text(x, y - 24, `${score}`, 42, C.white, 120, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(x, y + 28, '/100', 11, C.muted, 120, 'bold', 'center').setOrigin(0.5, 0);
++
++    const starsLit = score >= 88 ? 3 : score >= 70 ? 2 : score >= 55 ? 1 : 0;
++    const stars = '★★★'.split('');
++    stars.forEach((s, i) => {
++      this.text(x - 34 + i * 34, y + 72, s, 24, i < starsLit ? C.gold : C.dim, undefined, 'bold', 'center').setOrigin(0.5, 0.5);
++    });
++  }
++
++  private criteriaBar(x: number, y: number, label: string, value: number, color: number): void {
++    this.text(x, y - 9, label, 11, C.muted, 92).setOrigin(0, 0);
++    const bg = this.add.rectangle(x + 104, y, 248, 10, 0x050815, 1).setOrigin(0, 0.5).setStrokeStyle(1, C.line, 0.14);
++    const val = this.add.rectangle(x + 105, y, Math.max(4, 246 * value / 100), 7, color, 1).setOrigin(0, 0.5);
++    this.text(x + 408, y - 10, `${value}`, 11, C.white, 32, 'bold', 'right').setOrigin(1, 0);
++    this.root.add([bg, val]);
++  }
++
++  private showSettings(): void {
++    this.mode = 'settings';
++    this.track('settings_opened');
++    this.clear();
++    this.addBackground('cityWide', C.cyan);
++    this.addChrome('SETTINGS', 'ACCESSIBILITY');
++
++    this.text(W / 2, 126, 'НАСТРОЙКИ АРЕНЫ', 25, C.white, 440, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 164, 'Комфорт — не слабость. Слабость — торговать, когда интерфейс воюет против тебя.', 13, C.muted, 440, 'bold', 'center').setOrigin(0.5, 0);
++
++    const toggles: Array<[keyof UserSettings, string, string, number]> = [
++      ['sound', 'Звук', 'Синты, щелчки и маленькие аудио-угрозы.', C.cyan],
++      ['motion', 'Движение', 'Переходы, частицы и победные всплески.', C.purple],
++      ['contrast', 'Высокий контраст', 'Темнее фон, меньше декоративного шума.', C.gold]
++    ];
++
++    toggles.forEach(([key, title, body, color], i) => {
++      const enabled = this.save.settings[key];
++      const y = 280 + i * 126;
++      this.button(W / 2, y, 456, 96, title, () => {
++        this.save.settings[key] = !this.save.settings[key];
++        this.track('setting_toggled', { key, enabled: this.save.settings[key] });
++        this.persist();
++        this.sfx('tap');
++        this.showSettings();
++      }, {
++        icon: enabled ? 'ON' : 'OFF',
++        subtitle: `${body}\n${enabled ? 'включено' : 'выключено'}`,
++        fill: enabled ? 0x17345d : 0x111f42,
++        stroke: enabled ? color : C.line,
++        selected: enabled,
++        align: 'left',
++        small: true
++      });
++    });
++
++    this.panel(W / 2, 690, 456, 116, 0x0a1328, 0.84, 22, C.green, 0.18);
++    this.text(58, 640, 'ПРИНЦИП ДОСТУПНОСТИ', 10, C.green, 420).setOrigin(0, 0);
++    this.text(58, 666, 'Игра должна учить решению, а не проверять терпение к мелкому тексту. Следующий шаг — полная локализация и режим крупного текста.', 13, C.white, 420).setOrigin(0, 0);
++
++    this.button(W / 2, 840, 450, 58, 'ВЕРНУТЬСЯ В ЛОББИ', () => this.showHome(), {
++      icon: '←', subtitle: 'план найден · интерфейс не спорит', fill: C.cyan, stroke: 0x9befff, textColor: 0x03222e, small: true
++    });
++  }
++
++  private showContracts(): void {
++    this.mode = 'contracts';
++    this.track('contracts_opened');
++    this.clear();
++    this.ensureDaily();
++    this.addBackground('stormWide', C.green);
++    this.addChrome('DAILY PROTOCOL', 'RETENTION WITHOUT CASINO');
++
++    this.text(W / 2, 118, 'ДНЕВНОЙ ПРОТОКОЛ', 25, C.white, 440, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 156, 'Награда даётся за дисциплину и закрытые ошибки. Не за объём кликов. Биржа снова недовольна.', 13, C.muted, 440, 'bold', 'center').setOrigin(0.5, 0);
++
++    this.panel(W / 2, 286, 456, 188, 0x0b1530, 0.86, 24, C.cyan, 0.24);
++    this.text(58, 208, 'DECISION DNA', 10, C.cyan, 140).setOrigin(0, 0);
++    this.text(58, 232, `Разборов: ${this.save.stats.runs} · побед: ${this.save.stats.wins} · 90+: ${this.save.stats.perfects}`, 14, C.white, 420).setOrigin(0, 0);
++    const profile = [
++      ['улики', this.averageStat('evidence'), C.cyan],
++      ['принцип', this.averageStat('principle'), C.purple],
++      ['риск', this.averageStat('risk'), C.gold],
++      ['контроль', this.averageStat('control'), C.green]
++    ] as const;
++    profile.forEach((p, i) => this.criteriaBar(58, 280 + i * 26, p[0], p[1], p[2]));
++
++    this.text(58, 382, 'КОНТРАКТЫ НА СЕГОДНЯ', 10, C.dim, 420).setOrigin(0, 0);
++    this.dailyContracts().forEach((contract, i) => {
++      const done = Boolean(this.save.daily.completed[contract.id]);
++      const y = 448 + i * 112;
++      this.panel(W / 2, y, 456, 92, done ? 0x10243e : 0x111f42, 0.88, 22, done ? C.green : contract.accent, done ? 0.34 : 0.22);
++      this.text(58, y - 32, done ? '✓ ВЫПОЛНЕНО' : `+${contract.rewardXp} XP · +${contract.rewardCredits} ₵`, 10, done ? C.green : contract.accent, 180).setOrigin(0, 0);
++      this.text(58, y - 8, contract.title, 16, C.white, 388).setOrigin(0, 0);
++      this.text(58, y + 22, contract.body, 11, C.muted, 388).setOrigin(0, 0);
++      this.text(456, y - 10, done ? '✓' : '○', 25, done ? C.green : C.dim, 40, 'bold', 'center').setOrigin(0.5, 0.5);
++    });
++
++    this.panel(W / 2, 804, 456, 92, 0x0a1328, 0.84, 22, C.gold, 0.20);
++    this.text(58, 768, 'АНТИ-АДДИКТИВНЫЙ КОРИДОР', 10, C.gold, 420).setOrigin(0, 0);
++    this.text(58, 792, 'Система поощряет короткие осмысленные сессии. Если игрок хочет просто нажимать кнопки, рынок пусть ест кого-нибудь другого.', 13, C.white, 420).setOrigin(0, 0);
++
++    this.button(150, 900, 244, 58, 'НАЧАТЬ БОЙ', () => this.startRun(), { icon: '⚔', subtitle: 'закрыть контракт', fill: C.cyan, stroke: 0x9befff, textColor: 0x03222e, small: true });
++    this.button(400, 900, 204, 58, 'В ЛОББИ', () => this.showHome(), { icon: '←', subtitle: 'план найден', fill: 0x0b1530, stroke: C.line, small: true });
++  }
++
++  private showCodex(): void {
++    this.mode = 'codex';
++    this.track('codex_opened');
++    this.clear();
++    this.addBackground('cityWide', C.purple);
++    this.addChrome('КОДЕКС ОШИБОК', 'НЕ МАГАЗИН СИЛЫ');
++
++    this.text(W / 2, 126, 'КОДЕКС НЕ ОБЕЩАЕТ ПРИБЫЛЬ', 24, C.white, 440, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 166, menuMicrocopy.codex, 13, C.muted, 440, 'bold', 'center').setOrigin(0.5, 0);
++
++    const cardW = 218;
++    const cardH = 82;
++    missions.forEach((m, i) => {
++      const col = i % 2;
++      const row = Math.floor(i / 2);
++      const x = 154 + col * 232;
++      const y = 246 + row * 96;
++      const unlocked = Boolean(this.save.codex[m.enemyKey]) || (this.save.best[m.id] ?? 0) >= 55;
++      this.panel(x, y, cardW, cardH, 0x0b1530, 0.86, 17, unlocked ? m.accent : C.line, unlocked ? 0.34 : 0.14);
++      this.addCoverImage(m.enemyKey, x - 70, y, 64, 62, unlocked ? 0.68 : 0.18, unlocked ? undefined : 0x5a6c8a);
++      this.text(x - 30, y - 24, unlocked ? m.enemyName : 'СУЩНОСТЬ СКРЫТА', 10, unlocked ? C.white : C.dim, 126).setOrigin(0, 0);
++      this.text(x - 30, y - 3, unlocked ? `best ${(this.save.best[m.id] ?? 0)}/100` : 'победи 55+', 10, unlocked ? m.accent : C.dim, 126).setOrigin(0, 0);
++      this.text(x + 82, y + 18, `${i + 1}`, 9, unlocked ? C.green : C.dim, 28, 'bold', 'right').setOrigin(1, 0);
++      if (!unlocked) this.text(x - 70, y - 13, '🔒', 19, C.dim, undefined, 'bold', 'center').setOrigin(0.5, 0.5);
++    });
++
++    this.panel(W / 2, 806, 456, 94, 0x111f42, 0.84, 22, C.gold, 0.2);
++    this.text(58, 772, 'МОНЕТИЗАЦИЯ БЕЗ PAY-TO-WIN', 10, C.gold, 420).setOrigin(0, 0);
++    this.text(58, 796, 'Кредиты покупают стиль и сезонные печати. Они не меняют данные, правильный ответ или риск-бюджет.', 13, C.white, 420).setOrigin(0, 0);
++
++    this.button(W / 2, 906, 450, 58, 'ВЕРНУТЬСЯ В ЛОББИ', () => this.showHome(), {
++      icon: '←', subtitle: menuMicrocopy.daily, fill: C.cyan, stroke: 0x9befff, textColor: 0x03222e, small: true
++    });
++  }
++
++  private showVault(): void {
++    this.mode = 'vault';
++    this.track('vault_opened');
++    this.clear();
++    this.addBackground('vaultWide', C.gold);
++    this.addChrome('STYLE VAULT', 'COSMETIC ONLY');
++
++    this.text(W / 2, 124, 'ХРАНИЛИЩЕ ПЕЧАТЕЙ', 24, C.white, 440, 'bold', 'center').setOrigin(0.5, 0);
++    this.text(W / 2, 162, 'Трать кредиты на стиль. Правильный ответ, данные и риск не продаются. Система недовольна.', 13, C.muted, 440, 'bold', 'center').setOrigin(0.5, 0);
++
++    cosmetics.forEach((seal, i) => {
++      const owned = this.save.ownedCosmetics.includes(seal.id);
++      const equipped = this.save.equippedCosmetic === seal.id;
++      const affordable = this.save.credits >= seal.price;
++      const y = 270 + i * 106;
++      const status = equipped ? 'НАДЕТО' : owned ? 'НАДЕТЬ' : affordable ? `${seal.price} ₵` : `НУЖНО ${seal.price} ₵`;
++      this.button(W / 2, y, 456, 94, seal.title, () => {
++        if (owned) {
++          this.save.equippedCosmetic = seal.id;
++          this.track('cosmetic_equipped', { seal: seal.id });
++          this.persist();
++          this.sfx('counter');
++          this.showVault();
++          this.toast(`${seal.icon} печать надета · сила не изменилась`, seal.accent);
++          return;
++        }
++        if (affordable) {
++          this.save.credits -= seal.price;
++          this.save.ownedCosmetics.push(seal.id);
++          this.save.equippedCosmetic = seal.id;
++          this.track('cosmetic_bought', { seal: seal.id, price: seal.price });
++          this.persist();
++          this.sfx('coin');
++          this.haptic([20, 20, 30]);
++          this.showVault();
++          this.toast(`${seal.icon} куплено · pay-to-win снова не найден`, seal.accent);
++          return;
++        }
++        this.sfx('bad');
++        this.haptic([20, 30, 20]);
++        this.toast('НЕДОСТАТОЧНО КАПИТАЛА. Паника бесплатна. Стиль — нет.', C.red);
++      }, {
++        icon: seal.icon,
++        subtitle: `${seal.body}\n${status}`,
++        fill: equipped ? 0x17345d : owned ? 0x10243e : 0x111f42,
++        stroke: equipped ? seal.accent : owned ? C.green : seal.accent,
++        selected: equipped,
++        align: 'left',
++        small: true
++      });
++      this.text(452, y - 39, status, 10, equipped ? seal.accent : owned ? C.green : affordable ? C.gold : C.dim, 70, 'bold', 'right').setOrigin(1, 0);
++    });
++
++    this.panel(W / 2, 820, 456, 66, 0x0a1328, 0.84, 20, C.line, 0.16);
++    this.text(58, 794, 'WEB3-РАМКА БЕЗ КАЗИНО', 10, C.gold, 420).setOrigin(0, 0);
++    this.text(58, 816, 'Позже эти печати могут стать proof-of-skill бейджами. Сейчас это честная косметика, не преимущество.', 12, C.white, 420).setOrigin(0, 0);
++
++    this.button(W / 2, 912, 450, 58, 'ВЕРНУТЬСЯ В ЛОББИ', () => this.showHome(), {
++      icon: '←', subtitle: 'рынок стабилен · это подозрительно', fill: C.cyan, stroke: 0x9befff, textColor: 0x03222e, small: true
++    });
++  }
++
++  private drawPulseMap(
++    x: number,
++    y: number,
++    w: number,
++    h: number,
++    pulse: number[],
++    future: number[] = [],
++    futureVisible = 0,
++    includeFutureFrame = false,
++    accent = C.cyan,
++    target?: Phaser.GameObjects.Graphics
++  ): void {
++    const g = target ?? this.add.graphics();
++    if (!target) this.root.add(g);
++
++    g.fillStyle(0x030816, 0.94).fillRoundedRect(x, y, w, h, 18);
++    g.lineStyle(1, C.line, 0.16).strokeRoundedRect(x, y, w, h, 18);
++    g.lineStyle(1, C.line, 0.08);
++    for (let i = 1; i < 4; i += 1) g.lineBetween(x + 16, y + (h * i) / 4, x + w - 16, y + (h * i) / 4);
++    for (let i = 1; i < 6; i += 1) g.lineBetween(x + (w * i) / 6, y + 16, x + (w * i) / 6, y + h - 16);
++
++    const all = pulse.concat(future.slice(0, futureVisible));
++    const min = Math.min(...pulse, ...future) - 4;
++    const max = Math.max(...pulse, ...future) + 4;
++    const preEnd = pulse.length - 1;
++    const totalSteps = pulse.length + (includeFutureFrame ? future.length : futureVisible) - 1;
++    const px = (i: number) => x + 20 + (i / Math.max(1, totalSteps)) * (w - 40);
++    const py = (v: number) => y + h - 22 - ((v - min) / Math.max(1, max - min)) * (h - 44);
++
++    g.lineStyle(4, accent, 1);
++    g.beginPath();
++    pulse.forEach((v, i) => {
++      if (i === 0) g.moveTo(px(i), py(v)); else g.lineTo(px(i), py(v));
++    });
++    g.strokePath();
++
++    for (let i = 0; i < pulse.length; i += 3) {
++      g.fillStyle(i === preEnd ? C.gold : accent, i === preEnd ? 1 : 0.9).fillCircle(px(i), py(pulse[i]), i === preEnd ? 6 : 4);
++    }
++
++    const t0x = px(preEnd);
++    g.lineStyle(2, C.gold, 0.9).lineBetween(t0x, y + 12, t0x, y + h - 12);
++    g.fillStyle(C.gold, 1).fillTriangle(t0x - 7, y + 18, t0x + 7, y + 18, t0x, y + 31);
++    if (!target) {
++      this.addMapLabel(g, x + 18, y + 16, 'SIGNAL SIGIL');
++      this.addMapLabel(g, t0x + 8, y + 30, 't₀');
++    }
++
++    if (includeFutureFrame) {
++      const lockX = px(preEnd + future.length);
++      g.lineStyle(1, C.line, 0.18).lineBetween(lockX, y + 20, lockX, y + h - 20);
++      if (futureVisible === 0) {
++        g.fillStyle(C.bg, 0.62).fillRoundedRect(t0x + 10, y + 28, x + w - t0x - 30, h - 56, 16);
++        if (!target) this.addMapLabel(g, t0x + 32, y + h / 2 - 6, 'FUTURE LOCKED');
++      }
++    }
++
++    if (futureVisible > 0) {
++      g.lineStyle(4, C.gold, 1);
++      g.beginPath();
++      const start = pulse[pulse.length - 1];
++      g.moveTo(px(preEnd), py(start));
++      future.slice(0, futureVisible).forEach((v, i) => g.lineTo(px(preEnd + i + 1), py(v)));
++      g.strokePath();
++      future.slice(0, futureVisible).forEach((v, i) => {
++        g.fillStyle(i === futureVisible - 1 ? C.red : C.gold, 1).fillCircle(px(preEnd + i + 1), py(v), i === futureVisible - 1 ? 6 : 4);
++      });
++    }
++
++    if (!target) {
++      const lastValue = all[all.length - 1] ?? pulse[pulse.length - 1];
++      const mood = lastValue >= pulse[0] ? 'нарратив перегрет' : 'паника дешевеет';
++      const label = this.add.text(x + w - 22, y + h - 28, mood, {
++        fontFamily: 'Inter, Arial, sans-serif',
++        fontSize: '10px',
++        color: this.hex(C.dim),
++        fontStyle: 'bold'
++      }).setOrigin(1, 0.5);
++      label.setResolution(Math.min(window.devicePixelRatio || 1, 2));
++      this.root.add(label);
++    }
++  }
++
++  private addMapLabel(g: Phaser.GameObjects.Graphics, x: number, y: number, _label: string): void {
++    g.fillStyle(C.line, 0.14).fillRoundedRect(x - 6, y - 5, Math.max(28, _label.length * 6.4 + 12), 18, 8);
++    const t = this.add.text(x, y, _label, {
++      fontFamily: 'Inter, Arial, sans-serif',
++      fontSize: '9px',
++      color: this.hex(C.muted),
++      fontStyle: 'bold'
++    }).setOrigin(0, 0.5);
++    t.setResolution(Math.min(window.devicePixelRatio || 1, 2));
++    this.root.add(t);
++  }
++
++  private enemyHp(): number {
++    const input = this.scoreInput();
++    return input ? engineEnemyHp(input) : 100;
++  }
++
++  private computeScore(): ScoreBreakdown {
++    const input = this.scoreInput();
++    return input ? engineComputeScore(input) : { total: 0, criteria: [0, 0, 0, 0], hp: 100, stars: 0, victory: false, title: 'НЕТ ДАННЫХ' };
++  }
++}
+diff --git a/src/game/data.ts b/src/game/data.ts
+new file mode 100644
+index 0000000..4242907
+--- /dev/null
++++ b/src/game/data.ts
+@@ -0,0 +1,614 @@
++import fomoPortrait from '../assets/fomo-portrait.jpg?url';
++import fomoWide from '../assets/enemy.fomo_wraith.jpg?url';
++import leverageGoblin from '../assets/enemy.leverage_goblin.jpg?url';
++import headlineTitan from '../assets/enemy.headline_titan.jpg?url';
++import hubrisDragon from '../assets/enemy.hubris_dragon.jpg?url';
++import revengeWraith from '../assets/enemy.revenge_wraith.jpg?url';
++import cityWide from '../assets/generated-image-1789066991824.jpg?url';
++import vaultWide from '../assets/generated-image-1789067298451.jpg?url';
++import stormWide from '../assets/generated-image-1789067300104.jpg?url';
++import ritualWide from '../assets/generated-image-1789067301589.jpg?url';
++
++export type SceneMode = 'intro' | 'home' | 'brief' | 'investigate' | 'principle' | 'decision' | 'reveal' | 'result' | 'codex' | 'vault' | 'contracts' | 'settings';
++export type SkillType = 'read' | 'decision' | 'defense';
++export type DecisionKey = 'A' | 'B' | 'C' | 'D';
++export type RiskKey = '0' | '05' | '1' | '2';
++
++export interface Clue {
++  id: string;
++  icon: string;
++  eyebrow: string;
++  title: string;
++  body: string;
++  punch: string;
++  damage: number;
++  evidence: number;
++  feeds?: boolean;
++}
++
++export interface SkillCard {
++  id: string;
++  type: SkillType;
++  icon: string;
++  title: string;
++  mantra: string;
++  body: string;
++  counterTo: string[];
++}
++
++export interface DecisionOption {
++  key: DecisionKey;
++  icon: string;
++  title: string;
++  body: string;
++  bad?: boolean;
++}
++
++export interface CosmeticSeal {
++  id: string;
++  icon: string;
++  title: string;
++  body: string;
++  price: number;
++  accent: number;
++}
++
++export interface Mission {
++  id: string;
++  act: string;
++  title: string;
++  subtitle: string;
++  enemyKey: string;
++  enemyName: string;
++  enemyRole: string;
++  enemyQuote: string;
++  objective: string;
++  pair: string;
++  timeframe: string;
++  difficulty: string;
++  bgKey: string;
++  accent: number;
++  protocolId: string;
++  requiredClues: number;
++  correctSkill: string;
++  correctDecision: DecisionKey;
++  safeRisk: RiskKey[];
++  baseScores: Record<DecisionKey, number>;
++  pulse: number[];
++  future: number[];
++  clues: Clue[];
++  skills: SkillCard[];
++  decisions: DecisionOption[];
++  verdicts: {
++    win: string;
++    lose: string;
++    journal: string;
++  };
++}
++
++export const ASSET_MANIFEST = {
++  fomoPortrait,
++  fomoWide,
++  leverageGoblin,
++  headlineTitan,
++  hubrisDragon,
++  revengeWraith,
++  cityWide,
++  vaultWide,
++  stormWide,
++  ritualWide,
++} as const;
++
++export const missions: Mission[] = [
++  {
++    id: 'm1-fomo-tax',
++    act: 'Дело 01',
++    title: 'Налог на надежду',
++    subtitle: 'Фитиль выглядит как спасение. Именно так он и охотится.',
++    enemyKey: 'fomoPortrait',
++    enemyName: 'FOMO Wraith',
++    enemyRole: 'призрак позднего входа',
++    enemyQuote: 'Толпа уже бежит. Тебе просто хочется назвать это планом.',
++    objective: 'Не догоняй свечу. Найди подтверждение или оставь рынок голодным.',
++    pair: 'BTC / USDT',
++    timeframe: '1H',
++    difficulty: 'I · новичок',
++    bgKey: 'fomoWide',
++    accent: 0x22d8f5,
++    protocolId: 'evidence-only',
++    requiredClues: 2,
++    correctSkill: 'no-confirmation',
++    correctDecision: 'D',
++    safeRisk: ['0', '05'],
++    baseScores: { A: 64, B: 50, C: 16, D: 78 },
++    pulse: [44, 46, 48, 52, 59, 70, 83, 76, 88, 91, 86, 84, 78, 74, 73, 69, 62, 57],
++    future: [57, 51, 43, 40, 36, 38, 31, 29, 34, 30, 27, 26],
++    clues: [
++      {
++        id: 'wick-close', icon: '◉', eyebrow: 'чтение', title: 'Закрытие ниже фитиля',
++        body: 'Цена кричит наверху, но тело свечи остаётся внизу. Импульс просит аплодисменты, не вход.',
++        punch: 'Рынок показал рекламу. Товар не доставлен.', damage: 16, evidence: 12
++      },
++      {
++        id: 'crowd-heat', icon: '☷', eyebrow: 'толпа', title: 'Соцшум перегрет',
++        body: 'Инфлюенсеры синхронно нашли «последний шанс». Предыдущий последний шанс уже музейный экспонат.',
++        punch: 'Толпа кормит призрака.', damage: 7, evidence: 8, feeds: true
++      },
++      {
++        id: 'liquidity-wall', icon: '◆', eyebrow: 'ликвидность', title: 'Над ценой — стена заявок',
++        body: 'Киты не двигают рынок. Они просто случайно ставят стену там, где ты решил стать смелым.',
++        punch: 'Вход сверху платит налог на надежду.', damage: 15, evidence: 11
++      },
++      {
++        id: 'risk-budget', icon: '⬣', eyebrow: 'риск', title: 'Бюджет дня уже устал',
++        body: 'После двух попыток дисциплина становится дороже прибыли. Паника бесплатна. Вход — нет.',
++        punch: 'Лучшее действие — не дать системе комиссию.', damage: 12, evidence: 10
++      }
++    ],
++    skills: [
++      { id: 'no-confirmation', type: 'read', icon: '◉', title: 'Нет подтверждения — нет сделки', mantra: 'Жди закрытия. Не фитиль.', body: 'Контрит поздний вход, когда график рисует фейерверк вместо факта.', counterTo: ['wick-close', 'liquidity-wall'] },
++      { id: 'stay-out', type: 'decision', icon: '□', title: 'Вне рынка — тоже удар', mantra: 'Кнопка не нажата. Ошибка не куплена.', body: 'Не торговать — активное действие, если сигнал питается толпой.', counterTo: ['crowd-heat'] },
++      { id: 'risk-first', type: 'defense', icon: '⬣', title: 'Сначала риск, потом вход', mantra: 'Лимит 1%. Без героизма.', body: 'Не усиливает прибыль. Уменьшает корм для монстров.', counterTo: ['risk-budget'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Ждать ретест', body: 'Допустимо, если не превращать ожидание в молитву.' },
++      { key: 'B', icon: '◒', title: 'Малый вход', body: 'Только после закрытия. Сейчас это скорее азарт.' },
++      { key: 'C', icon: '▲', title: 'Догнать свечу', body: 'Классика жанра: купить чужую эйфорию.', bad: true },
++      { key: 'D', icon: '×', title: 'Остаться вне рынка', body: 'Рынок хотел твою ликвидность. Ты не пришёл.' }
++    ],
++    verdicts: {
++      win: 'Призрак голоден. Толпа бежала без тебя. Редкий случай, когда отсутствие действия выглядит как интеллект.',
++      lose: 'Призрак накормлен. Ты купил момент, который уже продали тебе как судьбу.',
++      journal: 'Ошибка закрывается так: «Я реагировал на скорость, а не на подтверждение».'
++    }
++  },
++  {
++    id: 'm2-leverage-circus',
++    act: 'Дело 02',
++    title: 'Плечевой цирк',
++    subtitle: 'Гоблин продаёт уверенность с кредитным плечом. Гарантия: боль быстрее.',
++    enemyKey: 'leverageGoblin',
++    enemyName: 'Leverage Goblin',
++    enemyRole: 'кассир принудительной ликвидации',
++    enemyQuote: 'Если идея хорошая, почему бы не проиграть её в пять раз быстрее?',
++    objective: 'Срежь размер риска до того, как размер риска срежет тебя.',
++    pair: 'ETH / USDT',
++    timeframe: '4H',
++    difficulty: 'II · дисциплина',
++    bgKey: 'vaultWide',
++    accent: 0xf5c044,
++    protocolId: 'risk-first-mode',
++    requiredClues: 2,
++    correctSkill: 'risk-cap',
++    correctDecision: 'A',
++    safeRisk: ['05', '1'],
++    baseScores: { A: 74, B: 58, C: 22, D: 62 },
++    pulse: [58, 56, 54, 52, 49, 45, 46, 48, 50, 49, 53, 55, 52, 51, 50, 49, 47, 46],
++    future: [47, 45, 44, 42, 43, 46, 50, 55, 58, 61, 59, 63],
++    clues: [
++      { id: 'atr-spike', icon: '≋', eyebrow: 'волатильность', title: 'ATR выше нормы', body: 'Свеча стала шире стопа. Стоп написал заявление об увольнении.', punch: 'Размер позиции должен стать меньше.', damage: 14, evidence: 10 },
++      { id: 'funding-heat', icon: '₮', eyebrow: 'долг', title: 'Фандинг перегрет', body: 'Все хотят лонг. Система любит, когда все хотят одно и то же.', punch: 'Гоблин получает проценты с самоуверенности.', damage: 12, evidence: 10, feeds: true },
++      { id: 'support-test', icon: '⌁', eyebrow: 'уровень', title: 'Поддержка не сломана', body: 'Цена трогала уровень трижды и не смогла провалиться. Это не победа. Это приглашение проверить.', punch: 'Ретест лучше рывка.', damage: 15, evidence: 12 },
++      { id: 'loss-limit', icon: '⬣', eyebrow: 'протокол', title: 'Лимит потерь близко', body: 'День ещё жив. Именно поэтому его нельзя добивать руками.', punch: 'Риск сначала. Желание потом.', damage: 16, evidence: 12 }
++    ],
++    skills: [
++      { id: 'volume-liquidity', type: 'read', icon: '◆', title: 'Ликвидность важнее шума', mantra: 'Смотри, где толпа стоит, не что она кричит.', body: 'Помогает читать зону, но не спасает от размера позиции.', counterTo: ['support-test'] },
++      { id: 'risk-cap', type: 'defense', icon: '⬣', title: 'Позиция меньше эго', mantra: '0.5–1%. Гоблин ненавидит скуку.', body: 'Главный контрпик против плеча и перегретого фандинга.', counterTo: ['atr-spike', 'funding-heat', 'loss-limit'] },
++      { id: 'cooldown', type: 'decision', icon: 'Ⅱ', title: 'Пауза после минуса', mantra: 'Месть — платная функция рынка.', body: 'Если сделка нужна, чтобы отыграться, это не сделка.', counterTo: ['loss-limit'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Ждать ретест уровня', body: 'Скучно. Поэтому почти профессионально.' },
++      { key: 'B', icon: '◒', title: 'Войти малым размером', body: 'Можно, если риск не врёт в резюме.' },
++      { key: 'C', icon: '✕', title: 'Увеличить плечо', body: 'Поздравляем: ты ускорил обучение за свой счёт.', bad: true },
++      { key: 'D', icon: '□', title: 'Пропустить', body: 'Сохраняет день. Иногда это вся стратегия.' }
++    ],
++    verdicts: {
++      win: 'Гоблин считает монеты тише. Ты сделал самое оскорбительное для рынка: уменьшил риск.',
++      lose: 'Гоблин аплодирует. Плечо не увеличило правоту. Только скорость катастрофы.',
++      journal: 'Ошибка закрывается так: «Я масштабировал уверенность, а надо было масштабировать риск».'
++    }
++  },
++  {
++    id: 'm3-headline-stampede',
++    act: 'Дело 03',
++    title: 'Заголовочный штампед',
++    subtitle: 'Новость пришла раньше мысли. Титан уже продаёт объяснение задним числом.',
++    enemyKey: 'headlineTitan',
++    enemyName: 'Headline Titan',
++    enemyRole: 'министерство срочных выводов',
++    enemyQuote: 'Сначала свеча. Потом причина. Так работает официальная магия.',
++    objective: 'Отдели факт от нарратива и не покупай пресс-релиз вместо сетапа.',
++    pair: 'SOL / USDT',
++    timeframe: '15M',
++    difficulty: 'III · нарратив',
++    bgKey: 'stormWide',
++    accent: 0xb388ff,
++    protocolId: 'narrative-filter',
++    requiredClues: 3,
++    correctSkill: 'narrative-filter',
++    correctDecision: 'D',
++    safeRisk: ['0', '05'],
++    baseScores: { A: 48, B: 52, C: 19, D: 80 },
++    pulse: [50, 49, 51, 50, 52, 51, 55, 63, 74, 68, 77, 70, 66, 69, 64, 63, 59, 56],
++    future: [54, 52, 48, 44, 41, 45, 38, 36, 39, 35, 33, 31],
++    clues: [
++      { id: 'news-lag', icon: '▣', eyebrow: 'новости', title: 'Заголовок запоздал', body: 'Цена уже сделала движение, а новость только пришла объяснить, почему это было очевидно.', punch: 'Нарратив не является входом.', damage: 15, evidence: 13 },
++      { id: 'spread-wide', icon: '↔', eyebrow: 'исполнение', title: 'Спред расширился', body: 'Когда дверь узкая, толпа всё равно пытается выйти одновременно. Дверь выигрывает.', punch: 'Сейчас платишь за хаос.', damage: 16, evidence: 12 },
++      { id: 'source-thin', icon: '?', eyebrow: 'источник', title: 'Источник мутный', body: '«Люди говорят» — это не данные. Это шум с амбициями.', punch: 'Титан ест непроверенные причины.', damage: 12, evidence: 10, feeds: true },
++      { id: 'structure-broken', icon: '⌁', eyebrow: 'структура', title: 'Структура не подтверждена', body: 'Нет закрепления. Есть только драматичная картинка для чужого поста.', punch: 'Ждать дешевле, чем объяснять убыток.', damage: 14, evidence: 11 }
++    ],
++    skills: [
++      { id: 'narrative-filter', type: 'read', icon: '▣', title: 'Новость не сетап', mantra: 'Факт отдельно. Вход отдельно.', body: 'Контрит заголовки, спред и объяснения задним числом.', counterTo: ['news-lag', 'source-thin', 'spread-wide'] },
++      { id: 'reduce-risk', type: 'defense', icon: '⬣', title: 'Уменьшить экспозицию', mantra: 'Если спред растёт — эго садится.', body: 'Защита от исполнения в плохой среде.', counterTo: ['spread-wide'] },
++      { id: 'staying-out', type: 'decision', icon: '□', title: 'Отказ от шума', mantra: 'Ни один заголовок не заслужил твой стоп.', body: 'Отлично работает, если сигнал построен на панике.', counterTo: ['news-lag', 'source-thin'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Ждать закрепление', body: 'Умно, но только если действительно ждать.' },
++      { key: 'B', icon: '◒', title: 'Войти после паузы', body: 'Слишком рано: пауза ещё не стала структурой.' },
++      { key: 'C', icon: '▣', title: 'Купить новость', body: 'Рынок уже продал тебе заголовок по рознице.', bad: true },
++      { key: 'D', icon: '×', title: 'Не участвовать', body: 'Пресс-релиз не получил твою ликвидность.' }
++    ],
++    verdicts: {
++      win: 'Титан потерял громкость. Ты не спутал объяснение с возможностью.',
++      lose: 'Титан поставил печать. Ты купил историю после того, как её уже монетизировали.',
++      journal: 'Ошибка закрывается так: «Я торговал причину, которую рынок показал слишком поздно».'
++    }
++  },
++  {
++    id: 'm4-hubris-dragon',
++    act: 'Дело 04',
++    title: 'Дракон самоуверенности',
++    subtitle: 'Три победы подряд. Самое опасное число после плеча.',
++    enemyKey: 'hubrisDragon',
++    enemyName: 'Hubris Dragon',
++    enemyRole: 'казначей лишней уверенности',
++    enemyQuote: 'Ты прав уже три раза. Значит, четвёртый можно сделать без мозга.',
++    objective: 'Сохрани прибыль, не превращая серию в ритуал жертвоприношения.',
++    pair: 'ARB / USDT',
++    timeframe: '1H',
++    difficulty: 'IV · психология',
++    bgKey: 'ritualWide',
++    accent: 0xfb4d6d,
++    protocolId: 'confidence-tax',
++    requiredClues: 3,
++    correctSkill: 'daily-lock',
++    correctDecision: 'D',
++    safeRisk: ['0', '05'],
++    baseScores: { A: 50, B: 42, C: 14, D: 82 },
++    pulse: [42, 46, 49, 51, 53, 57, 60, 64, 62, 67, 69, 71, 68, 67, 66, 65, 63, 61],
++    future: [59, 55, 53, 50, 46, 43, 47, 44, 40, 38, 41, 37],
++    clues: [
++      { id: 'win-streak', icon: '★', eyebrow: 'психология', title: 'Серия побед раздула размер', body: 'Стратегия работает. Жаль, что теперь ты хочешь улучшить её самолюбованием.', punch: 'Самоуверенность просит комиссию.', damage: 16, evidence: 13, feeds: true },
++      { id: 'plan-missing', icon: '∅', eyebrow: 'план', title: 'План не найден', body: 'Вход есть. Выхода нет. Добро пожаловать в инвестиционный туман.', punch: 'Нет выхода — нет входа.', damage: 15, evidence: 12 },
++      { id: 'correlation', icon: '⛓', eyebrow: 'корреляция', title: 'Все альты идут одним стадом', body: 'Диверсификация снижает риск. Паника распределяет его между всеми активами.', punch: 'Нельзя считать стадо пятью идеями.', damage: 12, evidence: 10 },
++      { id: 'profit-day', icon: '⬣', eyebrow: 'день', title: 'День уже прибыльный', body: 'Рынок заметил твою радость. Он любит продолжения.', punch: 'Закрыть день — тоже победа.', damage: 17, evidence: 12 }
++    ],
++    skills: [
++      { id: 'daily-lock', type: 'defense', icon: '⬣', title: 'Дневной замок прибыли', mantra: 'Победа закрыта. Дракон недоволен.', body: 'Контрит жадность после серии. Защищает не сделку, а игрока.', counterTo: ['win-streak', 'profit-day'] },
++      { id: 'exit-before-entry', type: 'read', icon: '↧', title: 'Выход до входа', mantra: 'Если выход не написан — это вера.', body: 'Сильный принцип, когда план растворился в эмоции.', counterTo: ['plan-missing'] },
++      { id: 'one-idea', type: 'decision', icon: 'Ⅰ', title: 'Одна идея, не пять клонов', mantra: 'Стадо не диверсификация.', body: 'Срезает ложное ощущение распределённого риска.', counterTo: ['correlation'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Ждать новый план', body: 'Хорошо, если старый план не заменён азартом.' },
++      { key: 'B', icon: '◒', title: 'Войти малым', body: 'Малый риск всё ещё риск, если мотив плохой.' },
++      { key: 'C', icon: '▲', title: 'Удвоить после побед', body: 'Система благодарит за добровольный налог.', bad: true },
++      { key: 'D', icon: '■', title: 'Закрыть день', body: 'Скучная кнопка с дорогим характером.' }
++    ],
++    verdicts: {
++      win: 'Дракон не получил продолжение банкета. Прибыль осталась в реальности, а не в твоей биографии.',
++      lose: 'Дракон сыт. Ты назвал жадность уверенностью, и рынок принял документ.',
++      journal: 'Ошибка закрывается так: «Я торговал свою серию, а не сетап».'
++    }
++  },
++  {
++    id: 'm5-revenge-wraith',
++    act: 'Дело 05',
++    title: 'Призрак реванша',
++    subtitle: 'Минус требует немедленного ответа. Это не стратегия. Это призрак с кнопкой.',
++    enemyKey: 'revengeWraith',
++    enemyName: 'Revenge Wraith',
++    enemyRole: 'коллектор отыгрыша',
++    enemyQuote: 'Верни деньги сейчас. Подумать можно после ликвидации.',
++    objective: 'Закрой ошибку в журнале вместо того, чтобы открывать новую.',
++    pair: 'DOGE / USDT',
++    timeframe: '5M',
++    difficulty: 'V · контроль',
++    bgKey: 'cityWide',
++    accent: 0x34d399,
++    protocolId: 'journal-before-trade',
++    requiredClues: 2,
++    correctSkill: 'pause-after-loss',
++    correctDecision: 'D',
++    safeRisk: ['0'],
++    baseScores: { A: 48, B: 34, C: 8, D: 86 },
++    pulse: [50, 53, 49, 45, 42, 39, 43, 40, 37, 36, 41, 38, 35, 34, 39, 36, 33, 31],
++    future: [30, 34, 28, 26, 31, 25, 23, 29, 22, 20, 24, 19],
++    clues: [
++      { id: 'loss-trigger', icon: '!', eyebrow: 'эмоция', title: 'Решение пахнет реваншем', body: 'Ты не нашёл сигнал. Ты нашёл повод перестать чувствовать минус.', punch: 'Призрак сидит на кнопке входа.', damage: 18, evidence: 14, feeds: true },
++      { id: 'micro-chaos', icon: '≋', eyebrow: 'шум', title: 'Таймфрейм слишком мелкий', body: 'Пять минут — это рынок, кашляющий в микрофон. Не каждый звук является пророчеством.', punch: 'Шум не обязан окупать боль.', damage: 14, evidence: 11 },
++      { id: 'same-mistake', icon: '↺', eyebrow: 'журнал', title: 'Повтор той же ошибки', body: 'Система не наказывает дважды. Ты сам нажимаешь повтор.', punch: 'Сначала запись. Потом рынок.', damage: 17, evidence: 13 },
++      { id: 'fatigue', icon: '☾', eyebrow: 'состояние', title: 'Фокус просел', body: 'Глаза смотрят на график. Решения принимает усталость.', punch: 'Усталость нельзя диверсифицировать.', damage: 12, evidence: 10 }
++    ],
++    skills: [
++      { id: 'pause-after-loss', type: 'defense', icon: 'Ⅱ', title: 'Пауза после минуса', mantra: 'Отыгрыш — платный миф.', body: 'Главный контрпик против реванша и усталости.', counterTo: ['loss-trigger', 'fatigue'] },
++      { id: 'error-journal', type: 'decision', icon: '✎', title: 'Сначала журнал', mantra: 'Закрой ошибку. Не позицию.', body: 'Серия продолжается только после формулировки причины.', counterTo: ['same-mistake'] },
++      { id: 'timeframe-stepback', type: 'read', icon: '⌁', title: 'Шаг назад по таймфрейму', mantra: 'Если всё шумит — уменьши громкость.', body: 'Помогает отличить структуру от микропаники.', counterTo: ['micro-chaos'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Ждать старший сигнал', body: 'Лучше, чем реванш. Хуже, если это маскировка.' },
++      { key: 'B', icon: '◒', title: 'Малый вход', body: 'Малый реванш всё ещё реванш.' },
++      { key: 'C', icon: '▲', title: 'Вернуть минус сразу', body: 'Рынок обожает эту формулировку.', bad: true },
++      { key: 'D', icon: '✎', title: 'Закрыть ошибку в журнале', body: 'День спасён не прибылью, а прекращением пожара.' }
++    ],
++    verdicts: {
++      win: 'Призрак не получил продолжение. Ошибка закрыта словами, не деньгами.',
++      lose: 'Призрак доволен. Ты пытался вернуть капитал, а вернул только ту же ошибку.',
++      journal: 'Ошибка закрывается так: «Я хотел убрать чувство минуса, а не принять решение».'
++    }
++  }  ,
++  {
++    id: 'm6-overtrade-mincer',
++    act: 'Дело 06',
++    title: 'Мясорубка лишних кликов',
++    subtitle: 'После третьего решения рынок перестаёт быть ареной. Он становится кассой.',
++    enemyKey: 'leverageGoblin',
++    enemyName: 'Overtrade Mincer',
++    enemyRole: 'комбайн комиссионной усталости',
++    enemyQuote: 'Если сетапа нет, его можно изготовить из скуки и двух индикаторов.',
++    objective: 'Останови серию решений до того, как усталость начнёт выдавать себя за опыт.',
++    pair: 'MATIC / USDT',
++    timeframe: '30M',
++    difficulty: 'VI · ритм',
++    bgKey: 'vaultWide',
++    accent: 0xf5c044,
++    protocolId: 'anti-overtrade',
++    requiredClues: 3,
++    correctSkill: 'session-cap',
++    correctDecision: 'D',
++    safeRisk: ['0'],
++    baseScores: { A: 46, B: 42, C: 12, D: 84 },
++    pulse: [52, 54, 51, 55, 53, 56, 52, 54, 51, 55, 53, 50, 52, 49, 51, 48, 50, 47],
++    future: [46, 44, 48, 43, 45, 42, 40, 43, 39, 37, 41, 36],
++    clues: [
++      { id: 'third-run', icon: 'Ⅲ', eyebrow: 'ритм', title: 'Третий заход без нового факта', body: 'График не изменился. Изменилось только твоё терпение, а оно плохой аналитик.', punch: 'Скука просит комиссию.', damage: 14, evidence: 12, feeds: true },
++      { id: 'thin-edge', icon: '∅', eyebrow: 'преимущество', title: 'Преимущество истончилось', body: 'Сетап похож на сетап, если смотреть достаточно долго. Это не метод. Это усталость с лупой.', punch: 'Нет edge — нет боя.', damage: 15, evidence: 12 },
++      { id: 'fee-drag', icon: '₵', eyebrow: 'издержки', title: 'Комиссия ест результат', body: 'Маленькая плата становится большой, когда ты называешь её активностью.', punch: 'Касса выигрывает частотой.', damage: 13, evidence: 10 },
++      { id: 'focus-leak', icon: '☾', eyebrow: 'фокус', title: 'Фокус протекает', body: 'Ты ещё смотришь на рынок, но решения уже принимает привычка.', punch: 'Привычка не имеет стопа.', damage: 12, evidence: 10 }
++    ],
++    skills: [
++      { id: 'session-cap', type: 'defense', icon: 'Ⅱ', title: 'Лимит решений на сессию', mantra: 'Два боя. Потом журнал.', body: 'Контрит частоту ради частоты и защищает внимание.', counterTo: ['third-run', 'fee-drag', 'focus-leak'] },
++      { id: 'edge-or-exit', type: 'read', icon: '∅', title: 'Нет edge — нет сделки', mantra: 'Похожее не равно доказанное.', body: 'Срезает сетапы, которые родились от скуки.', counterTo: ['thin-edge'] },
++      { id: 'boring-wins', type: 'decision', icon: '□', title: 'Скука как сигнал стопа', mantra: 'Если ищешь действие — уже поздно.', body: 'Помогает остановиться, когда рынок стал развлечением.', counterTo: ['third-run'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Ждать новый факт', body: 'Лучше клика, но сессия уже просит закрытия.' },
++      { key: 'B', icon: '◒', title: 'Малый тест', body: 'Тест без edge — это плата за любопытство.' },
++      { key: 'C', icon: '▲', title: 'Сделать ещё один вход', body: 'Комиссионная касса благодарит за преданность.', bad: true },
++      { key: 'D', icon: '■', title: 'Закрыть сессию', body: 'Самый дешёвый клик — тот, которого не было.' }
++    ],
++    verdicts: {
++      win: 'Мясорубка остановилась. Ты не дал скуке оформить себя как стратегию.',
++      lose: 'Комбайн доволен. Ты не торговал рынок. Ты торговал желание что-то сделать.',
++      journal: 'Ошибка закрывается так: «Я искал действие после того, как сетап закончился».'
++    }
++  },
++  {
++    id: 'm7-influencer-cult',
++    act: 'Дело 07',
++    title: 'Культ инфлюенсера',
++    subtitle: 'Гуру сказал «вижу иксы». Рынок услышал «вижу ликвидность».',
++    enemyKey: 'headlineTitan',
++    enemyName: 'Influencer Oracle',
++    enemyRole: 'пророк партнёрской ссылки',
++    enemyQuote: 'Не финансовый совет. Просто случайная фраза, после которой толпа покупает.',
++    objective: 'Проверь источник, мотив и цену входа до того, как мем станет твоим планом.',
++    pair: 'PEPE / USDT',
++    timeframe: '1H',
++    difficulty: 'VII · источник',
++    bgKey: 'stormWide',
++    accent: 0xb388ff,
++    protocolId: 'source-before-signal',
++    requiredClues: 3,
++    correctSkill: 'source-audit',
++    correctDecision: 'D',
++    safeRisk: ['0', '05'],
++    baseScores: { A: 54, B: 40, C: 10, D: 82 },
++    pulse: [36, 38, 41, 45, 50, 57, 66, 74, 81, 79, 85, 82, 76, 72, 70, 65, 61, 58],
++    future: [55, 51, 47, 42, 45, 39, 35, 37, 31, 29, 33, 27],
++    clues: [
++      { id: 'affiliate-motive', icon: '₮', eyebrow: 'мотив', title: 'У прогноза есть касса', body: 'Когда ссылка оплачена, уверенность становится маркетинговым отделом.', punch: 'Мотив не отменяет факт, но требует перчаток.', damage: 14, evidence: 12, feeds: true },
++      { id: 'late-post', icon: '▣', eyebrow: 'тайминг', title: 'Пост вышел после пампа', body: 'Пророк увидел будущее через десять минут после того, как оно случилось.', punch: 'Поздний сигнал — ранний выход для чужих.', damage: 16, evidence: 13 },
++      { id: 'no-invalid', icon: '?', eyebrow: 'план', title: 'Нет условия отмены', body: 'Если прогноз не может ошибиться, он уже ошибся как инструмент.', punch: 'Без invalidation это религия.', damage: 15, evidence: 12 },
++      { id: 'comment-euphoria', icon: '☷', eyebrow: 'толпа', title: 'Комментарии в экстазе', body: 'Когда все пишут «спасибо за альфу», альфа обычно уже вышла через боковую дверь.', punch: 'Культ платит сверху.', damage: 12, evidence: 10 }
++    ],
++    skills: [
++      { id: 'source-audit', type: 'read', icon: '▣', title: 'Аудит источника', mantra: 'Кто платит за уверенность?', body: 'Контрит поздние посты, мутный мотив и прогнозы без отмены.', counterTo: ['affiliate-motive', 'late-post', 'no-invalid'] },
++      { id: 'invalidation-first', type: 'defense', icon: '⬣', title: 'Сначала отмена идеи', mantra: 'Если нельзя опровергнуть — нельзя входить.', body: 'Отделяет сетап от проповеди.', counterTo: ['no-invalid'] },
++      { id: 'crowd-delay', type: 'decision', icon: '☷', title: 'Толпа = задержка', mantra: 'Чем громче чат, тем дороже вход.', body: 'Помогает не покупать чужое ликование.', counterTo: ['comment-euphoria', 'late-post'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Ждать независимое подтверждение', body: 'Почти правильно. Но сейчас шум уже перегрет.' },
++      { key: 'B', icon: '◒', title: 'Войти минимально', body: 'Минимальная вера всё ещё вера.' },
++      { key: 'C', icon: '▣', title: 'Купить по посту', body: 'Не финансовый совет. Финансовая травма — возможно.', bad: true },
++      { key: 'D', icon: '×', title: 'Отказаться от культа', body: 'Гуру не получил твою ликвидность. Неприятный день для пророчества.' }
++    ],
++    verdicts: {
++      win: 'Оракул потерял паству. Ты проверил мотив раньше, чем купил уверенность.',
++      lose: 'Культ пополнился. Ты купил не актив, а чужую партнёрскую экономику.',
++      journal: 'Ошибка закрывается так: «Я принял чужую уверенность за свой анализ».'
++    }
++  },
++  {
++    id: 'm8-false-breakout',
++    act: 'Дело 08',
++    title: 'Ложный прорыв',
++    subtitle: 'Уровень пробит. Аплодисменты преждевременны. Дверь может оказаться стеной.',
++    enemyKey: 'fomoPortrait',
++    enemyName: 'Breakout Mimic',
++    enemyRole: 'актёр пробоя без закрепления',
++    enemyQuote: 'Смотри, я выше уровня. Не спрашивай, на сколько секунд.',
++    objective: 'Дождись закрепления и ретеста, не покупая театральный фитиль.',
++    pair: 'AVAX / USDT',
++    timeframe: '4H',
++    difficulty: 'VIII · структура',
++    bgKey: 'fomoWide',
++    accent: 0x22d8f5,
++    protocolId: 'breakout-validation',
++    requiredClues: 3,
++    correctSkill: 'retest-validation',
++    correctDecision: 'A',
++    safeRisk: ['05', '1'],
++    baseScores: { A: 82, B: 58, C: 18, D: 62 },
++    pulse: [48, 49, 50, 51, 52, 53, 55, 57, 63, 69, 76, 72, 78, 74, 71, 69, 68, 67],
++    future: [65, 62, 66, 70, 73, 77, 75, 80, 83, 81, 86, 89],
++    clues: [
++      { id: 'close-above', icon: '◉', eyebrow: 'закрытие', title: 'Закрытие спорное', body: 'Цена выглянула над уровнем и сразу начала искать алиби.', punch: 'Пробой без закрытия — трейлер, не фильм.', damage: 13, evidence: 10 },
++      { id: 'retest-zone', icon: '↻', eyebrow: 'ретест', title: 'Ретест ещё не пришёл', body: 'Рынок не обязан давать второй шанс, но профессионал хотя бы ждёт приглашение.', punch: 'Ретест делает риск измеримым.', damage: 17, evidence: 14 },
++      { id: 'volume-doubt', icon: '◆', eyebrow: 'объём', title: 'Объём не подтвердил драму', body: 'Свеча громкая. Толпа хлопает. Деньги пока сидят в коридоре.', punch: 'Без участия ликвидности пробой играет роль.', damage: 12, evidence: 10 },
++      { id: 'stop-distance', icon: '⬣', eyebrow: 'риск', title: 'Стоп слишком далеко', body: 'Если стоп не помещается в план, план не помещается в реальность.', punch: 'Ждать дешевле, чем растягивать риск.', damage: 14, evidence: 11 }
++    ],
++    skills: [
++      { id: 'retest-validation', type: 'read', icon: '↻', title: 'Пробой через ретест', mantra: 'Сначала закрепление. Потом разговор.', body: 'Главный контрпик против театрального фитиля.', counterTo: ['close-above', 'retest-zone', 'volume-doubt'] },
++      { id: 'stop-fits-plan', type: 'defense', icon: '⬣', title: 'Стоп должен помещаться', mantra: 'Риск не резиновый. Эго — да.', body: 'Не даёт растянуть сделку ради красивой свечи.', counterTo: ['stop-distance'] },
++      { id: 'no-theatre', type: 'decision', icon: '□', title: 'Не покупать театр', mantra: 'Драма не является структурой.', body: 'Полезно, когда пробой больше похож на рекламу.', counterTo: ['close-above'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Ждать ретест и вход по плану', body: 'Скучно. Рынок ненавидит, когда ты скучный правильно.' },
++      { key: 'B', icon: '◒', title: 'Малый вход сейчас', body: 'Допустимо только если риск уже измерен. Он не измерен.' },
++      { key: 'C', icon: '▲', title: 'Купить пробой немедленно', body: 'Фитиль получил инвестора. Поздравляем фитиль.', bad: true },
++      { key: 'D', icon: '×', title: 'Полностью пропустить', body: 'Безопасно, но можно потерять обучающий ретест.' }
++    ],
++    verdicts: {
++      win: 'Мимик разоблачён. Ты дождался структуры, а не аплодисментов.',
++      lose: 'Мимик сыграл пробой, ты купил билет. В афише значился стоп.',
++      journal: 'Ошибка закрывается так: «Я купил положение цены, а не подтверждённую структуру».'
++    }
++  },
++  {
++    id: 'm9-correlation-herd',
++    act: 'Дело 09',
++    title: 'Корреляционное стадо',
++    subtitle: 'Пять альтов выглядят как портфель. На деле это один козёл в пяти шапках.',
++    enemyKey: 'hubrisDragon',
++    enemyName: 'Correlation Herd',
++    enemyRole: 'стадо ложной диверсификации',
++    enemyQuote: 'Ты распределил риск. Между одинаковыми ошибками.',
++    objective: 'Сократи экспозицию, если идеи завязаны на один и тот же рыночный нерв.',
++    pair: 'ALT BASKET',
++    timeframe: '1D',
++    difficulty: 'IX · портфель',
++    bgKey: 'ritualWide',
++    accent: 0xfb4d6d,
++    protocolId: 'one-thesis-cap',
++    requiredClues: 3,
++    correctSkill: 'one-thesis-cap',
++    correctDecision: 'B',
++    safeRisk: ['05'],
++    baseScores: { A: 58, B: 80, C: 20, D: 60 },
++    pulse: [44, 46, 49, 52, 55, 58, 62, 64, 67, 65, 68, 70, 69, 71, 70, 68, 67, 66],
++    future: [64, 62, 60, 58, 61, 57, 54, 52, 56, 51, 49, 47],
++    clues: [
++      { id: 'same-beta', icon: '⛓', eyebrow: 'корреляция', title: 'Один beta-фактор', body: 'Названия разные. Падает всё от одного кашля биткоина.', punch: 'Пять тикеров не делают пять идей.', damage: 16, evidence: 13 },
++      { id: 'narrative-clone', icon: '☷', eyebrow: 'нарратив', title: 'Один нарратив на всех', body: 'AI, L2, мемы — сегодня это просто разные маски одной жадности.', punch: 'Нарратив размножился, риск нет.', damage: 13, evidence: 11, feeds: true },
++      { id: 'liquidity-thin', icon: '◆', eyebrow: 'ликвидность', title: 'Ликвидность тонкая', body: 'Выход широкий только в рекламной презентации. В реальности дверь одна.', punch: 'Тонкий выход усиливает стадо.', damage: 14, evidence: 11 },
++      { id: 'portfolio-heat', icon: '⬣', eyebrow: 'портфель', title: 'Суммарный риск выше лимита', body: 'Каждая позиция маленькая. Вместе они уже пишут некролог.', punch: 'Считать нужно тезис, не тикеры.', damage: 17, evidence: 14 }
++    ],
++    skills: [
++      { id: 'one-thesis-cap', type: 'defense', icon: 'Ⅰ', title: 'Лимит на один тезис', mantra: 'Одна идея — один риск.', body: 'Главная защита от ложной диверсификации.', counterTo: ['same-beta', 'narrative-clone', 'portfolio-heat'] },
++      { id: 'liquidity-exit', type: 'read', icon: '◆', title: 'Выход важнее входа', mantra: 'Дверь проверяется до пожара.', body: 'Срезает риск тонкой ликвидности.', counterTo: ['liquidity-thin'] },
++      { id: 'basket-truth', type: 'decision', icon: '⛓', title: 'Портфель как одна сделка', mantra: 'Стадо считается целиком.', body: 'Помогает увидеть общий нерв риска.', counterTo: ['same-beta', 'portfolio-heat'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Ждать разделения рынка', body: 'Неплохо, но текущий риск уже надо уменьшить.' },
++      { key: 'B', icon: '◒', title: 'Сократить корзину до 0.5%', body: 'Стадо стало меньше. Паника потеряла площадь.' },
++      { key: 'C', icon: '▲', title: 'Добавить ещё один альт', body: 'Диверсификация: теперь ошибка в шести шапках.', bad: true },
++      { key: 'D', icon: '×', title: 'Выйти полностью', body: 'Безопасно, но можно сохранить маленький учебный риск.' }
++    ],
++    verdicts: {
++      win: 'Стадо сжалось до управляемого размера. Ты считал тезис, а не количество логотипов.',
++      lose: 'Стадо побежало одновременно. Диверсификация вышла через ту же дверь.',
++      journal: 'Ошибка закрывается так: «Я считал активы разными, хотя риск был один».'
++    }
++  },
++  {
++    id: 'm10-fatigue-market',
++    act: 'Дело 10',
++    title: 'Рынок усталости',
++    subtitle: 'Поздняя ночь. График тот же. Игрок хуже.',
++    enemyKey: 'revengeWraith',
++    enemyName: 'Fatigue Revenant',
++    enemyRole: 'ночной оператор чужих ошибок',
++    enemyQuote: 'Ещё один анализ. Мозг уже ушёл, но курсор остался.',
++    objective: 'Распознай снижение качества решений и закрой терминал до того, как усталость нажмёт за тебя.',
++    pair: 'BTC DOMINANCE',
++    timeframe: 'late session',
++    difficulty: 'X · состояние',
++    bgKey: 'cityWide',
++    accent: 0x34d399,
++    protocolId: 'state-before-market',
++    requiredClues: 2,
++    correctSkill: 'state-check',
++    correctDecision: 'D',
++    safeRisk: ['0'],
++    baseScores: { A: 52, B: 28, C: 8, D: 88 },
++    pulse: [60, 58, 61, 57, 55, 59, 54, 52, 55, 51, 49, 52, 48, 46, 49, 45, 44, 42],
++    future: [41, 39, 43, 38, 36, 40, 35, 33, 37, 31, 30, 28],
++    clues: [
++      { id: 'late-hour', icon: '☾', eyebrow: 'состояние', title: 'Сессия слишком поздняя', body: 'Рынок круглосуточный. Нервная система — нет. У неё нет perpetual futures.', punch: 'Время суток стало фактором риска.', damage: 14, evidence: 12 },
++      { id: 'reading-loop', icon: '↺', eyebrow: 'повтор', title: 'Ты перечитываешь одну улику', body: 'Когда факт не меняется, но ты ждёшь другого чувства — это не анализ.', punch: 'Повтор не добавляет данных.', damage: 15, evidence: 12, feeds: true },
++      { id: 'reaction-slow', icon: '…', eyebrow: 'фокус', title: 'Реакция замедлилась', body: 'Ты видишь сигнал позже, чем объясняешь его себе. Опасная магия.', punch: 'Запаздывание нельзя лечить плечом.', damage: 13, evidence: 11 },
++      { id: 'tomorrow-edge', icon: '□', eyebrow: 'план', title: 'Сетап переживёт до завтра', body: 'Если идея умирает без твоей бессонницы, это была не идея.', punch: 'Сон иногда лучший риск-менеджер.', damage: 16, evidence: 13 }
++    ],
++    skills: [
++      { id: 'state-check', type: 'defense', icon: '☾', title: 'Проверка состояния', mantra: 'Сначала игрок. Потом рынок.', body: 'Главная защита от ночного автопилота.', counterTo: ['late-hour', 'reading-loop', 'reaction-slow'] },
++      { id: 'tomorrow-rule', type: 'decision', icon: '□', title: 'Правило завтра', mantra: 'Хорошая идея не боится сна.', body: 'Помогает отложить решение без чувства поражения.', counterTo: ['tomorrow-edge'] },
++      { id: 'loop-break', type: 'read', icon: '↺', title: 'Разрыв цикла чтения', mantra: 'Если перечитываешь — остановись.', body: 'Срезает иллюзию анализа без новых фактов.', counterTo: ['reading-loop'] }
++    ],
++    decisions: [
++      { key: 'A', icon: '↻', title: 'Вернуться утром', body: 'Хорошо, если сейчас действительно закрыть экран.' },
++      { key: 'B', icon: '◒', title: 'Микро-вход для проверки', body: 'Усталость любит слово «микро». Так ей проще пройти охрану.' },
++      { key: 'C', icon: '▲', title: 'Войти, пока не уснул', body: 'Рынок благодарит за бессонный депозит.', bad: true },
++      { key: 'D', icon: '■', title: 'Закрыть день и журнал', body: 'Победа без сделки. Самый обидный жанр для рынка.' }
++    ],
++    verdicts: {
++      win: 'Ночной оператор остался без смены. Ты проверил игрока до рынка.',
++      lose: 'Усталость нажала аккуратно. Потом рынок объяснил это грубо.',
++      journal: 'Ошибка закрывается так: «Я анализировал ночью не рынок, а собственную усталость».'
++    }
++  }
++
++];
++
++export const riskLabels: Record<RiskKey, { label: string; body: string; score: number }> = {
++  '0': { label: '0%', body: 'не входить', score: 8 },
++  '05': { label: '0.5%', body: 'учебный риск', score: 7 },
++  '1': { label: '1%', body: 'рабочий лимит', score: 5 },
++  '2': { label: '2%', body: 'налог на эго', score: -24 }
++};
++
++export const cosmetics: CosmeticSeal[] = [
++  { id: 'default', icon: '✦', title: 'Печать охотника', body: 'Базовый знак: я не нажал кнопку без причины.', price: 0, accent: 0x22d8f5 },
++  { id: 'panic-office', icon: '▣', title: 'Департамент паники', body: 'Официально выглядит умно. По сути — предупреждение самому себе.', price: 35, accent: 0xb388ff },
++  { id: 'whale-tax', icon: '◆', title: 'Налог на кита', body: 'Для людей, которые больше не покупают чужой всплеск ликвидности.', price: 55, accent: 0xf5c044 },
++  { id: 'cold-journal', icon: '✎', title: 'Холодный журнал', body: 'Ошибки не исчезают. Они становятся уликами.', price: 75, accent: 0x34d399 },
++  { id: 'red-circuit', icon: '⬣', title: 'Красный контур', body: 'Если всё горит, это не значит, что нужно добавлять плечо.', price: 95, accent: 0xfb4d6d }
++];
++
++export const menuMicrocopy = {
++  productLine: 'Decision hunt · not a terminal',
++  headline: 'SIGNAL ARENA',
++  subhead: 'Тренируй решение до клика. Рынок всё равно попробует съесть тебя.',
++  season: 'СЕЗОН 0 · ПРОТОКОЛ УПРАВЛЯЕМОЙ ПАНИКИ',
++  daily: 'Стрик засчитывается только за закрытую ошибку. Duolingo для людей, которые видели ликвидацию.',
++  codex: 'Кодекс не обещает прибыль. Он хранит причины, почему ты не должен был нажимать кнопку.',
++  intro: [
++    'Это не биржа. Здесь нельзя натренировать бессмысленный клик.',
++    'Ты вскрываешь искажение: толпу, долг, заголовок, эго или реванш.',
++    'Будущее включается только после ответа. Рынок не подсказывает подсудимому.'
++  ],
++  principles: [
++    '9:16. Один большой выбор на экран. Никакой терминальной каши.',
++    'Монетизация продаёт стиль. Правота, данные и риск не продаются.',
++    'Игровой прогресс = закрытые ошибки, а не частота сделок.'
++  ]
++};
+diff --git a/src/game/scoring.ts b/src/game/scoring.ts
+new file mode 100644
+index 0000000..49a2fe0
+--- /dev/null
++++ b/src/game/scoring.ts
+@@ -0,0 +1,123 @@
++import type { DecisionKey, Mission, RiskKey } from './data';
++
++export interface ScoreInput {
++  mission: Mission;
++  opened: string[];
++  skillId?: string;
++  decision?: DecisionKey;
++  risk: RiskKey;
++}
++
++export interface ScoreBreakdown {
++  total: number;
++  criteria: [number, number, number, number];
++  hp: number;
++  stars: number;
++  victory: boolean;
++  title: string;
++}
++
++export function enemyHp(input: ScoreInput): number {
++  const { mission, opened, skillId, decision, risk } = input;
++  let hp = 100;
++
++  opened.forEach((id) => {
++    const clue = mission.clues.find((c) => c.id === id);
++    if (!clue) return;
++    hp -= clue.damage;
++    if (clue.feeds) hp += 5;
++  });
++
++  const skill = mission.skills.find((s) => s.id === skillId);
++  if (skill) {
++    hp -= 7;
++    const counters = skill.counterTo.filter((id) => opened.includes(id)).length;
++    hp -= counters * 6;
++    if (skill.id === mission.correctSkill) hp -= 10;
++  }
++
++  if (decision === mission.correctDecision) hp -= 12;
++  if (decision === 'C') hp += 18;
++  if (risk === '2') hp += 14;
++
++  return clamp(Math.round(hp), 0, 100);
++}
++
++export function panicPressure(input: ScoreInput): number {
++  const { mission, opened, skillId, decision, risk } = input;
++  let pressure = 28;
++
++  opened.forEach((id) => {
++    const clue = mission.clues.find((c) => c.id === id);
++    if (!clue) return;
++    pressure += clue.feeds ? 22 : -5;
++  });
++
++  if (decision === 'C') pressure += 24;
++  if (risk === '2') pressure += 18;
++
++  const skill = mission.skills.find((s) => s.id === skillId);
++  if (skill?.id === mission.correctSkill) pressure -= 18;
++
++  return clamp(Math.round(pressure), 0, 100);
++}
++
++export function computeScore(input: ScoreInput): ScoreBreakdown {
++  const { mission, opened, skillId, risk } = input;
++  const decision = input.decision ?? 'C';
++  const base = mission.baseScores[decision] ?? 20;
++  const evidenceRaw = opened.reduce((sum, id) => sum + (mission.clues.find((c) => c.id === id)?.evidence ?? 0), 0);
++  const evidenceBonus = Math.min(28, Math.round(evidenceRaw * 0.72));
++  const skill = mission.skills.find((s) => s.id === skillId);
++  const counterHits = skill ? skill.counterTo.filter((id) => opened.includes(id)).length : 0;
++  const skillBonus = skill ? (skill.id === mission.correctSkill ? 18 : 8 + counterHits * 3) : -12;
++  const riskBonus = mission.safeRisk.includes(risk) ? (risk === '0' && decision === 'D' ? 12 : 8) : risk === '2' ? -28 : -8;
++  const cluePenalty = opened.length < mission.requiredClues ? -18 : 0;
++  const badPenalty = decision === 'C' ? -18 : 0;
++
++  const total = clamp(Math.round(base + evidenceBonus + skillBonus + riskBonus + cluePenalty + badPenalty), 5, 100);
++  const criteria: [number, number, number, number] = [
++    clamp(Math.round((opened.length / mission.clues.length) * 100), 0, 100),
++    clamp(skill ? Math.round((skill.id === mission.correctSkill ? 88 : 58) + counterHits * 8) : 20, 0, 100),
++    clamp(mission.safeRisk.includes(risk) ? (risk === '0' ? 95 : 84) : risk === '2' ? 18 : 46, 0, 100),
++    clamp(decision === mission.correctDecision ? 92 : decision === 'C' ? 12 : 58, 0, 100)
++  ];
++  const hp = enemyHp(input);
++  const victory = total >= 55;
++  const stars = total >= 88 ? 3 : total >= 70 ? 2 : total >= 55 ? 1 : 0;
++  const title = total >= 90
++    ? 'ЛЕГЕНДАРНЫЙ РАЗБОР'
++    : total >= 75
++      ? 'ЧИСТЫЙ ДИАГНОЗ'
++      : total >= 55
++        ? 'ОШИБКА ЗАКРЫТА'
++        : total >= 35
++          ? 'РЫНОК ПРИНЯЛ ТВОЁ РЕШЕНИЕ'
++          : 'СИСТЕМА ПОБЛАГОДАРИЛА';
++
++  return { total, criteria, hp, stars, victory, title };
++}
++
++export function perfectInput(mission: Mission): ScoreInput {
++  return {
++    mission,
++    opened: mission.clues.map((c) => c.id),
++    skillId: mission.correctSkill,
++    decision: mission.correctDecision,
++    risk: mission.safeRisk[0]
++  };
++}
++
++export function recklessInput(mission: Mission): ScoreInput {
++  return {
++    mission,
++    opened: [],
++    skillId: undefined,
++    decision: 'C',
++    risk: '2'
++  };
++}
++
++function clamp(value: number, min: number, max: number): number {
++  return Math.max(min, Math.min(max, value));
++}
+diff --git a/src/main.ts b/src/main.ts
+new file mode 100644
+index 0000000..50723cf
+--- /dev/null
++++ b/src/main.ts
+@@ -0,0 +1,42 @@
++import './styles.css';
++import Phaser from 'phaser';
++import ArenaScene from './game/ArenaScene';
++
++(globalThis as unknown as { Phaser: typeof Phaser }).Phaser = Phaser;
++
++const { default: UIPlugin } = await import('phaser3-rex-plugins/templates/ui/ui-plugin.js');
++
++const config: Phaser.Types.Core.GameConfig = {
++  type: Phaser.WEBGL,
++  parent: 'game',
++  width: 540,
++  height: 960,
++  backgroundColor: '#01030a',
++  render: {
++    antialias: true,
++    pixelArt: false,
++    roundPixels: false,
++    powerPreference: 'high-performance'
++  },
++  scale: {
++    mode: Phaser.Scale.FIT,
++    autoCenter: Phaser.Scale.CENTER_BOTH,
++    width: 540,
++    height: 960
++  },
++  dom: {
++    createContainer: false
++  },
++  plugins: {
++    scene: [
++      {
++        key: 'rexUI',
++        plugin: UIPlugin,
++        mapping: 'rexUI'
++      }
++    ]
++  },
++  scene: [ArenaScene]
++};
++
++new Phaser.Game(config);
+diff --git a/src/styles.css b/src/styles.css
+new file mode 100644
+index 0000000..1961c08
+--- /dev/null
++++ b/src/styles.css
+@@ -0,0 +1,63 @@
++* {
++  box-sizing: border-box;
++  -webkit-tap-highlight-color: transparent;
++}
++
++html,
++body,
++#shell,
++#game {
++  width: 100%;
++  height: 100%;
++  margin: 0;
++}
++
++body {
++  overflow: hidden;
++  background:
++    radial-gradient(900px 640px at 50% -10%, rgba(34, 216, 245, 0.13), transparent 60%),
++    radial-gradient(680px 680px at 120% 110%, rgba(179, 136, 255, 0.10), transparent 60%),
++    #01030a;
++  color: #f2f7ff;
++  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
++  touch-action: none;
++  user-select: none;
++  -webkit-user-select: none;
++}
++
++#shell {
++  display: grid;
++  place-items: center;
++  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
++}
++
++#game {
++  width: min(100vw, calc(100dvh * 9 / 16));
++  height: min(100dvh, calc(100vw * 16 / 9));
++  max-width: 540px;
++  max-height: 960px;
++  position: relative;
++  filter: drop-shadow(0 35px 90px rgba(0, 0, 0, 0.65));
++}
++
++#game canvas {
++  width: 100% !important;
++  height: 100% !important;
++  display: block;
++  border-radius: clamp(0px, 7vw, 34px);
++}
++
++@media (max-width: 560px) {
++  #shell { padding: 0; }
++  #game {
++    width: 100vw;
++    height: 100dvh;
++    max-width: none;
++    max-height: none;
++  }
++  #game canvas { border-radius: 0; }
++}
++
++@media (prefers-reduced-motion: reduce) {
++  #game { filter: none; }
++}
+diff --git a/src/vite-env.d.ts b/src/vite-env.d.ts
+new file mode 100644
+index 0000000..35845c4
+--- /dev/null
++++ b/src/vite-env.d.ts
+@@ -0,0 +1,6 @@
++/// <reference types="vite/client" />
++
++declare module 'phaser3-rex-plugins/templates/ui/ui-plugin.js' {
++  const UIPlugin: any;
++  export default UIPlugin;
++}
+diff --git a/tsconfig.json b/tsconfig.json
+new file mode 100644
+index 0000000..e1d0ccc
+--- /dev/null
++++ b/tsconfig.json
+@@ -0,0 +1,19 @@
++{
++  "compilerOptions": {
++    "target": "ES2022",
++    "useDefineForClassFields": true,
++    "module": "ESNext",
++    "lib": ["DOM", "DOM.Iterable", "ES2022"],
++    "allowJs": false,
++    "skipLibCheck": true,
++    "esModuleInterop": true,
++    "allowSyntheticDefaultImports": true,
++    "strict": true,
++    "forceConsistentCasingInFileNames": true,
++    "moduleResolution": "Bundler",
++    "resolveJsonModule": true,
++    "isolatedModules": true,
++    "noEmit": true
++  },
++  "include": ["src"]
++}
+diff --git a/vite.config.ts b/vite.config.ts
+new file mode 100644
+index 0000000..da0de96
+--- /dev/null
++++ b/vite.config.ts
+@@ -0,0 +1,28 @@
++import { defineConfig } from 'vite';
++
++export default defineConfig({
++  server: {
++    host: '0.0.0.0',
++    port: 5173,
++    strictPort: false,
++    allowedHosts: true
++  },
++  preview: {
++    host: '0.0.0.0',
++    port: 4173,
++    allowedHosts: true
++  },
++  build: {
++    target: 'es2022',
++    assetsInlineLimit: 0,
++    chunkSizeWarningLimit: 1600,
++    rollupOptions: {
++      output: {
++        manualChunks: {
++          phaser: ['phaser'],
++          rexui: ['phaser3-rex-plugins/templates/ui/ui-plugin.js']
++        }
++      }
++    }
++  }
++});
